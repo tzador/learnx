@@ -1,3 +1,3 @@
 # LearnX
 
-- [Zig](./zig.md)
+- [Zig](./zig)
