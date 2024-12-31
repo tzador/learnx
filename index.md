@@ -1,3 +1,0 @@
-# LearnX
-
-- [Zig](./zig)
