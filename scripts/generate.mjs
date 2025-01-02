@@ -107,7 +107,7 @@ Each article content should be in the following format:
     const fun = message.tool_calls[0].function;
     const args = JSON.parse(fun.arguments);
 
-    console.log(message);
+    console.log(fun.name, args);
 
     if (fun.name === "done" || articles.length > 20) {
       fs.writeFileSync(
@@ -115,8 +115,8 @@ Each article content should be in the following format:
         `# ${topic}\n\n` +
           articles
             .map(
-              (a) =>
-                `- [${a.title}](#${slugify(a.title, {
+              (a, i) =>
+                `- [${i + 1}. ${a.title}](#${slugify(`${i + 1}. ${a.title}`, {
                   lower: true,
                   strict: true
                 })})`
@@ -124,12 +124,10 @@ Each article content should be in the following format:
             .join("\n") +
           "\n\n" +
           articles
-            .map(
-              (a) =>
-                `## ${a.title}\n${a.content
-                  .replace(/^# .*$/gm, "")
-                  .replace(/^#/gm, "##")}`
-            )
+            .flatMap((a, i) => [
+              `## ${i + 1}. ${a.title}`,
+              a.content.replace(/^# .*$/gm, "").replace(/^#/gm, "##")
+            ])
             .join("\n\n")
             .replace(/\n\n+/g, "\n\n")
             .trim() +
@@ -140,6 +138,7 @@ Each article content should be in the following format:
 
     if (fun.name === "report_article") {
       articles.push(args);
+      console.log(`Generated article ${args.index}: ${args.title}`);
     }
   }
 }
