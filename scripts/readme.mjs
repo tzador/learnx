@@ -14,6 +14,7 @@ readme = readme.replace(
 <!-- TOPICS START -->
 
 ${topics
+  .sort()
   .map(
     (topic) =>
       `- [${topic}](./topics/${slugify(topic, {
