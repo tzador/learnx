@@ -6,16 +6,22 @@ import path from "path";
 import { OpenAI } from "openai";
 import slugify from "slugify";
 
+function slugit(text) {
+  return slugify(text, { lower: true, strict: true });
+}
+
+function padi(i) {
+  return (i + 1).toString().padStart(2, "0");
+}
+
 const openai = new OpenAI();
 
 const topics = yaml.parse(fs.readFileSync("./scripts/topics.yaml", "utf8"));
 
 fs.mkdirSync("./topics", { recursive: true });
+
 for (const topic of topics) {
-  const target = path.join(
-    "topics",
-    `${slugify(topic, { lower: true, strict: true })}.md`
-  );
+  const target = path.join("topics", `${slugit(topic)}.md`);
 
   if (fs.existsSync(target)) {
     console.log(`Skipping ${topic} because it already exists`);
@@ -116,16 +122,15 @@ Each article content should be in the following format:
           articles
             .map(
               (a, i) =>
-                `- [${i + 1}. ${a.title}](#${slugify(`${i + 1}. ${a.title}`, {
-                  lower: true,
-                  strict: true
-                })})`
+                `- [${padi(i)}. ${a.title}](#${slugit(
+                  `${padi(i)}. ${a.title}`
+                )})`
             )
             .join("\n") +
           "\n\n" +
           articles
             .flatMap((a, i) => [
-              `## ${i + 1}. ${a.title}`,
+              `## ${padi(i)}. ${a.title}`,
               a.content.replace(/^# .*$/gm, "").replace(/^#/gm, "##")
             ])
             .join("\n\n")
