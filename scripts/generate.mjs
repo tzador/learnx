@@ -17,7 +17,12 @@ for (const topic of topics) {
     `${slugify(topic, { lower: true, strict: true })}.md`
   );
 
-  if (fs.existsSync(target)) continue;
+  if (fs.existsSync(target)) {
+    console.log(`Skipping ${topic} because it already exists`);
+    continue;
+  }
+
+  console.log(`Generating ${topic}`);
 
   const articles = [];
 
@@ -38,6 +43,13 @@ with the necessary parameters, which include:
 Start with simple articles and gradually increase the complexity
 to go to the advanced coverage of the topic.
 Output no more than 20 articles.
+
+Each article content should be in the following format:
+
+# [Title]
+
+[[...Content formatted not to exceed 80 charecters per line if possible...]]
+
 `
       },
       ...(articles.length === 0
@@ -94,7 +106,8 @@ Output no more than 20 articles.
     const message = response.choices[0].message;
     const fun = message.tool_calls[0].function;
     const args = JSON.parse(fun.arguments);
-    console.log(args);
+
+    console.log(message);
 
     if (fun.name === "done" || articles.length > 20) {
       fs.writeFileSync(
@@ -114,11 +127,11 @@ Output no more than 20 articles.
             .map(
               (a) =>
                 `## ${a.title}\n${a.content
-                  .replace(/^# .*$/m, "")
-                  .replace(/^#/m, "##")}`
+                  .replace(/^# .*$/gm, "")
+                  .replace(/^#/gm, "##")}`
             )
             .join("\n\n")
-            // .replace(/\n\n+/, "\n\n")
+            .replace(/\n\n+/g, "\n\n")
             .trim() +
           "\n"
       );
