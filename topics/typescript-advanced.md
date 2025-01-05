@@ -1,818 +1,639 @@
 # TypeScript Advanced
 
-- [01. Introduction to TypeScript Advanced](#01-introduction-to-typescript-advanced)
-- [02. Understanding TypeScript Generics](#02-understanding-typescript-generics)
-- [03. TypeScript Enums](#03-typescript-enums)
-- [04. TypeScript Utility Types](#04-typescript-utility-types)
-- [05. TypeScript Decorators](#05-typescript-decorators)
-- [06. Mapped Types in TypeScript](#06-mapped-types-in-typescript)
-- [07. Intersection and Union Types in TypeScript](#07-intersection-and-union-types-in-typescript)
-- [08. TypeScript Namespaces](#08-typescript-namespaces)
-- [09. Advanced TypeScript Types](#09-advanced-typescript-types)
-- [10. TypeScript Module Augmentation](#10-typescript-module-augmentation)
-- [11. TypeScript Conditional Types](#11-typescript-conditional-types)
-- [12. TypeScript Advanced Functions](#12-typescript-advanced-functions)
-- [13. TypeScript keyof and Lookup Types](#13-typescript-keyof-and-lookup-types)
-- [14. TypeScript Template Literal Types](#14-typescript-template-literal-types)
-- [15. TypeScript Symbols](#15-typescript-symbols)
-- [16. TypeScript Iterators and Generators](#16-typescript-iterators-and-generators)
-- [17. TypeScript JSX and React](#17-typescript-jsx-and-react)
-- [18. TypeScript Mixins](#18-typescript-mixins)
-- [19. TypeScript Reflection](#19-typescript-reflection)
-- [20. TypeScript Compiler APIs](#20-typescript-compiler-apis)
+- [1. Introduction to TypeScript Advanced](#1-introduction-to-typescript-advanced)
+- [2. Type Inference in TypeScript](#2-type-inference-in-typescript)
+- [3. Union and Intersection Types](#3-union-and-intersection-types)
+- [4. Type Guards and Differentiating Types](#4-type-guards-and-differentiating-types)
+- [5. Decorators in TypeScript](#5-decorators-in-typescript)
+- [6. Generics in TypeScript](#6-generics-in-typescript)
+- [7. Mapped Types and Index Signatures](#7-mapped-types-and-index-signatures)
+- [8. Advanced Object Types](#8-advanced-object-types)
+- [9. Conditional Types](#9-conditional-types)
+- [10. Template Literal Types](#10-template-literal-types)
+- [11. TypeScript Utility Types](#11-typescript-utility-types)
+- [12. Type Manipulation and Transformation](#12-type-manipulation-and-transformation)
+- [13. Augmenting and Extending Existing Types](#13-augmenting-and-extending-existing-types)
+- [14. Module Augmentation and Declaration Merging](#14-module-augmentation-and-declaration-merging)
+- [15. Advanced Function Types](#15-advanced-function-types)
+- [16. Advanced Type Compatibility](#16-advanced-type-compatibility)
+- [17. Understanding TypeScript's keyof and Lookup Types](#17-understanding-typescripts-keyof-and-lookup-types)
+- [18. TypeScript with JSX and React](#18-typescript-with-jsx-and-react)
+- [19. Advanced TypeScript Configuration and Compilation](#19-advanced-typescript-configuration-and-compilation)
+- [20. TypeScript Compiler Internals and Custom Transformer](#20-typescript-compiler-internals-and-custom-transformer)
 
-## 01. Introduction to TypeScript Advanced
+## 1. Introduction to TypeScript Advanced
 
-Welcome to the series on "TypeScript Advanced"! In this series,
-we will dive deep into the advanced features of TypeScript, a
-typed superset of JavaScript that compiles to plain JavaScript.
-TypeScript builds on JavaScript by adding static type
-definitions, which help catch problems early through a powerful
-type system and enable robust development tools for JavaScript.
+TypeScript is a powerful extension of JavaScript that introduces static
+typing and advanced language features. As your projects grow,
+switching from JavaScript to TypeScript can enhance code readability
+and maintainability, reduce runtime errors, and streamline the
+development process.
 
-The goal of these articles is to provide you with a comprehensive
-guide to understanding and utilizing TypeScript's advanced
-features. We will start by establishing a strong foundation in
-TypeScript basics before advancing to more complex and powerful
-concepts. Topics will include but are not limited to advanced
-type manipulation, decorators, generics, and module augmentations.
+In this series, we will delve into advanced aspects of TypeScript,
+which will give you the necessary tools to leverage its full
+potential. From exploring complex data types to mastering decorators,
+you will learn to write better and more efficient TypeScript code.
 
-Whether you're a seasoned JavaScript developer or someone
-transitioning from another language, these articles aim to
-enhance your skills and help you write cleaner, more
-maintainable code using TypeScript's advanced capabilities.
+Here's a brief overview of what we will cover in this series:
 
-Stay tuned for our next article where we'll cover the basics
-that set the stage for understanding advanced concepts.
+- Generics and advanced types
+- Decorators
+- Type guards
+- Mapped types and conditional types
+- Utility types
+- Advanced configuration and project setup
 
-## 02. Understanding TypeScript Generics
+By the end of this series, you'll have a deep understanding of
+TypeScript's advanced features and how they can be applied to create
+robust and scalable applications. Prepare yourself to elevate your
+programming skills to the next level with TypeScript Advanced.
 
-TypeScript generics allow you to create reusable components that can work
-with different types. This concept allows you to define functions, classes,
-or interfaces with a placeholder for the type.
+## 2. Type Inference in TypeScript
 
-### Why Use Generics?
+TypeScript has a powerful feature called type inference. It helps developers
+write cleaner code by automatically determining the data types of expressions.  
+This feature reduces the need for excessive manual typings, making the code  
+more concise and readable.
 
-Generics provide the ability to create components that can operate on a
-variety of types rather than a single one. This conserves code reusability
-and type safety across your application.
+### How Type Inference Works
 
-### Basic Example
+TypeScript infers types when:
 
-A simple example of a generic function entails using the `T` placeholder:
+- Variables are initialized
+- Default parameter values are defined
+- Function return types are determined
+
+For example:
+
+```typescript
+let message = "Hello, TypeScript!";
+// TypeScript infers the type of `message` as string.
+```
+
+Without explicit type annotations, TypeScript analyzes the code and infers  
+the types based on the values used.
+
+### Benefits of Type Inference
+
+1. **Reduces Boilerplate:** Less need for explicit type annotations.
+2. **Enhances Productivity:** Faster coding with automatic type detection.
+3. **Improves Code Readability:** Cleaner code with fewer type declarations.
+
+### Good to Know
+
+- Type inference is local, meaning it happens within a single file or module.
+- Explicit types can still be used when more control is needed.
+
+Through understanding and leveraging type inference, developers can make the  
+most out of TypeScript, maintaining the balance between type safety and code  
+conciseness.
+
+## 3. Union and Intersection Types
+
+Union and intersection types are advanced concepts in TypeScript
+that enable us to handle multiple types across variables, functions,
+and objects, allowing a high degree of flexibility.
+
+### Union Types
+
+A union type variable can store values of multiple types. It's
+declared using the `|` (vertical bar) and is beneficial when we
+need to work with different types within the same variable scope.
+
+```typescript
+let value: string | number;
+value = "A string"; // valid
+value = 123; // valid
+```
+
+In this example, `value` can be either a `string` or a `number`.
+
+### Intersection Types
+
+Intersection types allow you to combine multiple types into
+one. This can be particularly useful when you want a value to
+satisfy multiple contracts at the same time. It's denoted with
+a `&` (ampersand).
+
+```typescript
+type A = { a: string };
+type B = { b: number };
+type C = A & B;
+
+let combined: C = { a: "value", b: 42 };
+```
+
+The `combined` object must fulfill both `A` and `B` type
+requirements.
+
+### Use Cases
+
+- **Union Types** are great for API data that might return
+  different types or handling optional properties where a
+  value could be `null` or `undefined`.
+- **Intersection Types** are excellent for composing types to
+  ensure objects fit strict contractual obligations, often used
+  in frameworks and complex libraries.
+
+## 4. Type Guards and Differentiating Types
+
+In TypeScript, type guards are a way to check the type of a variable
+at runtime, allowing you to write code that is both safe and
+expressive. They are particularly useful when dealing with union types,
+where multiple types are possible for a single variable.
+
+### Using `typeof`
+
+The `typeof` operator can be used as a type guard in TypeScript. It is
+useful for checking primitive types, such as `string`, `number`, and
+`boolean`.
+
+```typescript
+function example(x: string | number) {
+  if (typeof x === "string") {
+    console.log(`string: ${x}`);
+  } else {
+    console.log(`number: ${x}`);
+  }
+}
+```
+
+In this example, the type of `x` is checked using `typeof`. This
+allows us to safely call string methods on `x` if it is a string.
+
+### Using `instanceof`
+
+The `instanceof` operator is useful for checking custom types or class
+instances.
+
+```typescript
+class Dog {
+  bark() {
+    console.log("Woof!");
+  }
+}
+
+class Cat {
+  meow() {
+    console.log("Meow!");
+  }
+}
+
+function petExample(pet: Dog | Cat) {
+  if (pet instanceof Dog) {
+    pet.bark();
+  } else if (pet instanceof Cat) {
+    pet.meow();
+  }
+}
+```
+
+Here, `instanceof` is leveraged to determine if `pet` is an instance of
+`Dog` or `Cat`, and the appropriate method is called.
+
+### Custom Type Guards
+
+Sometimes, it is necessary to define your own type guards. Custom type
+guards can be created using user-defined type guard functions.
+
+```typescript
+interface Fish {
+  swim(): void;
+}
+
+interface Bird {
+  fly(): void;
+}
+
+function isFish(pet: Fish | Bird): pet is Fish {
+  return (pet as Fish).swim !== undefined;
+}
+
+function petAction(pet: Fish | Bird) {
+  if (isFish(pet)) {
+    pet.swim();
+  } else {
+    pet.fly();
+  }
+}
+```
+
+In this example, `isFish` is a custom type guard that checks if the
+`pet` variable is of type `Fish`. If `pet.swim` is defined, then the
+pet is a `Fish` and can safely call `swim` method.
+
+Understanding and utilizing type guards thoroughly can pave the way to
+writing TypeScript code that is both type-safe and dynamism tolerant.
+These concepts are pivotal when dealing with complex data structures
+or API responses involving mixed types.
+
+## 5. Decorators in TypeScript
+
+Decorators are a powerful and unique feature of TypeScript, allowing
+you to modify classes, methods, accessor, property, or parameter
+annotations during runtime. They are typically used in frameworks to
+enhance the functionality and to provide additional behavior to
+existing code.
+
+To use decorators, you need to enable the `experimentalDecorators`
+compiler option or add it in your `tsconfig.json` configuration. This
+is because decorators are a stage 2 proposal for ECMAScript and thus
+regarded as experimental.
+
+### Types of Decorators
+
+1. **Class Decorators**:
+
+   - Applied to classes, modifying class behavior.
+   - Example:
+
+     ```typescript
+     function sealed(constructor: Function) {
+       Object.seal(constructor);
+       Object.seal(constructor.prototype);
+     }
+
+     @sealed
+     class BugReport {
+       type = "report";
+       title: string;
+
+       constructor(t: string) {
+         this.title = t;
+       }
+     }
+     ```
+
+     Here, `@sealed` is a class decorator that makes the class, along
+     with its prototypes, non-extensible (sealed).
+
+2. **Method Decorators**:
+
+   - Applied to methods, often used for logging or authorization.
+
+3. **Accessor Decorators**:
+
+   - Used for properties with accessors (`get` and `set`).
+
+4. **Property Decorators**:
+
+   - Applied to class properties for validation or transformation.
+
+5. **Parameter Decorators**:
+   - Modify the metadata of a parameter, useful in dependency
+     injection frameworks.
+
+### Using Decorators Effectively
+
+Decorators are helpful for cross-cutting concerns like logging,
+data caching, or performance monitoring, offering cleaner and more
+concise code. Most decorators will follow a pattern where they take
+a configuration object or function, allowing for highly reusable
+and modular code.
+
+Start experimenting with decorators to see how they could simplify
+your codebase and harness the full power of TypeScript.
+
+## 6. Generics in TypeScript
+
+Generics in TypeScript are a powerful feature that allows developers
+to create reusable and flexible components. In essence, they enable
+components to work with any data type, while providing complete type
+safety.
+
+Generics are used when:
+
+- The same function or class needs to work with multiple data types.
+- Type safety is required while maintaining flexibility.
+
+To understand generics better, let's consider a simple identity
+function example that returns whatever is passed into it. Without
+generics, we'd need to write separate functions to handle each data
+type:
+
+```typescript
+function identity(arg: number): number {
+  return arg;
+}
+function identity(arg: string): string {
+  return arg;
+}
+```
+
+With generics, we can write a single function that can accept any
+data type:
 
 ```typescript
 function identity<T>(arg: T): T {
   return arg;
 }
-
-let output1 = identity<string>("Hello World");
-let output2 = identity<number>(42);
 ```
 
-Here, `identity` is a generic function with a type parameter `T`, which
-represents the type of `arg`. The `identity` function can work with
-multiple types, depicted in `output1` and `output2`.
+In this example, `<T>` is a placeholder for a type that will be
+specified later, during function call. Using generics not only
+reduces redundancy but also provides flexibility and type safety.
 
-### Generic Classes
+Generics can be used with:
 
-Generics in classes allow for dynamic types as well:
+- Functions
+- Interfaces
+- Classes
+
+By leveraging generics, developers can produce more robust and
+scalable code. They are particularly useful in scenarios where
+there's a need for reusable components and maintainable code
+architecture.
+
+## 7. Mapped Types and Index Signatures
+
+In TypeScript, **Mapped Types** and **Index Signatures** provide
+powerful ways to transform and capture the shape of objects.
+They help in creating flexible and reusable type definitions.
+
+### Mapped Types
+
+Mapped types allow you to take an object type and transform
+its properties in some manner. They are usually used for type
+transformations and creating types that represent some kind of
+variant of an existing type.
+
+A mapped type is created using the syntax:
 
 ```typescript
-class GenericNumber<T> {
-  zeroValue: T;
-  add: (x: T, y: T) => T;
-}
-
-let myGenericNumber = new GenericNumber<number>();
-myGenericNumber.zeroValue = 0;
-myGenericNumber.add = function (x, y) {
-  return x + y;
+type Readonly<T> = {
+  readonly [P in keyof T]: T[P];
 };
 ```
 
-In this case, `GenericNumber` class uses a generic type parameter `T`.
-This ability to specify types makes Generics a powerful feature in
-TypeScript for creating robust and maintainable codebases.
+Here, `Readonly<T>` is a mapped type that makes all properties
+of `T` readonly. The `keyof T` is used to map over all the
+properties of `T`.
 
-## 03. TypeScript Enums
+### Index Signatures
 
-Enums are one of the few features TypeScript adds which are
-not a type-level extension of JavaScript. Enums allow
-development under a different paradigm, simplifying working
-with constant values and ensuring type safety.
+Index signatures allow you to define a type for objects
+that have dynamic keys, often useful when working with
+dictionaries or hash maps.
 
-Enums come in two flavors in TypeScript:
-
-1. **Numeric Enums**: These enums store numeric values,
-   starting from zero by default. They can be initialized
-   to any specific number, and TypeScript will auto-increment
-   the rest.
-
-   ```typescript
-   enum Direction {
-     Up = 1,
-     Down,
-     Left,
-     Right,
-   }
-   ```
-
-   In the example above, `Direction.Up` is set to `1`,
-   `Direction.Down` to `2`, and so on.
-
-2. **String Enums**: In these enums, each member has
-   to be explicitly initialized with a string value.
-
-   ```typescript
-   enum Status {
-     SUCCESS = "SUCCESS",
-     FAILURE = "FAILURE",
-     PENDING = "PENDING",
-   }
-   ```
-
-### Use Cases of Enums
-
-Enums are useful when you need a set of named constants
-for a set of closely related values. They improve code
-readability and can help prevent bugs.
-
-For instance, when handling application states or
-directions in which a user may navigate, enums help
-make the code more intuitive and manageable.
-
-Remember that TypeScript aims to enhance
-JavaScript, not to replace it. While enums introduce useful
-features for compiling TypeScript to JavaScript,
-consider if your case truly necessitates them before
-implementing to avoid unnecessary complexity.
-
-## 04. TypeScript Utility Types
-
-TypeScript provides a set of utility types that can help make our code
-cleaner and more readable. These types and mapped types help in
-transforming the shapes or properties of existing types.
-
-### Partial
-
-The `Partial<T>` utility type constructs a type with all properties of
-`T` set to optional. This is useful when you want to make a subset of
-a type optional.
+An index signature is defined using the syntax:
 
 ```typescript
-interface User {
-  name: string;
-  age: number;
-  email: string;
-}
-
-const updateUser: Partial<User> = {
-  name: "Alice",
+type Dictionary = {
+  [key: string]: number;
 };
 ```
 
-### Readonly
+Here, `Dictionary` is a type for objects that can have
+any key of type `string`, with a value of type `number`.
 
-The `Readonly<T>` utility type makes all properties of `T` read-only,
-which means you cannot modify the properties of the object once it is
-assigned.
+### Combining Mapped Types and Index Signatures
 
-```typescript
-interface User {
-  name: string;
-  age: number;
-}
-
-const user: Readonly<User> = {
-  name: "Bob",
-  age: 30,
-};
-
-// user.age = 31; // Error: Cannot assign to 'age' because it is a
-// read-only property.
-```
-
-### Record
-
-The `Record<K, T>` utility type constructs an object type whose
-property keys are `K` and values are `T`. This is handy for creating
-types for dictionaries or key-value mappings.
+You can combine mapped types and index signatures to model more
+complex scenarios. For example, creating a partial subset of an
+object wouldn't require explicitly listing out all properties:
 
 ```typescript
-type PageScores = Record<string, number>;
-
-const scores: PageScores = {
-  home: 10,
-  about: 8,
-  contact: 9,
+type Partial<T> = {
+  [P in keyof T]?: T[P];
 };
 ```
 
-### Pick
-
-`Pick<T, K>` allows you to create a type by selecting a set of
-properties `K` from `T`. This is useful when you need a type with a
-subset of properties.
-
-```typescript
-interface User {
-  name: string;
-  age: number;
-  email: string;
-}
-
-type UserContactInfo = Pick<User, "email">;
-
-const contactInfo: UserContactInfo = {
-  email: "alice@example.com",
-};
-```
-
-### Omit
-
-`Omit<T, K>` is the opposite of `Pick`. It allows you to create a type
-by excluding a set of properties `K` from `T`.
-
-```typescript
-type UserWithoutEmail = Omit<User, "email">;
-
-const userWithoutEmail: UserWithoutEmail = {
-  name: "Alice",
-  age: 25,
-};
-```
-
-Understanding and using these utility types effectively can vastly
-improve type safety and code maintainability in TypeScript projects.
-
-## 05. TypeScript Decorators
-
-Decorators in TypeScript provide a way to add both annotations and a meta-
-programming syntax for class declarations and members. Decorators are special
-type of declarations that can be attached to a class, method, accessor,
-property, or parameter. They are function expressions that are immediately invoked.
-
-### Enabling Decorators
-
-To use decorators in TypeScript, you need to enable the experimentalDecorators
-compiler option in your `tsconfig.json`:
-
-```json
-{
-  "compilerOptions": {
-    "experimentalDecorators": true
-  }
-}
-```
-
-### Applying Decorators
-
-Decorators can be applied using `@expression` where `expression` must evaluate
-to a function that takes certain arguments depending on what is being decorated.
-
-#### Class Decorators
-
-A class decorator is applied to the class constructor. It can be used to observe,
-modify, or replace a class definition. It is declared just before the class
-declaration:
-
-```typescript
-function logClass(target: Function) {
-  console.log(`Class Decorator Applied: ${target.name}`);
-}
-
-@logClass
-class MyClass {}
-```
-
-#### Method Decorators
-
-Method decorators are applied to the method of a class. They can be used to
-observe, modify, or replace a method definition:
-
-```typescript
-function logMethod(target: any, key: string, descriptor: PropertyDescriptor) {
-  console.log(`Method Decorator Applied: ${key}`);
-}
-
-class MyClass {
-  @logMethod
-  myMethod() {}
-}
-```
-
-#### Accessor Decorators
-
-An accessor decorator is applied to a property accessor in a class. It can
-observe, modify, or replace an accessor's definitions:
-
-```typescript
-function configurable(isConfigurable: boolean) {
-  return function (target: any, key: string, descriptor: PropertyDescriptor) {
-    descriptor.configurable = isConfigurable;
-  };
-}
-
-class MyClass {
-  private _myProperty: string = "";
-
-  @configurable(false)
-  get myProperty(): string {
-    return this._myProperty;
-  }
-}
-```
-
-#### Property and Parameter Decorators
-
-These decorators can also be applied similarly to modify properties and parameters;
-however, they are more advanced and involve specifics of the TypeScript compiler.
-
-Decorators are a foundational tool in TypeScript allowing for powerful
-meta-programming patterns, essential for those building advanced applications.
-
-## 06. Mapped Types in TypeScript
-
-Mapped types in TypeScript provide a way to create new types based on existing
-ones. They enable transformations on object types, producing a new type with
-properties corresponding to the transformations specified.
-
-### Basic Mapped Types
-
-A mapped type is often created using a combination of the `keyof` operator, which
-retrieves all keys from an interface or type, and the `in` keyword to iterate
-through each key. To declare a mapped type, define a type and iterate through
-the keys of the original type:
-
-```typescript
-type ReadonlyType<T> = {
-  readonly [K in keyof T]: T[K];
-};
-```
-
-The example above represents a mapped type that creates a new type by adding
-`readonly` to each property of type `T`.
-
-### Mappable Type Operations
-
-You can alter the properties in various ways:
-
-- **readonly**: To make each property readonly.
-- **optional**: To make each property optional using `?`.
-- **rename**: To add prefixes or suffixes to keys.
-
-#### Example
-
-Using a mapped type to make properties optional:
-
-```typescript
-type PartialType<T> = {
-  [K in keyof T]?: T[K];
-};
-```
-
-Here, `PartialType` transforms all properties into optional ones.
-
-### Practical Use Cases
-
-#### Transforming API Responses
-
-Mapped types can adjust API response objects, changing mutability, or typing the
-structure returned from APIs which might return variations in field names.
-
-#### Code Maintenance
-
-Consistently apply transformations across types, ensuring controlled, predictable
-type modifications without manually adjusting each property.
-
-Mapped types significantly enhance TypeScript's robust type manipulation,
-empowering developers to efficiently modify and work with complex types.
-
-## 07. Intersection and Union Types in TypeScript
-
-In TypeScript, intersection and union types provide a powerful way to
-combine types, offering more flexibility in defining complex type
-structures. These features allow developers to create type compositions
-that can cater to more sophisticated use cases.
-
-### Union Types
-
-Union types allow a variable to hold a value of multiple types.
-Use the pipe (`|`) symbol to define union types. It essentially
-permits a value to be one of a few types. For instance:
-
-```typescript
-type StringOrNumber = string | number;
-
-let value: StringOrNumber;
-
-value = "Hello"; // valid
-value = 100; // valid
-value = true; // Error: Type 'boolean' is not assignable to type 'StringOrNumber'.
-```
-
-Union types enable flexibility by letting values adhere to more
-than one specific type.
-
-### Intersection Types
-
-Intersection types allow combining multiple types into one.
-They are represented using the ampersand (`&`) symbol. All
-properties from the intersected types are required on the resultant
-object. For example:
-
-```typescript
-type Person = {
-  name: string;
-  age: number;
-};
-
-type Employee = {
-  employeeId: number;
-  department: string;
-};
-
-// Combining Person and Employee
-let employeeDetails: Person & Employee;
-
-employeeDetails = {
-  name: "Alice",
-  age: 30,
-  employeeId: 12345,
-  department: "HR",
-};
-```
-
-Intersection types are useful when a certain entity needs to
-adhere to multiple type definitions simultaneously.
-
-### Combining Union and Intersection
-
-You can also combine union and intersection types to form more
-complex type structures:
-
-```typescript
-type Car = {
-  make: string;
-  model: string;
-};
-
-type Bike = {
-  isMotorized: boolean;
-};
-
-type Vehicle = (Car | Bike) & {
-  wheels: number;
-};
-
-const myVehicle: Vehicle = {
-  make: "Tesla",
-  model: "Model S",
-  wheels: 4,
-};
-
-const myBike: Vehicle = {
-  isMotorized: false,
-  wheels: 2,
-};
-```
-
-Here, `Vehicle` is an intersection type that must include
-properties to determine if it's a `Car` or a `Bike`, along
-with the shared `wheels` property.
-
-Intersection and union types in TypeScript are critical tools
-for advanced type management, facilitating both flexibility and
-precision in type definitions.
-
-## 08. TypeScript Namespaces
-
-Namespaces in TypeScript are a way to organize and group logical code
-blocks together. They help in preventing name clashes by providing
-scoped access to variables, functions, classes, and interfaces.
-
-### Declaring a Namespace
-
-To declare a namespace, use the `namespace` keyword followed by the
-namespace name. Enclose the related code inside curly braces:
-
-```typescript
-namespace Utilities {
-  export function logMessage(message: string): void {
-    console.log(message);
-  }
-}
-```
-
-In the example above, a namespace `Utilities` contains a single
-function `logMessage`. The `export` keyword makes the function
-available outside the namespace.
-
-### Consuming a Namespace
-
-When you want to use a member of a namespace, you need to prefix it
-with the namespace name:
-
-```typescript
-Utilities.logMessage("Hello, World!");
-```
-
-This ensures that there is no ambiguity even if multiple functions
-with the same name exist in different namespaces.
-
-### Nested Namespaces
-
-TypeScript allows nesting of namespaces, which can be useful for
-deeper logical separation:
-
-```typescript
-namespace Application {
-  export namespace Settings {
-    export function load(): void {
-      console.log("Loading settings...");
-    }
-  }
-}
-
-Application.Settings.load(); // Invoking nested namespace function
-```
-
-### Compiling Namespaces
-
-When compiled, namespaces can result in complex code structures.
-Ensure that all `export` and `import` statements are handled correctly.
-
-Namespaces can be a powerful tool in TypeScript, especially for
-developers coming from other languages where large code bases are
-organized similarly.
-
-## 09. Advanced TypeScript Types
-
-TypeScript is a powerful language that adds static types to JavaScript,
-enabling the development of large-scale applications while reducing bugs.
-In advanced usage, it features several complex types that can refine
-and constrain the data structures you use, elevating your code reliability
-to another level.
-
-### Literal Types
-
-A literal type is a type that can only have one value. This is opposed
-to other types that can have multiple possible values. Literal types allow
-you to single out specific strings or numbers:
-
-```typescript
-let direction: "north" | "south" | "east" | "west";
-direction = "north"; // Valid
-direction = "up"; // Error
-```
-
-### Discriminated Unions
-
-Discriminated unions, or tagged unions, are a powerful pattern for
-modeling complex data structures. They use a common property as the
-"discriminant" property, which is something all object types in the
-union have in common.
-
-```typescript
-type Shape =
-  | { kind: "circle"; radius: number }
-  | { kind: "square"; sideLength: number };
-
-function area(shape: Shape): number {
-  switch (shape.kind) {
-    case "circle":
-      return Math.PI * shape.radius ** 2;
-    case "square":
-      return shape.sideLength ** 2;
-  }
-}
-```
-
-### Index Types
-
-Index types allow you to iterate through the keys of an object type,
-providing a way to check types dynamically. They are particularly useful
-when you want to map types:
-
-```typescript
-const dictionary: { [key: string]: string } = {
-  apple: "fruit",
-  carrot: "vegetable",
-};
-
-function getValue(key: string): string {
-  return dictionary[key];
-}
-```
-
-### Conditional Types
-
-Conditional types enable developers to express non-uniform type mappings
-which rely on the condition expressed in a
-`T extends U ? X : Y` form:
-
-```typescript
-type IsString<T> = T extends string ? "yes" : "no";
-type A = IsString<string>; // 'yes'
-type B = IsString<number>; // 'no'
-```
-
-These advanced types provide a robust mechanism for tailoring your
-type definitions even further, allowing more refined control over what
-is possible within your TypeScript applications.
-
-## 10. TypeScript Module Augmentation
-
-Module augmentation is a feature in TypeScript that allows you to extend
-modules that have been declared. This can be extremely powerful when
-dealing with third-party libraries that you want to extend while ensuring
-your code stays organized and manageable.
-
-### When to Use Module Augmentation
-
-1. **Extending Existing Modules:** Add additional features or properties
-   to methods within third-party libraries without altering the original
-   source code.
-
-2. **Improving Library Typings:** Enhance or overwrite the typings of
-   a module to better align with your specific use cases.
-
-### How to Perform Module Augmentation
-
-Module augmentation is easy to achieve in TypeScript. Here’s a basic
-step-by-step guide:
-
-#### Step 1: Re-open the Module
-
-You can augment a module by reopening it. This involves declaring the
-module again and adding additional functionality to it.
-
-Example:
-
-```typescript
-// Assume this is a third-party module named "my-module"
-// Original Code in my-module
-export function greet(name: string): string {
-  return `Hello ${name}`;
-}
-```
-
-#### Step 2: Augment the Module
-
-Now, you can reopen the module and add custom logic or types.
-
-```typescript
-// Our Code to augment 'my-module'
-declare module "my-module" {
-  export function farewell(name: string): string;
-}
-
-greet("John");
-farewell("John"); // After augmentation, can be added.
-```
-
-#### Important Notes
-
-- Ensure you have proper module paths when declaring a module to augment.
-- Be careful to avoid potential conflicts with the existing module
-  declarations in your project.
+This `Partial<T>` mapped type creates a type where every
+property of type `T` is optional.
 
 ### Conclusion
 
-TypeScript's module augmentation feature is highly useful for adapting
-third-party libraries to better suit your needs without modifying the
-original library files. This capability ensures flexibility and
-extensibility in TypeScript projects, especially in large-scale
-development scenarios. Apply module augmentation wisely to enhance your
-application's capabilities while maintaining type safety.
+Understanding mapped types and index signatures is crucial for
+harnessing the full power of TypeScript's type system. They allow
+types to be both expressive and flexible, enabling developers
+to write more maintainable and robust code.
 
-## 11. TypeScript Conditional Types
+## 8. Advanced Object Types
 
-TypeScript offers a powerful way to create types based on conditions.
-Conditional types enable you to select different types depending on a
-condition being met. This is similar to an if/else expression in the
-context of types.
+In TypeScript, object types can be more intricate than simple records
+with fixed properties. Advanced object types offer a wide range of
+capabilities for defining complex relationships between keys and values.
+
+### Index Signatures
+
+Index signatures allow you to define objects with dynamic keys. The
+syntax for an index signature looks like this:
 
 ```typescript
-type Check<T> = T extends string ? boolean : number;
+interface StringArray {
+  [index: number]: string;
+}
+const myArray: StringArray = ["hello", "world"];
 ```
 
-In this example, the type `Check<T>` will evaluate to `boolean` if `T`
-is a `string`, and `number` otherwise. You can use conditional types
-to create versatile and robust type definitions that adapt to
-different scenarios.
+Here, `StringArray` describes an object that has numeric keys
+and string values, essentially similar to the `Array<string>` type.
+
+### Readonly Properties
+
+Properties in an object type can be marked as `readonly`. This means
+the property cannot be modified after the object is created:
+
+```typescript
+interface Point {
+  readonly x: number;
+  readonly y: number;
+}
+const point: Point = { x: 10, y: 20 };
+// point.x = 5; // Error: Cannot assign to 'x' because it is a read-only
+```
+
+Readonly properties are useful for defining immutable data structures.
+
+### Optional Properties
+
+Optional properties are denoted by a `?` after the property name. They
+indicate that the property may not be present:
+
+```typescript
+interface Point {
+  x: number;
+  y: number;
+  z?: number;
+}
+```
+
+In the `Point` interface, `z` is optional, and objects conforming to
+this type may or may not have it.
+
+### Combining Index Signatures with Static Properties
+
+You can combine static and dynamic properties in the same object type:
+
+```typescript
+interface Toggable {
+  isEnabled: boolean;
+  [key: string]: any;
+}
+```
+
+This pattern can be useful when you have known fixed properties
+and then allow for any kind of additional configuration through
+dynamic properties.
+
+### Conclusion
+
+Advanced object types in TypeScript provide flexibility and precision
+when defining shapes of objects. Understanding these advanced features
+is crucial to leveraging TypeScript's full potential in large
+applications.
+
+## 9. Conditional Types
+
+Conditional types offer a powerful feature in TypeScript that allows you
+to define a type based on a condition expressed in the type system. This
+is analogous to `if` conditional statements in JavaScript, but at the
+type level.
+
+A conditional type selects one of two possibilities depending on a
+condition: it takes the form of `T extends U ? X : Y`, where:
+
+- `T` is the type to check.
+- `U` is the condition type.
+- `X` is the type returned if `T` extends `U`.
+- `Y` is the type returned if `T` does not extend `U`.
+
+### Basic Usage
+
+Here is a simple example of using conditional types:
+
+```typescript
+type TypeName<T> = T extends string
+  ? "string"
+  : T extends number
+    ? "number"
+    : T extends boolean
+      ? "boolean"
+      : "other";
+
+let str: TypeName<string>; // 'string'
+let num: TypeName<number>; // 'number'
+let bool: TypeName<boolean>; // 'boolean'
+```
+
+In this example, `TypeName<T>` evaluates to `'string'`, `'number'`,
+`'boolean'`, or `'other'` based on the type of `T`. This is achieved by
+nesting conditional types.
 
 ### Distributive Conditional Types
 
-When conditional types are applied to a union type, they become
-distributive. This means they will be applied to each member of the
-union individually.
+Conditional types distribute over union types. This means that if the
+condition involves a union type, the conditional type is applied
+individually to each member of the union, then results are again unioned
+together. Here's an example:
 
 ```typescript
-type ExtractString<T> = T extends string ? string : never;
-type Result = ExtractString<string | number>; // string | never
+type ToArray<Type> = Type extends any ? Type[] : never;
+
+type StrArrOrNumArr = ToArray<string | number>; // (string[] | number[])
 ```
 
-Here, `Result` will resolve to `string` since the `ExtractString`
-type only preserves the `string` type from the union.
+Here, `ToArray<string | number>` will result in `(string[] | number[])`
+thanks to the distributive nature of conditional types.
 
-### Practical Use Case
+### Practical Example
 
-Conditional types become particularly useful when combined with
-utility types or when writing libraries that need to adapt to different
-types dynamically. They help in creating APIs that are type-safe and
-flexible.
-
-Conditional types are an advanced feature in TypeScript, enhancing its
-capabilities to dynamically resolve types based on conditions. Mastering
-them can significantly improve how type-safe your TypeScript code can
-become in complex scenarios.
-
-## 12. TypeScript Advanced Functions
-
-In TypeScript, functions can be more than simple inputs and outputs.
-They can be designed to be flexible and robust, taking advantage of
-TypeScript's type system. This article explores some advanced
-techniques to take full advantage of TypeScript's capabilities
-when working with functions.
-
-### Function Overloading
-
-Function overloading is a feature that allows you to provide multiple
-function signatures for a single function. This means you can define
-multiple ways a function can be called, with different arguments. The
-basic syntax for function overloading is:
+Consider a function that returns different types depending on a
+conditional check:
 
 ```typescript
-function add(a: number, b: number): number;
-function add(a: string, b: string): string;
-function add(a: any, b: any): any {
-  return a + b;
+function processValue<T>(value: T): T extends string ? string : boolean {
+  if (typeof value === "string") {
+    return `Processed: ${value}` as T extends string ? string : boolean;
+  }
+  return true as T extends string ? string : boolean;
 }
 ```
 
-In this example, two overload signatures are defined, allowing the
-`add` function to handle both numbers and strings. The implementation
-signature includes the actual logic.
+The `processValue` function utilizes conditional types to determine
+its return type at compile-time based on the type of `T`.
 
-### Optional and Default Parameters
+Conditional types in TypeScript provide a very flexible mechanism for
+creating types that adapt based on custom logic, thus enabling advanced
+type system capabilities.
 
-TypeScript allows you to define optional parameters and set default
-values for parameters in functions. An optional parameter is specified
-with a `?`, and default parameters are assigned with an equal sign `=`.
+## 10. Template Literal Types
 
-```typescript
-function greet(name?: string, greeting: string = "Hello") {
-  console.log(`${greeting}, ${name || "Guest"}`);
-}
+Template Literal Types in TypeScript allow for manipulating strings
+in a more flexible way by combining literal types with template
+literal syntax. This feature opens the door for powerful type
+representations and constraints without leaving the type system.
 
-greet(); // Outputs: "Hello, Guest"
-greet("John"); // Outputs: "Hello, John"
-greet("Jane", "Hi"); // Outputs: "Hi, Jane"
-```
+### Basic Usage
 
-Here, `name` is an optional parameter, and `greeting` has a default
-value of "Hello".
-
-### Rest Parameters
-
-Rest parameters allow a function to accept a variable number of
-arguments. In TypeScript, this is useful when creating functions
-that can work with multiple inputs.
+This is how you can combine string literals to create new types:
 
 ```typescript
-function sum(...numbers: number[]): number {
-  return numbers.reduce((total, num) => total + num, 0);
-}
-
-console.log(sum(1, 2, 3)); // Outputs: 6
-console.log(sum(10, 20, 30, 40)); // Outputs: 100
+type World = "world";
+type Greeting = `hello ${World}`; // "hello world"
 ```
 
-This `sum` function can accept any number of numeric arguments,
-making it versatile.
+Template Literal Types can construct types by pairing with union
+types as follows:
 
-### Conclusion
+```typescript
+type Flavor = "vanilla" | "chocolate";
+type Cup = `Cup of ${Flavor}`;
+// "Cup of vanilla" | "Cup of chocolate"
+```
 
-Understanding these advanced function features in TypeScript can
-greatly enhance your ability to develop scalable and maintainable
-code. These tools allow you to write more expressive and flexible
-functions that can accommodate a wide range of use cases in your
-applications.
+### Advanced Applications
 
-## 13. TypeScript keyof and Lookup Types
+#### Intricate String Transformations
 
-In this article, we will dive deeper into some of the advanced
-features of TypeScript: the `keyof` and lookup types.
-These features help in creating flexible and type-safe code.
+By using intrinsic string manipulation types like `Uppercase`,
+`Lowercase`, `Capitalize`, and `Uncapitalize`, you can transform
+strings in a type context:
 
-### `keyof` Operator
+```typescript
+type LowercaseGreeting = Lowercase<Greeting>; // "hello world"
+```
 
-The `keyof` operator is used to create a union of string
-literal types from the keys of an object type. If you have
-an interface or type with certain keys, `keyof` allows you
-to extract those keys into a type.
+#### Mimicking Functionality
+
+You can use inferred types within a mapped type to simulate functions
+like concatenations or more complex operations:
+
+```typescript
+type Prefixer<T extends string> = `Prefix_${T}`;
+type Example = Prefixer<"Test">; // "Prefix_Test"
+```
+
+#### Enforcing Patterns
+
+With template literal types, you can enforce specific string patterns
+at the type level, which can be helpful in scenarios like validating
+identifiers or formats:
+
+```typescript
+type Identifier<T extends string> = `${T}_ID`;
+let userId: Identifier<"user">;
+```
+
+Pattern enforcement ensures that any string assigned to userId
+must adhere to the pattern determined, improving software reliability
+by catching errors early in the development phase.
+
+Template Literal Types enhance the expressiveness and type safety of
+TypeScript, catering to complex string operations and pattern
+enforcement within the type system itself.
+
+## 11. TypeScript Utility Types
+
+TypeScript provides built-in utility types that enable you to manipulate
+and transform types more efficiently. These utilities simplify common type
+transformations and make the code more expressive and easier to manage.
+
+### Partial
+
+The `Partial` utility type allows you to make all properties of a type
+optional. It is particularly useful when you need to make modifications
+to some fields of an object type without having to specify every field.
 
 ```typescript
 type User = {
@@ -821,612 +642,738 @@ type User = {
   email: string;
 };
 
-// `UserKeys` becomes "id" | "name" | "email"
-type UserKeys = keyof User;
+const updateUser = (user: Partial<User>): void => {
+  // Implementation to update user
+};
 ```
 
-### Lookup Types
+### Readonly
 
-Lookup types, also referred to as "indexed access types,"
-allow you to extract a property type from another type using
-its key.
+The `Readonly` utility type makes all properties of a type read-only.
+This is useful for preventing modification to an object after its creation,
+ensuring immutability.
 
 ```typescript
-interface Person {
+type Product = {
+  id: number;
+  name: string;
+  price: number;
+};
+
+const getProduct = (): Readonly<Product> => {
+  // Fetch the product data
+};
+```
+
+### Record
+
+The `Record` utility type creates an object type with specific key-value
+pairs. It is useful when you need to specify a structure mapping property
+names to their types.
+
+```typescript
+type PageInfo = {
+  title: string;
+};
+
+type Pages = Record<"home" | "about" | "contact", PageInfo>;
+
+const sitePages: Pages = {
+  home: { title: "Home Page" },
+  about: { title: "About Us" },
+  contact: { title: "Contact" },
+};
+```
+
+### Pick and Omit
+
+The `Pick` utility type allows you to construct a type by picking a set
+of properties from another type. Conversely, the `Omit` utility type
+allows you to create a type by omitting certain properties from another
+type. These are particularly handy when you need to work with a subset of
+object properties.
+
+```typescript
+type Person = {
+  name: string;
   age: number;
   address: string;
-}
+};
 
-// `PersonAge` is of type `number`
-type PersonAge = Person["age"];
+type NameAge = Pick<Person, "name" | "age">;
+
+type Address = Omit<Person, "name" | "age">;
 ```
 
-#### Combining `keyof` with Lookup Types
+These utility types, among others, enhance your ability to model types
+more effectively and concisely in TypeScript.
 
-You can combine `keyof` with lookup types to ensure a certain
-key exists in an object type and get its type.
+## 12. Type Manipulation and Transformation
+
+In TypeScript, type manipulation allows developers to transform and adjust
+existing types for better code manageability and expressiveness. Type
+manipulation is particularly powerful when dealing with complex data structures
+and APIs.
+
+### Key Concepts
+
+- **Type Aliases and Interfaces**: These foundational building blocks let you
+  define and compose new types. You may often transform an interface by extending
+  or combining it with other types, using features like intersection
+  (e.g., `type NewType = Type1 & Type2;`).
+
+- **Mapped Types**: Using mapped types, you can create new types by transforming
+  properties of an existing type. For instance, using `Partial<Type>` to make all
+  properties optional, or `Readonly<Type>` to make them immutable.
+
+- **Conditional Types**: Conditional types (e.g., `T extends U ? X : Y`) allow
+  you to create types based on conditions, offering a dynamic type resolution
+  mechanism that can adapt based on given inputs.
+
+- **Indexed Access Types**: These allow you to retrieve types using keyof and
+  type indices. For instance, `Type['property']` fetches the type of `property`
+  in `Type`.
+
+- **Utility Types**: TypeScript comes with utility types such as `Pick`,
+  `Omit`, `Exclude`, which can be leveraged to transform existing types according
+  to your needs.
+
+### Use Cases
+
+Type manipulation is often necessary when:
+
+- Dealing with API responses where only certain data is relevant.
+- Transforming types for component props in large React applications to improve
+  maintainability.
+- Creating robust data validation and serialization layers.
+
+Through effective type manipulation, developers can craft types that accurately
+reflect the domains and constraints of their applications, leading to safer and
+more maintainable code.
+
+## 13. Augmenting and Extending Existing Types
+
+One of TypeScript's powerful features is the ability to augment and
+extend existing types. This capability allows developers to add new
+properties or methods to existing types, making the language highly
+flexible and adaptable to various needs.
+
+### Augmenting Global Types
+
+TypeScript allows you to augment global types such as `Window` or other
+DOM interfaces. By using declaration merging, you can add properties to
+the global `Window` interface.
 
 ```typescript
-type PropertyType<T, K extends keyof T> = T[K];
-
-function getProperty<T, K extends keyof T>(obj: T, key: K): T[K] {
-  return obj[key];
-}
-
-const user = { id: 1, name: "Alice", email: "alice@example.com" };
-const userId = getProperty(user, "id"); // Type `number`
-```
-
-### Practical Use Case
-
-Using `keyof` and lookup types allows developers to create flexible
-functions or utilities that can work with a variety of object types.
-It ensures compile-time safety and reduces the risk of runtime errors.
-
-Overall, the `keyof` and lookup types enhance the robustness and
-expressiveness of TypeScript, making it a powerful tool for
-JavaScript developers aiming for reliability and maintainability
-in complex applications.
-
-## 14. TypeScript Template Literal Types
-
-Template literal types are a powerful addition to TypeScript that
-allow you to create complex type constructs by combining string
-literal types with template literals, similar to JavaScript's
-string template literals. This feature enables more dynamic type
-expressions and helps in defining complex APIs.
-
-```typescript
-// Basic usage of template literal types
-
-// Define string literal types
-type World = "world";
-
-// Combine using template literals
-type Greeting = `Hello, ${World}`;
-
-// A variable of type Greeting
-const greet: Greeting = "Hello, world";
-```
-
-### Features of Template Literal Types
-
-1. **Combination of Literal Types**:
-
-   - You can combine existing string literal types to create new
-     ones using template literals.
-
-2. **Dynamic String Construction**:
-
-   - This allows more flexible and parameterized type creation.
-
-3. **Inference on Template Literals**:
-   - TypeScript can infer types based on the structure of template
-     literals.
-
-### Practical Use Cases
-
-- **Validating APIs**: Creating types that match certain patterns
-  for function arguments or configuration settings.
-- **Complex Types**: Construct complex types in scenarios where
-  dynamic construction of strings is required.
-
-### Example: Pattern Matching with Template Literal Types
-
-```typescript
-// Define a pattern-based type
-
-// Possible sizes of T-shirt
-type ShirtSize = "small" | "medium" | "large";
-
-// Construct a type for available shirts
-type AvailableShirt = `T-shirt-${ShirtSize}`;
-
-// Example usage
-const myShirt: AvailableShirt = "T-shirt-medium";
-```
-
-In summary, template literal types extend TypeScript's capability
-to enforce and validate complex string patterns at compile time,
-aiding in the creation of robust, type-safe code bases.
-
-## 15. TypeScript Symbols
-
-In TypeScript, symbols are a unique and immutable data type that can be
-used to create private-like properties within objects. They were
-introduced in ECMAScript 6 (ES6) and act as unique identifiers for
-object properties, ensuring no name collisions occur, even when used
-across libraries and programs.
-
-Symbols are created using the `Symbol` function:
-
-```typescript
-const mySymbol = Symbol("optional description");
-```
-
-The description is optional and is only used for debugging purposes.
-
-### Properties and Uses of Symbols
-
-1.  **Uniqueness**: Each symbol is unique and different from any other
-    symbol, even if they have the same description.
-
-        ```typescript
-        Symbol('key') === Symbol('key'); // false
-        ```
-
-2.  **Immutability**: Once a symbol is created, it's immutable.
-
-3.  **As Object Keys**: Symbols can be used as keys for object
-    properties, which allows for non-string keys.
-
-        ```typescript
-        const obj = {
-          [mySymbol]: 'value',
-        };
-        console.log(obj[mySymbol]); // 'value'
-        ```
-
-Symbols are not enumerated in for-in or for-of loops, nor in
-`Object.keys()`, `Object.getOwnPropertyNames()`, and similar methods.
-However, they can be accessed using `Object.getOwnPropertySymbols()`
-or `Reflect.ownKeys()`.
-
-### Symbol.for() and Symbol.keyFor()
-
-TypeScript provides a way to create global symbols that are shared
-between files. This is achieved using `Symbol.for()` and `Symbol.keyFor()`.
-
-- **`Symbol.for(key: string)`**: Checks for the existence of a symbol with
-  a given key in the global symbol registry. If found, returns it;
-  otherwise, creates a new symbol.
-
-      ```typescript
-      const globalSymbol = Symbol.for('sharedKey');
-      const sameGlobalSymbol = Symbol.for('sharedKey');
-      console.log(globalSymbol === sameGlobalSymbol); // true
-      ```
-
-- **`Symbol.keyFor(symbol: symbol)`**: Returns the key associated with a
-  global symbol, provided it exists in the global symbol registry.
-
-      ```typescript
-      const key = Symbol.keyFor(globalSymbol); // 'sharedKey'
-      ```
-
-Symbols add a layer of assurance for property uniqueness and provide a
-mechansim to define non-enumerable properties on objects.
-
-## 16. TypeScript Iterators and Generators
-
-Iterators and generators are important aspects of JavaScript that are
-supported in TypeScript and allow you to iterate over data structures
-like arrays, maps, and sets. They provide more control over the
-iteration process, and understanding them is essential for more
-advanced TypeScript development.
-
-### Iterators
-
-An iterator is an object which defines a sequence and potentially a
-return value upon its termination. An iterator implements a `next`
-method which returns an object with properties: `value` and `done`.
-The `value` property is the value yielded by the iterator and `done`
-is a boolean flag indicating whether the iteration is done.
-
-```typescript
-type IterableType = number[];
-
-function makeIterator(array: IterableType) {
-  let nextIndex = 0;
-  return {
-    next: function () {
-      return nextIndex < array.length
-        ? { value: array[nextIndex++], done: false }
-        : { value: undefined, done: true };
-    },
-  };
-}
-
-let myArray = [1, 2, 3];
-let it = makeIterator(myArray);
-console.log(it.next().value); // 1
-console.log(it.next().value); // 2
-console.log(it.next().value); // 3
-```
-
-### Generators
-
-Generators simplify the creation of iterables. A generator is a
-special type of function that can pause execution and resume at a
-later point. Generators are defined using the function\* syntax.
-
-```typescript
-function* generatorFunction(): IterableIterator<number> {
-  yield 1;
-  yield 2;
-  yield 3;
-}
-
-let generator = generatorFunction();
-console.log(generator.next().value); // 1
-console.log(generator.next().value); // 2
-console.log(generator.next().value); // 3
-```
-
-#### Key Points
-
-- Use generators for cleaner and more expressive code when creating
-  iterables.
-- Generators can maintain state between subsequent calls.
-
-Understanding and using iterators and generators allows for creating
-more efficient and readable code. Combined with TypeScript's type
-system, you can have type-safe iterators and generators for a more
-robust application design.
-
-## 17. TypeScript JSX and React
-
-TypeScript enhances the development of React applications by providing
-static typing capabilities. This ensures better code quality, especially
-in complex React projects. React uses JSX, a syntax extension that allows
-you to write HTML elements within JavaScript code, and TypeScript
-integrates this seamlessly. Let's explore how TypeScript manages
-JSX and works with React.
-
-### Setting Up TypeScript with React
-
-To use TypeScript with React, you need to set up your project
-accordingly, often with a tool like Create React App, which supports
-TypeScript by adding the `--template typescript` option. Ensure that
-your `tsconfig.json` file is properly configured by setting the compiler
-options to recognize React's JSX by specifying the JSX setting as
-`"react"` or `"react-jsx"`.
-
-```json
-{
-  "compilerOptions": {
-    "jsx": "react",
-    "moduleResolution": "node",
-    "target": "es5",
-    "lib": ["dom", "esnext"],
-    "allowSyntheticDefaultImports": true
+declare global {
+  interface Window {
+    customProperty: string;
   }
 }
+
+window.customProperty = "Hello, world!";
 ```
 
-### TypeScript and React Components
+Here, we've added a new property `customProperty` to the `Window`
+interface. This is useful when you're using third-party scripts that
+add properties to global objects.
 
-React components can be written as classes or functions. With TypeScript,
-you can add types to props and state (for class components) to ensure
-type safety.
+### Extending Interfaces
 
-#### Functional Components
-
-Use the `React.FC` type to specify a React functional component.
+Extending interfaces is another common way to create more specific type
+descriptions.
 
 ```typescript
-import React from 'react';
-
-interface MyComponentProps {
-  title: string;
+interface Animal {
+  name: string;
+  age: number;
 }
 
-const MyComponent: React.FC<MyComponentProps> = ({ title }) => {
-  return <h1>{title}</h1>;
+interface Dog extends Animal {
+  breed: string;
+}
+
+const myDog: Dog = {
+  name: "Rex",
+  age: 5,
+  breed: "Golden Retriever",
 };
 ```
 
-#### Class Components
+The `Dog` interface extends the `Animal` interface, inheriting its
+properties while adding a new one, `breed`.
 
-For class-based components, use generics to type props and state.
+### Adding Properties to Existing Classes
 
-```typescript
-import React, { Component } from 'react';
-
-interface MyComponentProps {
-  title: string;
-}
-
-interface MyComponentState {
-  count: number;
-}
-
-class MyComponent extends Component<MyComponentProps, MyComponentState> {
-  state: MyComponentState = { count: 0 };
-
-  render() {
-    return <h1>{this.props.title}: {this.state.count}</h1>;
-  }
-}
-```
-
-### Handling Events
-
-TypeScript provides specific types for handling events in React.
-For instance, `React.ChangeEvent<HTMLInputElement>` can be used to
-properly type a form event.
+TypeScript supports adding new properties to existing classes through
+module augmentation.
 
 ```typescript
-const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  console.log(event.target.value);
+class Person {
+  constructor(
+    public name: string,
+    public age: number,
+  ) {}
+}
+
+interface Person {
+  greet(): void;
+}
+
+Person.prototype.greet = function () {
+  console.log(`Hello, my name is ${this.name}`);
 };
+
+const john = new Person("John", 25);
+john.greet(); // Output: Hello, my name is John
 ```
+
+Here, we augment the `Person` class by adding a `greet` method to its
+prototype.
 
 ### Conclusion
 
-By integrating JSX and React with TypeScript, developers can harness the
-power of static typing to catch errors early, write more readable code,
-and create robust React applications. In doing so, the combination of
-TypeScript and React becomes a powerful tool in modern web development.
+Understanding how to augment and extend types can substantially improve
+code reusability and flexibility in TypeScript. This capability is
+essential for maintaining type safety while extending external libraries
+or handling complex application logic. It allows developers to create
+more expressive types tailored to their specific application needs.
 
-## 18. TypeScript Mixins
+## 14. Module Augmentation and Declaration Merging
 
-TypeScript mixins provide a powerful mechanism to achieve multiple
-inheritance or reuse class functionality in a more flexible manner.
-Traditionally, JavaScript doesn't support multiple inheritance directly;
-this limitation is elegantly addressed through mixins.
+In TypeScript, module augmentation and declaration merging are powerful
+features that allow developers to extend existing types and modules,
+providing greater flexibility and enabling better code organization.
+These features are especially useful when dealing with third-party
+libraries.
 
-### What are Mixins?
+### Module Augmentation
 
-Mixins are a way to compose classes from reusable component classes.
-Instead of inheriting from one single base class, a class can be created
-by mixing in behavior from multiple reusable classes. This can help to
-avoid complex hierarchies and enhance modularity and reusability of code.
-
-### How to Implement Mixins in TypeScript
-
-To implement mixins in TypeScript, a base class is formed with multiple
-additional reusable classes. A common pattern involves using an Object
-.assign() that extends the prototype of the base class with the methods
-of the mixins.
-
-```typescript
-class Disposable {
-  isDisposed: boolean = false;
-  dispose() {
-    this.isDisposed = true;
-  }
-}
-
-class Activatable {
-  isActive: boolean = false;
-  activate() {
-    this.isActive = true;
-  }
-  deactivate() {
-    this.isActive = false;
-  }
-}
-
-class SmartObject implements Disposable, Activatable {
-  isDisposed: boolean = false;
-  dispose: () => void;
-  isActive: boolean = false;
-  activate: () => void;
-  deactivate: () => void;
-
-  constructor() {
-    setInterval(
-      () => console.log(this.isActive + " : " + this.isDisposed),
-      500,
-    );
-  }
-}
-
-applyMixins(SmartObject, [Disposable, Activatable]);
-
-function applyMixins(derivedCtor: any, baseCtors: any[]) {
-  baseCtors.forEach((baseCtor) => {
-    Object.getOwnPropertyNames(baseCtor.prototype).forEach((name) => {
-      derivedCtor.prototype[name] = baseCtor.prototype[name];
-    });
-  });
-}
-```
-
-In this example, `SmartObject` is a composite class that incorporates
-the behaviors of both `Disposable` and `Activatable` using the
-`applyMixins` utility function.
-
-### Limitations
-
-1. **Name Collisions**: Methods or properties with the same names can
-   lead to conflicts.
-2. **Design Complexity**: Using mixins can sometimes make the codebase
-   harder to follow, as the relationships between classes might not be
-   self-evident.
-
-### Conclusion
-
-Mixins offer a flexible way to include behaviors across classes,
-helping to keep code DRY (Don't Repeat Yourself) and modular. However,
-care should be taken to avoid design complexity and ensure clarity in
-codebase.
-
-## 19. TypeScript Reflection
-
-Reflection is a powerful programming concept that enables a program to
-examine and modify its own structure and behavior at runtime. In TypeScript,
-reflection is not as native as in some other languages, like Java, but it can
-be achieved using certain techniques, libraries, and TypeScript's type
-system.
-
-Reflection is particularly useful for scenarios like:
-
-- **Serialization/Deserialization:** Automatically converting an object to a
-  data format and vice versa.
-- **Dependency Injection:** Dynamically injecting dependencies into
-  components.
-- **Aspect-Oriented Programming:** Implementing cross-cutting concerns
-  systematically without a direct impact on business logic.
-
-### Implementing Reflection in TypeScript
-
-#### Using `Reflect` API
-
-The `Reflect` API provides functionalities to perform meta-level operations.
-While it's part of ECMAScript, it offers a reflection-oriented approach:
-
-```typescript
-class Example {
-  greet() {
-    console.log("Hello World");
-  }
-}
-
-const example = Reflect.construct(Example, []);
-Reflect.apply(example.greet, example, []);
-```
-
-#### Metadata Reflection API
-
-TypeScript's `reflect-metadata` library allows capturing metadata about
-entities such as classes and methods.
-
-1. **Install the library:**
-
-   ```bash
-   npm install reflect-metadata --save
-   ```
-
-2. **Usage:**
-
-   ```typescript
-   import "reflect-metadata";
-
-   function logType(target: any, key: string) {
-     const type = Reflect.getMetadata("design:type", target, key);
-     console.log(`Type of ${key} is ${type.name}`);
-   }
-
-   class ReflectionExample {
-     @logType
-     someValue: string;
-   }
-   ```
-
-   This captures and logs the type metadata of class properties.
-
-#### Limitations and Considerations
-
-- **Compile Time vs Runtime:** TypeScript primarily offers compile-time
-  checks, while reflection often involves runtime metadata manipulation.
-- **Performance:** Reflection can introduce overhead due to runtime
-  processing, so it should be used judiciously.
-- **Security Risks:** Tampering with object properties and methods at
-  runtime can be risky; it can accidentally lead to exposing private
-  details.
-
-TypeScript reflection, though indirect, offers powerful tools for creating
-sophisticated applications. Understanding how to leverage the `Reflect` API
-and metadata can help developers harness the full potential of TypeScript in
-building dynamic, adaptable systems.
-
-## 20. TypeScript Compiler APIs
-
-TypeScript provides powerful compiler APIs that allow developers to interact
-with TypeScript code programmatically. These APIs enable a vast range of
-tasks, such as creating custom linters, transpilers, code transformation
-tools, and more. In this article, we'll explore the basics of working with
-TypeScript Compiler APIs.
-
-### Accessing the Compiler APIs
-
-To get started with the TypeScript Compiler APIs, you'll need to have
-TypeScript installed. You can access the APIs via the `typescript` module
-by importing `typescript` in your JavaScript/TypeScript file:
-
-```typescript
-import * as ts from "typescript";
-```
-
-With the `typescript` module imported, you're ready to use its various
-exports to interact with the code.
-
-### Program Creation
-
-One of the main entry points into the TypeScript Compiler API is creating
-a `Program` object. A `Program` represents a compilation of the source
-files and is used to access the AST (Abstract Syntax Tree) for the source
-files.
+Module augmentation refers to adding new exports or modifying existing
+exports of an external module without editing the original module's
+source code. This is typically done using `declare module` syntax.
 
 Here's an example:
 
 ```typescript
-const program = ts.createProgram(["file.ts"], {});
-```
-
-This creates a simple `Program` that includes `file.ts` with default
-compiler options.
-
-### Navigating the Abstract Syntax Tree
-
-Once you've created a `Program`, you can get the SourceFile object, which
-represents the parsed AST of a file.
-
-```typescript
-const sourceFile = program.getSourceFile("file.ts");
-```
-
-You can then navigate the AST using visitor functions. Visitors allow you
-to traverse the nodes of the AST, reacting to different node types as
-you encounter them.
-
-```typescript
-function visit(node: ts.Node) {
-  if (ts.isFunctionDeclaration(node)) {
-    console.log(`Function name: ${node.name?.text}`);
+// Assume we are augmenting a module named 'some-library'
+declare module "some-library" {
+  export interface SomeType {
+    newProperty: string;
   }
-  ts.forEachChild(node, visit);
-}
-
-if (sourceFile) {
-  visit(sourceFile);
 }
 ```
 
-In this example, the visitor function logs the names of all the functions
-defined in the source file.
+In the example above, we extend the `SomeType` interface from
+`some-library` by adding a new property `newProperty`.
 
-### Transforming Code
+### Declaration Merging
 
-The Compiler APIs can be used to transform TypeScript code. Here's a simple
-example of a transformation that renames all identifiers with the name
-`oldName` to `newName`.
+Declaration merging occurs when two or more declarations share the same
+name. TypeScript merges their properties, functions, or classes into one
+single declaration. This can be particularly useful for extending
+functionality across multiple files without modifying original
+declarations.
+
+For example:
 
 ```typescript
-function transformer<T extends ts.Node>() {
-  return (context: ts.TransformationContext) => {
-    const visit: ts.Visitor = (node) => {
-      if (ts.isIdentifier(node) && node.text === "oldName") {
-        return ts.createIdentifier("newName");
-      }
-      return ts.visitEachChild(node, visit, context);
-    };
-    return (node: T) => ts.visitNode(node, visit);
+interface Box {
+  height: number;
+  width: number;
+}
+
+interface Box {
+  scale: number;
+}
+
+const box: Box = { height: 5, width: 10, scale: 1.5 };
+```
+
+In this case, the interfaces `Box` are merged resulting in a single
+interface with properties: `height`, `width`, and `scale`.
+
+### Combining Both Features
+
+You can utilize both of these features in tandem, allowing you to extend
+existing codebases efficiently, especially when dealing with
+third-party modules that need customization:
+
+```typescript
+// Augmenting a module
+import "express";
+
+declare module "express" {
+  export interface Request {
+    user?: string;
+  }
+}
+```
+
+Above, we augment the `express` module's `Request` interface by adding
+a `user` property.
+
+These TypeScript features facilitate easier integration with external
+modules and libraries in your projects, helping maintain cleaner and
+more maintainable code. Use them wisely to expand and adapt your
+codebase to changing requirements without losing safety guaranteed by
+TypeScript's rich type system.
+
+## 15. Advanced Function Types
+
+In TypeScript, function types provide a way to represent functions
+with specific parameters and return types. Beyond basic function
+typing, TypeScript offers capabilities to define complex function
+signatures and behaviors. This article explores some advanced function
+types and how to leverage them for more sophisticated programming
+patterns.
+
+### Function Overloads
+
+Function overloads allow multiple signatures for a single function.
+They enable us to define different parameter types and return types
+for various use cases of the same function name.
+
+```typescript
+type Padding = number | string;
+
+function pad(value: string, padding: number): string;
+function pad(value: string, padding: string): string;
+function pad(value: string, padding: Padding): string {
+  if (typeof padding === "number") {
+    return Array(padding + 1).join(" ") + value;
+  }
+  if (typeof padding === "string") {
+    return padding + value;
+  }
+  return value;
+}
+```
+
+In the example above, the `pad` function is declared with two different
+overloads. TypeScript ensures that the correct overload is used
+based on the type of the argument passed.
+
+### Callable and Constructible Types
+
+Types in TypeScript can represent functions that can be both called
+and constructed (invoked with `new`). These are managed using intersection
+types.
+
+```typescript
+interface CallOrConstruct {
+  new (s: string): Date;
+  (n?: number): number;
+}
+```
+
+The `CallOrConstruct` interface can be used to define objects that
+can be both called like a function and constructed like a class,
+allowing significant flexibility.
+
+### Higher-Order Functions
+
+Higher-order functions are functions that either take other functions
+as arguments or return a function. TypeScript's type system supports
+such patterns, enabling more abstract and reusable components.
+
+```typescript
+function higherOrder(fn: (value: number) => number): (value: number) => number {
+  return (value: number) => {
+    return fn(value) * 2;
   };
 }
-
-const result = ts.transform(sourceFile, [transformer()]);
 ```
-
-### Emitting Code
-
-After transformations are done, you can emit the final JavaScript code
-using the `emit` method on a `Program` object:
-
-```typescript
-program.emit();
-```
-
-This will save the emitted JavaScript code to the output files specified
-by the compiler options.
 
 ### Conclusion
 
-The TypeScript Compiler APIs offer a robust platform for creating
-sophisticated developer tools. By gaining an understanding of these
-APIs, you can automate complex tasks and gain more control over how
-TypeScript handles your code. With this foundation, you can dive deeper
-into more complex applications and make the most of TypeScript's
-sophisticated type system and compiler.
+Using advanced function types effectively requires understanding
+and employing these concepts appropriately. Function overloads,
+callable and constructible types, and higher-order functions are
+powerful tools for advanced TypeScript programming.
+
+In the next articles, we will continue exploring more complex
+concepts in TypeScript to enhance your programming skills further.
+
+## 16. Advanced Type Compatibility
+
+In TypeScript, advanced type compatibility addresses how various types
+interact and can be assigned with one another, considering both static
+and dynamic type checks. Understanding these concepts is crucial for
+writing more robust applications using TypeScript, especially when
+working with large codebases or integrating with third-party libraries.
+
+### Type Compatibility Basics
+
+TypeScript is a structural type system, meaning that compatibility is
+determined based on the structure of the types rather than their name.
+This allows types to be compatible if they have the same shape. This
+concept is also referred to as duck typing.
+
+#### Example
+
+```typescript
+type Point2D = { x: number; y: number };
+type Point3D = { x: number; y: number; z: number };
+
+let point2D: Point2D = { x: 1, y: 2 };
+let point3D: Point3D = { x: 1, y: 2, z: 3 };
+
+point2D = point3D; // Compatible due to shape matching
+```
+
+In this example, `Point3D` is assignable to `Point2D` because it has all
+the properties `Point2D` has, and potentially more. This is known as
+**subtype polymorphism**.
+
+### Type Compatibility Rules
+
+The rules of type compatibility in TypeScript are based on relationships
+between types. Some of the key rules include:
+
+1. **Any and Unknown**: Any can be assigned to any type, and any type
+   can be assigned to unknown.
+2. **The Never Type**: Never is a subtype of every type and cannot have
+   any value.
+3. **Literal and Enum Types**: Literal and enum types are compatible
+   with their base types.
+4. **Generics**: Compatibility checks are invariant in TypeScript unless
+   explicitly expressed as covariant or contravariant.
+
+#### Example
+
+```typescript
+type Result<T> = { success: boolean; value: T };
+
+let result1: Result<number> = { success: true, value: 5 };
+let result2: Result<string> = { success: true, value: "hello" };
+
+// result1 = result2; // Error, as they are not compatible
+```
+
+Here, `Result<number>` and `Result<string>` are not compatible since
+they map to separate instances of generic types.
+
+### Impacts on Function Overloads
+
+Type compatibility is particularly important in the context of function
+overloads where the most specific overload is selected based on input
+arguments.
+
+```typescript
+function padLeft(value: string, padding: number | string) {
+  if (typeof padding === "number") {
+    return Array(padding + 1).join(" ") + value;
+  }
+  return padding + value;
+}
+
+padLeft("Hello", 4); // OK
+padLeft("Hello", "  "); // OK
+padLeft("Hello", true); // Error
+```
+
+In this function, `padding` can be a number or a string, and the correct
+overload is used to detect the mismatched type for the argument
+`true`.
+
+### Summary
+
+Advanced type compatibility is a powerful feature of TypeScript that
+supports type safety and program correctness, allowing developers to
+write effective and maintainable code. Understanding how TypeScript
+evaluates type compatibility ensures smoother integration, better
+refactoring capabilities, and ultimately a stronger partnership between
+code and types.
+
+## 17. Understanding TypeScript's keyof and Lookup Types
+
+TypeScript provides powerful tools to work with the properties of objects,
+among these are `keyof` and lookup types, which allow developers to create
+more dynamic and type-safe code.
+
+### `keyof` Operator
+
+The `keyof` operator is used to extract the keys of a given object type as a
+union of string literal types. This is particularly useful when you want to
+enforce that a value must be one of the keys of a certain interface or object
+type.
+
+```typescript
+type Person = {
+  name: string;
+  age: number;
+  location: string;
+};
+
+type PersonKeys = keyof Person; // "name" | "age" | "location"
+```
+
+In the above example, `PersonKeys` is a union type consisting of the keys of
+the `Person` type. This can be very useful when building functions that
+operate dynamically based on the keys of an object.
+
+### Lookup Types
+
+Lookup types, also known as indexed access types, allow you to retrieve the
+type of a specific property. This is similar to accessing a property using
+subscript in JavaScript, but in a type-safe manner.
+
+```typescript
+type PersonNameType = Person["name"]; // string
+```
+
+In the above example, `PersonNameType` represents the type of the `name`
+property from the `Person` type, which is `string`.
+
+### Combining `keyof` and Lookup Types
+
+You can combine `keyof` and lookup types to create powerful patterns where
+you enforce both the keys being valid and access type information in a
+dynamic manner:
+
+```typescript
+function getProperty<T, K extends keyof T>(obj: T, key: K): T[K] {
+  return obj[key];
+}
+
+const person: Person = { name: "Alice", age: 30, location: "Wonderland" };
+
+const age: number = getProperty(person, "age");
+```
+
+In the `getProperty` function, `K` is constrained to be one of the keys of
+`T`, and the return type `T[K]` dynamically represents the type of the
+property at the given key. This ensures that users of the function can only
+access valid keys and that the correct type is returned.
+
+## 18. TypeScript with JSX and React
+
+In this article, we'll delve into how TypeScript can be leveraged
+with JSX and React to create strongly-typed React applications.
+TypeScript enhances React code with type safety and IntelliSense
+features.
+
+### Setting up TypeScript with React
+
+To start using TypeScript with React, you can create a new React
+project using Create React App with TypeScript template by running
+this command:
+
+```
+npx create-react-app my-app --template typescript
+```
+
+This setup provides a basic scaffold with TypeScript configured.
+
+### TypeScript in JSX
+
+TypeScript supports JSX, which allows you to write HTML-like syntax
+inside JavaScript/TypeScript. When using JSX with TypeScript, ensure
+files have either a `.tsx` extension.
+
+#### Typing React Props
+
+React components can have typed props, which help prevent runtime
+errors by validating prop types at compile time.
+
+```typescript
+type Props = {
+  title: string;
+  isActive: boolean;
+};
+
+const MyComponent: React.FC<Props> = ({ title, isActive }) => {
+  return <div>{title} is {isActive ? 'active' : 'inactive'}</div>;
+};
+```
+
+This example shows how you can define prop types using TypeScript's
+type annotations.
+
+#### State and Ref typing
+
+Typing state and refs in React components is another common pattern.
+State can be typed using generics provided by `useState` hook:
+
+```typescript
+const [count, setCount] = useState<number>(0);
+```
+
+Refs can be typed using `React.RefObject` type:
+
+```typescript
+const inputRef = useRef<HTMLInputElement>(null);
+```
+
+### Benefits of TypeScript in React
+
+- **Type Safety**: Helps catch type-related errors during
+  development.
+- **IDE Support**: Enhanced code completion and navigation.
+- **Documentation**: Type annotations serve as live documentation
+  for components.
+
+TypeScript, when used with React, offers robust type-checking for
+props, state, and other React features, improving code quality and
+approachability. Integrating TypeScript in your React projects leads
+to easier maintenance and fewer bugs.
+
+## 19. Advanced TypeScript Configuration and Compilation
+
+In advanced TypeScript usage, effectively using and configuring the
+`tsconfig.json` file is of utmost importance. This configuration file
+controls the way the TypeScript compiler (`tsc`) behaves and can affect
+the entire development workflow.
+
+### Key Compiler Options
+
+- **`target`**: Determines which version of JavaScript should be outputted
+  (e.g., `ES5`, `ES6`).
+- **`module`**: Controls the module code generation (`CommonJS`, `ESNext`).
+- **`strict`**: Enables strict type-checking options.
+- **`baseUrl` and `paths`**: Useful for path mapping, allowing modules to
+  be imported with absolute paths relative to a base URL.
+- **`outDir`** and **`rootDir`**: Specify the output directory and the root
+  directory of source files respectively.
+
+### Examining Important Flags
+
+- **`allowJs`**: Allows JavaScript files to be compiled alongside
+  TypeScript files.
+- **`declaration`**: Generates corresponding `.d.ts` files which are
+  essential for package authors.
+- **`sourceMap`**: Useful in debugging, this option generates source maps
+  to map over the compiled code to the TypeScript source.
+- **`incremental`**: Enables incremental compilation, speeding up
+  subsequent builds.
+
+### Working with Custom Build Strategies
+
+For large, complex projects, employing custom build strategies can enhance
+performance and manageability.
+
+- **`Composite Projects`**: Via the `composite` flag, projects are built in
+  a piecemeal fashion. Recommended for large codebases to enable
+  independent compilation.
+- **`Build Mode`**: Utilizing the `--build` flag (or `tsc -b`), this mode
+  leverages project references for efficient builds, making it easier to
+  manage monorepos.
+
+### Leveraging External Tools
+
+You can integrate TypeScript with bundlers like Webpack, Rollup, or
+Parcel. They can enhance the build process by including additional
+features like tree shaking, code splitting, and more.
+
+In conclusion, understanding and configuring the TypeScript compilation
+process is crucial for harnessing its full power, especially on large
+scales. Careful management of configuration options can lead to optimized,
+efficient, and manageable applications.
+
+## 20. TypeScript Compiler Internals and Custom Transformer
+
+In this advanced article, we will explore the inner workings of the
+TypeScript compiler and learn how to create custom transformers that
+allow for additional code transformations during the compilation
+process.
+
+### Understanding the TypeScript Compiler
+
+The TypeScript compiler (tsc) is responsible for converting TypeScript
+code into JavaScript code. It performs several tasks, including:
+
+- Parsing: Reading the TypeScript code and creating an Abstract Syntax
+  Tree (AST).
+- Type Checking: Verifying the types and ensuring code conformance to
+  the TypeScript type system.
+- Emit: Generating JavaScript code based on the TypeScript AST and type
+  information.
+
+Understanding these phases is crucial when working with custom
+transformers.
+
+### Custom Transformers
+
+Custom transformers allow developers to hook into the compilation
+process and apply custom code transformations to the AST. These can be
+helpful for:
+
+- Code Analysis: Extracting specific patterns or data from the code.
+- Code Modification: Introducing new syntax or changing the existing
+  pattern.
+- Optimization: Performing optimization strategies tailored for
+  specific scenarios.
+
+#### Creating a Custom Transformer
+
+1. **Set Up the Environment**: Ensure you have TypeScript installed and
+   configured.
+
+   ```shell
+   npm install typescript --save-dev
+   ```
+
+2. **Create the Transformer File**: Define a function that implements
+   the transformation logic.
+
+   ```typescript
+   import * as ts from "typescript";
+
+   function transformer<T extends ts.Node>(): ts.TransformerFactory<T> {
+     return (context: ts.TransformationContext) => (rootNode: T) => {
+       function visit(node: ts.Node): ts.Node {
+         // Example: Add a console log before every function.
+         if (ts.isFunctionDeclaration(node)) {
+           const newStatement = ts.createStatement(
+             ts.createCall(ts.createIdentifier("console.log"), undefined, [
+               ts.createLiteral("Function called!"),
+             ]),
+           );
+           return ts.updateFunctionDeclaration(
+             node,
+             node.decorators,
+             node.modifiers,
+             node.asteriskToken,
+             node.name,
+             node.typeParameters,
+             node.parameters,
+             node.type,
+             ts.createBlock([newStatement, ...node.body.statements], true),
+           );
+         }
+         return ts.visitEachChild(node, visit, context);
+       }
+       return ts.visitNode(rootNode, visit);
+     };
+   }
+   ```
+
+3. **Integrate with the Compiler**: Utilize the transformer's logic
+   during the compilation phase.
+
+   Create a `tsc` custom script:
+
+   ```shell
+   npx tsc --project tsconfig.json --plugin "<transformer-path>"
+   ```
+
+#### tsconfig.json Setup
+
+Ensure that your `tsconfig.json` is set up to allow custom transforms.
+
+```json
+{
+  "compilerOptions": {
+    "plugins": [{ "transform": "<path-to-your-transformer>" }]
+  }
+}
+```
+
+### Conclusion
+
+Understanding and using TypeScript compiler internals and custom
+transformers can significantly enhance your ability to manage and
+transform code effectively during the compile phase, allowing for
+flexibility, custom optimizations, and integration of new syntactical
+features specific to your project needs.

@@ -1,741 +1,701 @@
 # SQLite
 
-- [01. Introduction to SQLite](#01-introduction-to-sqlite)
-- [02. Setting Up SQLite](#02-setting-up-sqlite)
-- [03. SQLite Data Types](#03-sqlite-data-types)
-- [04. Creating and Connecting to SQLite Database](#04-creating-and-connecting-to-sqlite-database)
-- [05. Inserting Data into SQLite Tables](#05-inserting-data-into-sqlite-tables)
-- [06. Querying Data in SQLite](#06-querying-data-in-sqlite)
-- [07. Updating and Deleting Data in SQLite](#07-updating-and-deleting-data-in-sqlite)
-- [08. SQLite Constraints](#08-sqlite-constraints)
-- [09. SQLite Joins](#09-sqlite-joins)
-- [10. SQLite Transactions and Atomicity](#10-sqlite-transactions-and-atomicity)
-- [11. SQLite Indexes](#11-sqlite-indexes)
+- [1. Introduction to SQLite](#1-introduction-to-sqlite)
+- [2. Setting Up SQLite](#2-setting-up-sqlite)
+- [3. SQLite Data Types](#3-sqlite-data-types)
+- [4. Basic SQLite Commands](#4-basic-sqlite-commands)
+- [5. Working with SQLite Database Files](#5-working-with-sqlite-database-files)
+- [6. SQLite Query Language Basics](#6-sqlite-query-language-basics)
+- [7. SQLite Constraints](#7-sqlite-constraints)
+- [8. SQLite Joins and Subqueries](#8-sqlite-joins-and-subqueries)
+- [9. Advanced SQLite Queries](#9-advanced-sqlite-queries)
+- [10. SQLite Indexing and Optimization](#10-sqlite-indexing-and-optimization)
+- [11. SQLite Transactions](#11-sqlite-transactions)
 - [12. SQLite Triggers](#12-sqlite-triggers)
 - [13. SQLite Views](#13-sqlite-views)
-- [14. SQLite Backup and Restore](#14-sqlite-backup-and-restore)
-- [15. SQLite Performance Optimization](#15-sqlite-performance-optimization)
-- [16. SQLite JSON Support](#16-sqlite-json-support)
-- [17. SQLite Full-Text Search (FTS)](#17-sqlite-full-text-search-fts)
-- [18. SQLite and Spatial Data with R-Tree](#18-sqlite-and-spatial-data-with-r-tree)
-- [19. SQLite Encryption and Security](#19-sqlite-encryption-and-security)
-- [20. SQLite Best Practices and Advanced Tips](#20-sqlite-best-practices-and-advanced-tips)
+- [14. SQLite and Foreign Key Support](#14-sqlite-and-foreign-key-support)
+- [15. SQLite Backup and Restore](#15-sqlite-backup-and-restore)
+- [16. SQLite Security Features](#16-sqlite-security-features)
+- [17. SQLite Performance Tuning](#17-sqlite-performance-tuning)
+- [18. SQLite and JSON Support](#18-sqlite-and-json-support)
+- [19. SQLite in Mobile Development](#19-sqlite-in-mobile-development)
+- [20. SQLite Future Trends and Innovations](#20-sqlite-future-trends-and-innovations)
 
-## 01. Introduction to SQLite
+## 1. Introduction to SQLite
+
+SQLite is a C-language library that implements a small, fast, self-contained,
+full-featured, SQL database engine. Unlike other database engines, it is not
+a standalone app but a library that software developers embed in their
+applications. Its primary feature set includes being self-contained and
+requiring minimal support from external servers.
+
+SQLite is popular in embedded applications due to its lightweight and simple
+design. It is perfect for applications like mobile apps, desktop software,
+web browsers, and other systems where resources are constrained. With more
+understanding, software developers can leverage SQLite for efficient data
+management in their projects.
+
+In this series, we will explore SQLite's features, use cases, and delve
+into various technical aspects that make it a valuable tool in the software
+development ecosystem. This series will provide a comprehensive guide on
+implementing SQLite from basic to advanced levels.
+
+Stay tuned for the upcoming articles to enhance your understanding and
+skillset regarding SQLite.
+
+## 2. Setting Up SQLite
 
 SQLite is a C-language library that implements a small, fast, self-contained,
 high-reliability, full-featured, SQL database engine. It is the most used
-database engine in the world. SQLite is built into all mobile phones and most
-computers and comes bundled inside countless other applications that people use
-every day.
+database engine in the world.
 
-Unlike most other SQL databases, SQLite does not have a separate server process.
-Rather, it reads and writes directly to ordinary disk files. A complete SQL
-database with multiple tables, indices, triggers, and views, is contained in
-a single disk file. This design leads to impressive simplicity.
+SQLite does not require a separate server process or system to operate. It
+reads and writes directly to ordinary disk files. Setting up SQLite is
+straightforward, and this article will guide you through the setup process
+on different platforms.
 
-SQLite is file-based and lightweight. It does not require any configuration or
-administration and is ideal for use in embedded systems, mobile applications,
-or small-to-medium websites.
+### Installation on Windows
 
-Key features of SQLite include:
+1. Download the precompiled binaries from the [SQLite website](https://www.sqlite.org/download.html).
+2. Extract the ZIP file and add the directory to your system's PATH.
+3. Run `sqlite3` from your command line to start using SQLite.
 
-- Zero-configuration: no setup or administration needed.
-- Serverless: no separate server process, and no essential concept of a home
-  directory or known server startup.
-- Cross-platform: runs on Android, iOS, Windows, Mac, and Linux.
-- Compact and Efficient: the library size is less than 500 kB with optional
-  configurations.
-- High Reliability: many applications trust it due to its rigorous testing.
+### Installation on macOS
 
-In summary, SQLite's simplicity, reliability, and versatility make it an
-excellent choice for many applications.
+1. Open the Terminal.
+2. Use Homebrew to install SQLite with the command: `brew install sqlite3`.
+3. Run `sqlite3` to start using SQLite.
 
-## 02. Setting Up SQLite
+### Installation on Linux
 
-SQLite is a C-language library that allows applications to store data in a
-local file. It's lightweight, serverless, and does not require any installation.
-This article will guide you through setting up SQLite on various operating
-systems.
+1. Open the terminal.
+2. Use the package manager to install SQLite.
+   - On Ubuntu, use: `sudo apt-get install sqlite3`.
+3. Run `sqlite3` to start using SQLite.
 
-### Installing SQLite
+By following these instructions, you should have SQLite installed and ready
+to use on your system. Next, we will explore some of its basic commands and
+functionality.
 
-#### Windows
+## 3. SQLite Data Types
 
-1. **Download the SQLite zip file:** Visit the [SQLite download page](https://www.sqlite.org/download.html)
-   and download the Windows zip file.
-2. **Extract the files:** Extract the downloaded zip file to a directory of your choice.
-3. **Set the PATH:** Add the path of the extracted directory to your system's
-   PATH environment variable, so you can access SQLite from the command line.
+SQLite is a flexible database management system that allows you to define the
+structure of your data. Understanding the data types used in SQLite is crucial
+for designing efficient databases.
 
-#### macOS
+### Storage Classes vs. Data Types
 
-1. **Using Homebrew:**
-   - Open Terminal.
-   - Run `brew install sqlite3`.
-2. **Direct download:**
-   - Alternatively, you can download the precompiled binaries from the
-     [SQLite download page](https://www.sqlite.org/download.html) and
-     follow similar steps as for Windows.
+SQLite uses a dynamic type system, which means that the type of a value is
+associated with the value itself, not with its container. There are five storage
+classes:
 
-#### Linux
+1. **NULL**: Represents a missing value.
+2. **INTEGER**: A signed integer, stored in 1, 2, 3, 4, 6, or 8 bytes.
+3. **REAL**: A floating point value, stored as an 8-byte IEEE floating point
+   number.
+4. **TEXT**: A text string, stored using the database encoding (UTF-8, UTF-16BE,
+   or UTF-16LE).
+5. **BLOB**: A blob of data, stored exactly as it was input.
 
-1. **Using Package Manager:**
-   - In Ubuntu or Debian-based systems, run `sudo apt-get install sqlite3`.
-   - In Fedora, run `sudo dnf install sqlite`.
-2. **Building from Source:**
-   - Download and extract the source file from the [SQLite website](https://www.sqlite.org/download.html).
-   - Run `./configure`, `make`, and `make install`.
+In contrast, SQL data types define what kind of data is allowable in each
+column. In SQLite, you can use various SQL data types, but they get mapped
+internally to one of the five storage classes.
 
-### Verifying Installation
+### Affinity
 
-To verify that SQLite has been installed correctly, open a command line
-interface and type `sqlite3`. You should see a prompt similar to:
+SQLite uses type affinity for columns, which means it tries to convert values
+into a preferred storage class based on the column's affinity.
 
-```sh
-SQLite version 3.x.x
-Enter ".help" for usage hints.
-Connected to a transient in-memory database.
-sqlite>
+The possible affinities are:
+
+- **TEXT**: Preferred storage class is TEXT.
+- **NUMERIC**: Prefers INTEGER or REAL.
+- **INTEGER**: Preferably stored as INTEGER.
+- **REAL**: Prefers REAL storage class.
+- **NONE**: No affinity; uses the storage class of the value itself.
+
+#### Conclusion
+
+Understanding SQLite data types and how they map to storage classes is critical
+for building efficient databases. When designing tables, it's important to be
+mindful of type affinity to ensure your data is stored and retrieved
+optimally.
+
+## 4. Basic SQLite Commands
+
+SQLite is a powerful, lightweight database engine that allows you to manage
+data efficiently. In this article, we will explore some essential commands
+that form the foundation of interacting with SQLite databases.
+
+### Creating a Database
+
+To create a new SQLite database, you can use the `sqlite3` command-line tool.
+Here's how you can create a database named `example.db`:
+
+```bash
+sqlite3 example.db
 ```
 
-The setup is complete when you see this prompt.
+If `example.db` does not exist, this command will create it. If it does exist,
+it will open the database.
 
-This guide covers basic setup, and you are now ready to start creating
-and managing databases with SQLite.
+### Creating a Table
 
-## 03. SQLite Data Types
-
-SQLite uses a dynamic typing system, which means that it does not
-strictly enforce data types. However, it supports several common
-data types:
-
-#### 1. **NULL**
-
-Represents a null value or missing data.
-
-#### 2. **INTEGER**
-
-A signed integer value, which can be stored in 1, 2, 3, 4, 6, or
-8 bytes depending on the magnitude of the value.
-
-#### 3. **REAL**
-
-A floating-point value stored as an 8-byte IEEE floating point
-number.
-
-#### 4. **TEXT**
-
-A text string stored using the database encoding (UTF-8, UTF-16BE,
-or UTF-16LE).
-
-#### 5. **BLOB**
-
-A binary large object, stored exactly as it was input.
-
-Understanding and utilizing these data types properly is crucial for
-effectively designing your SQLite database schema and ensuring data
-integrity. Despite the flexibility in data types, ensuring consistency
-can prevent potential issues with data handling and querying.
-
-Each column in a table can have an associated data type, but SQLite
-will not enforce strict typing. Instead, it uses a concept called
-**manifest typing** where the datatype of a value is determined by
-its format at runtime. Understanding this behavior is key to managing
-the data in your SQLite database effectively.
-
-## 04. Creating and Connecting to SQLite Database
-
-SQLite is a serverless database engine that saves databases as files.
-Creating a new SQLite database or connecting to an existing one is a
-straightforward process.
-
-### Creating a New SQLite Database
-
-To create a new SQLite database, you simply open the database file using
-a SQLite connection. If the file does not already exist, SQLite will
-create it for you.
+Once you have a database, tables can be created using the `CREATE TABLE`
+statement. For example, to create a table named `users`:
 
 ```sql
--- This SQL command opens a database connection to 'example.db'.
--- If 'example.db' does not exist, it will be created.
-.open example.db
+CREATE TABLE users (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT NOT NULL,
+  email TEXT UNIQUE NOT NULL
+);
 ```
 
-In most command-line interfaces or programmatic access, this call is
-made using the appropriate libraries or tools for accessing SQLite.
+This command creates a table with three columns: `id`, `name`, and `email`.
 
-### Connecting to an Existing SQLite Database
+### Inserting Data
 
-If you want to connect to an already existing SQLite database, you only
-need to ensure that the database file is present in your directory or
-provide the correct path to it.
+To add data into the database, use the `INSERT INTO` command:
 
 ```sql
--- Opening an existing database
-.open path/to/existing.db
+INSERT INTO users (name, email) VALUES ('Alice', 'alice@example.com');
 ```
 
-Again, ensure your client or access tool is properly set up to locate the
-file.
+This command inserts a new user record into the `users` table.
 
-### Using SQLite in Different Environments
+### Querying Data
 
-SQLite works in various environments, including command-line tools,
-graphical interfaces, and programming language libraries. Here are some
-ways to connect and create databases:
-
-#### Using Command-Line Interface
-
-1. Launch the SQLite shell.
-2. Run the `.open` command to create/connect to a database.
-
-#### Using Python with SQLite3 Module
-
-You can interact with SQLite databases using Python's built-in `sqlite3`
-module. Here is a brief example:
-
-```python
-import sqlite3
-
-connection = sqlite3.connect('example.db')
-
-cursor = connection.cursor()
-```
-
-This sets up a functional connection to a database allowing for queries
-and other database manipulations.
-
-#### Other Programming Languages
-
-- **PHP**: Use the SQLite3 or PDO_SQLITE extension.
-- **Java**: Use JDBC with the SQLite JDBC driver.
-- **JavaScript/Node.js**: Use the `sqlite3` library or similar
-  libraries like `better-sqlite3`.
-
-Each programming environment has its unique way of establishing a
-connection and handling database operations.
-
-Understanding how to create and connect to an SQLite database is only
-the first step in effectively utilizing SQLite for data management.
-Future articles will cover inserting data, querying, and more.
-
-## 05. Inserting Data into SQLite Tables
-
-Once you have a table created in your SQLite database, you can begin to insert
-records into it. Inserting data involves using the `INSERT INTO` statement,
-which lets you add new rows to a table.
-
-### Basic Syntax
-
-The basic syntax for inserting data into a table is as follows:
+Fetch data from a table using the `SELECT` statement:
 
 ```sql
-INSERT INTO table_name (column1, column2, column3,...)
-VALUES (value1, value2, value3,...);
+SELECT * FROM users;
 ```
 
-#### Example:
+This retrieves all columns for each record in the `users` table.
 
-Assume you have a table named `employees` with columns `id`, `name`, and
-`age`. To insert a new employee record, you can use:
+### Updating Data
+
+To modify existing records, use the `UPDATE` command:
 
 ```sql
-INSERT INTO employees (id, name, age)
-VALUES (1, 'Alice', 30);
+UPDATE users SET email = 'alice@newdomain.com' WHERE name = 'Alice';
 ```
 
-### Inserting Multiple Rows
+This updates Alice's email address in the `users` table.
 
-SQLite also allows you to insert multiple rows in a single statement:
+### Deleting Data
+
+Remove records from the table using the `DELETE` command:
 
 ```sql
-INSERT INTO table_name (column1, column2,...)
-VALUES (value1a, value2a,...),
-       (value1b, value2b,...);
+DELETE FROM users WHERE name = 'Alice';
 ```
 
-#### Example:
+This will remove the user record for Alice from the table.
+
+These basic commands allow you to create and manage databases in SQLite
+efficiently. With practice, you'll be able to leverage the full potential of
+SQLite in your applications.
+
+## 5. Working with SQLite Database Files
+
+SQLite stores its entire database (including tables, indexes, and data)
+in a single disk file. This self-contained structure makes SQLite
+a lightweight and efficient database system. Here's how you can work
+with SQLite database files:
+
+### Creating a New SQLite Database File
+
+To create a new SQLite database file, you can use the following command:
 
 ```sql
-INSERT INTO employees (id, name, age)
-VALUES (2, 'Bob', 25),
-       (3, 'Charlie', 35);
+sqlite3 mydatabase.db
 ```
 
-### Inserting Data Without Specifying Columns
+- This command opens a new SQLite shell session.
+- `mydatabase.db` is the database file name.
+- If the file does not exist, SQLite creates it automatically.
 
-If you are inserting values for all columns in the order they are defined, you
-can omit specifying the column names:
+### Connecting to an Existing Database
+
+You can connect to an existing SQLite database file with:
 
 ```sql
-INSERT INTO employees
-VALUES (4, 'David', 28);
+sqlite3 mydatabase.db
 ```
 
-This assumes that the values are provided in the correct order corresponding
-to the table definition.
+- This command opens the SQLite shell connected to `mydatabase.db`.
 
-### Using the DEFAULT Keyword
+### Backup and Restore
 
-For columns with default values, you can use the `DEFAULT` keyword:
+#### Backup
+
+To backup an SQLite database, simply copy the database file using any
+file-copying command.
+
+#### Restore
+
+To restore, replace the database file with the backup file.
+
+Because SQLite database files are self-contained, operations like backup
+and restore are simple file system operations.
+
+#### Considerations
+
+- Ensure that no process is writing to the database during backup.
+  Use `.backup` in the SQLite shell for a reliable backup if needed.
+
+### Managing SQLite Database Files
+
+- **Integrity Check:** Use `PRAGMA integrity_check;` to confirm the
+  database is intact.
+- **Changing Database File Name:** You can rename the database file
+  directly in the file system.
+
+### Conclusion
+
+SQLite database files offer simplicity and are easy to manage with
+simple file operations. This enables quick setup and recovery processes.
+
+## 6. SQLite Query Language Basics
+
+SQLite uses SQL (Structured Query Language) to interact with the database.
+This article will introduce you to the basic queries you'll need to know
+to work effectively with SQLite.
+
+### SELECT Statement
+
+The `SELECT` statement is used to query the database and retrieve data.
+
+**Syntax:**
 
 ```sql
-INSERT INTO employees (id, name, age)
-VALUES (5, 'Eve', DEFAULT);
+SELECT column1, column2, ... FROM table_name;
 ```
 
-This example inserts a record with the default value for the `age`
-column, if it has one defined in the table schema. Without a default, it will
-be NULL.
+- `SELECT * FROM table_name;` retrieves all columns.
+- `SELECT column1 FROM table_name;` retrieves a specific column.
 
-Inserting data correctly is crucial for maintaining the integrity and
-consistency of your database, and mastering these commands is fundamental to
-working with SQLite effectively.
+### WHERE Clause
 
-## 06. Querying Data in SQLite
+The `WHERE` clause filters the results based on conditions.
 
-Querying data is one of the most fundamental operations you can perform
-using SQLite. It allows you to retrieve stored data according to your
-business logic. SQLite uses SQL (Structured Query Language) for
-querying.
-
-### Basic SELECT Statement
-
-The `SELECT` statement is used to query data from a database table. It
-fetches data from one or more tables and returns it:
-
-```sql
-SELECT column1, column2 FROM table_name;
-```
-
-To select all columns, use the `*` wildcard:
-
-```sql
-SELECT * FROM table_name;
-```
-
-### Using WHERE Clause
-
-The `WHERE` clause is used to filter records. It's used to extract
-only those records that fulfill a specified condition:
+**Syntax:**
 
 ```sql
 SELECT column1, column2 FROM table_name WHERE condition;
 ```
 
-Example:
+- `SELECT * FROM table_name WHERE condition;` applies a filter.
+
+### ORDER BY Clause
+
+Use the `ORDER BY` clause to sort the result set.
+
+**Syntax:**
 
 ```sql
-SELECT * FROM Customers WHERE age > 18;
+SELECT column1, column2 FROM table_name ORDER BY column_name ASC|DESC;
 ```
 
-### Sorting Result with ORDER BY
+- Default order is ascending (ASC). Use `DESC` to sort in descending order.
 
-The `ORDER BY` keyword is used to sort the result-set in either
-ascending or descending order:
+### LIMIT Clause
 
-```sql
-SELECT column1, column2 FROM table_name ORDER BY column1 ASC/DESC;
-```
+The `LIMIT` clause restricts the number of returned rows.
 
-### Limiting Results with LIMIT
-
-The `LIMIT` clause is used to specify the number of records to return:
+**Syntax:**
 
 ```sql
 SELECT column1, column2 FROM table_name LIMIT number;
 ```
 
-### Combining Conditions with AND & OR
+- `LIMIT 10` returns only 10 rows.
 
-You can combine multiple conditions in a `WHERE` clause using `AND`
-and `OR`:
+These are foundational queries in SQL, and mastering them is crucial for
+efficient database interactions with SQLite. In the next article, we will
+delve deeper into more advanced SQL queries and techniques in SQLite.
 
-```sql
-SELECT * FROM Employees WHERE age > 30 AND role = 'Manager';
-```
+## 7. SQLite Constraints
 
-```sql
-SELECT * FROM Employees WHERE age > 30 OR department = 'HR';
-```
-
-Understanding these querying capabilities will allow you to extract
-precise data effectively from your SQLite databases.
-
-## 07. Updating and Deleting Data in SQLite
-
-In this article, we'll cover how to update and delete data in SQLite,
-covering the necessary SQL commands and examples.
-
-### Updating Data
-
-The SQL `UPDATE` command is used to modify existing data in a database.
-The basic syntax is as follows:
-
-```sql
-UPDATE table_name
-SET column1 = value1, column2 = value2, ...
-WHERE condition;
-```
-
-Here's an example where we update the price of a product:
-
-```sql
-UPDATE Products
-SET Price = 19.99
-WHERE ProductID = 1;
-```
-
-This command updates the Price column for the row where ProductID is 1.
-
-#### Important Notes
-
-- Always use a `WHERE` clause to specify which records to update.
-- Omitting `WHERE` will update all records in the table.
-- You can also update multiple columns simultaneously.
-
-### Deleting Data
-
-To remove data from a table, the `DELETE` statement is used. Its syntax
-is straightforward:
-
-```sql
-DELETE FROM table_name
-WHERE condition;
-```
-
-Example:
-
-```sql
-DELETE FROM Customers
-WHERE CustomerID = 10;
-```
-
-This deletes the row where CustomerID equals 10.
-
-#### Important Notes
-
-- Deleting data without a `WHERE` clause will remove all rows in the
-  table.
-- Consider using transactions to prevent accidental data loss.
-
-### Best Practices
-
-- Always back up your data before performing mass updates/deletes.
-- Test your SQL commands on a small dataset first.
-
-By understanding and using these commands wisely, you can manage your
-SQLite databases effectively, ensuring data integrity and reliability.
-
-## 08. SQLite Constraints
-
-Constraints are an important feature in SQLite tables, as they allow you to
-enforce rules and maintain the integrity of your data. Understanding how to
-use constraints effectively is crucial for building robust databases.
+Constraints are rules enforced on data columns in SQLite tables. They ensure
+accuracy, validity, and integrity of the data within the database. Constraints
+can be applied when you create a table or after a table has been created using
+an `ALTER` command.
 
 ### Types of Constraints
 
-1. **PRIMARY KEY**: This ensures that each value in a column is unique
-   and not null. You can define a primary key when creating a table.
-   Example:
+SQLite supports various constraints, including:
+
+1. **NOT NULL**: Ensures that a column cannot have a NULL value.
 
    ```sql
-   CREATE TABLE users (
-     id INTEGER PRIMARY KEY,
-     name TEXT
+   CREATE TABLE Users (
+       ID INTEGER PRIMARY KEY,
+       Name TEXT NOT NULL
    );
    ```
 
-2. **FOREIGN KEY**: This constraint enforces a relationship between
-   two tables. A foreign key in one table points to a primary key in
-   another table.
-   Example:
+2. **UNIQUE**: Ensures all values in a column are different.
 
    ```sql
-   CREATE TABLE orders (
-     order_id INTEGER PRIMARY KEY,
-     user_id INTEGER,
-     FOREIGN KEY(user_id) REFERENCES users(id)
+   CREATE TABLE Emails (
+       ID INTEGER PRIMARY KEY,
+       Email TEXT UNIQUE
    );
    ```
 
-3. **UNIQUE**: Guarantees that no two rows have the same value in a
-   specified column or columns.
-   Example:
+3. **PRIMARY KEY**: Identifies a unique row, can be a single column or multiple
+   columns.
 
    ```sql
-   CREATE TABLE emails (
-     email TEXT UNIQUE
+   CREATE TABLE Orders (
+       OrderID INTEGER PRIMARY KEY,
+       OrderNumber INTEGER UNIQUE
    );
    ```
 
-4. **CHECK**: It ensures that all values in a column satisfy certain
-   conditions.
-   Example:
+4. **FOREIGN KEY**: Establishes a link between data in two tables.
 
    ```sql
-   CREATE TABLE employees (
-     age INTEGER CHECK(age >= 18)
+   CREATE TABLE Orders (
+       OrderID INTEGER PRIMARY KEY,
+       CustomerID INTEGER,
+       FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
    );
    ```
 
-5. **NOT NULL**: This ensures that a column cannot have a NULL value.
-   Example:
+5. **CHECK**: Ensures values in a column meet a specific condition.
+
    ```sql
-   CREATE TABLE customers (
-     name TEXT NOT NULL
+   CREATE TABLE Employees (
+       ID INTEGER PRIMARY KEY,
+       Age INTEGER CHECK(Age >= 18)
    );
    ```
 
-Constraints help maintain data accuracy and enforce business rules at
-the database level, reducing the possibility of errors in data
-management.
+6. **DEFAULT**: Sets a default value for a column when no value is specified.
 
-## 09. SQLite Joins
+   ```sql
+   CREATE TABLE Products (
+       ID INTEGER PRIMARY KEY,
+       Available BOOLEAN DEFAULT 1
+   );
+   ```
 
-SQLite Joins are used to combine rows from two or more tables based on a related
-column between them. Understanding how to use joins effectively can help in
-building complex queries to fetch data from multiple tables efficiently.
+Constraints play a crucial role in maintaining reliable and useful data within
+SQLite databases. By using these constraints effectively, you can manage data
+integrity and minimize errors.
 
-### Types of Joins in SQLite
+## 8. SQLite Joins and Subqueries
+
+In this article, we'll explore two pivotal SQL components: joins and
+subqueries, vital for advanced data manipulation in SQLite.
+
+### Joins
+
+Joins are operations that allow you to combine rows from two or more
+tables, based on a related column between them. SQLite supports several
+types of joins:
 
 1. **INNER JOIN**: Returns records that have matching values in both tables.
+2. **LEFT OUTER JOIN**: Returns all records from the left table, and
+   the matched records from the right table. Unmatched records will
+   have NULL values.
+3. **CROSS JOIN**: Returns the Cartesian product of the two tables.
+4. **NATURAL JOIN**: Automatically joins tables based on columns
+   with the same name.
 
-   ```sql
-   SELECT columns
-   FROM table1
-   INNER JOIN table2
-   ON table1.column = table2.column;
-   ```
-
-2. **LEFT JOIN**: Returns all records from the left table, and the matched
-   records from the right table. If no match is found, NULL values are returned
-   for columns from the right table.
-
-   ```sql
-   SELECT columns
-   FROM table1
-   LEFT JOIN table2
-   ON table1.column = table2.column;
-   ```
-
-3. **RIGHT JOIN**: Though SQLite does not support RIGHT JOIN directly, you can
-   achieve similar results by switching the order of tables and using LEFT JOIN.
-4. **FULL JOIN**: SQLite doesn't support FULL OUTER JOIN. However, similar
-   results can be obtained using UNION with LEFT JOIN and RIGHT JOIN.
-
-### Example Usage
-
-Suppose you have two tables, `Employees` and `Departments`:
+#### Example of INNER JOIN
 
 ```sql
-Employees(
-  ID INTEGER PRIMARY KEY,
-  Name TEXT,
-  DepartmentID INTEGER
-);
-
-Departments(
-  ID INTEGER PRIMARY KEY,
-  DepartmentName TEXT
-);
+SELECT employees.name, departments.dept_name
+FROM employees
+INNER JOIN departments ON employees.dept_id = departments.id;
 ```
 
-To get a list of employees with their respective department names, you can use
-an INNER JOIN like this:
+This query retrieves the names of employees and their department
+names by matching `dept_id` in both tables.
+
+### Subqueries
+
+Subqueries are queries nested inside another SQL query. They can be
+used to perform complex operations, allowing you to:
+
+1. Retrieve data that will be used in a main query.
+2. Filter results based on aggregated data.
+3. Determine conditions dynamically.
+
+#### Example of Subquery
 
 ```sql
-SELECT Employees.Name, Departments.DepartmentName
-FROM Employees
-INNER JOIN Departments ON Employees.DepartmentID = Departments.ID;
+SELECT name
+FROM employees
+WHERE salary > (SELECT AVG(salary) FROM employees);
 ```
 
-Understanding and using joins is essential for effective data retrieval in
-database management using SQLite.
+This query finds employees whose salary is above average by
+incorporating a subquery to calculate the average salary.
 
-## 10. SQLite Transactions and Atomicity
+Understanding joins and subqueries can significantly enhance your
+ability to manipulate and query SQLite databases effectively.
 
-SQLite transactions are a critical feature that ensure data integrity
-by grouping a series of operations into a single unit of work. This
-unit is either fully completed or fully rolled back, ensuring atomicity.
+## 9. Advanced SQLite Queries
 
-### Understanding Transactions
+SQLite, while lightweight, supports a range of advanced query
+operations that allow users to extract and manipulate data
+efficiently. We will explore some advanced query techniques
+in this article.
 
-A transaction in SQLite starts implicitly with the first SQL statement
-that modifies the database after a connection is opened. It then
-continues until it's either committed or rolled back. Explicit
-management of transactions is possible via `BEGIN`, `COMMIT`, and
-`ROLLBACK` statements.
+### Using Aggregate Functions
 
-#### BEGIN
-
-The `BEGIN` statement indicates the start of a new transaction. SQLite
-supports two transaction types - DEFERRED and IMMEDIATE. While the
-default is DEFERRED, using `BEGIN IMMEDIATE` avoids waiting for
-potential locks later during the transaction.
-
-#### COMMIT
-
-The `COMMIT` statement completes the transaction, committing all
-changes to the database. Once committed, changes are permanent and
-visible to other connections.
-
-#### ROLLBACK
-
-Using `ROLLBACK` cancels all changes made during the transaction,
-reverting the database's state to what it was before the transaction
-began.
-
-### Atomicity in Transactions
-
-Atomicity ensures that either all operations within a transaction are
-completely executed or none are. This guarantees data integrity even
-if an error occurs during the transaction.
-
-#### Example
+Aggregate functions perform calculations on a set of values
+and return a single value. Some common aggregate functions
+include `COUNT()`, `SUM()`, `AVG()`, `MAX()`, and `MIN()`.
+Here's an example of using an aggregate function in SQLite:
 
 ```sql
-BEGIN;
-INSERT INTO students (name, grade) VALUES ('Alice', 85);
-UPDATE students SET grade = 90 WHERE name = 'Bob';
-COMMIT;
+SELECT department, COUNT(*) as num_employees
+FROM employees
+GROUP BY department;
 ```
 
-In this example, if the update for Bob fails, the transaction can be
-rolled back, ensuring no partial updates occur.
+This query will return the number of employees per
+department.
 
-By understanding and utilizing SQLite transactions effectively, you
-can manage database states confidently and ensure robust applications.
+### Window Functions
 
-## 11. SQLite Indexes
-
-Indexes in SQLite are special lookup tables associated with a database
-table, enabling quick data retrieval. Indexes decrease the amount of
-times SQLite has to scan a table for data.
-
-### Creating Indexes
-
-To create an index on one or more columns of a table, you use the
-`CREATE INDEX` statement. Here is an example of creating an index:
+Window functions enable you to perform calculations across
+the result set similar to aggregate functions but without
+grouping the rows into a single output row.
 
 ```sql
-CREATE INDEX idx_customer_name ON customers (name);
+SELECT first_name, last_name,
+   AVG(salary) OVER(PARTITION BY department) AS avg_salary
+FROM employees;
 ```
 
-This creates an index `idx_customer_name` on the `name` column of the
-`customers` table.
+In this example, the average salary is calculated for
+employees within the same department.
 
-### Benefits and Drawbacks
+### Common Table Expressions (CTEs)
 
-- **Benefits**: Significantly speed up SELECT queries that search data
-  based on indexed columns.
-- **Drawbacks**: May slow down INSERT, DELETE, and UPDATE operations
-  due to the time taken to maintain the index.
-
-### Multiple Column Indexes
-
-SQLite also allows for multi-column indexes. Here's how you can define
-one:
+CTEs provide a way to organize complex queries and can be
+used to define temporary result sets.
 
 ```sql
-CREATE INDEX idx_name_age ON customers (name, age);
+WITH high_salary_employees AS (
+  SELECT * FROM employees WHERE salary > 70000
+)
+SELECT * FROM high_salary_employees WHERE department = 'Sales';
 ```
 
-This index helps in queries that filter data based on both `name` and
-`age`.
+Here, we first create a CTE to get all employees with a
+salary above 70,000 and then query only those in the Sales
+department.
 
-### Removing Indexes
+### Recursive Queries
 
-To delete an index, use the `DROP INDEX` statement:
+Recursive CTEs allow SQLite to handle hierarchical or tree-
+structured data:
 
 ```sql
-DROP INDEX idx_customer_name;
+WITH RECURSIVE employee_hierarchy(id, manager_id, name) AS (
+  SELECT id, manager_id, name FROM employees WHERE manager_id IS NULL
+  UNION ALL
+  SELECT e.id, e.manager_id, e.name
+  FROM employees e
+  INNER JOIN employee_hierarchy eh
+  ON e.manager_id = eh.id
+)
+SELECT * FROM employee_hierarchy;
 ```
 
-Removing unnecessary indexes can optimize database performance
-significantly.
+This query builds a hierarchy of employees based on their
+manager relationships.
+
+### Conclusion
+
+Understanding these advanced SQLite queries enhances your
+ability to manipulate and extract data, making your
+database operations more efficient and powerful.
+
+## 10. SQLite Indexing and Optimization
+
+In SQLite, indexing is a critical aspect of database optimization.
+Indexes improve the speed of data retrieval operations. However, they
+have a trade-off in terms of additional storage and reduced insert/delete
+performance.
+
+### What is an Index?
+
+An index in SQLite is a special lookup table used to speed up data
+retrieval. Similar to the index in a book, it helps SQLite locate the
+desired data without scanning every row in a table.
+
+### Creating an Index
+
+To create an index in SQLite, you can use the `CREATE INDEX` command:
+
+```sql
+CREATE INDEX index_name ON table_name(column_name);
+```
+
+This command creates an index named `index_name` on `column_name` of the
+table `table_name`.
+
+### When to Use Indexes
+
+- **Searching:** When search queries are frequent on a field
+- **Join Operations:** On columns used in joins
+- **Group By or Order By:** Improve performance on columns used with
+  `GROUP BY` or `ORDER BY`
+
+### Downsides of Indexing
+
+- **Space Usage:** Indexes consume additional disk space.
+- **Performance Overhead:** They slow down `INSERT`, `UPDATE`, and
+  `DELETE` operations due to extra maintenance.
+
+### Analyzing and Optimizing Queries
+
+SQLite provides tools to analyze and optimize queries:
+
+- **EXPLAIN:** Shows how SQLite processes statements.
+- **ANALYZE:** Collects statistics about the tables and indexes.
+
+```sql
+ANALYZE table_name;
+```
+
+Running `ANALYZE` can help SQLite decide the best plan for query execution,
+thus optimizing performance.
+
+Effective indexing, combined with proper query analysis, can significantly
+enhance the performance of your SQLite database applications. Always
+consider the trade-off between read and write performance before creating
+indexes.
+
+## 11. SQLite Transactions
+
+Transactions in SQLite are a vital part of maintaining database
+consistency and integrity. They allow you to execute a group of
+operations as a single unit, ensuring that either all operations are
+completed successfully, or none are. This concept is crucial for
+maintaining data accuracy and avoiding inconsistencies that can arise
+from nested operations.
+
+### ACID Properties
+
+SQLite transactions adhere to the ACID properties, which ensure the
+reliability of database operations:
+
+- **Atomicity**: The entire sequence of operations is performed or
+  none of it is. If any part of the transaction fails, the entire
+  transaction fails.
+- **Consistency**: Each transaction results in a valid state,
+  maintaining database integrity.
+- **Isolation**: Transactions appear to execute in isolation, providing
+  each one with a consistent database view.
+- **Durability**: Once a transaction is committed, it remains permanent, even in case of a system failure.
+
+### Using Transactions in SQLite
+
+To initiate and manage transactions in SQLite, the following
+commands are used:
+
+- `BEGIN TRANSACTION;` - Starts a new transaction. This can also be
+  shortened to `BEGIN;`.
+- `COMMIT;` - Ends the transaction and applies all the changes. This is
+  successful only if all the operations are successful.
+- `ROLLBACK;` - Ends the transaction and undoes all the changes made
+  during the transaction.
+
+These commands create a controlled environment in which multiple
+operations can be performed confidently, knowing that the data's
+integrity is maintained throughout the process.
 
 ## 12. SQLite Triggers
 
-Triggers in SQLite are database objects that automatically execute a
-predefined SQL statement or a block of statements when a specified event
-occur. Events typically involve data modification, such as INSERT, UPDATE,
-or DELETE operations on a table. Triggers are useful for enforcing
-business rules, maintaining audit trails, and synchronizing data.
+In this article, we will explore SQLite triggers. In databases, a trigger is
+a mechanism that automatically initiates an action in response to certain
+events on a particular table or view. Triggers can be used to enforce
+business rules, validate input data, or synchronize tables.
 
 ### Creating Triggers
 
-To create a trigger in SQLite, you use the `CREATE TRIGGER` statement. Here
-is a basic structure:
+To create a trigger in SQLite, you use the `CREATE TRIGGER` statement.
+Triggers are associated with a table and are activated by events such as
+INSERT, UPDATE, or DELETE.
+
+Here’s a basic syntax to create a trigger:
 
 ```sql
 CREATE TRIGGER trigger_name
-BEFORE|AFTER|INSTEAD OF event_name
+AFTER|BEFORE event_name
 ON table_name
+FOR EACH ROW
 BEGIN
-    -- SQL statements;
+   -- SQL statements
 END;
 ```
 
-#### Components
+- **trigger_name**: The name of the trigger you want to create.
+- **AFTER|BEFORE**: Specify whether the trigger action happens before or
+  after the event.
+- **event_name**: This is the event that activates the trigger, such as
+  INSERT, UPDATE, or DELETE.
+- **table_name**: The table on which the trigger is to be created.
 
-- **trigger_name**: A unique name for the trigger.
-- **event_name**: The event type that activates the trigger (INSERT, UPDATE,
-  DELETE).
-- **table_name**: The table associated with the trigger.
-- **BEFORE|AFTER|INSTEAD OF**: Determines when the trigger activates relative
-  to the event.
-- **BEGIN...END**: Contains the SQL logic to execute when the trigger fires.
+### Example of a Trigger
 
-### Example: Using a Trigger
-
-Suppose we want to keep an audit of all deletions in a `users` table.
-We can use a trigger as follows:
+Suppose you have a table `employees` and you want to log every deletion
+that occurs in a separate `logs` table. You can create a trigger like
+this:
 
 ```sql
-CREATE TRIGGER log_user_deletions
+CREATE TRIGGER log_delete
 AFTER DELETE
-ON users
+ON employees
+FOR EACH ROW
 BEGIN
-    INSERT INTO audit_log (user_id, deleted_at)
-    VALUES (OLD.id, datetime('now'));
+   INSERT INTO logs (action, employee_id, timestamp)
+   VALUES ('DELETE', OLD.id, CURRENT_TIMESTAMP);
 END;
 ```
 
-In this example, every time a row in the `users` table is deleted,
-an entry is added to the `audit_log` table using the `OLD` keyword to
-refer to the values of the row being deleted.
+### Dropping Triggers
 
-### Advantages of Triggers
+You can remove a trigger from a database using the `DROP TRIGGER`
+statement:
 
-- **Automated Actions**: Perform complex checks and operations
-  automatically when specified events occur.
-- **Consistency**: Enforce consistent rules without modifying application
-  code.
+```sql
+DROP TRIGGER trigger_name;
+```
 
-### Considerations
+This command will completely delete the specified trigger from the
+database.
 
-- Triggers can impact performance; ensure they are used judiciously.
-- Debugging can be challenging, as actions are invisible and
-  automatically executed.
+### Conclusion
 
-Triggers are a powerful feature within SQLite that allow you to automate
-and streamline database processes, ensuring consistency and integrity
-across the database.
+Triggers are a powerful feature in SQLite that allow you to define
+automated responses to table events, thereby helping to maintain the
+consistency and integrity of your database.
 
 ## 13. SQLite Views
 
-In this article, we will explore the concept of SQLite Views.
-Views in SQLite serve as a virtual table that allows users
-to simplify complex queries. They do not store any data
-themselves but provide a way to "look" at the data stored
-in other tables.
+SQLite Views allow users to create a virtual table based on the result of a
+SELECT query. This can simplify complex queries by encapsulating them behind
+a view and offer a way to present data in a specific format without storing
+the actual data.
 
-### Creating Views
+Views are defined with the `CREATE VIEW` statement, where you specify
+a query that SQLite should use whenever the view is referenced in a query.
 
-Creating a view in SQLite can be done using the CREATE VIEW
-statement. Here is the basic syntax:
+### Creating a View
+
+To create a view, you use the syntax:
 
 ```sql
 CREATE VIEW view_name AS
@@ -744,447 +704,477 @@ FROM table_name
 WHERE condition;
 ```
 
-For example, if you want to create a view to show only
-active users from a `users` table, your query would be:
+Example:
 
 ```sql
-CREATE VIEW active_users AS
-SELECT id, name, email
+CREATE VIEW example_view AS
+SELECT id, name
 FROM users
-WHERE status = 'active';
+WHERE age > 21;
 ```
 
-### Querying from Views
-
-Using a view is similar to using a regular table:
+You can then query the `example_view` as if it were a standard SQLite table:
 
 ```sql
-SELECT * FROM active_users;
+SELECT * FROM example_view;
 ```
 
-This will fetch all columns specified in the view from the
-original table(s) based on the conditions defined in the
-view.
+### Using Views
 
-### Updating Views
+Views can be extremely helpful for recurring queries that are complex,
+thereby reducing the need to frequently write the same complex SQL.
+For example, if you often need to filter or join tables in a specific way,
+you can utilize views to store that specific query structure.
 
-Views are read-only in SQLite. To update data in a view,
-you must update the base tables directly.
+### Dropping a View
 
-### Dropping Views
-
-To remove a view, use the DROP VIEW statement:
+To remove a view from the database, use the `DROP VIEW` statement:
 
 ```sql
-DROP VIEW IF EXISTS view_name;
+DROP VIEW view_name;
 ```
 
-This concludes our introduction to SQLite Views. They are
-a powerful way to manage complex query routines and organize
-data retrieval efficiently.
+### Advantages of Using Views
 
-## 14. SQLite Backup and Restore
+- **Simplification**: Encapsulate complex queries and make them
+  reusable and easier to manage.
+- **Security**: Restrict access to particular sets of data by
+  controlling what data is visible through a view.
+- **Abstraction**: Allow schema changes without affecting applications
+  that access the database via views.
 
-When working with SQLite, it's important to protect your data by creating
-regular backups and understanding how to restore them if needed. SQLite
-provides simple mechanisms for both backup and restore operations,
-making it a reliable choice for application development.
+While views are powerful, remember that they are read-only, so any
+modifications to the data must be done via the underlying tables.
 
-### Backup in SQLite
+## 14. SQLite and Foreign Key Support
 
-SQLite supports two main methods of creating backups:
+SQLite provides support for foreign keys, which are essential for maintaining
+referential integrity between tables in a database. Foreign keys ensure that
+relationships between tables are consistent, allowing SQLite to manage complex
+database structures efficiently.
 
-1. **Copy the Database File:**
-   Simply copying the SQLite database file (.sqlite or .db file) to a
-   secure location serves as a backup. This method is straightforward
-   when the database file is not in active use.
+### Enabling Foreign Key Support
 
-2. **Using the `.backup` Command in SQLite3 CLI:**
-   Execute the `.backup` command in the SQLite command-line interface
-   (CLI) to create a snapshot. This method can work even while some
-   operations are being performed on the database. Here's an example of
-   the syntax:
-
-   ```sql
-   .backup main backup_filename.bak
-   ```
-
-### Restore from a Backup Using SQLite
-
-Restoring from a backup is just as crucial as creating one. To restore:
-
-1. **Replace the Database File:**
-   If you've backed up by copying the file, simply replace the current
-   database file with the backup file.
-
-2. **Using the `.restore` Command in SQLite3 CLI:**
-   If you've used the `.backup` command, utilize the `.restore`
-   command to revert to the saved state:
-
-   ```sql
-   .restore main backup_filename.bak
-   ```
-
-### Automating Backups
-
-For large projects, manual backups are not practical. Consider automating
-backup processes using scripts or application logic. Common strategies
-include scheduling periodic backups using cron jobs or integrating backup
-functions within your software.
-
-#### Considerations
-
-- **Frequency:** Determine the appropriate backup frequency based on
-  data volatility and importance.
-- **Location:** Store backups in a safe, redundant location. Consider
-  cloud storage for additional security.
-
-Backups are your safeguard against data loss and corruption. Implementing
-robust backup and restore processes ensures the resilience of your data
-and continuity of your services.
-
-## 15. SQLite Performance Optimization
-
-SQLite is designed to be a lightweight and efficient database engine,
-but as with any system, optimizing for performance can greatly enhance
-efficiency. In this article, we will cover various strategies and best
-practices to improve SQLite performance in your applications.
-
-### 1. Use Transactions Wisely
-
-Ensure to use transactions when executing multiple SQL commands to
-reduce the overhead of autocommit. Grouping operations in one transaction
-speeds up the process significantly.
-
-### 2. Indexing
-
-Proper indexing can drastically reduce query times. Make sure to
-create indexes on columns frequently used in WHERE clauses, JOIN
-conditions, and ORDER BY statements.
-
-### 3. Pragmas and Settings
-
-SQLite offers various pragmas to control behavior:
-
-- **journal_mode**: Consider using WAL (Write-Ahead Logging) for
-  better concurrency.
-- **synchronous**: Setting this to `NORMAL` or `OFF` can improve write
-  performance, though it might affect durability.
-
-### 4. Avoid Unnecessary Queries
-
-Minimize the number of queries by selecting only the required columns,
-and avoiding redundant queries within loops.
-
-### 5. Analyze Database
-
-Run the `ANALYZE` SQL command to update the statistics of the database.
-This helps SQLite to make better decisions on query plans.
-
-### 6. Optimize Queries
-
-- Use EXPLAIN QUERY PLAN to understand how SQLite is executing a query.
-- Simplify complex queries where possible.
-
-### 7. Efficient data loading
-
-For bulk inserts, use prepared statements, and disable the foreign key
-constraint temporarily to speed up the process. The `INSERT OR IGNORE`
-and `INSERT OR REPLACE` options can also help maintain performance.
-
-### 8. Memory Management
-
-Consider increasing cache size using the `cache_size` pragma if you
-have more memory available to avoid frequent disk IO operations.
-
-By adopting these performance optimization techniques, you can run
-SQLite more efficiently, maximizing its potential to manage data
-with speed and accuracy in various applications.
-
-## 16. SQLite JSON Support
-
-In recent versions, SQLite has added powerful support for JSON data.
-This allows developers to work with JSON directly within SQLite, making
-it a versatile tool for applications that require storage and querying
-of JSON data.
-
-### JSON Functions
-
-SQLite provides several built-in JSON functions that allow you to
-manipulate and query JSON data effectively.
-
-#### json()
-
-- This function is primarily used to validate and format JSON values.
-
-#### json_extract()
-
-- It extracts a subset of data from a JSON document. For example, it
-  can be used to retrieve specific fields within a JSON object.
-
-#### json_array()
-
-- Converts arguments into a JSON array.
-
-#### json_object()
-
-- Converts arguments into a JSON object.
-
-#### json_insert()
-
-- Adds new values to a JSON document at the specified path, if it does
-  not already exist.
-
-#### json_set()
-
-- Updates or inserts values into a JSON document at the specified path.
-
-#### json_remove()
-
-- Removes values from a JSON document at the specified path.
-
-### Usage Examples
-
-#### Sample Table
-
-Consider a table named `products` that includes a JSON column named
-`product_info`.
+By default, foreign key support is not enabled in SQLite. To enable it, you
+need to execute the PRAGMA foreign_keys command after establishing a database
+connection.
 
 ```sql
-CREATE TABLE products (
-  id INTEGER PRIMARY KEY,
-  name TEXT NOT NULL,
-  product_info JSON
+PRAGMA foreign_keys = ON;
+```
+
+Make sure to run this command every time you open a database connection if you
+need foreign key support.
+
+### Defining Foreign Keys
+
+When creating a table, foreign keys can be defined using the `FOREIGN KEY`
+constraint. A foreign key constraint is specified with the following syntax:
+
+```sql
+CREATE TABLE child_table (
+    column_name data_type,
+    other_column data_type,
+    FOREIGN KEY (column_name) REFERENCES parent_table(parent_column)
 );
 ```
 
-#### Extracting Data
+In this example, `column_name` in the `child_table` references `parent_column`
+in the `parent_table`, establishing a foreign key relationship.
 
-To extract the `price` from the JSON column:
+### Benefits of Foreign Keys
 
-```sql
-SELECT json_extract(product_info, '$.price')
-FROM products;
-```
+1. **Data Integrity**: Ensures that relationships between tables remain valid
+   and consistent.
 
-#### Adding New Data
+2. **Cascade Updates and Deletes**: Foreign keys can be used to automatically
+   manage changes such as deleting all related records across tables when a parent
+   record is deleted, using options like `ON DELETE CASCADE` or `ON UPDATE 
+CASCADE`.
 
-To add a new key-value pair to the JSON:
-
-```sql
-UPDATE products
-SET product_info = json_insert(product_info, '$.stock', 100)
-WHERE id = 1;
-```
-
-#### Updating Data
-
-To update a value within the JSON:
+3. **Simplified Database Management**: By using foreign keys, many data
+   integrity issues are automatically managed, reducing the need for manual checks
+   and maintenance.
 
 ```sql
-UPDATE products
-SET product_info = json_set(product_info, '$.price', 29.99)
-WHERE id = 1;
+CREATE TABLE child_table (
+    column_name data_type,
+    other_column data_type,
+    FOREIGN KEY (column_name) REFERENCES parent_table(parent_column)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+);
 ```
+
+### Limitations
+
+While foreign keys offer many benefits in SQLite, there are some limitations:
+
+- Older versions of SQLite may not support foreign keys at all. It's important
+  to ensure your SQLite version supports them.
+- Not enabled by default; you have to explicitly turn it on for them to be
+  functional.
+
+By understanding and leveraging foreign keys, SQLite users can ensure the
+structural integrity of their databases more effectively.
+
+## 15. SQLite Backup and Restore
+
+In this article, we delve into how to back up and restore SQLite databases.
+Backup and restore are essential techniques for database integrity, especially
+when dealing with critical data. SQLite provides simple mechanisms to handle
+these operations efficiently.
+
+### Backup
+
+Backing up an SQLite database involves copying the database file to a secure
+location. This process can be as straightforward as using file-copy utilities
+to duplicate the `.sqlite` file. However, SQLite also offers a built-in backup
+API for programmatic use within applications.
+
+The following example demonstrates how to create a backup using this API:
+
+#### Backup Example
+
+```sql
+-- Create backup file.
+sqlite3 main.db ".backup backup.db"
+```
+
+#### Step-by-Step Instructions:
+
+1. **Open the SQLite shell:**
+   Launch the SQLite command-line tool.
+2. **Specify the database:**
+   Use the `.open` command to select your database.
+3. **Run the backup command:**
+   Execute the `.backup` command as shown above.
+4. **Verify backup integrity:**
+   Check the backup to ensure it was successful.
+
+### Restore
+
+Restoring a database can be done by reversing the backup process. Essentially,
+copy the backup file over the current database file. You can also use SQL
+to restore from a backup.
+
+#### Restore Example
+
+```sql
+-- Restore backup file.
+sqlite3 backup.db ".restore main.db"
+```
+
+#### Step-by-Step Instructions:
+
+1. **Open the SQLite shell:**
+   Access the sqlite3 command-line.
+2. **Select the backup source:**
+   Use the `.open` command to point to the backup file.
+3. **Run the restore command:**
+   Execute the `.restore` command as shown.
+4. **Confirm restoration:**
+   Validate the integrity of the restored database.
+
+### Additional Considerations
+
+- **Regular Backups:** Ensure timely and regular backups to safeguard data.
+- **Backup Locations:** Store backups offsite to prevent data loss from
+  physical damage or theft.
+- **Encryption:** Consider encrypting the SQLite database for added security.
+
+Backup and restore procedures are vital in database management. Mastering
+them is essential for any robust data strategy. Stay tuned for more advanced
+topics on SQLite.
+
+## 16. SQLite Security Features
+
+SQLite is widely used for storing local data in applications, making its
+security features crucial for protecting sensitive information. Understanding
+the built-in security mechanisms and how to apply them is essential for
+every developer working with SQLite.
+
+### File System Permissions
+
+SQLite databases are stored as ordinary disk files in the filesystem. The
+most fundamental security feature is the file system permissions that control
+which users can read or write to the database file. It's important to ensure
+that permissions are correctly set to avoid unauthorized access.
+
+### Read-Only Databases
+
+To prevent accidental modification of data, SQLite provides an option to
+open databases in a read-only mode. This can be enforced programmatically
+by specifying the mode when opening the database.
+
+### Encryption
+
+SQLite itself doesn't provide encryption, but there are extensions
+available, such as SQLCipher, that enable full database encryption. This
+ensures that even if the database file is accessed, the data cannot be
+read without the correct key.
+
+### PRAGMA Database-Level Security
+
+SQLite supports various PRAGMA commands that can enhance database security.
+For example, `PRAGMA secure_delete` ensures that deleted content is
+zeroed out rather than left behind. Another important PRAGMA is
+`PRAGMA cipher` used in conjunction with encryption extensions.
+
+### Application-Level Encryption
+
+Developers can add another layer of security by encrypting sensitive data
+within the application before storing it in SQLite. This method ensures
+that even if attackers manage to bypass other security measures, they
+would still face additional hurdles in decrypting data.
+
+### SQL Injection Prevention
+
+Despite being an embedded database engine, SQLite is not immune to SQL
+injection attacks. It's critical to use parameterized queries or prepared
+statements which bind variables to queries safely, effectively preventing
+injection attacks.
+
+In conclusion, while SQLite offers several security features and supports
+additional methods via extensions and best practices, developers should
+proactively integrate these security solutions in their applications to
+safeguard data effectively.
+
+## 17. SQLite Performance Tuning
+
+SQLite is a lightweight database engine, but performance tuning is
+necessary to ensure optimal performance in applications. This article
+covers strategies for improving SQLite database performance.
+
+### Caching and Optimization
+
+SQLite provides options for caching data in memory, which can
+significantly improve read performance. Setting the cache size
+appropriately based on available memory is critical.
+
+#### Optimizing Cache Size
+
+The cache size can be adjusted using the `PRAGMA cache_size` command.
+Larger cache sizes reduce disk access but increase memory usage.
+Tuning cache size is a balance between memory availability and
+database workload.
+
+#### Use Prepared Statements
+
+Compiling SQL statements each time they are executed can be costly.
+Using prepared statements, especially for frequently executed queries,
+can lead to substantial performance gains.
+
+### Efficient Indexing
+
+Proper indexing can greatly enhance query performance. Avoid over-
+indexing, which can result in unnecessary overhead during insert and
+update operations.
+
+#### Choosing Indexes
+
+Analyze query patterns to identify beneficial indexes. Use the `EXPLAIN`
+command to understand the execution plan of queries, helping to
+identify indexes that can reduce query execution time.
+
+#### Updating Indexes
+
+Regularly check for unused or outdated indexes that may need removal.
+Update indexes to reflect changes in query patterns over time.
+
+### Transaction Management
+
+Batching operations into larger transactions reduces transaction
+commit overhead and can significantly boost performance.
+
+#### Group Transactions
+
+Group multiple SQL statements into a transaction using
+`BEGIN ... COMMIT` to minimize the number of disk writes and enhance
+performance.
+
+### Vacuum and Analyze
+
+#### VACUUM
+
+The `VACUUM` command rebuilds the database file, removing freelists
+and compacting the database. This can reduce file size and improve
+read performance.
+
+#### ANALYZE
+
+Using the `ANALYZE` command helps SQLite gather statistics about
+table content, which SQLite can use to make better query planning
+decisions, thus improving query performance.
 
 ### Conclusion
 
-SQLite's JSON support is an excellent feature for dealing with complex
-data structures directly in the database. With a variety of functions,
-it provides flexibility and efficiency in handling JSON data.
+Regular performance tuning is vital in keeping an SQLite database
+running efficiently. Ensuring the correct balance in caching,
+indexing, transaction handling, and routine maintenance can lead to
+substantial performance improvements.
 
-## 17. SQLite Full-Text Search (FTS)
+## 18. SQLite and JSON Support
 
-SQLite provides Full-Text Search (FTS) as an extension that enables efficient
-searching of text within a large body of text. FTS is highly useful when you
-need to perform advanced searches on text-based data stored in an SQLite
-database.
+SQLite, as a lightweight database engine, offers JSON support
+for handling JSON data within its structured SQL environment.
+This feature allows developers to store JSON data in
+SQLite tables, query JSON data using SQL functions, and
+perform operations like aggregations or transformations.
 
-### Enabling Full-Text Search
+### Storing JSON Data
 
-To use the Full-Text Search extension in SQLite, you need to ensure the
-library is compiled with the `FTS5` module. In most cases, modern
-installations of SQLite come with FTS included.
+To store JSON data in SQLite, you can use the `TEXT` data type.
+SQLite doesn't have a dedicated JSON column type, but JSON
+functions interpret text data as JSON content. SQLite expects
+well-formed JSON strings, and you can use JSON functions for
+validation.
 
-### Creating an FTS Table
+### JSON Functions
 
-To leverage FTS, you create a virtual table using `CREATE VIRTUAL TABLE`
-with FTS5. Here is an example:
+SQLite provides a number of JSON functions to manipulate and
+query JSON data:
 
-```sql
-CREATE VIRTUAL TABLE documents USING fts5(content);
-```
+- **json()**: Parses JSON text and ensures its validity.
+- **json_extract()**: Extracts specific values from JSON data.
+- **json_set()**: Modifies JSON data by setting new values.
+- **json_remove()**: Removes elements from JSON data.
+- **json_type()**: Returns the type of a specific JSON field.
+- **json_array()**: Constructs a JSON array from arguments.
+- **json_object()**: Creates a JSON object from a set of key/value pairs.
 
-In this example, `documents` is the FTS virtual table, and `content`
-is the column to perform text searches on.
+### Querying JSON Data
 
-### Inserting Data into FTS Table
-
-You can insert data into the FTS virtual table like regular tables:
-
-```sql
-INSERT INTO documents (content) VALUES ('Sample text to search');
-```
-
-### Querying an FTS Table
-
-To perform a search, use the `MATCH` operator to find rows:
-
-```sql
-SELECT * FROM documents WHERE content MATCH 'search term';
-```
-
-### Benefits of FTS
-
-- **Efficiency**: Optimized for fast text search queries.
-- **Ease of Use**: Easily integrates with SQLite operations.
-- **Versatility**: Supports complex queries with compound words and
-  phrases.
-
-### Conclusion
-
-SQLite's Full-Text Search capability is a robust tool for text search
-operations. Enabling FTS can significantly enhance your application's
-ability to handle text data efficiently, making it a necessary tool
-for text-heavy databases.
-
-## 18. SQLite and Spatial Data with R-Tree
-
-SQLite is not only a database management system for general-purpose
-applications but also supports managing spatial data through extensions
-such as R-Tree. R-Tree is a powerful indexing method especially well-suited
-for spatial data, allowing for efficient querying of spatial regions,
-proximity, and inclusions. This article explores the R-Tree module in
-SQLite and how it can be used for spatial data.
-
-### What is R-Tree?
-
-R-Tree is a height-balanced tree similar to a B-tree but designed for
-handling multi-dimensional information such as geographical coordinates.
-It divides a space into hierarchically nested, and possibly overlapping,
-'spatial bounding boxes' or 'nodes'. This structure helps in
-speeding up the search operations on spatial data significantly.
-
-### Enabling R-Tree in SQLite
-
-The R-Tree module is not enabled by default in SQLite and may require
-it to be compiled with SQLite or included as an extension. If you're
-using SQLite3 CLI or library compiled with R-Tree support, you can
-quickly create an R-Tree table as follows:
+Using `json_extract()`, you can query specific fields in your
+JSON data. Suppose you have a table with a JSON column named
+`data`, you can extract an element like so:
 
 ```sql
-CREATE VIRTUAL TABLE demo_rtree USING rtree(id, minX, maxX, minY, maxY);
+SELECT json_extract(data, '$.key') FROM table_name;
 ```
 
-#### Breakdown of the Command:
+Here, `$.key` represents the JSON path to the target field.
+SQLite's JSON functions allow complex paths to target nested
+objects or arrays.
 
-- `CREATE VIRTUAL TABLE demo_rtree`: Creates a virtual table named
-  `demo_rtree`.
-- `USING rtree`: Specifies that the table uses the R-Tree module.
-- `(id, minX, maxX, minY, maxY)`: These are the columns,
-  where `id` is a unique identifier and `minX`, `maxX`, `minY`,
-  `maxY` represent the bounding rectangle of the spatial object.
+### Advantages of JSON Support in SQLite
 
-### Inserting and Querying Data
+- Allows seamless storage and manipulation of semi-structured
+  data.
+- Facilitates integration with applications that consume or
+  produce JSON.
+- Maintains the flexibility and simplicity of SQLite while
+  offering powerful manipulation capabilities.
 
-```sql
-INSERT INTO demo_rtree VALUES(1, 10, 20, 30, 40);
-```
+SQLite JSON extensions significantly enhance its capabilities
+allowing developers to merge structured database advantages
+with the flexibility of modern JSON data formats.
 
-Querying whether a point lies within any rectangle can be efficiently
-done using:
+## 19. SQLite in Mobile Development
 
-```sql
-SELECT * FROM demo_rtree WHERE minX <= 15 AND maxX >= 15 AND
-                               minY <= 35 AND maxY >= 35;
-```
+SQLite is a popular choice when it comes to mobile app development. Its lightweight
+nature, serverless architecture, and minimal configuration requirements make it
+ideal for mobile platforms such as Android and iOS. In this article, we'll explore
+how SQLite is utilized in mobile development and some of the best practices to
+adopt.
 
-This command checks if the point `(15, 35)` lies inside any of the
-rectangles stored in the table.
+### Why SQLite for Mobile?
 
-### Applications and Use Cases
+SQLite is embedded within the device’s native API, allowing apps to use it directly
+without any additional installation. This seamless integration simplifies development
+and enhances performance. Furthermore, SQLite can handle various data sizes, making
+it versatile for different mobile applications.
 
-The use of R-Trees in SQLite is prevalent in applications involving
-geographical data, such as geographical Information Systems (GIS),
-mapping, and location-based services. They are excellent for spatial
-queries like finding all locations within a certain distance or querying
-all spatial entities that overlap with a given area.
+### Implementing SQLite in Android
 
-By utilizing the R-Tree extension in SQLite, applications handling
-spatial data can increase efficiency, scalability, and performance
-significantly. As spatial data is becoming more widespread in various
-fields, understanding and effectively using R-Trees can be beneficial
-for developers working with location-based or geographical data
-applications.
+In Android development, SQLite databases are often the backbone of app storage. The
+**SQLiteOpenHelper** class is typically used to manage database creation and version
+management. Android SQLite databases are stored in the device's file system, providing
+a reliable storage option.
 
-## 19. SQLite Encryption and Security
+#### Basic Steps:
 
-SQLite is widely used in various applications, and securing the data is a crucial
-aspect, especially in client-side storage. This article provides insights into
-SQLite encryption techniques and security practices.
+- **Define Contracts**: Define the schema in a contract class.
+- **Subclass SQLiteOpenHelper**: Override methods like `onCreate()` and `onUpgrade()`.
+- **Perform CRUD Operations**: Use methods like `insert()`, `update()`, `delete()`,
+  and `query()` to manipulate data.
+- **Manage Database Connections**: Properly open and close database connections to
+  prevent leaks.
 
-### Enabling SQLite Encryption
+### Implementing SQLite in iOS
 
-To secure data stored in SQLite, developers can enable encryption through
-various means. One common approach is using the SQLite Encryption Extension
-(SEE). However, availability depends on licensing and the specific SQLite
-implementation you are using.
+For iOS applications, developers typically use SQLite via the Objective-C and Swift
+languages. The **FMDB** (a wrapper around SQLite), provides an easy-to-use interface
+for SQLite.
 
-#### Open-Source Encryption Options
+#### Basic Steps:
 
-1. **SQLCipher**: A widely-used, open-source extension to SQLite that provides
-   encryption at rest. SQLCipher performs real-time encryptions and is ideal for
-   mobile applications.
+- **Initialize Database**: Include SQLite framework.
+- **Database Path**: Typically, you would create or copy the database to the
+  application's Documents Directory.
+- **Execute SQL**: Use SQL commands to perform various operations.
 
-2. **wxSQLite3**: Another open-source library based on SQLite that provides
-   encryption support. It includes cipher compatibility with SQLCipher.
+### Best Practices
 
-#### Implementing SQLCipher
+1. **Use Asynchronous Calls**: Avoid running database operations on the main thread
+   to prevent UI blocking.
+2. **Optimize Queries**: Use indexing and query optimization techniques to enhance
+   performance.
+3. **Secure Data**: Encrypt sensitive data to maintain user privacy.
+4. **Backup Regularly**: Implement mechanisms to back up essential data frequently.
 
-SQLCipher is typically implemented by replacing the SQLite database
-implementation with SQLCipher in your project. Here's how to implement it:
+SQLite’s capabilities are well-suited for mobile development, allowing developers to
+create robust, scalable, and responsive apps. Keeping in mind best practices ensures
+databases are efficient, secure, and maintainable.
 
-```bash
+## 20. SQLite Future Trends and Innovations
 
-brew install sqlcipher
+SQLite remains one of the most popular database engines due to its simplicity,
+reliability, and rich features. Looking towards the future, there are several
+trends and innovations that are likely to influence SQLite's development:
 
-cc -DSQLITE_HAS_CODEC -I/opt/local/include -L/opt/local/lib -lcrypto
--lsqlcipher
-```
+### Embedding in IoT Devices
 
-In your application:
+SQLite's lightweight architecture makes it ideal for the Internet of Things
+(IoT) applications. With IoT's expanding market, SQLite's role is likely to
+grow as a database for managing local storage needs in smart devices.
 
-```sql
--- Code to set up database encryption
-temp_store_directory = 'var/db'  -- set directory
-PRAGMA key = 'my_secret_key';   -- set encryption key
-```
+### Increased Emphasis on Security
 
-### Security Best Practices
+As data breaches become more frequent, SQLite is expected to emphasize security
+features further. This includes enhancements to encryption support and better
+authentication protocols.
 
-1. **Strong Passwords**: Use strong, complex passwords as keys for encrypting
-   your databases.
+### Integration with New Programming Paradigms
 
-2. **Regular Backups**: Even encrypted data needs regular backups to prevent
-   data loss.
+The rise of new programming methodologies and tools will likely prompt SQLite
+to evolve, offering better integration with functional programming, asynchronous
+processing, and more.
 
-3. **Updates**: Keep your SQLite, and encryption libraries up to date to avoid
-   vulnerabilities.
+### Cloud-native Adaptations
 
-4. **Access Control**: Limit access to your SQLite database to protect against
-   unauthorized access.
+With the increasing shift towards cloud environments, SQLite might innovate
+by offering seamless cloud-native database solutions that could automatically
+synchronize with distributed systems.
 
-5. **Data Masking**: Consider additional layers of security such as data
-   masking or tokenization where applicable.
+### Enhanced JSON and NoSQL Features
 
-By appropriately utilizing encryption and best practices, SQLite databases can
-be effectively secured, providing peace of mind in relation to data privacy and
-protection.
+Considering the increasing use of JSON and NoSQL paradigms, SQLite may expand
+its support for non-relational data, offering more flexible querying options
+and storage solutions.
 
-## 20. SQLite Best Practices and Advanced Tips
+### Machine Learning and Analytics Integration
 
-SQLite is a powerful database engine, but to leverage its full potentia...ue should ensure that valid inputs are used. Use parameterized queries to mitigate against SQL injection attacks.
+Integration with machine learning and data analytics tools could make SQLite
+a more compelling solution for applications requiring local, performant
+analytical capabilities.
 
-- **Backup Regularly**: Even though SQLite can be robust and reliable, it is always wise to implement regular backups, especially before making significant updates or migrations.
+### Community-driven Enhancements
 
-By following these best practices and incorporating advanced techniques, SQLite can be an excellent choice for a variety of applications, delivering robust performance and reliability.
+SQLite's open-source nature ensures that community-driven enhancements will
+continue to play a pivotal role in its development, potentially leading to
+innovative features that cater to emerging needs.
+
+As these trends develop, SQLite is poised to remain a critical player in the
+database landscape, continually adapting to meet the needs of modern
+applications and environments.

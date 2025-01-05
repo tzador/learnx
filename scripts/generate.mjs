@@ -11,7 +11,7 @@ function slugit(text) {
 }
 
 function padi(i) {
-  return (i + 1).toString().padStart(2, "0");
+  return (i + 1).toString();
 }
 
 const openai = new OpenAI();
@@ -37,7 +37,7 @@ for (const topic of topics) {
       {
         role: "system",
         content: `
-You are the expert in the topic "${topic}".
+You are the expert in the topic "${topic}" in the field of Computer Science.
 You will teach me the topic "${topic}" in a series of markdown articles.
 Report the generated articles by calling the function "report_article"
 with the necessary parameters, which include:
@@ -62,7 +62,7 @@ Each article content should be in the following format:
         ? []
         : [
             {
-              role: "assistant",
+              role: "user",
               content:
                 `You have already generated articles with this titles:\n` +
                 articles.map((a) => `- ${a.title}`).join("\n")
