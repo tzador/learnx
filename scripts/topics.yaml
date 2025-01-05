@@ -1,15 +1,18 @@
-- c
-- cpp
-- go
-- java
-- kotlin
-- python
-- rust
-- swift
-- typescript
-- webassembly
-- webgl
-- webgpu
-- webxr
-- zig
 - Advanced TypeScript
+- C
+- C++
+- Go
+- Java
+- Kotlin
+- Next.js
+- Python
+- React
+- Rust
+- Swift
+- Tailwind CSS
+- TypeScript
+- WebAssembly
+- WebGL
+- WebGPU
+- WebXR
+- Zig

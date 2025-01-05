@@ -4,7 +4,9 @@ import yaml from "yaml";
 import fs from "fs";
 import slugify from "slugify";
 
-const topics = yaml.parse(fs.readFileSync("./scripts/topics.yaml", "utf8"));
+const topics = yaml
+  .parse(fs.readFileSync("./scripts/topics.yaml", "utf8"))
+  .sort();
 
 let readme = fs.readFileSync("./README.md", "utf8");
 
