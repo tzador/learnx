@@ -37,11 +37,11 @@ for its clear syntax, absence of a preprocessor, and an explicit control flow.
 ### Why Use Zig?
 
 - **Performance**: Zig aims to have performance on par with C, giving you the
-flexibility and power for high-performance applications.
+  flexibility and power for high-performance applications.
 - **Safety**: The language provides safety nets like optional bounds checking
-and compile-time analysis to help prevent potential bugs.
+  and compile-time analysis to help prevent potential bugs.
 - **Portability**: Zig supports cross-compilation, letting you build binaries
-for multiple platforms from a single development environment.
+  for multiple platforms from a single development environment.
 
 This introduction sets the stage for understanding the foundational concepts
 and features that make Zig a compelling choice for developers seeking
@@ -49,55 +49,55 @@ performance and portability without sacrificing simplicity or control.
 
 ## 02. Setting Up Zig Environment
 
-Before diving into coding with Zig, it's essential to set up your 
-development environment correctly. This article will guide you 
+Before diving into coding with Zig, it's essential to set up your
+development environment correctly. This article will guide you
 through the process.
 
 ### Download and Install Zig
 
-1. **Official Website**: Go to the 
-   [Zig website](https://ziglang.org/download/) to download 
+1. **Official Website**: Go to the
+   [Zig website](https://ziglang.org/download/) to download
    the latest stable release of Zig for your operating system.
 
-2. **Installation**: Follow the installation instructions 
+2. **Installation**: Follow the installation instructions
    specific to your operating system (Windows, macOS, or Linux).
 
-   - **Windows**: Unzip the downloaded file and add the Zig 
+   - **Windows**: Unzip the downloaded file and add the Zig
      executable to your PATH.
-   - **macOS**: Use Homebrew for easier installation with 
+   - **macOS**: Use Homebrew for easier installation with
      the command `brew install zig`.
-   - **Linux**: Extract the archive and move the Zig files 
+   - **Linux**: Extract the archive and move the Zig files
      to an appropriate directory (e.g., `/usr/local/bin`).
 
 ### Verify Installation
 
-After installation, it's important to verify whether Zig is 
-installed correctly by running the following command in your 
+After installation, it's important to verify whether Zig is
+installed correctly by running the following command in your
 terminal or command prompt:
 
 ```bash
 zig version
 ```
 
-This command should display the installed version of Zig 
+This command should display the installed version of Zig
 if it's set up correctly.
 
 ### IDE and Editor Support
 
-To enhance your Zig development experience, consider setting up 
-an Integrated Development Environment (IDE) or a text editor 
+To enhance your Zig development experience, consider setting up
+an Integrated Development Environment (IDE) or a text editor
 that supports Zig.
 
-- **VSCode**: Use the official Zig extension for syntax 
-highlighting, autocompletion, and other features.
+- **VSCode**: Use the official Zig extension for syntax
+  highlighting, autocompletion, and other features.
 
-- **Vim/Neovim**: There are plugins available such as 
-`coc-zig` for autocompletion.
+- **Vim/Neovim**: There are plugins available such as
+  `coc-zig` for autocompletion.
 
-- **Other Editors**: Check for Zig support or community plugins 
-for your preferred editor.
+- **Other Editors**: Check for Zig support or community plugins
+  for your preferred editor.
 
-With your environment set up, you're ready to start building 
+With your environment set up, you're ready to start building
 projects with Zig!
 
 ## 03. Basic Syntax and Structure
@@ -121,6 +121,7 @@ pub fn main() void {
 ```
 
 #### Key Points:
+
 - **Imports**: Zig uses the `@import` directive to load standard libraries.
 - **Entry Point**: `pub fn main() void` is the entry point of a Zig program.
 - **Error Handling**: Zig uses `try` for error handling during function calls.
@@ -129,6 +130,7 @@ pub fn main() void {
 ### Understanding the Program Structure
 
 A typical Zig program consists of:
+
 - **Constants and Variables**: Defined using `const` and `var` respectively.
 - **Functions**: Use the `fn` keyword to define functions.
 - **Scopes**: Code blocks are defined using curly braces `{}`.
@@ -153,6 +155,7 @@ pub fn main() void {
 ```
 
 #### Explanation:
+
 - **Function Definition**: `fn add(a: i32, b: i32) i32` defines a function
   named `add` which takes two integers and returns their sum.
 - **Main Function**: Calls `add` and prints the result using `stdout.print()`.
@@ -178,7 +181,7 @@ var mutableNumber: i32 = 20; // Mutable
 ```
 
 Note that type annotations (e.g., `i32`) are mandatory in Zig, ensuring
-type safety. 
+type safety.
 
 ### Basic Types
 
@@ -285,8 +288,8 @@ manage the execution logic of your Zig programs effectively.
 
 ## 06. Functions and Pointers
 
-In Zig, functions are first-class citizens, and defining them is straightforward. 
-Functions encapsulate code for reuse and are defined using the `fn` keyword. 
+In Zig, functions are first-class citizens, and defining them is straightforward.
+Functions encapsulate code for reuse and are defined using the `fn` keyword.
 Here's a simple example:
 
 ```zig
@@ -295,12 +298,12 @@ fn add(a: i32, b: i32) i32 {
 }
 ```
 
-This function takes two `i32` numbers and returns their sum. 
+This function takes two `i32` numbers and returns their sum.
 
 ### Pointers in Zig
 
-Pointers in Zig are similar to those in C/C++, but with safer 
-semantics. A pointer stores the memory address of a variable and 
+Pointers in Zig are similar to those in C/C++, but with safer
+semantics. A pointer stores the memory address of a variable and
 allows you to access and modify the value at that address.
 
 To declare a pointer, use the `*` symbol. Here's an example:
@@ -317,8 +320,8 @@ You can access the value using `*` dereference operator:
 print("Value at address: {}, Value: {}", p, *p);
 ```
 
-Pointers are crucial for memory management and interop 
-with other languages. Zig allows you to control and manage 
+Pointers are crucial for memory management and interop
+with other languages. Zig allows you to control and manage
 memory efficiently using pointers.
 
 ## 07. Working with Arrays in Zig
@@ -386,16 +389,17 @@ learning Zig, mastering arrays will be invaluable for efficient data management.
 
 Error handling in Zig is quite unique and relies on two main primitives:
 errors and optional types. Unlike many other languages with exceptions,
-Zig uses a combination of error union types and `try`, `catch`, and 
+Zig uses a combination of error union types and `try`, `catch`, and
 `else` for control flow.
 
 ### Errors
 
-Errors in Zig are values that conform to a particular error set. You 
-can create an error set by declaring `error {}`. An error set may 
+Errors in Zig are values that conform to a particular error set. You
+can create an error set by declaring `error {}`. An error set may
 contain multiple error identifiers.
 
 Example:
+
 ```zig
 const MyErrors = error {
     FileNotFound,
@@ -405,17 +409,19 @@ const MyErrors = error {
 
 Use errors in function signatures with an `!` to denote the possibility
 of an error:
+
 ```zig
 fn doSomething()!void {...}
 ```
 
 ### Error Unions and Handling
 
-Error handling in Zig involves using error unions. An error union type 
-is created implicitly by returning an error from a function, indicated 
+Error handling in Zig involves using error unions. An error union type
+is created implicitly by returning an error from a function, indicated
 by using `!Type`.
 
 Example:
+
 ```zig
 fn readFile()![]u8 {
     var file = try fs.openFile("data.txt", .{});
@@ -428,6 +434,7 @@ fn readFile()![]u8 {
 #### Catch and Else Usage
 
 To handle errors, use `catch` and `else`:
+
 ```zig
 const result = readFile() catch |err| {
     std.debug.print("Failed to read file: {\n}", .{err});
@@ -444,25 +451,25 @@ when capturing successful completions.
 
 #### Try Keyword
 
-The `try` keyword is a common and convenient approach in Zig for 
+The `try` keyword is a common and convenient approach in Zig for
 propagating errors to the calling function.
 
 ### Conclusion
 
 Zig's approach to error handling provides developers with explicit
-control over failure handling and propagation. With practice, the 
-use of `try`, `catch`, and `else` will become intuitive in writing 
+control over failure handling and propagation. With practice, the
+use of `try`, `catch`, and `else` will become intuitive in writing
 robust Zig applications.
 
 ## 09. Memory Management in Zig
 
-In Zig, memory management is highly emphasized to ensure that programs are 
-efficient and free from common errors typically associated with manual 
+In Zig, memory management is highly emphasized to ensure that programs are
+efficient and free from common errors typically associated with manual
 memory management.
 
 ### Allocators
 
-Allocators are a critical component in Zig for controlling memory usage. 
+Allocators are a critical component in Zig for controlling memory usage.
 They provide memory to the program and manage it efficiently.
 
 ```zig
@@ -476,19 +483,22 @@ pub fn main() !void {
 }
 ```
 
-In this example, `std.heap.page_allocator` is used for allocating a buffer 
+In this example, `std.heap.page_allocator` is used for allocating a buffer
 of 100 bytes and then freeing it when done.
 
 #### General-purpose Allocator
-Zig provides a general-purpose allocator known as `std.heap.GeneralPurposeAllocator` 
+
+Zig provides a general-purpose allocator known as `std.heap.GeneralPurposeAllocator`
 which can be easily configured and extended.
 
 ### Manual Memory freeing
-Zig does not have a garbage collector, which means you must manually manage 
+
+Zig does not have a garbage collector, which means you must manually manage
 memory using the allocator's `free` method after memory is no longer needed.
 
 ### Using Defer
-Zig offers the `defer` keyword to simplify memory management, 
+
+Zig offers the `defer` keyword to simplify memory management,
 ensuring that memory freeing happens regardless of early returns.
 
 ```zig
@@ -503,24 +513,24 @@ pub fn main() !void {
 }
 ```
 
-The `defer` statement guarantees that `allocator.free(buffer);` will be 
-called when exiting the scope, whether the function completes normally or 
+The `defer` statement guarantees that `allocator.free(buffer);` will be
+called when exiting the scope, whether the function completes normally or
 exits via errors or returns.
 
-Understanding Zig's memory management is essential for writing robust and 
-efficient applications, as it allows programmers to directly manage resources 
+Understanding Zig's memory management is essential for writing robust and
+efficient applications, as it allows programmers to directly manage resources
 in a predictable manner.
 
 ## 10. Concurrency in Zig
 
-Concurrency in Zig allows a program to perform multiple operations 
-simultaneously. Zig provides simple yet powerful tools for creating 
+Concurrency in Zig allows a program to perform multiple operations
+simultaneously. Zig provides simple yet powerful tools for creating
 concurrent programs, focusing on performance and safety.
 
 ### Async Functions
 
-Zig has `async` functions that allow the suspension and resumption of 
-execution. An `async` function returns a `promise` which can be 
+Zig has `async` functions that allow the suspension and resumption of
+execution. An `async` function returns a `promise` which can be
 `awaited` elsewhere in the program.
 
 Example:
@@ -536,20 +546,20 @@ const data = await fetchData();
 
 ### Comptime
 
-Zig provides `comptime` to evaluate expressions at compile time, adding a 
-powerful dimension to concurrency by resolving certain operations 
+Zig provides `comptime` to evaluate expressions at compile time, adding a
+powerful dimension to concurrency by resolving certain operations
 before runtime.
 
 ### Synchronization
 
-Zig does not have built-in threads like some other languages, but it 
-allows the creation of threads through its interface to C standard 
-lib functions, like `pthread`. Synchronization primitives such as 
+Zig does not have built-in threads like some other languages, but it
+allows the creation of threads through its interface to C standard
+lib functions, like `pthread`. Synchronization primitives such as
 mutexes and condition variables are under user control.
 
-By understanding and using these concurrency concepts, you can build 
-highly efficient Zig programs that perform tasks concurrently. 
-Zig's concurrency model gives you low-level control over execution, 
+By understanding and using these concurrency concepts, you can build
+highly efficient Zig programs that perform tasks concurrently.
+Zig's concurrency model gives you low-level control over execution,
 enabling optimizations for performance-critical applications.
 
 ## 11. Build System and Package Management in Zig
@@ -578,6 +588,7 @@ pub fn build(b: *Builder) void {
 ```
 
 #### Explanation:
+
 - **Builder**: The Zig build system relies on a `Builder` object to manage
   the build process.
 - **addExecutable**: This function specifies the output binary name and the
@@ -590,11 +601,14 @@ pub fn build(b: *Builder) void {
 ### Advanced Build Configurations
 
 #### Libraries
+
 For libraries, you use `addLibrary`, similar to `addExecutable`, and manage
 linking dependencies accordingly.
 
 #### Testing
+
 To add build steps for testing:
+
 ```zig
 const test_step = b.addTest("test");
 test_step.addFile("src/test.zig");
@@ -607,7 +621,9 @@ partially through `build.zig` by directly linking to other projects' source
 code or through third-party tools like Zigmod.
 
 #### Example of Importing Packages:
+
 You can pull in code from an external directory:
+
 ```zig
 const some_lib = b.addPackageFromFile(
     "@some/package",
@@ -625,14 +641,14 @@ projects grow in size and complexity.
 
 ## 12. Modules and Imports in Zig
 
-In Zig, organizing code into modules and handling imports is a key feature. 
-Modules help in creating reusable code components and keep your code 
+In Zig, organizing code into modules and handling imports is a key feature.
+Modules help in creating reusable code components and keep your code
 structured and organized.
 
 ### Creating and Using Modules
 
-Zig uses files as modules. Each .zig file can be considered a module that 
-can be imported and utilized in other files. To create a module, just 
+Zig uses files as modules. Each .zig file can be considered a module that
+can be imported and utilized in other files. To create a module, just
 define your functions and types in a `.zig` file.
 
 #### Example:
@@ -664,19 +680,19 @@ pub fn main() void {
 }
 ```
 
-In this example, `math_operations` is imported and its `add` function is 
+In this example, `math_operations` is imported and its `add` function is
 used to perform addition.
 
 ### Zig's Import System
 
-The import system in Zig is simple yet powerful. Zig searches for the 
-imported files in the current directory, making it easy to manage 
+The import system in Zig is simple yet powerful. Zig searches for the
+imported files in the current directory, making it easy to manage
 dependencies.
 
 ### Conclusion
 
-Modules in Zig help organize code into manageable components. By using 
-the import system, different parts of an application can be developed 
+Modules in Zig help organize code into manageable components. By using
+the import system, different parts of an application can be developed
 separately and then combined, improving modularity and maintainability.
 
 ## 13. Testing and Debugging in Zig
@@ -842,23 +858,27 @@ that require compatibility and performance on multiple operating systems and
 hardware architectures. Here's how Zig facilitates cross-platform development.
 
 ### Standard Library
+
 Zig's standard library is built to support multiple platforms without requiring
 different code bases. By using the interfaces provided by the standard library,
 your application can operate consistently across different environments.
 
 ### Conditional Compilation
+
 Zig offers a powerful mechanism for conditional compilation via "`@target`"
 features. This allows developers to define code paths that are specific to
 certain platforms or architectures, ensuring optimal performance and
 compatibility.
 
 ### Cross Compilation
+
 One of Zig's strengths is its built-in support for cross compilation. You can
 effortlessly compile code for a different target by specifying the desired
 architecture and operating system. Zig cross compilation does not require
 external toolchains, simplifying the process significantly.
 
 ### Real-World Application
+
 To create a cross-platform application in Zig, start by writing platform-agnostic
 code using the standard library and `@target` features. Test your application on
 different platforms using Zig's comprehensive testing tools. When ready, build
@@ -866,6 +886,7 @@ your application for the target platforms and distribute your multi-platform
 binary packages.
 
 ### Practical Example
+
 Here's a simple example illustrating the use of conditional compilation
 and cross compilation:
 
@@ -932,6 +953,7 @@ pub fn main() void {
 ```
 
 #### Steps
+
 1. Use `@cInclude` to reference C headers.
 2. Link the C source or library at build time.
 3. Call C functions directly.
@@ -943,6 +965,7 @@ easily. For instance, `int` in C corresponds to `c_int` in Zig under
 `std.c.zig`.
 
 #### Useful Type Mappings
+
 - C `int` -> Zig `c_int`
 - C `float` -> Zig `c_float`
 - C `char *` -> Zig `[*c]u8`
@@ -953,6 +976,7 @@ To work with precompiled C libraries, link them using the `build.zig` file. Use
 the `addCSourceFile` or `linkLibrary` method provided by Zig's build system.
 
 ### Example of Linking
+
 Add the following to your `build.zig` to link a C library:
 
 ```zig
@@ -968,6 +992,7 @@ pub fn build(b: *Builder) void {
 ```
 
 ### Conclusion
+
 Interfacing Zig with C provides many opportunities to leverage existing
 technologies. Whether you're integrating legacy code or utilizing libraries,
 Zig's efficient interface to C streamlines development.
@@ -1205,28 +1230,28 @@ enhancements on the horizon.
 
 1. **Language and Compiler Improvements**: The Zig community is actively
    working on refining language features for cleaner syntax and
-efficiency. Improvements in the compiler are being made to enhance
-performance and build times.
+   efficiency. Improvements in the compiler are being made to enhance
+   performance and build times.
 
 2. **Better Tooling and Ecosystem**: Development tools around Zig are
-   expanding, with efforts being made to polish the package manager, 
-build system, and editors support for a seamless development experience.
+   expanding, with efforts being made to polish the package manager,
+   build system, and editors support for a seamless development experience.
 
 3. **Generics and Macros**: Although Zig aims to maintain simplicity,
    controlled use of generics and macro systems could be expected to
-allow more powerful abstractions.
+   allow more powerful abstractions.
 
 4. **Improved Concurrency Model**: There's ongoing research into
-   enhancing Zig's concurrency model to make it more efficient for 
-modern applications, possibly integrating more async/await patterns.
+   enhancing Zig's concurrency model to make it more efficient for
+   modern applications, possibly integrating more async/await patterns.
 
 5. **Embedded Development**: As Zig is well-suited for systems
    programming, further advances in support for embedded systems are
-expected, providing more libraries and frameworks for developers.
+   expected, providing more libraries and frameworks for developers.
 
 6. **Community and Adoption**: Zig's community is growing, fostering a
    culture of collaboration, open-source contribution, and widespread
-adoption in various domains.
+   adoption in various domains.
 
 Exploring these facets will ensure Zig stays relevant and competitive
 as an emerging technology that meets the demands of future software

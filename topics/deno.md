@@ -23,39 +23,39 @@
 
 ## 01. Introduction to Deno
 
-Deno is a simple, modern, secure runtime for JavaScript and TypeScript that is 
-designed to be a productive and safe environment for executing code outside the 
-web browser. It was created by Ryan Dahl, the original creator of Node.js, with 
+Deno is a simple, modern, secure runtime for JavaScript and TypeScript that is
+designed to be a productive and safe environment for executing code outside the
+web browser. It was created by Ryan Dahl, the original creator of Node.js, with
 the goal of fixing some design issues found in Node.js.
 
-One of the core philosophies of Deno is to provide secure defaults. By default, 
-Deno does not allow your code to access the network, file system, or environment 
-without explicit permission. This addresses a common criticism of Node.js, making 
+One of the core philosophies of Deno is to provide secure defaults. By default,
+Deno does not allow your code to access the network, file system, or environment
+without explicit permission. This addresses a common criticism of Node.js, making
 Deno especially appealing for developers concerned with security.
 
-Deno is built on V8, the same JavaScript engine that powers Google Chrome, and 
-it is written in Rust. Its package management is simplified as it imports modules 
+Deno is built on V8, the same JavaScript engine that powers Google Chrome, and
+it is written in Rust. Its package management is simplified as it imports modules
 directly from URLs, eliminating the need for a package manager like npm.
 
-The language feature set supported by Deno includes all of the latest JavaScript 
-and TypeScript capabilities, providing developers with modern syntax and 
+The language feature set supported by Deno includes all of the latest JavaScript
+and TypeScript capabilities, providing developers with modern syntax and
 features.
 
-In the following articles, we will explore various aspects of Deno, including 
-its installation, basic usage, the security model, and advanced features. 
-Whether you're a developer familiar with Node.js or new to server-side 
-JavaScript/TypeScript, Deno offers a fresh perspective on building 
+In the following articles, we will explore various aspects of Deno, including
+its installation, basic usage, the security model, and advanced features.
+Whether you're a developer familiar with Node.js or new to server-side
+JavaScript/TypeScript, Deno offers a fresh perspective on building
 applications.
 
 ## 02. Setting Up Deno Environment
 
-To start using Deno, you need to set up the environment on your machine. The 
-process is straightforward and can be done on different operating systems 
+To start using Deno, you need to set up the environment on your machine. The
+process is straightforward and can be done on different operating systems
 such as Windows, macOS, and Linux.
 
 ### Installation
 
-To install Deno, open your terminal or command prompt and use the following 
+To install Deno, open your terminal or command prompt and use the following
 command:
 
 ```bash
@@ -65,7 +65,7 @@ curl -fsSL https://deno.land/install.sh | sh
 iwr https://deno.land/x/install/install.ps1 -useb | iex
 ```
 
-This will download and install Deno, making it accessible via the `deno` 
+This will download and install Deno, making it accessible via the `deno`
 command in your path.
 
 ### Verifying Installation
@@ -90,10 +90,10 @@ This will download and install the latest version, replacing the previous one.
 
 ### Uninstalling Deno
 
-If you need to uninstall Deno, simply remove the installed binaries from your 
+If you need to uninstall Deno, simply remove the installed binaries from your
 path, often found at `~/.deno`.
 
-Now that your environment is set up, you are ready to start using Deno for 
+Now that your environment is set up, you are ready to start using Deno for
 development and experimentation!
 
 ## 03. Basic Deno CLI Commands
@@ -103,40 +103,51 @@ Command Line Interface (CLI) similar to Node.js but with notable
 differences.
 
 ### Initialization and Help
+
 Start by accessing help through the Deno CLI to understand various commands and options.
+
 ```
 deno help
 ```
 
 ### Running a Script
+
 Deno allows running scripts in JavaScript or TypeScript directly with a
 simple command. Here's how you can run a script:
+
 ```
 deno run script.ts
 ```
 
 #### Allowing Permissions
+
 Deno is built with security in mind. By default, it denies all file,
 network, and environment access. Use specific flags to allow needed
 permissions:
+
 - `--allow-net`: Allow network access.
 - `--allow-read`: Allow file system read access.
 - `--allow-write`: Allow file system write access.
 - `--allow-env`: Allow access to environment variables.
 
 Example granting read and net permissions:
+
 ```
 deno run --allow-read --allow-net script.ts
 ```
 
 ### Formatting Code
+
 Deno provides a built-in formatter for code:
+
 ```
 deno fmt script.ts
 ```
 
 ### Linting Code
+
 You can also lint your code with:
+
 ```
 deno lint script.ts
 ```
@@ -149,15 +160,15 @@ build upon for more complex functionalities.
 
 ## 04. Understanding Deno Permissions
 
-Deno is designed with security in mind, and by default, it does not have 
-access to files, the network, or environment variables unless explicitly 
-granted by the developer. This is a fundamental user-centric security 
+Deno is designed with security in mind, and by default, it does not have
+access to files, the network, or environment variables unless explicitly
+granted by the developer. This is a fundamental user-centric security
 feature that distinguishes Deno from its predecessor, Node.js.
 
 ### Permissions Overview
 
-When running a Deno application, you need to specify the permissions 
-your program requires using command-line flags. This can include but 
+When running a Deno application, you need to specify the permissions
+your program requires using command-line flags. This can include but
 is not limited to:
 
 - **File System Access**: `--allow-read`, `--allow-write`
@@ -166,12 +177,12 @@ is not limited to:
 - **Running Subprocesses**: `--allow-run`
 - **Access to Plugins**: `--allow-plugin`
 
-If a Deno script attempts to perform an operation without the required 
+If a Deno script attempts to perform an operation without the required
 permissions, it will throw an error.
 
 ### Granting Permissions
 
-Permissions are granted via command-line options when executing a 
+Permissions are granted via command-line options when executing a
 script. Here's an example of granting read access to the file system:
 
 ```shell
@@ -186,15 +197,15 @@ $ deno run --allow-read --allow-net your_script.ts
 
 ### Best Practices
 
-1. **Principle of Least Privilege**: Only grant the permissions you 
+1. **Principle of Least Privilege**: Only grant the permissions you
    absolutely need.
-2. **Testing Permissions**: During development, test what permissions 
+2. **Testing Permissions**: During development, test what permissions
    are needed and gradually tighten them to ensure the minimum is used.
-3. **Reviewing and Auditing**: Regularly review scripts to verify 
+3. **Reviewing and Auditing**: Regularly review scripts to verify
    required permissions are still warranted.
 
-Understanding and managing permissions in Deno is crucial for building 
-secure and efficient applications. Always aim to grant the least 
+Understanding and managing permissions in Deno is crucial for building
+secure and efficient applications. Always aim to grant the least
 permissions necessary for your code to function correctly.
 
 ## 05. Exploring Deno Modules
@@ -310,16 +321,16 @@ many developers.
 
 ## 07. File System Operations in Deno
 
-Deno provides a set of built-in modules that enable developers to perform 
-file system operations. These operations include creating, reading, 
-updating, and deleting files and directories. This makes Deno a powerful 
-platform for applications that need to interact with the file system 
+Deno provides a set of built-in modules that enable developers to perform
+file system operations. These operations include creating, reading,
+updating, and deleting files and directories. This makes Deno a powerful
+platform for applications that need to interact with the file system
 without relying on external libraries.
 
 ### Reading Files
 
-To read a file, you can use the `Deno.readTextFile` or `Deno.readFile` 
-methods. The `readTextFile` returns the file content as a string, whereas 
+To read a file, you can use the `Deno.readTextFile` or `Deno.readFile`
+methods. The `readTextFile` returns the file content as a string, whereas
 `readFile` returns an array of bytes.
 
 ```typescript
@@ -333,8 +344,8 @@ try {
 
 ### Writing Files
 
-Writing to a file is similarly straightforward using `Deno.writeTextFile` 
-or `Deno.writeFile`. These functions overwrite the file if it exists, or 
+Writing to a file is similarly straightforward using `Deno.writeTextFile`
+or `Deno.writeFile`. These functions overwrite the file if it exists, or
 create a new file if it doesn't.
 
 ```typescript
@@ -348,7 +359,7 @@ try {
 
 ### Creating Directories
 
-Creating directories can be done using `Deno.mkdir`. This function creates 
+Creating directories can be done using `Deno.mkdir`. This function creates
 a new directory at the specified path.
 
 ```typescript
@@ -362,8 +373,8 @@ try {
 
 ### Removing Files and Directories
 
-Files and directories can be removed using `Deno.remove`. This function 
-allows recursive removal, which is useful for deleting non-empty 
+Files and directories can be removed using `Deno.remove`. This function
+allows recursive removal, which is useful for deleting non-empty
 directories.
 
 ```typescript
@@ -383,19 +394,19 @@ try {
 ```
 
 These functions offer a robust and secure way to perform file operations within
-Deno, leveraging its permission-based execution model to maintain application 
-security. This allows developers to precisely control which files and 
+Deno, leveraging its permission-based execution model to maintain application
+security. This allows developers to precisely control which files and
 directories their applications can access.
 
 ## 08. Handling HTTP Requests in Deno
 
-In this article, we'll explore how to handle HTTP requests using Deno. Deno 
-provides built-in libraries to create servers and manage HTTP requests 
+In this article, we'll explore how to handle HTTP requests using Deno. Deno
+provides built-in libraries to create servers and manage HTTP requests
 effectively.
 
 #### Creating a Basic HTTP Server
 
-To create a simple HTTP server, you can use Deno's built-in `serve` function 
+To create a simple HTTP server, you can use Deno's built-in `serve` function
 from the `http/server.ts` module. Here's a basic example:
 
 ```typescript
@@ -409,7 +420,7 @@ for await (const req of server) {
 }
 ```
 
-In this example, we import the `serve` function, create a server on port 8000, 
+In this example, we import the `serve` function, create a server on port 8000,
 and handle requests by responding with "Hello World".
 
 #### Handling Different Paths
@@ -429,12 +440,12 @@ for await (const req of server) {
 }
 ```
 
-This code snippet checks the path and responds accordingly. It will serve 
+This code snippet checks the path and responds accordingly. It will serve
 different content for `/` and `/about` paths and return a 404 for others.
 
 #### Managing HTTP Methods
 
-You can also handle HTTP methods such as GET, POST, etc. by examining 
+You can also handle HTTP methods such as GET, POST, etc. by examining
 `req.method`:
 
 ```typescript
@@ -443,9 +454,12 @@ for await (const req of server) {
     req.respond({ body: "GET request received\n" });
   } else if (req.method === "POST") {
     let body = "";
-    await req.body.readable.getReader().read().then(({ value }) => {
-      body = value ? new TextDecoder().decode(value) : "";
-    });
+    await req.body.readable
+      .getReader()
+      .read()
+      .then(({ value }) => {
+        body = value ? new TextDecoder().decode(value) : "";
+      });
     req.respond({ body: `POST request received with body: ${body}\n` });
   }
 }
@@ -455,20 +469,20 @@ This snippet handles both GET and POST requests.
 
 #### Conclusion
 
-Deno provides a straightforward way to handle HTTP requests. By using the 
-built-in `serve` function, you can create and manage HTTP servers with ease. 
-The ability to handle different paths and HTTP methods allows for creating a 
+Deno provides a straightforward way to handle HTTP requests. By using the
+built-in `serve` function, you can create and manage HTTP servers with ease.
+The ability to handle different paths and HTTP methods allows for creating a
 variety of web-based applications.
 
 ## 09. Testing in Deno
 
-Testing is a core aspect of software development, and Deno offers built-in 
-tools to make testing straightforward and efficient. In this article, 
+Testing is a core aspect of software development, and Deno offers built-in
+tools to make testing straightforward and efficient. In this article,
 we will explore how to write and execute tests in Deno.
 
 ### Writing Tests
 
-Deno uses the `Deno.test` function to define unit tests. Each test is 
+Deno uses the `Deno.test` function to define unit tests. Each test is
 represented as a function and can include a description for clarity.
 
 ```typescript
@@ -479,7 +493,7 @@ Deno.test("Simple test", () => {
 });
 ```
 
-In this example, a simple test checks if the sum of 1 and 1 equals 2. 
+In this example, a simple test checks if the sum of 1 and 1 equals 2.
 If not, an error is thrown, causing the test to fail.
 
 ### Running Tests
@@ -490,13 +504,13 @@ To execute tests, use the following command:
 deno test
 ```
 
-Deno will automatically locate and run all test cases defined in your 
-source files. By default, Deno recognizes files with a `.ts` or `.js` 
+Deno will automatically locate and run all test cases defined in your
+source files. By default, Deno recognizes files with a `.ts` or `.js`
 extension that include `test` in the filename.
 
 ### Test Assertions
 
-For more granular control in tests, use Deno's standard library assertions. 
+For more granular control in tests, use Deno's standard library assertions.
 Here is an example using assertions:
 
 ```typescript
@@ -508,41 +522,41 @@ Deno.test("Test with assertion", () => {
 });
 ```
 
-The `assertEquals` function checks if the two arguments are equal. If not, 
-the test fails. Deno provides various assertion functions like `assert`, 
+The `assertEquals` function checks if the two arguments are equal. If not,
+the test fails. Deno provides various assertion functions like `assert`,
 `assertNotEquals`, and more.
 
 ### Test Suites
 
-Grouping tests into suites can be done manually within a file. However, 
-Deno does not inherently support test suites like some testing frameworks. 
-You can organize tests logically by structuring your test files and using 
+Grouping tests into suites can be done manually within a file. However,
+Deno does not inherently support test suites like some testing frameworks.
+You can organize tests logically by structuring your test files and using
 descriptive test function names.
 
 ### Conclusion
 
-Testing in Deno is a built-in functionality that doesn't require additional 
-libraries or complex setups. With straightforward syntax and easy execution, 
+Testing in Deno is a built-in functionality that doesn't require additional
+libraries or complex setups. With straightforward syntax and easy execution,
 developers can efficiently maintain code quality and reliability.
 
 ## 10. Deno Error Handling
 
-Error handling is a crucial aspect of any application as it helps maintain 
-application stability and provide meaningful feedback to users. In Deno, 
-error handling borrows many characteristics from Node.js and the JavaScript 
+Error handling is a crucial aspect of any application as it helps maintain
+application stability and provide meaningful feedback to users. In Deno,
+error handling borrows many characteristics from Node.js and the JavaScript
 language as a whole.
 
 ### Basic Error Handling
 
-In JavaScript and, by extension, Deno, errors are often thrown using the 
-`throw` statement and caught using `try...catch` constructs. Here's a quick 
+In JavaScript and, by extension, Deno, errors are often thrown using the
+`throw` statement and caught using `try...catch` constructs. Here's a quick
 example of handling errors in Deno:
 
 ```javascript
 try {
-  throw new Error('Something went wrong!');
+  throw new Error("Something went wrong!");
 } catch (error) {
-  console.error('Caught an error:', error.message);
+  console.error("Caught an error:", error.message);
 }
 ```
 
@@ -556,34 +570,34 @@ adaptions:
 ```javascript
 async function fetchData() {
   try {
-    const response = await fetch('https://api.example.com/data');
+    const response = await fetch("https://api.example.com/data");
     const data = await response.json();
     console.log(data);
   } catch (error) {
-    console.error('Error fetching data:', error);
+    console.error("Error fetching data:", error);
   }
 }
 ```
 
-Handling errors this way ensures that synchronous exceptions are handled in 
+Handling errors this way ensures that synchronous exceptions are handled in
 the same manner as asynchronous exceptions, making code more uniform and
 readable.
 
 ### Deno-specific Errors
 
 Deno introduces specific errors related to its file system and permissions.
-For example, attempting to access the filesystem without proper permissions 
-results in a `Deno.errors.PermissionDenied`. Handling specific Deno errors 
+For example, attempting to access the filesystem without proper permissions
+results in a `Deno.errors.PermissionDenied`. Handling specific Deno errors
 can be done by comparing against these error types:
 
 ```javascript
 try {
-  const data = Deno.readFileSync('example.txt');
+  const data = Deno.readFileSync("example.txt");
 } catch (error) {
   if (error instanceof Deno.errors.PermissionDenied) {
-    console.error('Permission Denied:', error.message);
+    console.error("Permission Denied:", error.message);
   } else {
-    console.error('Unknown Error:', error);
+    console.error("Unknown Error:", error);
   }
 }
 ```
@@ -593,76 +607,76 @@ when dealing with file operations or network requests.
 
 Effective error handling not only helps prevent unexpected crashes but also
 ensures your application behaves in a predictable manner. Properly notifying
-users or logging errors can assist in quick debugging and increases 
+users or logging errors can assist in quick debugging and increases
 the application's robustness.
 
 ## 11. Deploying Deno Applications
 
-Deploying a Deno application involves transferring your code to a server 
-where it can run and be accessed by users. In this article, we'll explore 
+Deploying a Deno application involves transferring your code to a server
+where it can run and be accessed by users. In this article, we'll explore
 the basics of deploying Deno applications seamlessly.
 
 ### Choosing a Hosting Service
 
-Several cloud providers support deploying Deno applications. You can 
-choose from services like Vercel, Deno Deploy, or DigitalOcean. Each 
+Several cloud providers support deploying Deno applications. You can
+choose from services like Vercel, Deno Deploy, or DigitalOcean. Each
 platform comes with its customization and tools.
 
 #### Vercel
 
-Vercel is a popular choice for deploying Deno applications. It offers 
-a simple integration and automatic deployments from Git repositories. 
-You need to create a `vercel.json` configuration file to specify 
+Vercel is a popular choice for deploying Deno applications. It offers
+a simple integration and automatic deployments from Git repositories.
+You need to create a `vercel.json` configuration file to specify
 project settings and environment variables.
 
 #### Deno Deploy
 
-Deno Deploy is a serverless hosting service specifically made for Deno 
+Deno Deploy is a serverless hosting service specifically made for Deno
 applications. It offers simplicity and real-time deployment capabilities.
 You can deploy directly from your command line to Deno Deploy with ease.
 
 #### DigitalOcean
 
-DigitalOcean offers more flexibility for hosting, allowing you to set 
-up a virtual server. You can have more control over configurations 
+DigitalOcean offers more flexibility for hosting, allowing you to set
+up a virtual server. You can have more control over configurations
 but also require setting up the environment manually.
 
 ### Deployment Steps
 
-1. **Prepare Your Code:** Ensure your application is working locally 
+1. **Prepare Your Code:** Ensure your application is working locally
    and all dependencies are defined.
 
-2. **Environment Variables:** Determine if your application requires 
-   environment variables and define them in the respective hosting 
+2. **Environment Variables:** Determine if your application requires
+   environment variables and define them in the respective hosting
    settings.
 
-3. **Deploy Command:** Use the hosting service's command line interface 
+3. **Deploy Command:** Use the hosting service's command line interface
    or dashboard to deploy your application.
 
-4. **Monitor and Manage:** Once deployed, monitor the application 
+4. **Monitor and Manage:** Once deployed, monitor the application
    performance, logs, and handle any runtime errors.
 
-By understanding your hosting requirements and the deployment process, 
-you can ensure your Deno application is deployed efficiently and 
-reliably. This will provide a seamless experience for your users and 
+By understanding your hosting requirements and the deployment process,
+you can ensure your Deno application is deployed efficiently and
+reliably. This will provide a seamless experience for your users and
 simplify future updates and management.
 
 ## 12. Deno Security Features
 
-Deno is designed with security as a priority. Unlike Node.js, Deno executes code 
-in a secure environment by default. Here are some of the main security features 
+Deno is designed with security as a priority. Unlike Node.js, Deno executes code
+in a secure environment by default. Here are some of the main security features
 in Deno:
 
 ### Secure by Default
 
-Deno restricts access to files, network, and environment variables unless 
-explicitly allowed. This design minimizes the risk of unauthorized access and 
+Deno restricts access to files, network, and environment variables unless
+explicitly allowed. This design minimizes the risk of unauthorized access and
 malicious code execution.
 
 ### Permission Flags
 
-Permissions in Deno are managed using command-line flags, ensuring that each 
-operation requiring external resource access is controlled. Some common 
+Permissions in Deno are managed using command-line flags, ensuring that each
+operation requiring external resource access is controlled. Some common
 permissions include:
 
 - `--allow-read`: Allows reading files and directories.
@@ -670,33 +684,33 @@ permissions include:
 - `--allow-net`: Enables network access.
 - `--allow-env`: Allows environment variable access.
 
-By default, Deno scripts have none of these permissions, promoting a 
+By default, Deno scripts have none of these permissions, promoting a
 least-privilege model.
 
 ### Auditability
 
-Deno allows you to audit permissions granted to a script, offering a clear 
-overview of what capabilities a Deno program has during its execution. This 
+Deno allows you to audit permissions granted to a script, offering a clear
+overview of what capabilities a Deno program has during its execution. This
 ensures transparency and assists in identifying potential security issues.
 
 ### Sandboxing
 
-Scripts run in a sandboxed environment, isolated from the system. This prevents 
+Scripts run in a sandboxed environment, isolated from the system. This prevents
 malicious scripts from accessing sensitive system resources or data.
 
 ### Secure URL Imports
 
-Deno uses secure methods for module imports via URLs. It supports HTTPS by 
+Deno uses secure methods for module imports via URLs. It supports HTTPS by
 default, reducing man-in-the-middle attacks during module retrieval.
 
 ### Code Reviews and Trusted Sources
 
-Developers are encouraged to review code and trust only packages from known 
-sources. Deno promotes the practice of understanding what a package does before 
+Developers are encouraged to review code and trust only packages from known
+sources. Deno promotes the practice of understanding what a package does before
 allowing it to run.
 
-Overall, Deno's approach to security, with its default restrictive behavior and 
-clear permission model, empowers developers to build more secure applications 
+Overall, Deno's approach to security, with its default restrictive behavior and
+clear permission model, empowers developers to build more secure applications
 with minimized attack surfaces.
 
 ## 13. Deno and TypeScript
@@ -725,15 +739,15 @@ deno run yourfile.ts
 #### Benefits of Using TypeScript with Deno
 
 1. **Seamless Integration**: Deno's design anticipates TypeScript usage,
-making it a seamless option for TypeScript developers without additional
-configuration.
+   making it a seamless option for TypeScript developers without additional
+   configuration.
 
 2. **Static Typing**: TypeScript allows for static typing, helping prevent
-errors at runtime by catching them during development.
+   errors at runtime by catching them during development.
 
 3. **Modern JavaScript Features**: TypeScript supports the latest ECMAScript
-standards, allowing you to use new syntax and features when writing Deno
-applications.
+   standards, allowing you to use new syntax and features when writing Deno
+   applications.
 
 #### Deno Configuration
 
@@ -854,7 +868,8 @@ for await (const req of server) {
         console.log("Received message: ", msg);
         await sock.send("Echo: " + msg);
       }
-    }).catch(async (err) => {
+    })
+    .catch(async (err) => {
       console.error(`Failed to accept websocket: ${err}`);
       await req.respond({ status: 400 });
     });
@@ -879,16 +894,16 @@ such requirements.
 
 ## 16. Deno in Microservices Architecture
 
-Deno's lightweight runtime and robust security model make it an exciting 
-option for building a microservices architecture. This article explores 
-how Deno can be utilized in a microservices setup, offering scalability 
+Deno's lightweight runtime and robust security model make it an exciting
+option for building a microservices architecture. This article explores
+how Deno can be utilized in a microservices setup, offering scalability
 and ease of development.
 
 ### Why Choose Deno for Microservices?
 
-Deno provides advantages like modern language features with TypeScript 
-support, built-in async I/O, and an emphasis on security. Its simplicity 
- with distribution and no need for external package management can 
+Deno provides advantages like modern language features with TypeScript
+support, built-in async I/O, and an emphasis on security. Its simplicity
+with distribution and no need for external package management can
 streamline microservice deployment.
 
 ### Setting Up a Deno Microservice
@@ -898,8 +913,8 @@ streamline microservice deployment.
    mkdir deno_microservice && cd deno_microservice
    ```
 2. **Initialize a Deno Project:**
-   - Design your project structure. Typically, it might include `src`, 
-   `tests`, and `config` directories.
+   - Design your project structure. Typically, it might include `src`,
+     `tests`, and `config` directories.
 3. **Create an Entry Point:**
    ```typescript
    // src/server.ts
@@ -914,29 +929,31 @@ streamline microservice deployment.
 ### Orchestrating Deno Microservices
 
 **Containerization:**
-- Deno applications can be containerized using Docker, allowing you 
-to deploy consistent environments across various platforms.
+
+- Deno applications can be containerized using Docker, allowing you
+  to deploy consistent environments across various platforms.
 
 **Service Communication:**
-- Use HTTP APIs or Deno-based message brokers to enable service 
-communication. Deno's native HTTP server is lightweight and efficient 
-for building RESTful APIs.
+
+- Use HTTP APIs or Deno-based message brokers to enable service
+  communication. Deno's native HTTP server is lightweight and efficient
+  for building RESTful APIs.
 
 ### Security Considerations
 
-Deno's permission-based execution adds a layer of security. Specify 
+Deno's permission-based execution adds a layer of security. Specify
 only necessary permissions such as file access, network calls, etc.,
 minimizing attack vectors.
 
 ### Monitoring and Scalability
 
-- **Logging:** Utilize Deno's standard logging module for application 
-logging.
-- **Scaling:** Deno's asynchronous capabilities support horizontal 
-scaling easily.
+- **Logging:** Utilize Deno's standard logging module for application
+  logging.
+- **Scaling:** Deno's asynchronous capabilities support horizontal
+  scaling easily.
 
-Adopting Deno in microservices can bring modern development practices 
-and a secure environment, helping build scalable and maintainable 
+Adopting Deno in microservices can bring modern development practices
+and a secure environment, helping build scalable and maintainable
 architectures.
 
 ## 17. Deno and Node.js: A Comparative Analysis
@@ -1036,8 +1053,8 @@ import { Application, Router } from "https://deno.land/x/oak/mod.ts";
 const app = new Application();
 const router = new Router();
 
-router.get('/hello', (context) => {
-  context.response.body = 'Hello World!';
+router.get("/hello", (context) => {
+  context.response.body = "Hello World!";
 });
 
 app.use(router.routes());
@@ -1046,7 +1063,7 @@ app.use(router.allowedMethods());
 await app.listen({ port: 8000 });
 ```
 
-This example sets up a basic server listening on port 8000 with one endpoint 
+This example sets up a basic server listening on port 8000 with one endpoint
 `/hello`, which returns a "Hello World!" message.
 
 ### Adding More Endpoints
@@ -1054,14 +1071,14 @@ This example sets up a basic server listening on port 8000 with one endpoint
 You can add more routes to the Router for additional endpoints:
 
 ```typescript
-router.get('/api/users', (context) => {
-  context.response.body = [{ id: 1, name: 'John Doe' }];
+router.get("/api/users", (context) => {
+  context.response.body = [{ id: 1, name: "John Doe" }];
 });
 
-router.post('/api/users', async (context) => {
+router.post("/api/users", async (context) => {
   const body = await context.request.body();
   const data = await body.value;
-  context.response.body = { message: 'User Created', user: data };
+  context.response.body = { message: "User Created", user: data };
 });
 ```
 
@@ -1136,60 +1153,60 @@ critical roles in optimizing application performance.
 
 ## 20. Contributing to the Deno Project
 
-Contributing to an open-source project like Deno can be a rewarding 
-experience. It helps you understand the codebase, improve your coding 
-skills, and work with a team of developers. Here's a guide to get 
+Contributing to an open-source project like Deno can be a rewarding
+experience. It helps you understand the codebase, improve your coding
+skills, and work with a team of developers. Here's a guide to get
 started with contributing to Deno.
 
 ### Understanding the Contribution Workflow
 
 Deno follows a standard workflow for contributions using GitHub:
 
-1. **Fork the Repository**: Create your own fork of the Deno repository 
-on GitHub.
+1. **Fork the Repository**: Create your own fork of the Deno repository
+   on GitHub.
 
-2. **Clone the Repository**: Clone your fork to your local machine using 
-`git clone`.
+2. **Clone the Repository**: Clone your fork to your local machine using
+   `git clone`.
 
-3. **Create a Branch**: Before making changes, create a feature branch 
-using `git checkout -b feature-name`.
+3. **Create a Branch**: Before making changes, create a feature branch
+   using `git checkout -b feature-name`.
 
 4. **Code and Test**: Make your changes and thoroughly test them.
 
-5. **Commit and Push**: Commit your changes with an informative message 
-and push them to your fork.
+5. **Commit and Push**: Commit your changes with an informative message
+   and push them to your fork.
 
-6. **Create a Pull Request**: Open a pull request on the main Deno 
-repository to propose your changes.
+6. **Create a Pull Request**: Open a pull request on the main Deno
+   repository to propose your changes.
 
 ### Familiarizing with the Codebase
 
-Before you start contributing, it’s crucial to familiarize yourself 
+Before you start contributing, it’s crucial to familiarize yourself
 with the Deno codebase:
 
-- **Explore the Repository**: Look at the structure of the directories 
-and files to understand where certain functionalities reside.
-- **Read Documentation**: Check out the official documentation and 
-contribution guidelines.
-- **Review Open Issues**: Viewing open issues can give you ideas of what 
-needs to be done and where you can help.
+- **Explore the Repository**: Look at the structure of the directories
+  and files to understand where certain functionalities reside.
+- **Read Documentation**: Check out the official documentation and
+  contribution guidelines.
+- **Review Open Issues**: Viewing open issues can give you ideas of what
+  needs to be done and where you can help.
 
 ### Communication and Feedback
 
-- **Engage with the Community**: Join Deno’s Discord or participate in 
-GitHub Discussions.
-- **Accept Feedback**: Constructive feedback from maintainers and other 
-contributors can guide your contributions.
+- **Engage with the Community**: Join Deno’s Discord or participate in
+  GitHub Discussions.
+- **Accept Feedback**: Constructive feedback from maintainers and other
+  contributors can guide your contributions.
 
 ### Important Considerations
 
-- **Follow Style Guidelines**: Ensure your code follows the project's 
-coding conventions.
-- **Write Tests**: Adding tests for new features or bug fixes is 
-essential.
-- **Keep Changes Small**: Small, focused changes are easier to review 
-and accept.
+- **Follow Style Guidelines**: Ensure your code follows the project's
+  coding conventions.
+- **Write Tests**: Adding tests for new features or bug fixes is
+  essential.
+- **Keep Changes Small**: Small, focused changes are easier to review
+  and accept.
 
-By following these steps, you can make valuable contributions to the 
-Deno project while building your own skills and reputation in the 
+By following these steps, you can make valuable contributions to the
+Deno project while building your own skills and reputation in the
 open-source community.

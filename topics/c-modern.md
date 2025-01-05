@@ -44,46 +44,46 @@ facets of C Modern in the following articles.
 
 ## 02. Key Features of Modern C
 
-Modern C brings several important features that have made the language 
-easier to use and more powerful. These advancements primarily come from 
+Modern C brings several important features that have made the language
+easier to use and more powerful. These advancements primarily come from
 the C11 standard, with some features introduced in C99.
 
 ### Key Features
 
-1. **Static Assertions**: Improved compile-time error checking with 
+1. **Static Assertions**: Improved compile-time error checking with
    `_Static_assert` to ensure conditions are met at compile-time.
 
-2. **Anonymous Structures and Unions**: This facilitates easier 
-definition and management of nested structure and union members without 
-explicit names.
+2. **Anonymous Structures and Unions**: This facilitates easier
+   definition and management of nested structure and union members without
+   explicit names.
 
-3. **Type-generic Macros**: Using `_Generic`, you can create type 
-independent standard macros, making APIs simpler to use.
+3. **Type-generic Macros**: Using `_Generic`, you can create type
+   independent standard macros, making APIs simpler to use.
 
-4. **Multithreading Support**: C11 introduced library functions for 
-multithreading, including threads and mutexes, increasing the language's
- versatility for concurrency.
+4. **Multithreading Support**: C11 introduced library functions for
+   multithreading, including threads and mutexes, increasing the language's
+   versatility for concurrency.
 
-5. **Atomic Operations**: With the `_Atomic` keyword, atomic operations 
-are supported, allowing operations to be performed directly in memory 
-without data races in a multithreaded environment.
+5. **Atomic Operations**: With the `_Atomic` keyword, atomic operations
+   are supported, allowing operations to be performed directly in memory
+   without data races in a multithreaded environment.
 
-6. **Improved Unicode Support**: Better support for Unicode characters 
-with added char types like `char16_t` and `char32_t` for portability.
+6. **Improved Unicode Support**: Better support for Unicode characters
+   with added char types like `char16_t` and `char32_t` for portability.
 
-7. **Variable Length Arrays (VLAs)**: Although introduced in C99, 
-VLAs are an important feature providing more flexible data structures.
+7. **Variable Length Arrays (VLAs)**: Although introduced in C99,
+   VLAs are an important feature providing more flexible data structures.
 
-Modern C aims to enhance reliability, performance, and functionality in 
-software development while maintaining backward compatibility with 
+Modern C aims to enhance reliability, performance, and functionality in
+software development while maintaining backward compatibility with
 legacy code.
 
 ## 03. Use of `auto` Keyword in C Modern
 
-In modern C, the `auto` keyword has gained popularity for its ability to 
-facilitate type inference. While traditionally associated with stack 
-allocation (which is the default for local variables), `auto` in C has been 
-reimagined similar to its C++ counterpart to infer the type of a variable based 
+In modern C, the `auto` keyword has gained popularity for its ability to
+facilitate type inference. While traditionally associated with stack
+allocation (which is the default for local variables), `auto` in C has been
+reimagined similar to its C++ counterpart to infer the type of a variable based
 on the assigned value.
 
 Here's an example demonstrating `auto` usage:
@@ -99,33 +99,33 @@ int main() {
 }
 ```
 
-This modern approach simplifies the code by reducing redundancy, but it's worth 
-nothing that `auto` in C is not as widely adopted as in C++ due in part to 
-compatibility considerations. This feature is more about consistency across 
+This modern approach simplifies the code by reducing redundancy, but it's worth
+nothing that `auto` in C is not as widely adopted as in C++ due in part to
+compatibility considerations. This feature is more about consistency across
 similar languages and improving readability.
 
-Future standards might expand its functionality in C, leaning into 
+Future standards might expand its functionality in C, leaning into
 adopting more type inference paradigms from languages like C++ or others.
 
 ## 04. NULL Pointers in Modern C
 
-Handling pointers has always been a crucial part of C programming. Modern C 
-has brought about enhancements in dealing with `NULL` pointers, which help 
+Handling pointers has always been a crucial part of C programming. Modern C
+has brought about enhancements in dealing with `NULL` pointers, which help
 improve the understanding and usage of pointers in C programs.
 
-A `NULL` pointer is used to signify that a pointer is not pointing to any 
-valid memory address. In Modern C, better practices are encouraged to ensure 
-pointers are properly initialized to `NULL`, and checks are added before 
+A `NULL` pointer is used to signify that a pointer is not pointing to any
+valid memory address. In Modern C, better practices are encouraged to ensure
+pointers are properly initialized to `NULL`, and checks are added before
 dereferencing them. Here are some general practices:
 
-- **Initialization to NULL**: Whenever a pointer is declared, it is a best 
+- **Initialization to NULL**: Whenever a pointer is declared, it is a best
   practice to initialize it with `NULL`.
 
   ```c
   int *ptr = NULL;
   ```
 
-- **Checking Before Dereference**: Before dereferencing a pointer, its 
+- **Checking Before Dereference**: Before dereferencing a pointer, its
   validity can be checked with conditions.
 
   ```c
@@ -140,8 +140,8 @@ dereferencing them. Here are some general practices:
 
 ### Improvements in Modern C
 
-While the concept of `NULL` has not changed, Modern C improves the consistency 
-and safety by strongly adhering to best practices, warning against unnecessary 
+While the concept of `NULL` has not changed, Modern C improves the consistency
+and safety by strongly adhering to best practices, warning against unnecessary
 use, and providing better compiler diagnostics.
 
 ## 05. Type Inference using `decltype` in Modern C
@@ -157,6 +157,7 @@ without needing explicit declaration. This is particularly helpful in templates,
 where knowing the type of an expression is crucial.
 
 #### Basic Example
+
 ```c
 int a = 42;
 decltype(a) b = a;  // b is deduced to be of type int
@@ -169,13 +170,16 @@ cally be reflected in `b` without additional modification.
 #### In Expressions
 
 `decltype` can also deduce the type of complex expressions.
+
 ```c
 auto sum = [](int x, int y) { return x + y; };
 decltype(sum(1, 2)) result;  // result is of type int
 ```
+
 Here, `result` is inferred to be of the same type as the expression `sum(1, 2)`.
 
 #### With Functions
+
 `decltype` assists with return types, ensuring functions can auto-deduct types
 when returning expressions.
 
@@ -225,6 +229,7 @@ int main() {
 ```
 
 #### Explanation
+
 - The `add` function serves as an inline function mimicking a lambda.
 - `applyFunction` takes a function pointer, `func`, and applies it to integers.
 - This method allows passing functionalities similar to lambda expressions.
@@ -232,10 +237,11 @@ int main() {
 ### Limitations
 
 Emulating lambda expressions in C has its limitations:
+
 - Lack of lexical scoping: Variables outside the function cannot easily be  
-captured.
+  captured.
 - Verbosity: Inline definitions can make the code more verbose compared to  
-compact lambda syntax in higher-level languages.
+  compact lambda syntax in higher-level languages.
 
 Despite these limitations, function pointers and inline functions in Modern C  
 provide powerful tools suitable for situations necessitating flexibility in  
@@ -291,6 +297,7 @@ void releaseRef(SmartPtr* sptr) {
 #### Limitations and Advantages
 
 - **Advantages**
+
   - Helps in avoiding common pointer-related errors.
   - Simplifies memory management, reducing the risk of memory leaks.
 
@@ -362,11 +369,13 @@ While technically rooted in C++ features, understanding the concept can benefit
 C programmers when dealing with interoperability or considering transitioning.
 
 ### What Are Move Semantics?
+
 Move semantics allows the resources owned by a temporary object (like heap
 memory) to be transferred to another object. It is especially beneficial for
 optimizing performance since it avoids costly deep copies.
 
 ### Move Constructor and Move Assignment Operator
+
 The move constructor and move assignment operator are the two key mechanisms
 
 - **Move Constructor:** Transfers resources in initialization
@@ -379,17 +388,20 @@ The move constructor and move assignment operator are the two key mechanisms
   ```
 
 ### Benefits of Move Semantics
+
 - **Efficiency in Resource Management:** Reduces unnecessary memory allocation
   and copying, boosting performance.
 - **RVA Optimization:** Return Value Optimization is naturally enhanced,
   particularly for temporary objects.
 
 ### When to Use Move Semantics?
+
 Move semantics shine in classes managing resources like dynamic arrays,
 file handles, or network connections, where the cost of copying resources
 is high compared to the move.
 
 ### Conclusion
+
 While move semantics is primarily a C++ feature, its understanding can offer
 C programmers insights into efficient resource management and optimal
 application performance.
@@ -405,7 +417,7 @@ Developers can actively utilize threading capabilities using libraries and
 techniques available in the ecosystem.
 
 The ISO C11 standard introduced with threading capabilities constitutes
- an essential move towards built-in concurrency. With C11, the Language
+an essential move towards built-in concurrency. With C11, the Language
 offers a standardized approach to creating and managing threads, handling
 mutexes (locks), and defining condition variables.
 
@@ -442,7 +454,7 @@ and how Modern C aids in implementing them.
    operations.
 
 2. **Task Parallelism**: Performing different operations simultaneously on
-the cores.
+   the cores.
 
 3. **Hybrid Parallelism**: Combining both data and task parallelism for
    complex operations.
@@ -600,35 +612,35 @@ excessive use can lead to complex control flows.
 
 ## 14. Understanding Modules in Modern C
 
-Modern C has introduced modules as a better way to manage program 
-organization and dependencies. Modules aim to eliminate the problems 
-arising from traditional header files and enhance compile-time speed 
+Modern C has introduced modules as a better way to manage program
+organization and dependencies. Modules aim to eliminate the problems
+arising from traditional header files and enhance compile-time speed
 by improving encapsulation and semantic clarity.
 
 ### Introduction to Modules
 
-A module in Modern C essentially represents a translation unit and 
+A module in Modern C essentially represents a translation unit and
 consists of:
 
-1. Module-interface: The part of the module designed to be exposed 
+1. Module-interface: The part of the module designed to be exposed
    and used by other translation units.
-2. Module-implementation: The part that contains internal logic not 
+2. Module-implementation: The part that contains internal logic not
    exposed to other modules.
 
 ### Benefits of Using Modules
 
-- **Encapsulation**: Modules allow better organization of code, 
+- **Encapsulation**: Modules allow better organization of code,
   reducing external dependencies and preventing name pollution.
-- **Faster Compilation**: They improve compile times because once a 
+- **Faster Compilation**: They improve compile times because once a
   module is compiled, it doesn’t need to be parsed or compiled again.
-- **Clear Dependencies**: Modules provide a clear indication of 
+- **Clear Dependencies**: Modules provide a clear indication of
   dependencies between different parts of the program.
 
 ### Declaration of a Module
 
 Creating a module involves:
 
-- Using `export` keyword to define functions and variables that 
+- Using `export` keyword to define functions and variables that
   should be accessible outside the module.
 - Specifying the module name with `module [name];` syntax.
 
@@ -653,58 +665,58 @@ int main() {
 
 ### Conclusion
 
-Modules in Modern C provide a robust alternative to the traditional 
-include mechanism by enhancing encapsulation and compile-time 
-efficiency. Leveraging modules can lead to cleaner, more efficient 
+Modules in Modern C provide a robust alternative to the traditional
+include mechanism by enhancing encapsulation and compile-time
+efficiency. Leveraging modules can lead to cleaner, more efficient
 codebases.
 
 ## 15. Understanding Ranges in Modern C
 
-Ranges in Modern C offer a unified interface for algorithms to iterate over 
-sequences of elements. Introduced as part of the ongoing modernization efforts 
+Ranges in Modern C offer a unified interface for algorithms to iterate over
+sequences of elements. Introduced as part of the ongoing modernization efforts
 in C++, ranges aim to provide easier and more secure manipulation of collections.
-While not inherent to C, C developers can adopt similar paradigms for better 
+While not inherent to C, C developers can adopt similar paradigms for better
 collection handling.
 
 ### Background
 
-Traditionally, handling collections in C required direct manipulation of arrays 
-or pointers, often leading to complex and error-prone code. By abstracting 
-these operations through the use of ranges, code becomes more intuitive and 
+Traditionally, handling collections in C required direct manipulation of arrays
+or pointers, often leading to complex and error-prone code. By abstracting
+these operations through the use of ranges, code becomes more intuitive and
 easier to maintain.
 
 ### Key Concepts of Ranges
 
 #### Iterator and Sentinel
 
-A range is defined by an iterator and a sentinel. The iterator points to the 
-beginning of the range, while the sentinel marks its end. This separation allows 
+A range is defined by an iterator and a sentinel. The iterator points to the
+beginning of the range, while the sentinel marks its end. This separation allows
 for flexible iteration mechanisms.
 
 #### Views and Actions
 
-- **Views**: These are lightweight objects transforming elements within a 
-  range without owning the actual data. Examples include filtering and 
+- **Views**: These are lightweight objects transforming elements within a
+  range without owning the actual data. Examples include filtering and
   mapping.
-- **Actions**: Actions are operations applied to ranges that may modify the 
+- **Actions**: Actions are operations applied to ranges that may modify the
   data, like sorting or shuffling.
 
 ### Benefits of Using Ranges
 
-- **Readability**: Code using ranges tends to be more readable due to 
+- **Readability**: Code using ranges tends to be more readable due to
   abstracted operations.
-- **Safety**: Reduces the risks of common errors such as buffer overruns by 
+- **Safety**: Reduces the risks of common errors such as buffer overruns by
   handling collection boundaries implicitly.
 
 ### Implementing Ranges in C
 
-While C lacks built-in support for ranges like C++, developers can structure 
+While C lacks built-in support for ranges like C++, developers can structure
 their code using similar paradigms by defining:
 
 - A custom iterator and sentinel pair.
 - Functions to operate on these iterators similarly to views and actions.
 
-This pseudo-range approach can simplify complex collection operations in C, 
+This pseudo-range approach can simplify complex collection operations in C,
 making the code base more maintainable and robust.
 
 ## 16. Understanding Coroutines in Modern C
@@ -783,15 +795,15 @@ introducing efficient techniques to enrich real-time programming.
 
 ## 17. Using `std::variant` in Modern C
 
-In Modern C, managing multiple types within a single variable can often be a 
-requirement. The `std::variant` template from the C++17 standard library offers a 
-solution by allowing us to define a type-safe union of several possible types. 
-It's a flexible and powerful construct for scenarios where a variable can have 
+In Modern C, managing multiple types within a single variable can often be a
+requirement. The `std::variant` template from the C++17 standard library offers a
+solution by allowing us to define a type-safe union of several possible types.
+It's a flexible and powerful construct for scenarios where a variable can have
 multiple types.
 
 ### Defining a `std::variant`
 
-To use a `std::variant`, you need to specify its possible types when declaring 
+To use a `std::variant`, you need to specify its possible types when declaring
 it. Here's an example:
 
 ```cpp
@@ -804,11 +816,11 @@ int main() {
 }
 ```
 
-In this example, `myVariant` can hold an `int`, `float`, or `std::string`. 
+In this example, `myVariant` can hold an `int`, `float`, or `std::string`.
 
 ### Assigning Values
 
-Assigning a value to a `std::variant` is straightforward. You can treat it like 
+Assigning a value to a `std::variant` is straightforward. You can treat it like
 a regular assignment, and it will hold the correct type:
 
 ```cpp
@@ -819,8 +831,8 @@ myVariant = "Hello, World!"; // Now holds a string
 
 ### Accessing Values
 
-Accessing the value stored in a `std::variant` requires using `std::get` or 
-`std::visit`. These functions provide a type-safe way to retrieve or act on the 
+Accessing the value stored in a `std::variant` requires using `std::get` or
+`std::visit`. These functions provide a type-safe way to retrieve or act on the
 value:
 
 ```cpp
@@ -838,7 +850,7 @@ If you attempt to retrieve a type that is not currently held by the `std::varian
 
 ### Alternative Access: `std::get_if`
 
-For safer access, `std::get_if` provides a pointer to the value if the variant 
+For safer access, `std::get_if` provides a pointer to the value if the variant
 currently holds the requested type, otherwise it returns `nullptr`:
 
 ```cpp
@@ -849,8 +861,8 @@ if (auto val = std::get_if<int>(&myVariant)) {
 }
 ```
 
-`std::variant` enhances type safety and flexibility within your programs by 
-allowing several types to be used interchangeably, simplifying the management 
+`std::variant` enhances type safety and flexibility within your programs by
+allowing several types to be used interchangeably, simplifying the management
 of variant types and associated behavior in Modern C programs.
 
 ## 18. The Filesystem Library in Modern C
@@ -949,25 +961,28 @@ common file manipulations across varied operating systems.
 
 ## 19. Understanding Networking in Modern C
 
-The networking library in Modern C provides a standardized way to perform 
-networking operations, making it easier to write portable networked 
+The networking library in Modern C provides a standardized way to perform
+networking operations, making it easier to write portable networked
 applications.
 
 ### Asio Library in C Modern
 
 #### Overview
-The Asio library is a cross-platform C++ library for network and other 
-low-level I/O programming. It provides a consistent asynchronous model 
+
+The Asio library is a cross-platform C++ library for network and other
+low-level I/O programming. It provides a consistent asynchronous model
 using modern C++ features.
 
 #### Basic Concepts
+
 - **IO Context**: Handles all asynchronous operations.
 - **Sockets**: Provides the endpoint for sending and receiving data.
 - **Buffers**: Stores data to be sent or received.
 - **Completion Handlers**: Functions called when an operation is complete.
 
 #### Example Usage
-Here's a simple example of an Asio TCP synchronous operation to connect 
+
+Here's a simple example of an Asio TCP synchronous operation to connect
 and send a message:
 
 ```cpp
@@ -993,71 +1008,73 @@ int main() {
 }
 ```
 
-In this code, a TCP connection is established to a server, and a simple 
-HTTP GET request is sent, showcasing the basic operation of Asio in a 
+In this code, a TCP connection is established to a server, and a simple
+HTTP GET request is sent, showcasing the basic operation of Asio in a
 networking context.
 
 ### Advantages of Using Modern C for Networking
+
 - **Portability**: Code can run on various platforms without modification.
-- **Performance**: Leveraging C++ efficiency features for low-latency 
+- **Performance**: Leveraging C++ efficiency features for low-latency
   networking.
 - **Abstraction**: Cleaner and more maintainable code by hiding platform-
   specific details.
 
-Networking in Modern C applications is both powerful and complex, but 
-leveraging libraries like Asio simplifies many of these complexities while 
+Networking in Modern C applications is both powerful and complex, but
+leveraging libraries like Asio simplifies many of these complexities while
 also providing robust and efficient solutions for network communication.
 
 ## 20. Understanding Memory Management in Modern C
 
-Memory management is a critical aspect of programming in C. Let's delve into 
+Memory management is a critical aspect of programming in C. Let's delve into
 modern practices that enhance the safety and efficiency of memory usage.
 
 ### Principles of Memory Management
 
 #### Automatic vs Dynamic Memory
 
-- **Automatic Memory**: Memory allocated automatically, such as local 
+- **Automatic Memory**: Memory allocated automatically, such as local
   variables within a function. Managed by the system with scope.
-- **Dynamic Memory**: Allocated during runtime using functions like `malloc`, 
+- **Dynamic Memory**: Allocated during runtime using functions like `malloc`,
   `calloc`, and `realloc`. Must be manually managed and deallocated.
 
 #### Smart Pointers
 
 Modern C introduces smart pointers like `std::unique_ptr` and `std::shared_ptr`.
-These relieve the programmer from manual memory deallocation and prevent 
+These relieve the programmer from manual memory deallocation and prevent
 common errors like memory leaks and dangling pointers.
 
 #### RAII Principle
 
-Resource Acquisition Is Initialization (RAII) is a paradigm that binds 
-resource management to object lifetime. This ensures resources are 
+Resource Acquisition Is Initialization (RAII) is a paradigm that binds
+resource management to object lifetime. This ensures resources are
 automatically freed when they go out of scope.
 
 #### Garbage Collection
 
-Though not typically a feature of C, some modern compilers and environments 
+Though not typically a feature of C, some modern compilers and environments
 support garbage collection, automating memory management to an extent.
 
 ### Tools and Techniques
 
 #### Valgrind and ASAN
 
-Tools like Valgrind and AddressSanitizer (ASAN) help detect memory leaks, 
+Tools like Valgrind and AddressSanitizer (ASAN) help detect memory leaks,
 invalid access, and other memory-related issues by analyzing runtime behavior.
 
 #### Coding Practices
 
 Adopt practices such as:
+
 - Avoiding raw pointers when possible.
 - Regularly checking for memory leaks.
 - Documenting dynamic memory allocations.
 
 ### Conclusion
 
-Modern C offers several mechanisms and tools to improve memory management. 
-By utilizing smart pointers, adhering to RAII, and leveraging tools, you 
+Modern C offers several mechanisms and tools to improve memory management.
+By utilizing smart pointers, adhering to RAII, and leveraging tools, you
 can write safer and more robust programs.
 
-Understanding and applying these principles can significantly reduce 
+Understanding and applying these principles can significantly reduce
 memory-related bugs and improve program stability.

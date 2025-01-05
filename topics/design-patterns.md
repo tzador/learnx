@@ -23,27 +23,28 @@
 
 ## 01. Introduction to Design Patterns
 
-Design patterns are typical solutions to common problems in software design. 
-They are like blueprints that can be reused in various situations. Each 
+Design patterns are typical solutions to common problems in software design.
+They are like blueprints that can be reused in various situations. Each
 pattern is like a tool that can be used to solve recurring design problems.  
-These patterns help you enhance your software design by promoting code 
+These patterns help you enhance your software design by promoting code
 reusability and scalability.
 
-The concept of design patterns gained prominence with the book "Design 
-Patterns: Elements of Reusable Object-Oriented Software" by Erich Gamma, 
-Richard Helm, Ralph Johnson, and John Vlissides, commonly known as the "Gang 
-of Four" (GoF). They introduced 23 classic design patterns, categorized into 
+The concept of design patterns gained prominence with the book "Design
+Patterns: Elements of Reusable Object-Oriented Software" by Erich Gamma,
+Richard Helm, Ralph Johnson, and John Vlissides, commonly known as the "Gang
+of Four" (GoF). They introduced 23 classic design patterns, categorized into
 three groups: creational, structural, and behavioral patterns.
 
 ### Benefits of Using Design Patterns
+
 - **Reusability:** Patterns provide reusable solutions.
 - **Efficiency:** They enhance design efficiency by providing proven methods.
 - **Communication:** They offer a common vocabulary to describe solutions.
 - **Maintainability:** Improve the readability and maintainability of code.
 
-In the upcoming articles, we will delve into these patterns, exploring each 
-one with clear examples and applications. This series will cater to both 
-beginners and those looking to refine their understanding of software design 
+In the upcoming articles, we will delve into these patterns, exploring each
+one with clear examples and applications. This series will cater to both
+beginners and those looking to refine their understanding of software design
 patterns.
 
 ## 02. Benefits of Using Design Patterns
@@ -85,83 +86,83 @@ scenarios.
 
 ## 03. Creational Design Patterns
 
-Creational design patterns are focused on the instantiation of objects. These 
-patterns help make a system independent of how its objects are created, 
-composed, and represented. They work on object creation mechanisms, trying to 
-create objects in a manner suitable to the situation. Additionally, 
-creational patterns offer ways to structure class instantiation decisions. 
+Creational design patterns are focused on the instantiation of objects. These
+patterns help make a system independent of how its objects are created,
+composed, and represented. They work on object creation mechanisms, trying to
+create objects in a manner suitable to the situation. Additionally,
+creational patterns offer ways to structure class instantiation decisions.
 
 Some of the most prominent creational design patterns include:
 
-1. **Singleton Pattern**: Ensures a class has only one instance and provides a 
-global point of access to it.
+1. **Singleton Pattern**: Ensures a class has only one instance and provides a
+   global point of access to it.
 
 2. **Factory Method Pattern**: Defines an interface for creating objects but
-allows subclasses to alter the type of objects that will be created.
+   allows subclasses to alter the type of objects that will be created.
 
 3. **Abstract Factory Pattern**: Provides an interface for creating families of
-related or dependent objects without specifying their concrete classes.
+   related or dependent objects without specifying their concrete classes.
 
-4. **Builder Pattern**: Separates the construction of a complex object from its 
-representation, enabling the same construction process to create different 
-representations.
+4. **Builder Pattern**: Separates the construction of a complex object from its
+   representation, enabling the same construction process to create different
+   representations.
 
-5. **Prototype Pattern**: Involves creating new objects by copying an existing 
-object, known as the prototype. It allows the creation of objects based on a 
-template of an existing object through cloning.
+5. **Prototype Pattern**: Involves creating new objects by copying an existing
+   object, known as the prototype. It allows the creation of objects based on a
+   template of an existing object through cloning.
 
 Each of these patterns provides a different approach to controlling how objects
 are created within a system, contributing to flexibility and reuse.
 
 ## 04. Singleton Pattern
 
-The Singleton Pattern is a design pattern that restricts the instantiation of a 
-class to a single instance. This is useful when exactly one object is needed to 
-coordinate actions across a system. The pattern ensures that a class has only 
+The Singleton Pattern is a design pattern that restricts the instantiation of a
+class to a single instance. This is useful when exactly one object is needed to
+coordinate actions across a system. The pattern ensures that a class has only
 one instance and provides a global point of access to this instance.
 
 ### Intent
 
-The main intent of the Singleton Pattern is to provide a way to ensure that a 
+The main intent of the Singleton Pattern is to provide a way to ensure that a
 class has only one instance and to provide a global point of access to it.
 
 ### Structure
 
-In the Singleton Pattern, a class contains a method that creates an instance of 
-the class, but it also stores the instance in a variable. If the instance exists, 
+In the Singleton Pattern, a class contains a method that creates an instance of
+the class, but it also stores the instance in a variable. If the instance exists,
 it returns the existing instance. Otherwise, it creates a new instance and returns it.
 
 ### Applicability
 
-- Use the Singleton Pattern when there must be exactly one instance of a class, 
-and it must be accessible from a well-known access point.
-- Use the pattern when the sole instance should be extensible by subclassing, 
-and clients should be able to use an extended instance without modifying their code.
+- Use the Singleton Pattern when there must be exactly one instance of a class,
+  and it must be accessible from a well-known access point.
+- Use the pattern when the sole instance should be extensible by subclassing,
+  and clients should be able to use an extended instance without modifying their code.
 
 ### Examples
 
-- Logging systems often use the Singleton Pattern, as they need a single point of 
-contact for logging messages to consistently handle application logs.
-- Configuration settings where a single set of configurations is needed to be 
-shared across multiple components in a system.
+- Logging systems often use the Singleton Pattern, as they need a single point of
+  contact for logging messages to consistently handle application logs.
+- Configuration settings where a single set of configurations is needed to be
+  shared across multiple components in a system.
 
 ### Implementation
 
 To implement a Singleton Pattern, follow these steps:
 
-1. Ensure that the class cannot be instantiated from outside by declaring its 
-constructor as private.
-2. Create a static method that acts as an access point to get the single instance 
-of the class.
+1. Ensure that the class cannot be instantiated from outside by declaring its
+   constructor as private.
+2. Create a static method that acts as an access point to get the single instance
+   of the class.
 3. Create a static variable to hold the single instance of the class.
 
-By following these steps, you can ensure that a single instance of a class is 
+By following these steps, you can ensure that a single instance of a class is
 created and accessible globally.
 
 ## 05. Factory Method Pattern
 
-The Factory Method Pattern is a creational design pattern that provides an 
-interface for creating objects in a superclass, but allows subclasses to alter 
+The Factory Method Pattern is a creational design pattern that provides an
+interface for creating objects in a superclass, but allows subclasses to alter
 the type of objects that will be created.
 
 ### Purpose
@@ -181,16 +182,16 @@ the dependency of client code on concrete implementations.
 
 ### How it Works
 
-In this pattern, a class delegates the responsibility of object creation to its 
-subclasses. The superclass has a method to return the object of the Product 
-interface, while subclasses override this method to create and return different 
+In this pattern, a class delegates the responsibility of object creation to its
+subclasses. The superclass has a method to return the object of the Product
+interface, while subclasses override this method to create and return different
 products.
 
 ### Example
 
 Imagine a logistics application where the main process class relies on different
 modes of transport (truck, ship). Instead of hardcoding these in the main class,
-we can use the Factory Method Pattern, allowing each transport method to be 
+we can use the Factory Method Pattern, allowing each transport method to be
 instantiated by a specific class using the factory method.
 
 ```python
@@ -382,18 +383,18 @@ constructed in a unified way.
 
 ## 08. Prototype Pattern
 
-The Prototype Pattern is a creational design pattern that allows you 
-to create new objects by copying or cloning an existing object, known 
-as the prototype. This pattern is particularly useful when the object 
-creation process is costly in terms of time or resources, or when an 
+The Prototype Pattern is a creational design pattern that allows you
+to create new objects by copying or cloning an existing object, known
+as the prototype. This pattern is particularly useful when the object
+creation process is costly in terms of time or resources, or when an
 object should not have its underlying structure exposed.
 
 ### Key Concepts
 
-- **Cloning**: The fundamental concept of the Prototype Pattern is 
+- **Cloning**: The fundamental concept of the Prototype Pattern is
   cloning an existing object to produce new objects.
 - **Prototype Interface**: This defines a method for cloning itself.
-- **Prototype Instance**: An instance of the object that supports 
+- **Prototype Instance**: An instance of the object that supports
   cloning through the prototype interface.
 
 ### Applicability
@@ -402,35 +403,35 @@ Use the Prototype Pattern when:
 
 - A system should be independent of how its products are created.
 - The cost of creating an object is expensive or complex.
-- You need to reduce the subclasses of an object by 
+- You need to reduce the subclasses of an object by
   allowing multiple configurations.
 
 ### Implementation Steps
 
 1. Define a prototype interface that declares a method for cloning.
-2. Create concrete classes that implement this interface and 
+2. Create concrete classes that implement this interface and
    define the method to clone itself.
-3. Utilize the prototype manager to maintain a set of the 
+3. Utilize the prototype manager to maintain a set of the
    available prototypes or clones.
-4. Leverage the clone method to create new objects based on a 
+4. Leverage the clone method to create new objects based on a
    prototype instance.
 
 ### Pros
 
 - Reduces the repetitive creation of similar objects.
-- Eliminates the need for class instantiation directly, improving 
+- Eliminates the need for class instantiation directly, improving
   abstraction.
 - Aids in simplifying the creation process of complex objects.
 
 ### Cons
 
-- The implementation and usage might be complex with 
+- The implementation and usage might be complex with
   long prototype chains.
-- Cloning might involve deep or shallow copies depending 
+- Cloning might involve deep or shallow copies depending
   on the desired level of copying.
 
-The Prototype Pattern is very adaptable for situations requiring 
-the replication of complex objects and is beneficial in scenarios 
+The Prototype Pattern is very adaptable for situations requiring
+the replication of complex objects and is beneficial in scenarios
 where objects are dynamically modified or instantiated.
 
 ## 09. Structural Design Patterns
@@ -478,47 +479,47 @@ and they play a crucial role in software design.
 
 ## 10. Adapter Pattern
 
-The Adapter Pattern is a structural design pattern that allows objects 
-with incompatible interfaces to work together. By acting as a bridge 
-between the interfaces, an adapter converts the interface of a class 
+The Adapter Pattern is a structural design pattern that allows objects
+with incompatible interfaces to work together. By acting as a bridge
+between the interfaces, an adapter converts the interface of a class
 into another interface that a client expects.
 
 ### Intent
 
-The primary intent of the Adapter Pattern is to provide a unified 
-interface that enables the collaboration of otherwise incompatible 
-interfaces. It allows for flexibility and reusability of code by 
-encapsulating the details of interfacing and translating calls from 
+The primary intent of the Adapter Pattern is to provide a unified
+interface that enables the collaboration of otherwise incompatible
+interfaces. It allows for flexibility and reusability of code by
+encapsulating the details of interfacing and translating calls from
 one interface to another.
 
 ### When to Use
 
-- When there is a set of APIs that need to work together but have 
-incompatible interfaces.
+- When there is a set of APIs that need to work together but have
+  incompatible interfaces.
 - To reuse a class that is not compatible with the system.
-- To convert one interface into another that can be conveniently used 
-by a system's client code.
+- To convert one interface into another that can be conveniently used
+  by a system's client code.
 
 ### Participants
 
-- **Target Interface:** Defines the domain-specific interface that 
-Clients use.
+- **Target Interface:** Defines the domain-specific interface that
+  Clients use.
 - **Client:** Interacts with objects conforming to the Target interface.
 - **Adaptee:** Defines an existing interface that needs adapting.
-- **Adapter:** Adapts the interface of the Adaptee to the Target 
-interface.
+- **Adapter:** Adapts the interface of the Adaptee to the Target
+  interface.
 
 ### Example
 
-Consider a scenario where a client application needs to interact with 
-different payment gateway interfaces. In this case, each payment 
-gateway might have a unique API which a client cannot directly interact 
-with. By employing the Adapter Pattern, the client application can 
-use a unified payment method interface by implementing an adapter 
+Consider a scenario where a client application needs to interact with
+different payment gateway interfaces. In this case, each payment
+gateway might have a unique API which a client cannot directly interact
+with. By employing the Adapter Pattern, the client application can
+use a unified payment method interface by implementing an adapter
 that interfaces with the specific payment gateway APIs.
 
-The Adapter Pattern is invaluable in situations where you need to 
-integrate components that are likely to have conflicting interfaces, 
+The Adapter Pattern is invaluable in situations where you need to
+integrate components that are likely to have conflicting interfaces,
 providing an effective way to decrease the coupling between systems.
 
 ## 11. Bridge Pattern
@@ -538,14 +539,14 @@ maintainable and scalable.
 2. **Implementor**: Provides an interface for the implementation classes.
 
 3. **Concrete Implementor**: Implements the Implementor interface and
-defines the concrete implementation.
+   defines the concrete implementation.
 
 ### When to Use the Bridge Pattern
 
 - When you want to avoid a permanent binding between abstraction and its
   implementation.
 - When you need to share an implementation among multiple objects and
-the abstraction and implementation should be independently extendable
+  the abstraction and implementation should be independently extendable
   through subclasses.
 - When changes to the implementation should not affect the interface
   or abstraction.
@@ -589,34 +590,40 @@ changing or managing both abstractions and their corresponding implementations.
 
 ## 12. Composite Pattern
 
-In the realm of software design, the Composite Pattern is a structural 
-design pattern that allows you to compose objects into tree structures 
-to represent part-whole hierarchies. The pattern facilitates treating 
+In the realm of software design, the Composite Pattern is a structural
+design pattern that allows you to compose objects into tree structures
+to represent part-whole hierarchies. The pattern facilitates treating
 both individual objects and compositions of objects uniformly.
 
 The Composite Pattern typically involves three main participants:
-1. **Component**: An abstract class that declares the interface for 
-components in the composition.
-2. **Leaf**: Represents leaf objects in the composition. A leaf has no 
-children.
-3. **Composite**: Defines a branch node in the tree structure. 
-It maintains a collection of child components.
+
+1. **Component**: An abstract class that declares the interface for
+   components in the composition.
+2. **Leaf**: Represents leaf objects in the composition. A leaf has no
+   children.
+3. **Composite**: Defines a branch node in the tree structure.
+   It maintains a collection of child components.
 
 ### Intent
+
 The purpose of the Composite Pattern is to:
+
 - Compose objects into tree structures to represent hierarchies.
 - Let clients treat individual objects and compositions uniformly.
 
 ### Applicability
+
 Use the Composite Pattern when you:
+
 - Need to represent part-whole hierarchies of objects.
-- Want clients to be able to ignore the difference between compositions 
-of objects and individual objects.
+- Want clients to be able to ignore the difference between compositions
+  of objects and individual objects.
 
 ### Example
-Imagine a drawing application where you need to manage different types 
-of graphic objects (e.g., circles, squares). Using the Composite 
-Pattern, you can create a complex drawing consisting of different 
+
+Imagine a drawing application where you need to manage different types
+of graphic objects (e.g., circles, squares). Using the Composite
+Pattern, you can create a complex drawing consisting of different
 shapes and group them into a single object.
 
 ```cpp
@@ -654,184 +661,191 @@ public:
 };
 ```
 
-In this example, `CompositeGraphic` holds children of type `Graphic`, 
-allowing both individual graphics and compositions to be treated 
-uniformly as graphics, thereby streamlining operations across 
+In this example, `CompositeGraphic` holds children of type `Graphic`,
+allowing both individual graphics and compositions to be treated
+uniformly as graphics, thereby streamlining operations across
 elements in the structure.
 
 ## 13. Decorator Pattern
 
-The Decorator Pattern is a structural design pattern that allows behavior 
+The Decorator Pattern is a structural design pattern that allows behavior
 
-or responsibilities to be added to individual objects, either statically 
+or responsibilities to be added to individual objects, either statically
 
-or dynamically, without affecting the behavior of other objects from the 
+or dynamically, without affecting the behavior of other objects from the
 
-same class. In essence, it provides a flexible alternative to subclassing 
+same class. In essence, it provides a flexible alternative to subclassing
 
 for extending functionality.
 
 ### Key Concepts
 
-1. **Component Interface**: Defines the interface for objects that can 
+1. **Component Interface**: Defines the interface for objects that can
 
    have responsibilities added to them dynamically.
 
-2. **Concrete Component**: This is the original object to which additional 
+2. **Concrete Component**: This is the original object to which additional
 
    responsibilities can be attached.
 
-3. **Decorator Class**: Maintains a reference to a component object and 
+3. **Decorator Class**: Maintains a reference to a component object and
 
    defines an interface that conforms to the component's interface.
 
-4. **Concrete Decorators**: Extends the functionality of the component 
+4. **Concrete Decorators**: Extends the functionality of the component
 
    by implementing additional behavior.
 
 ### Example
 
-Consider a text editor that allows you to add functionality to a text 
+Consider a text editor that allows you to add functionality to a text
 
-element such as borders or scrollbars. Instead of creating new classes 
+element such as borders or scrollbars. Instead of creating new classes
 
-for each combination of features, the Decorator Pattern allows you to 
+for each combination of features, the Decorator Pattern allows you to
 
 add features dynamically using a decorator.
 
 #### Real-world Scenario
 
-Imagine a simple coffee shop application. You start with a basic coffee 
+Imagine a simple coffee shop application. You start with a basic coffee
 
-class, and then use decorators to dynamically add ingredients like 
+class, and then use decorators to dynamically add ingredients like
 
 milk, sugar, and whipped cream without creating complex subclass trees.
 
 ### Advantages
 
 - **Flexibility**: Achieves behavior combinations at runtime.
-- **Reusability**: Decorators add responsibilities to objects without 
+- **Reusability**: Decorators add responsibilities to objects without
 
   touching the actual object code.
 
 ### Use Cases
 
-- When you need to add responsibilities to individual objects 
+- When you need to add responsibilities to individual objects
 
   dynamically without affecting other objects.
-- When subclassing for every possible combination of features would 
+
+- When subclassing for every possible combination of features would
 
   result in an explosion of subclasses.
 
 ## 14. Facade Pattern
 
-The Facade Pattern is a structural design pattern that provides a simplified 
-interface to a complex subsystem. It aims to reduce the complexity of 
-interacting with classes by providing a single interface to client classes, 
-making it easier for users to work with the subsystem without needing to 
+The Facade Pattern is a structural design pattern that provides a simplified
+interface to a complex subsystem. It aims to reduce the complexity of
+interacting with classes by providing a single interface to client classes,
+making it easier for users to work with the subsystem without needing to
 understand its complexities.
 
-The Facade Pattern is beneficial when dealing with legacy systems, 
-as it allows the introduction of a new interface without changing the 
-existing code. It also enhances readability and reduces interaction 
-between clients and the complex subsystem, which can help maintain 
+The Facade Pattern is beneficial when dealing with legacy systems,
+as it allows the introduction of a new interface without changing the
+existing code. It also enhances readability and reduces interaction
+between clients and the complex subsystem, which can help maintain
 decoupling in software applications.
 
 ### Example
 
-Consider a scenario where you have a complex library for handling video 
-conversion. By using a Facade, you can provide a simple interface that 
-lets clients perform video conversions without diving into the complexity 
+Consider a scenario where you have a complex library for handling video
+conversion. By using a Facade, you can provide a simple interface that
+lets clients perform video conversions without diving into the complexity
 of the underlying library code.
 
 #### Structure
-- **Facade**: Offers high-level methods that internally use complex parts 
-of the subsystems.
-- **Subsystem classes**: Perform the actual work assigned by the Facade. 
-Each subsystem may know the others but it should not expose its details 
-outside.
+
+- **Facade**: Offers high-level methods that internally use complex parts
+  of the subsystems.
+- **Subsystem classes**: Perform the actual work assigned by the Facade.
+  Each subsystem may know the others but it should not expose its details
+  outside.
 
 #### Applicability
-- Use the Facade pattern when you need to simplify the interaction with a 
-complex subsystem.
-- When you want to create a layer that decouples your client from the 
-complex implementation of the subsystem.
+
+- Use the Facade pattern when you need to simplify the interaction with a
+  complex subsystem.
+- When you want to create a layer that decouples your client from the
+  complex implementation of the subsystem.
 
 #### Benefits
-- **Simplified Interface**: Provides a higher-level interface for easier 
-client interaction.
-- **Decoupling**: Clients are less dependent on the details of internal 
-subsystems.
-- **Flexibility**: Changes in a subsystem don’t affect the client as long 
-as the interface remains unchanged.
+
+- **Simplified Interface**: Provides a higher-level interface for easier
+  client interaction.
+- **Decoupling**: Clients are less dependent on the details of internal
+  subsystems.
+- **Flexibility**: Changes in a subsystem don’t affect the client as long
+  as the interface remains unchanged.
 
 #### Downsides
-- **Limited control**: Clients might lose access to some powerful 
-operations if they are only interacting through a Facade.
-- **Potential Overhead**: Introducing a facade might lead to minimal 
-performance overhead due to the additional layer.
 
-The Facade Pattern is a great way to provide a simplified interface 
-to external systems, making it easier to manage and understand complex 
+- **Limited control**: Clients might lose access to some powerful
+  operations if they are only interacting through a Facade.
+- **Potential Overhead**: Introducing a facade might lead to minimal
+  performance overhead due to the additional layer.
+
+The Facade Pattern is a great way to provide a simplified interface
+to external systems, making it easier to manage and understand complex
 subsystems.
 
 ## 15. Flyweight Pattern
 
-The Flyweight Pattern is a structural design pattern that allows programs to 
-manage large numbers of similar objects efficiently. By sharing common state 
-among multiple objects, it reduces memory usage and improves performance. 
-Commonly, the Flyweight Pattern is used in scenarios where an application 
+The Flyweight Pattern is a structural design pattern that allows programs to
+manage large numbers of similar objects efficiently. By sharing common state
+among multiple objects, it reduces memory usage and improves performance.
+Commonly, the Flyweight Pattern is used in scenarios where an application
 creates substantial numbers of identical or similar objects.
 
 ### Overview
 
-In the Flyweight Pattern, objects are split into intrinsic (shared) and 
-extrinsic (unique) states. The intrinsic state is shared across all instances 
+In the Flyweight Pattern, objects are split into intrinsic (shared) and
+extrinsic (unique) states. The intrinsic state is shared across all instances
 of the object, while the extrinsic state varies with each instance.
 
 #### Components
 
-1. **Flyweight Interface**: Defines operations that can be performed on shared 
-objects.
+1. **Flyweight Interface**: Defines operations that can be performed on shared
+   objects.
 
-2. **ConcreteFlyweight**: Implements the Flyweight interface and stores the 
-intrinsic state.
+2. **ConcreteFlyweight**: Implements the Flyweight interface and stores the
+   intrinsic state.
 
-3. **UnsharedConcreteFlyweight**: Represents flyweight objects that can't be 
-shared. It operates exclusively on extrinsic states.
+3. **UnsharedConcreteFlyweight**: Represents flyweight objects that can't be
+   shared. It operates exclusively on extrinsic states.
 
-4. **FlyweightFactory**: It manages and creates Flyweight objects, ensuring 
-that shared objects are used efficiently.
+4. **FlyweightFactory**: It manages and creates Flyweight objects, ensuring
+   that shared objects are used efficiently.
 
 ### Example
 
-Consider a text editor, where each character may be considered an object. 
-Instead of creating a new object for every individual character, a 
-character's glyph (part of its appearance) becomes the intrinsic state, 
+Consider a text editor, where each character may be considered an object.
+Instead of creating a new object for every individual character, a
+character's glyph (part of its appearance) becomes the intrinsic state,
 shared amongst all similar characters.
 
-The editor only varies the extrinsic state, such as position and color, 
+The editor only varies the extrinsic state, such as position and color,
 reducing memory overhead.
 
 #### Advantages and Disadvantages
 
 **Advantages:**
+
 - Reduced memory overhead.
 - Improved performance by reusing common parts of the state.
 
 **Disadvantages:**
+
 - Increased complexity in code.
 - Involves extrinsic state management, which can lead to errors.
 
-In conclusion, the Flyweight Pattern is instrumental in reducing memory 
+In conclusion, the Flyweight Pattern is instrumental in reducing memory
 loads by sharing objects and managing state, making it invaluable in high-performance and resource-constrained applications.
 
 ## 16. Proxy Pattern
 
-The proxy pattern is a structural design pattern that provides a surrogate 
-or placeholder for another object to control access to it. A proxy object 
-acts as an intermediary, forwarding requests to the original object and 
-optionally adding additional functionality, such as lazy initialization, 
+The proxy pattern is a structural design pattern that provides a surrogate
+or placeholder for another object to control access to it. A proxy object
+acts as an intermediary, forwarding requests to the original object and
+optionally adding additional functionality, such as lazy initialization,
 access control, logging, or caching.
 
 ### Key Concepts
@@ -844,31 +858,31 @@ access control, logging, or caching.
 
 ### Use Cases
 
-- **Remote Proxy:** Manages interactions for objects in different address 
+- **Remote Proxy:** Manages interactions for objects in different address
   spaces, typically used in network connections.
-- **Virtual Proxy:** Delays resource-intensive object creation, or 
-  initialization until needed. 
-- **Protection Proxy:** Controls access to a critical object based on access 
+- **Virtual Proxy:** Delays resource-intensive object creation, or
+  initialization until needed.
+- **Protection Proxy:** Controls access to a critical object based on access
   rights.
-- **Smart Proxy:** Provides additional functionalities like caching, 
+- **Smart Proxy:** Provides additional functionalities like caching,
   referencing counting, etc.
 
 ### Example
 
-Consider a virtual proxy to delay the loading of a large image file until it 
+Consider a virtual proxy to delay the loading of a large image file until it
 is actually needed. This can reduce memory usage and improve performance.
 
 ![Example Diagram](https://example.com/proxy-pattern-diagram)
 
-1. **Subject Interface:** Defines common methods for both the proxy and real 
+1. **Subject Interface:** Defines common methods for both the proxy and real
    image.
-2. **Real Image:** Contains the concrete implementation needed to load and 
+2. **Real Image:** Contains the concrete implementation needed to load and
    display the image.
 3. **Proxy Image:** Implements the same subject interface but loads the image
    when display is called for the first time.
 
-The proxy pattern is useful when there's a need to control the access to an 
-object while ensuring transparency. This makes it a versatile tool for 
+The proxy pattern is useful when there's a need to control the access to an
+object while ensuring transparency. This makes it a versatile tool for
 resolving various structural problems within software design.
 
 ## 17. Behavioral Design Patterns
@@ -883,35 +897,34 @@ In this article, we'll explore the following key aspects of behavioral design
 patterns:
 
 1. **Purpose**: To manage object collaboration, define clear interaction flows,
-and optimize the distribution of responsibilities between objects.
+   and optimize the distribution of responsibilities between objects.
 
 2. **Common Patterns**: Includes well-known patterns like Strategy, Observer,
-Mediator, and Command, among others.
+   Mediator, and Command, among others.
 
 3. **Key Characteristics**: Behavioral patterns often deal with immutable
-patterns, object state changes, and collaboration dynamics. Primarily, they
-are concerned with identifying common boundaries for behavior encapsulation.
+   patterns, object state changes, and collaboration dynamics. Primarily, they
+   are concerned with identifying common boundaries for behavior encapsulation.
 
 4. **Benefits**: Simplified communication between objects, enhanced scalability
-and flexibility through well-defined interfaces, improved readability and
-maintenance of code due to clear communication paths between components.
+   and flexibility through well-defined interfaces, improved readability and
+   maintenance of code due to clear communication paths between components.
 
 #### Example Patterns Overview
 
 - **Strategy Pattern**: Enables an algorithm's behavior to be selected at
-runtime. It's particularly useful for defining a family of algorithms,
-encapsulating each one, and making them interchangeable.
-  
+  runtime. It's particularly useful for defining a family of algorithms,
+  encapsulating each one, and making them interchangeable.
 - **Observer Pattern**: A subscription model where an object, known as the
-subject, maintains a list of objects depending on it (observers) and notifies
-them of any changes.
+  subject, maintains a list of objects depending on it (observers) and notifies
+  them of any changes.
 
 - **Mediator Pattern**: Centralizes complex communications and control among
-related objects. It simplifies maintenance by localizing the behavior
-that otherwise would be distributed across several objects.
+  related objects. It simplifies maintenance by localizing the behavior
+  that otherwise would be distributed across several objects.
 
 - **Command Pattern**: Encapsulates a request as an object, thereby allowing
-for parameterizing clients with queues, requests, and operations.
+  for parameterizing clients with queues, requests, and operations.
 
 #### Use Cases
 
@@ -932,31 +945,31 @@ reflected across multiple other objects.
 ### Key Components
 
 - **Subject (Observable)**: The object being observed. Maintains a list of
-dependents (observers) and provides methods to attach, detach, and notify
-observers of any state changes.
+  dependents (observers) and provides methods to attach, detach, and notify
+  observers of any state changes.
 
 - **Observer**: The object that needs to be informed of state changes in
-the subject. It defines an updating interface for objects that should be
-notified of changes in a subject.
+  the subject. It defines an updating interface for objects that should be
+  notified of changes in a subject.
 
 - **ConcreteSubject**: Extends Subject and stores state that should be
-monitored. When this state changes, the ConcreteSubject sends notifications to
-all registered observers.
+  monitored. When this state changes, the ConcreteSubject sends notifications to
+  all registered observers.
 
 - **ConcreteObserver**: Implements the updating interface to keep its state
-consistent with subjects. It observes the ConcreteSubject and reflects any
-state changes accordingly.
+  consistent with subjects. It observes the ConcreteSubject and reflects any
+  state changes accordingly.
 
 ### Practical Examples
 
 - In a user interface, buttons, sliders, and fields need to be updated when
-the corresponding data model changes.
+  the corresponding data model changes.
 
 - Stock market tickers that update clients' displays when stock values
-change.
+  change.
 
 - Email subscription services where users receive updates on new content
-published.
+  published.
 
 ### Conclusion
 
@@ -985,6 +998,7 @@ to any handler.
 ### Structure
 
 Here is a basic structure of the Chain of Responsibility Pattern:
+
 - **Handler**: Defines an interface for handling requests and
   optionally implements the successor link.
 - **Concrete Handler**: Handles requests it is responsible for and
@@ -1018,22 +1032,22 @@ class ConcreteHandler implements Handler {
 ### Example Use Cases
 
 - **UI Event Handling**: Many systems use this pattern for menu or
-button event handling.
+  button event handling.
 - **Logging Systems**: Chain of Responsibility is useful when
-implementing logging systems with different responsibility levels.
+  implementing logging systems with different responsibility levels.
 - **Task Processing Pipelines**: Similar concepts are used in
-pipelines where tasks need processing through several stages.
+  pipelines where tasks need processing through several stages.
 
 ### Advantages
 
 - Promotes loose coupling: Enhances flexibility adding/removing
-responsibilities.
+  responsibilities.
 - Chain can be configured dynamically at runtime.
 
 ### Disadvantages
 
 - If not managed properly, chains can become hard to track and
-debug.
+  debug.
 - Request processing might suffer if chain grows too long.
 
 The Chain of Responsibility is especially useful in situations where a

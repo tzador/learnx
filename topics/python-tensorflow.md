@@ -59,10 +59,12 @@ you need to ensure it's properly installed on your system.
 ### Installation Steps
 
 1. **Prerequisites:**
+
    - Make sure you have Python 3.6 or later.
    - It's often a good idea to use a virtual environment.
 
 2. **Using pip:**
+
    - The simplest method to install TensorFlow is using pip. Run the
      following command in your terminal:
      ```bash
@@ -70,6 +72,7 @@ you need to ensure it's properly installed on your system.
      ```
 
 3. **Verify the Installation:**
+
    - You can check if TensorFlow is installed correctly by using the
      following Python code:
      ```python
@@ -91,13 +94,13 @@ applications.
 
 ## 03. Understanding Tensors
 
-In TensorFlow, data is represented as n-dimensional arrays called 
-**tensors**. These tensors are the primary data structure in TensorFlow 
+In TensorFlow, data is represented as n-dimensional arrays called
+**tensors**. These tensors are the primary data structure in TensorFlow
 and are used for carrying out all kinds of computations.
 
 ### What is a Tensor?
 
-A tensor can be thought of as a generalization of scalars, vectors, 
+A tensor can be thought of as a generalization of scalars, vectors,
 and matrices.
 
 - **Scalars** are 0-dimensional tensors (e.g., a single number).
@@ -107,18 +110,18 @@ and matrices.
 
 ### Tensor Properties
 
-- **Rank**: The number of dimensions of a tensor. A scalar has rank 0, a 
-vector rank 1, and a matrix rank 2.
+- **Rank**: The number of dimensions of a tensor. A scalar has rank 0, a
+  vector rank 1, and a matrix rank 2.
 
 - **Shape**: This describes the size of each dimension.
 
-- **Data Type**: Tensors can hold different data types like int, 
-float, etc.
+- **Data Type**: Tensors can hold different data types like int,
+  float, etc.
 
 ### Creating Tensors in TensorFlow
 
-In TensorFlow, tensors can be created using various functions like 
-`tf.constant()`, `tf.zeros()`, and `tf.ones()`. Here's how you 
+In TensorFlow, tensors can be created using various functions like
+`tf.constant()`, `tf.zeros()`, and `tf.ones()`. Here's how you
 can create a simple tensor using `tf.constant()`:
 
 ```python
@@ -128,21 +131,21 @@ tensor = tf.constant([[1, 2], [3, 4]])
 print(tensor)
 ```
 
-This will output a 2x2 matrix (rank 2 tensor) with the values 
-[[1, 2], [3, 4]]. Understanding tensors is fundamental as it lays the 
+This will output a 2x2 matrix (rank 2 tensor) with the values
+[[1, 2], [3, 4]]. Understanding tensors is fundamental as it lays the
 foundation for building and training models in TensorFlow.
 
 ## 04. Basic Operations with Tensors
 
-In this article, we will explore some basic operations 
-that can be performed on tensors using TensorFlow. Tensors 
-are central to TensorFlow, and understanding how to manipulate 
+In this article, we will explore some basic operations
+that can be performed on tensors using TensorFlow. Tensors
+are central to TensorFlow, and understanding how to manipulate
 them is crucial for building machine learning models.
 
 ### Arithmetic Operations
 
-TensorFlow supports various arithmetic operations such as 
-addition, subtraction, multiplication, and division. Here is a 
+TensorFlow supports various arithmetic operations such as
+addition, subtraction, multiplication, and division. Here is a
 quick look at performing these operations:
 
 ```python
@@ -162,7 +165,7 @@ div_result = tf.divide(a, b)
 
 ### Matrix Operations
 
-TensorFlow also provides functions for matrix operations, which 
+TensorFlow also provides functions for matrix operations, which
 are essential for many machine learning algorithms:
 
 ```python
@@ -176,7 +179,7 @@ matmul_result = tf.matmul(matrix_a, matrix_b)
 
 ### Reduction Operations
 
-Reduction operations such as sum, mean, and max are helpful for 
+Reduction operations such as sum, mean, and max are helpful for
 collapsing tensors along specific dimensions:
 
 ```python
@@ -189,23 +192,23 @@ mean_total = tf.reduce_mean(c)
 max_total = tf.reduce_max(c)
 ```
 
-Understanding these basic operations on tensors is vital for 
-deeper explorations into models and data manipulation using 
-TensorFlow. As you become more comfortable with these concepts, 
-you'll be able to leverage TensorFlow more effectively in your 
+Understanding these basic operations on tensors is vital for
+deeper explorations into models and data manipulation using
+TensorFlow. As you become more comfortable with these concepts,
+you'll be able to leverage TensorFlow more effectively in your
 projects.
 
 ## 05. TensorFlow Variables and Constants
 
-In TensorFlow, both variables and constants are distinct types of objects. 
-They are foundational building blocks used to store data within your models. 
-Understanding how to handle these data types is crucial for building 
+In TensorFlow, both variables and constants are distinct types of objects.
+They are foundational building blocks used to store data within your models.
+Understanding how to handle these data types is crucial for building
 efficient deep learning models.
 
 ### Constants in TensorFlow
 
 Constants are immutable types of variable whose value is never changed.
-They are defined once and cannot be altered during execution. You can 
+They are defined once and cannot be altered during execution. You can
 create a constant in TensorFlow using `tf.constant`:
 
 ```python
@@ -219,8 +222,8 @@ The above code will output a tensor with a constant value of 5.
 
 ### Variables in TensorFlow
 
-Unlike constants, variables in TensorFlow can change their values. 
-Variables are used to store weights and biases during model training. 
+Unlike constants, variables in TensorFlow can change their values.
+Variables are used to store weights and biases during model training.
 You can create a variable using `tf.Variable`:
 
 ```python
@@ -229,7 +232,7 @@ variable = tf.Variable([1.0, 2.0])
 print(variable)
 ```
 
-Here, we use `tf.Variable` to store an array. This allows us to 
+Here, we use `tf.Variable` to store an array. This allows us to
 modify the values during training.
 
 #### Modifying Variable Values
@@ -242,19 +245,19 @@ variable.assign([2.0, 3.0])
 print(variable)
 ```
 
-It's important to note that operations that modify variables, like 
-`assign`, must be done within a `tf.function` or run within a 
+It's important to note that operations that modify variables, like
+`assign`, must be done within a `tf.function` or run within a
 session in TensorFlow 1.x.
 
-In summary, understanding and using variables and constants is 
-fundamental for any TensorFlow application, as they are integral to 
+In summary, understanding and using variables and constants is
+fundamental for any TensorFlow application, as they are integral to
 building machine learning models efficiently.
 
 ## 06. Building a Simple Neural Network
 
-In this article, we'll walk through the basics of building a simple 
-neural network using TensorFlow. A neural network consists of layers, 
-and each layer has a specific purpose in processing data. We'll start 
+In this article, we'll walk through the basics of building a simple
+neural network using TensorFlow. A neural network consists of layers,
+and each layer has a specific purpose in processing data. We'll start
 by initializing a basic sequential model.
 
 ### Step 1: Import Libraries
@@ -269,7 +272,7 @@ from tensorflow.keras.layers import Dense
 
 ### Step 2: Creating a Sequential Model
 
-The `Sequential` model is a linear stack of layers. We add layers 
+The `Sequential` model is a linear stack of layers. We add layers
 sequentially using the `add` method.
 
 ```python
@@ -278,7 +281,7 @@ model = Sequential()
 
 ### Step 3: Adding Layers
 
-Layers are the building blocks of a neural network. In this simple 
+Layers are the building blocks of a neural network. In this simple
 example, we will use densely-connected (fully connected) layers:
 
 ```python
@@ -290,21 +293,21 @@ model.add(Dense(64, activation='relu'))
 model.add(Dense(10, activation='softmax'))
 ```
 
-- **Input Layer**: This layer expects input of shape `(100,)`. It 
+- **Input Layer**: This layer expects input of shape `(100,)`. It
   includes 64 neurons and uses a ReLU activation function.
 - **Hidden Layer**: This layer also has 64 neurons and uses ReLU.
-- **Output Layer**: It has 10 neurons, ideal for classifying inputs 
-  into 10 categories, with a softmax activation function for 
+- **Output Layer**: It has 10 neurons, ideal for classifying inputs
+  into 10 categories, with a softmax activation function for
   categorical output.
 
 ### Step 4: Compiling the Model
 
-Compile the model by specifying the optimizer, loss function, and 
+Compile the model by specifying the optimizer, loss function, and
 metrics:
 
 ```python
-model.compile(optimizer='adam', 
-              loss='sparse_categorical_crossentropy', 
+model.compile(optimizer='adam',
+              loss='sparse_categorical_crossentropy',
               metrics=['accuracy'])
 ```
 
@@ -316,20 +319,20 @@ You can print a summary of the model to verify its architecture:
 model.summary()
 ```
 
-This gives you an overview of each layer, its output shape, and the 
+This gives you an overview of each layer, its output shape, and the
 number of parameters.
 
 ### Conclusion
 
-By following these steps, you've created a simple neural network using 
-TensorFlow's Keras API. This lays the foundation for building more 
-complex models and conducting in-depth neural network tasks. In the 
+By following these steps, you've created a simple neural network using
+TensorFlow's Keras API. This lays the foundation for building more
+complex models and conducting in-depth neural network tasks. In the
 next article, we will cover the training process in detail.
 
 ## 07. TensorFlow Computational Graphs
 
 In TensorFlow, a computational graph is a fundamental concept that allows you
- to define and visualize the structure of your computations. The nodes in
+to define and visualize the structure of your computations. The nodes in
 a computational graph represent operations, while the edges represent
 data (or tensors) flowing between these operations. This setup enables
 optimization and efficient execution of deep learning models. In this
@@ -596,14 +599,14 @@ By using evaluation metrics effectively, you can gain valuable insights into the
 
 ## 11. TensorFlow Keras Sequential Model
 
-Keras is a high-level neural networks API, written in Python and capable of 
-running on top of TensorFlow. In this article, we will look into how to create 
+Keras is a high-level neural networks API, written in Python and capable of
+running on top of TensorFlow. In this article, we will look into how to create
 a Sequential model using Keras.
 
 ### Overview of Keras Sequential Model
 
-The Sequential model is appropriate for a plain stack of layers where each 
-layer has exactly one input tensor and one output tensor. You can create a 
+The Sequential model is appropriate for a plain stack of layers where each
+layer has exactly one input tensor and one output tensor. You can create a
 Sequential model by passing a list of layers to the constructor.
 
 ### Creating a Sequential Model
@@ -623,8 +626,8 @@ model = Sequential([
 ```
 
 In the above example, we have created a Sequential model with three layers.
-The first layer has 32 neurons with ReLU activation and expects input 
-with shape (784,). The second layer has 64 neurons, and the last layer is 
+The first layer has 32 neurons with ReLU activation and expects input
+with shape (784,). The second layer has 64 neurons, and the last layer is
 a Softmax layer with 10 neurons.
 
 ### Adding Layers Iteratively
@@ -642,7 +645,7 @@ This approach is useful when you want to build the model incrementally.
 
 ### Compiling the Model
 
-After defining the model architecture, you need to compile the model before 
+After defining the model architecture, you need to compile the model before
 training it. You can do so using the `.compile()` method:
 
 ```python
@@ -651,15 +654,15 @@ model.compile(optimizer='adam',
               metrics=['accuracy'])
 ```
 
-This sets up the model with the Adam optimizer and categorical crossentropy 
+This sets up the model with the Adam optimizer and categorical crossentropy
 loss, which is suitable for multi-class classification tasks.
 
 ### Summary
 
-The Keras Sequential model is a simple way to build feed-forward neural 
-networks. It allows for intuitive layer stacking and supports easy 
-model configuration through its compile method. In the next articles, 
-we will dive deeper into more complex Keras model architectures and 
+The Keras Sequential model is a simple way to build feed-forward neural
+networks. It allows for intuitive layer stacking and supports easy
+model configuration through its compile method. In the next articles,
+we will dive deeper into more complex Keras model architectures and
 advanced features.
 
 ## 12. TensorFlow Keras Functional API
@@ -705,10 +708,10 @@ t = model.fit(x_train, y_train, epochs=10, batch_size=32)
 ### Advantages of Using the Functional API
 
 1. **Complexity**: Build advanced architectures that go beyond simple  
-layer stacking, like residual connections, multi-branch models, etc.
+   layer stacking, like residual connections, multi-branch models, etc.
 
 2. **Clarity**: The architecture and data flow are clearly defined,  
-making it easier to debug and alter.
+   making it easier to debug and alter.
 
 The Functional API is a highly flexible tool that allows TensorFlow users  
 to model complex networks with ease, capturing both simple and intricate  
@@ -721,6 +724,7 @@ allowing you to checkpoint model states and resume training from a saved state.
 Let's explore how to work with checkpoints and model saving in TensorFlow.
 
 ### Checkpoints
+
 Checkpoints are snapshots of your model's weights at a particular training
 state. This is beneficial for fault tolerance or resuming training later.
 
@@ -849,6 +853,7 @@ It's part of the TensorFlow Extended (TFX) ecosystem and is great for serving
 TensorFlow models.
 
 ### Key Features
+
 - **Efficient Serving**: Provides out-of-the-box configurations making
   deployment efficient.
 - **Flexible Deployment**: Supports disk-based storage for models with
@@ -861,6 +866,7 @@ TensorFlow models.
 ### Setting Up TensorFlow Serving
 
 #### Installation
+
 To install TensorFlow Serving, you can use Docker (recommended) or a binary
 installation:
 
@@ -872,11 +878,12 @@ Alternatively, you can install TensorFlow Serving using APT (for Debian-based
 systems):
 
 ```bash
-sudo apt-get update && \  
+sudo apt-get update && \
 sudo apt-get install tensorflow-model-server
 ```
 
 #### Exporting the Model
+
 Before serving a model, it must be exported in a format that TensorFlow Serving
 can use:
 
@@ -887,15 +894,17 @@ model.save('my_model/')  # SavedModel format
 ```
 
 #### Running TensorFlow Serving
+
 Launch the TensorFlow Serving container with a specified model directory:
 
 ```bash
-docker run -p 8501:8501 --name=tf_serving \  
-  --mount type=bind,source=$(pwd)/my_model/,target=/models/my_model \  
+docker run -p 8501:8501 --name=tf_serving \
+  --mount type=bind,source=$(pwd)/my_model/,target=/models/my_model \
   -e MODEL_NAME=my_model -t tensorflow/serving
 ```
 
 ### Making Predictions
+
 Predictions can be made via HTTP requests:
 
 ```bash
@@ -913,12 +922,14 @@ TensorFlow Probability (TFP) is a library for statistical computations
 with TensorFlow. It provides a range of utilities for probabilistic  
 modeling, Bayesian analysis, and probabilistic machine learning.
 
-### Key Concepts  
+### Key Concepts
 
-#### Distributions  
+#### Distributions
+
 TFP offers a variety of probability distributions like Normal, Bernoulli,  
 Poisson, and more. These distributions can be used for density estimation,  
-sampling, and parameter estimation.  
+sampling, and parameter estimation.
+
 ```python
 import tensorflow_probability as tfp
 tfd = tfp.distributions
@@ -927,29 +938,35 @@ normal_dist = tfd.Normal(loc=0., scale=1.)
 print(normal_dist.prob(0.))
 ```
 
-#### Bijectors  
+#### Bijectors
+
 Bijectors in TFP provide transformations on distributions. These are  
-useful for creating more complex models from simpler ones.  
+useful for creating more complex models from simpler ones.
+
 ```python
 bijector = tfp.bijectors.Exp()
 transformed_dist = bijector.forward(normal_dist)
 ```
 
-#### Joint Distributions  
+#### Joint Distributions
+
 TFP allows modeling of joint distributions that involve multiple random  
 variables. Joint distributions can be constructed using `JointDistributionNamed`.  
 This is particularly useful for multivariate problems.
 
-#### Markov Chain Monte Carlo (MCMC)  
-TFP includes MCMC methods for Bayesian inference using sampling. 
-Commonly used MCMC techniques such as Hamiltonian Monte Carlo are available.  
+#### Markov Chain Monte Carlo (MCMC)
 
-#### Bayesian Neural Networks  
+TFP includes MCMC methods for Bayesian inference using sampling.
+Commonly used MCMC techniques such as Hamiltonian Monte Carlo are available.
+
+#### Bayesian Neural Networks
+
 Bayesian neural networks are supported in TFP, providing uncertainty quantification  
 in deep learning models. These networks make predictions with a measure of  
 confidence, useful in various practical scenarios.
 
-### Applications  
+### Applications
+
 - Bayesian Neural Networks for deeper insights into uncertainty
 - Probabilistic Machine Learning Models
 - Complex statistical modeling with flexible priors and variational inference
@@ -1034,24 +1051,24 @@ serves as a gateway to experimenting with modern AI challenges.
 
 ## 18. TensorFlow with TPUs
 
-Tensor Processing Units (TPUs) are Google's custom-developed 
-application-specific integrated circuits (ASICs) used to accelerate 
-machine learning workloads. TPUs are designed to efficiently 
-run TensorFlow models, providing faster computation for large 
+Tensor Processing Units (TPUs) are Google's custom-developed
+application-specific integrated circuits (ASICs) used to accelerate
+machine learning workloads. TPUs are designed to efficiently
+run TensorFlow models, providing faster computation for large
 and complex models.
 
 ### Setting Up TPUs
 
-To utilize TPUs with TensorFlow, you typically need access to a 
-Google Cloud environment, as TPUs are available through Google's 
-cloud platform. You'll first need to create a Google Cloud account 
+To utilize TPUs with TensorFlow, you typically need access to a
+Google Cloud environment, as TPUs are available through Google's
+cloud platform. You'll first need to create a Google Cloud account
 and set up a project with the necessary permissions to use TPUs.
 
 ### Writing TensorFlow Code for TPUs
 
-You'll need to adapt your TensorFlow code to take advantage of 
-TPUs. This involves using `tf.distribute` strategies to distribute 
-the workload across the TPU cores. A common strategy is 
+You'll need to adapt your TensorFlow code to take advantage of
+TPUs. This involves using `tf.distribute` strategies to distribute
+the workload across the TPU cores. A common strategy is
 `tf.distribute.TPUStrategy`.
 
 Example:
@@ -1073,29 +1090,29 @@ with strategy.scope():
 
 ### Benefits of Using TPUs
 
-- **Speed**: TPUs drastically speed up the training of 
-  deep neural networks, especially when dealing with 
+- **Speed**: TPUs drastically speed up the training of
+  deep neural networks, especially when dealing with
   large datasets and models.
-- **Cost**: Despite their speed, TPUs can be cost-effective 
+- **Cost**: Despite their speed, TPUs can be cost-effective
   when compared to equivalent GPU resources.
 
 ### Best Practices
 
-- **Batch Size**: Increase the batch size incrementally 
+- **Batch Size**: Increase the batch size incrementally
   to utilize TPU resources efficiently.
-- **Data I/O**: Optimize the input pipeline to feed data 
+- **Data I/O**: Optimize the input pipeline to feed data
   to the model as efficiently as possible.
-- **Model Architecture**: TPUs are particularly effective 
-  for dense models; consider this when designing your 
+- **Model Architecture**: TPUs are particularly effective
+  for dense models; consider this when designing your
   networks.
 
 ### Conclusion
 
-Using TPUs with TensorFlow can significantly accelerate your 
-model training process, enabling you to experiment more 
-rapidly and iterate quickly on deep learning projects. Adapting 
-your TensorFlow code to utilize TPUs involves making use of 
-distribution strategies and setting up the environment, but 
+Using TPUs with TensorFlow can significantly accelerate your
+model training process, enabling you to experiment more
+rapidly and iterate quickly on deep learning projects. Adapting
+your TensorFlow code to utilize TPUs involves making use of
+distribution strategies and setting up the environment, but
 the performance benefits can be substantial.
 
 ## 19. Advanced TensorFlow with AutoML
@@ -1111,6 +1128,7 @@ to automate parts of the machine learning workflow.
 AutoML is designed to automate the intensive computations required in the
 engineering of machine learning models. The system attempts to streamline the
 process by providing:
+
 - Hyperparameter optimization
 - Neural Architecture Search (NAS)
 - Data preprocessing and feature engineering
@@ -1147,10 +1165,11 @@ model = prune_low_magnitude(original_model)
 ### Benefits of AutoML in TensorFlow
 
 Implementing AutoML within TensorFlow offers numerous advantages:
+
 - **Efficiency**: Reduces the time required for manual engineering.
 - **Accessibility**: Makes TensorFlow tools more within reach for newcomers.
 - **Optimization**: Achieves higher body performance through advanced search and
-automated tuning.
+  automated tuning.
 
 By integrating AutoML within your TensorFlow projects, you can enhance the
 potential of your models while minimizing the extensive manual process
@@ -1158,18 +1177,19 @@ involved in model architecture setup and hyperparameter tuning.
 
 ## 20. Integrating TensorFlow with Other Libraries
 
-Integrating TensorFlow with other libraries can enhance its functionality and 
-open up new possibilities for data analysis and model building. Many libraries 
+Integrating TensorFlow with other libraries can enhance its functionality and
+open up new possibilities for data analysis and model building. Many libraries
 can complement TensorFlow's capabilities.
 
 ### TensorFlow and Pandas
 
-Pandas is a powerful data manipulation library in Python. You can use Pandas 
-with TensorFlow to manage datasets and perform data preprocessing more 
+Pandas is a powerful data manipulation library in Python. You can use Pandas
+with TensorFlow to manage datasets and perform data preprocessing more
 efficiently. Pandas DataFrames can be directly converted to TensorFlow tensors
- using `tf.convert_to_tensor()` for seamless integration.
+using `tf.convert_to_tensor()` for seamless integration.
 
 Example:
+
 ```python
 import pandas as pd
 import tensorflow as tf
@@ -1181,12 +1201,13 @@ tensor = tf.convert_to_tensor(df.values)
 
 ### TensorFlow and NumPy
 
-NumPy is another essential numerical computing library that complements 
-TensorFlow. TensorFlow operations often return NumPy arrays and vice-versa, 
-enabling seamless interaction. The `numpy()` method can convert TensorFlow 
+NumPy is another essential numerical computing library that complements
+TensorFlow. TensorFlow operations often return NumPy arrays and vice-versa,
+enabling seamless interaction. The `numpy()` method can convert TensorFlow
 tensors to NumPy arrays.
 
 Example:
+
 ```python
 import numpy as np
 import tensorflow as tf
@@ -1199,18 +1220,19 @@ numpy_array = tensor.numpy()
 
 ### TensorFlow and Scikit-learn
 
-Scikit-learn is widely used for traditional machine learning approaches. While 
-TensorFlow is more suited for deep learning, you can use Scikit-learn for 
-data preprocessing, model evaluation, and pipelines. Integration can be 
+Scikit-learn is widely used for traditional machine learning approaches. While
+TensorFlow is more suited for deep learning, you can use Scikit-learn for
+data preprocessing, model evaluation, and pipelines. Integration can be
 achieved through Scikit-learn’s API and TensorFlow’s model export options.
 
 ### TensorFlow and Matplotlib
 
-Matplotlib is a plotting library that is often used for visualizing data in 
-Python. To visualize TensorFlow's tensor results, you can easily leverage 
+Matplotlib is a plotting library that is often used for visualizing data in
+Python. To visualize TensorFlow's tensor results, you can easily leverage
 Matplotlib.
 
 Example:
+
 ```python
 import matplotlib.pyplot as plt
 import tensorflow as tf
@@ -1227,6 +1249,6 @@ plt.show()
 
 ### Conclusion
 
-Integrating TensorFlow with other libraries like Pandas, NumPy, Scikit-learn, 
-and Matplotlib enhances your data analysis and machine learning workflows, 
+Integrating TensorFlow with other libraries like Pandas, NumPy, Scikit-learn,
+and Matplotlib enhances your data analysis and machine learning workflows,
 allowing more flexibility and control over data processing and visualization.

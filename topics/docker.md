@@ -23,43 +23,43 @@
 
 ## 01. Introduction to Docker
 
-Docker is a platform that allows developers to build, ship, and run 
-applications in isolated environments called containers. Containers 
-are lightweight, portable, and efficient, enabling developers to 
+Docker is a platform that allows developers to build, ship, and run
+applications in isolated environments called containers. Containers
+are lightweight, portable, and efficient, enabling developers to
 create consistent development, testing, and production environments.
 
 ### What is Docker?
 
-Docker is an open-source platform designed to simplify the complexities 
-of managing an application's environment. The core concept revolves 
-around containerization, where your software runs in containers, 
-isolated from the rest of the system. This ensures that the software 
+Docker is an open-source platform designed to simplify the complexities
+of managing an application's environment. The core concept revolves
+around containerization, where your software runs in containers,
+isolated from the rest of the system. This ensures that the software
 behaves the same, regardless of where it's executed.
 
 ### Why Use Docker?
 
-1. **Portability**: Docker containers can run on any system that 
-supports Docker, ensuring consistency across different setups.
+1. **Portability**: Docker containers can run on any system that
+   supports Docker, ensuring consistency across different setups.
 
-2. **Efficiency**: Containers share the host OS kernel, making them 
-much more resource-efficient than traditional virtual machines.
+2. **Efficiency**: Containers share the host OS kernel, making them
+   much more resource-efficient than traditional virtual machines.
 
-3. **Scalability**: Easily scale applications by adding more 
-containers without extensive setup or configuration.
+3. **Scalability**: Easily scale applications by adding more
+   containers without extensive setup or configuration.
 
-4. **Isolation**: Each container operates independently, ensuring 
-that one container does not interfere with another.
+4. **Isolation**: Each container operates independently, ensuring
+   that one container does not interfere with another.
 
 ### Key Components of Docker
 
 - **Docker Engine**: The core that runs and manages containers.
-- **Docker Hub**: A cloud-based registry service for sharing 
-Docker images.
-- **Docker Compose**: A tool to define and manage multi-container 
-Docker applications.
+- **Docker Hub**: A cloud-based registry service for sharing
+  Docker images.
+- **Docker Compose**: A tool to define and manage multi-container
+  Docker applications.
 
-This introductory article serves as a foundation for understanding 
-Docker, its benefits, and components. As we continue, we'll delve 
+This introductory article serves as a foundation for understanding
+Docker, its benefits, and components. As we continue, we'll delve
 further into the installation and practical use of Docker containers.
 
 ## 02. Installing Docker
@@ -199,12 +199,12 @@ Here are some of the most commonly used Docker CLI commands:
   for use locally.
 
 - `docker run <image_name>`: Creates and starts a container from
-the specified image.
+  the specified image.
 
 - `docker stop <container_id>`: Stops a running container.
 
 - `docker rm <container_id>`: Removes a stopped container from
-your system.
+  your system.
 
 - `docker rmi <image_name>`: Deletes an image from your local storage.
 
@@ -232,25 +232,25 @@ the creation of Docker images.
 
 ## 05. Creating Your First Docker Container
 
-In previous articles, we have introduced Docker, discussed how to install 
-it, laid out essential terminology, and shown you how to navigate around 
-with Docker CLI. Now, it's time to create your first Docker container, 
+In previous articles, we have introduced Docker, discussed how to install
+it, laid out essential terminology, and shown you how to navigate around
+with Docker CLI. Now, it's time to create your first Docker container,
 which is one of the core actions you'll perform using Docker.
 
 ### Step 1: Select a Docker Image
 
-Consider a Docker image as a template that you use to build containers. 
-Docker Hub is a repository that contains numerous pre-created images that 
-can be used to set up your container. You can search for images on 
+Consider a Docker image as a template that you use to build containers.
+Docker Hub is a repository that contains numerous pre-created images that
+can be used to set up your container. You can search for images on
 [Docker Hub](https://hub.docker.com/).
 
-For this example, we will use the `hello-world` image. It's a minimal 
-image that serves as an easy and quick way to verify your Docker 
+For this example, we will use the `hello-world` image. It's a minimal
+image that serves as an easy and quick way to verify your Docker
 installation.
 
 ### Step 2: Pull a Docker Image
 
-To pull the `hello-world` image to your local environment, run the 
+To pull the `hello-world` image to your local environment, run the
 following command in your terminal:
 
 ```bash
@@ -261,7 +261,7 @@ This command downloads the `hello-world` image to your machine.
 
 ### Step 3: Run a Docker Container
 
-Now, you can use the pulled image to create and run a Docker container 
+Now, you can use the pulled image to create and run a Docker container
 with the following command:
 
 ```bash
@@ -272,17 +272,17 @@ What happens here?
 
 - Docker creates a new container using the `hello-world` image.
 - This container runs to display a `Hello from Docker!` message.
-- If all is well, the message means Docker is installed correctly, and 
-you're ready to start building more complex applications.
+- If all is well, the message means Docker is installed correctly, and
+  you're ready to start building more complex applications.
 
 ### What's Next?
 
-Now that you've created your first container using a simple image, explore 
-other images on Docker Hub or learn how to build your own Docker images. 
-You can create complex, multi-service applications leveraging containerization 
+Now that you've created your first container using a simple image, explore
+other images on Docker Hub or learn how to build your own Docker images.
+You can create complex, multi-service applications leveraging containerization
 for isolation and agility.
 
-This marks a significant first step as you build upon your knowledge and 
+This marks a significant first step as you build upon your knowledge and
 skills in Docker.
 
 ## 06. Understanding Docker Images
@@ -326,9 +326,9 @@ official images and images uploaded by other users.
 
 ## 07. Working with Dockerfiles
 
-A Dockerfile is a text document that contains all the commands to assemble an 
+A Dockerfile is a text document that contains all the commands to assemble an
 image. By using `docker build`, you can automate the image creation process.
-Dockerfiles simplify the building of images by specifying environment 
+Dockerfiles simplify the building of images by specifying environment
 configurations and application installation steps within a single file.
 
 ### Anatomy of a Dockerfile
@@ -336,13 +336,13 @@ configurations and application installation steps within a single file.
 Basic structure consists of instructions and arguments:
 
 - **FROM**: Sets the base image for the subsequent instructions.
-- **RUN**: Executes any commands in a new layer on top of the current image 
+- **RUN**: Executes any commands in a new layer on top of the current image
   and commits the results.
 - **CMD**: Provides defaults for an executing container.
-- **EXPOSE**: Informs Docker that the container listens on the specified network 
+- **EXPOSE**: Informs Docker that the container listens on the specified network
   ports at runtime.
 - **ENV**: Sets environment variables.
-- **ADD**: Copies new files, directories, or remote file URLs to the filesystem 
+- **ADD**: Copies new files, directories, or remote file URLs to the filesystem
   of the image.
 - **COPY**: Copies new files or directories to the filesystem of the image.
 - **ENTRYPOINT**: Configures a container to run as an executable.
@@ -350,9 +350,11 @@ Basic structure consists of instructions and arguments:
 ### Building an Image from a Dockerfile
 
 To build an image, navigate to the directory containing your Dockerfile and run:
+
 ```bash
 docker build -t your-image-name .
 ```
+
 Here, `-t` flags the image with a name (tag).
 
 ### Best Practices for Dockerfiles
@@ -507,22 +509,26 @@ Docker applications. This article will introduce you to the basics
 of Docker Compose and help you understand how to use it effectively.
 
 ### What is Docker Compose?
+
 Docker Compose is a tool for defining and running multi-container
 Docker applications with ease. Using a YAML file, you can configure
 all your application's services, allowing you to spin up complex
 environments in a single command.
 
 ### Installing Docker Compose
+
 Docker Compose is included in Docker Desktop for Windows and Mac.
 For Linux, it can be installed separately using package managers
 or directly from the Docker website.
 
 ### Writing a docker-compose.yml
+
 The core of a Compose application is the `docker-compose.yml` file.
 This file defines all the services your application needs, their
 configuration, networks, and volumes they use.
 
 #### Example `docker-compose.yml`
+
 ```yaml
 database:
   image: postgres
@@ -537,6 +543,7 @@ web:
 ```
 
 ### Running Docker Compose
+
 To start your multi-container application, navigate to the directory
 with your `docker-compose.yml` and run:
 
@@ -547,6 +554,7 @@ docker-compose up
 This command will start all the services defined in the Compose file.
 
 ### Managing Docker Compose
+
 You can stop the running services with:
 
 ```bash
@@ -691,43 +699,43 @@ essential for scaling applications efficiently.
 
 ## 13. Docker Security
 
-Security is a critical aspect when working with Docker, as with any 
-containerization platform. Understanding and implementing security measures 
+Security is a critical aspect when working with Docker, as with any
+containerization platform. Understanding and implementing security measures
 ensures that your applications and data remain safe from threats.
 
 ### Security Best Practices
 
-1. **Keep Docker Updated:** Regular updates often contain security patches. 
+1. **Keep Docker Updated:** Regular updates often contain security patches.
    Always use the latest stable version of Docker.
 
-2. **Run Containers as Non-Root Users:** By default, containers run as root. 
+2. **Run Containers as Non-Root Users:** By default, containers run as root.
    Implement a practice to run them as non-root users when possible.
 
-3. **Use Trusted Images:** Only use images from trusted sources or verify them 
+3. **Use Trusted Images:** Only use images from trusted sources or verify them
    on platforms like Docker Hub.
 
-4. **Scan Images for Vulnerabilities:** Regularly scan Docker images for 
+4. **Scan Images for Vulnerabilities:** Regularly scan Docker images for
    vulnerabilities using tools like `Clair` or `Anchore`.
 
-5. **Limit Container's Resource Access:** Use Docker's resource management 
+5. **Limit Container's Resource Access:** Use Docker's resource management
    capabilities to limit CPU, memory, and other resources for containers.
 
-6. **Network Security:** Use Docker's network features to manage and isolate 
+6. **Network Security:** Use Docker's network features to manage and isolate
    services. Apply firewalls and encryption where applicable.
 
-7. **Manage Sensitive Environment Variables:** Avoid hardcoding sensitive 
-   info in `Dockerfiles` or environment variables. Use secret management 
+7. **Manage Sensitive Environment Variables:** Avoid hardcoding sensitive
+   info in `Dockerfiles` or environment variables. Use secret management
    solutions.
 
-8. **Implement Container Logging and Monitoring:** Regularly monitor and 
+8. **Implement Container Logging and Monitoring:** Regularly monitor and
    log container activity to quickly detect and respond to security issues.
 
-Docker security is an ever-evolving field. Make sure to stay updated on the 
-latest best practices and tools to ensure the robustness of your containerized 
+Docker security is an ever-evolving field. Make sure to stay updated on the
+latest best practices and tools to ensure the robustness of your containerized
 applications.
 
-Understanding these aspects of security will significantly enhance the safety 
-of your Docker deployments and the integrity of your data. Always prioritize 
+Understanding these aspects of security will significantly enhance the safety
+of your Docker deployments and the integrity of your data. Always prioritize
 security as an integral part of your Docker workflow.
 
 ## 14. Docker for Continuous Integration
@@ -748,7 +756,7 @@ pipelines and the benefits it provides.
 
 2. **Isolation**: Each running Docker container has its own
    isolated filesystem which is separate from all other
-   containers, making it ideal for running tests in isolation. 
+   containers, making it ideal for running tests in isolation.
 
 3. **Speed**: Docker images can be reused across different stages
    of the CI process, minimizing the need to set up environments
@@ -769,9 +777,9 @@ andGitLab CI/CD, can be done by:
 - Including a `Dockerfile` in your project and building the
   container as part of your CI pipeline.
 - Running tests inside Docker containers to ensure consistent
-environment for tests.
+  environment for tests.
 - Deploying the Docker image from the CI pipeline to staging or
-production.
+  production.
 
 ### Example CI Workflow with Docker
 
@@ -903,47 +911,55 @@ modern cloud-native applications.
 
 ## 17. Docker Best Practices for Production
 
-Running Docker containers in a production environment requires following best 
+Running Docker containers in a production environment requires following best
 practices to ensure stability, reliability, and security. Below, we will
 explore several best practices for deploying Docker containers in production.
 
 ### Resource Limiting
- Limiting the resources that a Docker container can use is crucial in production
+
+Limiting the resources that a Docker container can use is crucial in production
 environments to ensure one container doesn’t use all the available resources.
 Utilize flags like `--memory` and `--cpus` to restrict resource usage.
 
 ### Image Management
- Keeping Docker images lean and clean is vital. Use multi-stage builds to reduce
+
+Keeping Docker images lean and clean is vital. Use multi-stage builds to reduce
 image size and remove unnecessary dependencies and files. Regularly update and
 remove unused images to minimize vulnerabilities.
 
 ### Security
- Run containers with least privilege by minimizing the use of root user.
+
+Run containers with least privilege by minimizing the use of root user.
 Preferring a non-root user in Dockerfiles and setting up Security Enhanced
 Linux (SELinux) policies can improve security.
 
 ### Logging
- Centralized logging is important. Use logging drivers like `json-file`, `syslog`
+
+Centralized logging is important. Use logging drivers like `json-file`, `syslog`
 or third-party solutions like ELK stack or Splunk for effective log management
 and analysis.
 
 ### Monitoring
- Implement monitoring for containers and services using tools like Prometheus,
+
+Implement monitoring for containers and services using tools like Prometheus,
 Grafana, or Datadog. Monitoring helps in proactive identification of issues
 and efficient resource usage.
 
 ### Network Configurations
- Proper configuration of network settings helps with performance and security.
+
+Proper configuration of network settings helps with performance and security.
 Isolate containers using Docker networks and encrypt network traffic where
 needed.
 
 ### Backup and Recovery
- Regular backups and a clear recovery plan are crucial. Ensure volumes and any
+
+Regular backups and a clear recovery plan are crucial. Ensure volumes and any
 important data are backed up frequently and have a procedure in place for
 rapid recovery.
 
 ### Automation
- Use Continuous Integration/Continuous Deployment (CI/CD) pipelines to automate
+
+Use Continuous Integration/Continuous Deployment (CI/CD) pipelines to automate
 the build, test, and deployment processes for consistency and efficiency.
 
 By adhering to these best practices, you can ensure your Docker deployment
@@ -962,16 +978,17 @@ integration with the operating system, ease of installation, and comprehensive
 features.
 
 #### Features
+
 - **Native OS Integration:** Docker Desktop utilizes native technologies such as Hyper-V
   on Windows and Hyperkit on macOS.
-  
 - **Kubernetes Support:** Docker Desktop comes with built-in Kubernetes support, allowing
-you to run Kubernetes clusters alongside your Docker Swarm setups.
+  you to run Kubernetes clusters alongside your Docker Swarm setups.
 
 - **Docker Compose:** Integrated support for Docker Compose makes it easy to manage multi-
-container applications.
+  container applications.
 
 #### Installation
+
 - Docker Desktop can be easily installed from the Docker official website.
 
 - Ensure that your system meets the minimum hardware and software requirements before
@@ -983,6 +1000,7 @@ Docker Toolbox is an older solution for running Docker on systems that do not su
 Docker Desktop or when using older versions of Windows or macOS.
 
 #### Features
+
 - **VirtualBox Based:** Relies on Oracle VirtualBox to create a virtual machine where Docker
   runs.
 
@@ -993,6 +1011,7 @@ Docker Desktop or when using older versions of Windows or macOS.
   for older machines.
 
 #### Installation
+
 - Docker Toolbox can also be installed from the Docker official website.
 
 - Ensure that Oracle VirtualBox is also installed, as it is a prerequisite for Docker
@@ -1039,9 +1058,11 @@ metrics, ensuring resources are used efficiently.
 
 2. **Creating an HPA resource**:
    Use `kubectl autoscale` to create an HPA for your deployment:
+
    ```shell
    kubectl autoscale deployment myapp --cpu-percent=50 --min=1 --max=10
    ```
+
    This command sets up an HPA that maintains CPU utilization around 50%,
    scaling between 1 and 10 replicas.
 
@@ -1063,9 +1084,11 @@ more appropriate:
 
 1. **Scale Command**: Use `kubectl scale` to manually adjust the number of
    replicas:
+
    ```shell
    kubectl scale deployment myapp --replicas=5
    ```
+
    This sets the number of running pods to 5.
 
 2. **Monitoring**: Manual scaling requires active monitoring to ensure
@@ -1081,61 +1104,61 @@ concepts ensures robust, scalable systems that can adapt to user needs.
 
 ## 20. Future Trends in Docker and Cloud-Native Technologies
 
-As we venture deeper into the era of cloud computing and containerization, 
-Docker continues to play a pivotal role in shaping the way applications are 
-delivered, deployed, and managed. This article explores the future trends and 
-innovations within Docker and the broader cloud-native landscape, paving 
+As we venture deeper into the era of cloud computing and containerization,
+Docker continues to play a pivotal role in shaping the way applications are
+delivered, deployed, and managed. This article explores the future trends and
+innovations within Docker and the broader cloud-native landscape, paving
 the way for the next generation of application development.
 
 ### 1. Serverless Architectures
 
-One of the most exciting trends is the shift towards serverless computing, 
-which abstracts away the underlying infrastructure, allowing developers to 
-focus solely on writing code. Docker can be used in conjunction with 
-serverless frameworks to package dependencies and run functions in 
+One of the most exciting trends is the shift towards serverless computing,
+which abstracts away the underlying infrastructure, allowing developers to
+focus solely on writing code. Docker can be used in conjunction with
+serverless frameworks to package dependencies and run functions in
 isolated environments, making the serverless model even more attractive.
 
 ### 2. Increased Adoption of Kubernetes
 
-Kubernetes has emerged as the de facto standard for container orchestration, 
-and its integration with Docker continues to evolve. The focus is now on 
-seamless integration, improved scaling, and enhanced security, leading to 
+Kubernetes has emerged as the de facto standard for container orchestration,
+and its integration with Docker continues to evolve. The focus is now on
+seamless integration, improved scaling, and enhanced security, leading to
 more efficient management of containerized applications.
 
 ### 3. Edge Computing and IoT
 
-As edge computing becomes more prevalent, Docker's lightweight footprint 
-becomes an essential component in deploying applications at the edge. 
-This trend is particularly evident in IoT deployments, where Docker 
+As edge computing becomes more prevalent, Docker's lightweight footprint
+becomes an essential component in deploying applications at the edge.
+This trend is particularly evident in IoT deployments, where Docker
 containers can run on devices with constrained resources.
 
 ### 4. AI and Machine Learning Workloads
 
-Docker is increasingly being used to package and ship AI/ML models, 
-facilitating reproducibility and scalability of machine learning workflows. 
-The future holds a deeper integration with AI/ML pipelines, possibly with 
+Docker is increasingly being used to package and ship AI/ML models,
+facilitating reproducibility and scalability of machine learning workflows.
+The future holds a deeper integration with AI/ML pipelines, possibly with
 more dedicated tooling and support within Docker ecosystems.
 
 ### 5. Enhanced Security Features
 
-Security in containers remains a top concern, driving innovation in 
-security practices and tools. Future developments may include more 
-advanced security layers, automatic vulnerability assessments, and 
-improved isolation techniques to ensure containers remain secure in 
+Security in containers remains a top concern, driving innovation in
+security practices and tools. Future developments may include more
+advanced security layers, automatic vulnerability assessments, and
+improved isolation techniques to ensure containers remain secure in
 their lifecycle.
 
 ### 6. Multi-Cloud and Hybrid Cloud Solutions
 
-Docker facilitates multi-cloud strategies, allowing applications to be 
-deployed seamlessly across different cloud environments. The future will 
-likely bring more robust solutions for managing workloads across hybrid 
-and multi-cloud deployments, offering flexibility and reducing vendor 
+Docker facilitates multi-cloud strategies, allowing applications to be
+deployed seamlessly across different cloud environments. The future will
+likely bring more robust solutions for managing workloads across hybrid
+and multi-cloud deployments, offering flexibility and reducing vendor
 lock-in.
 
 ### Conclusion
 
-Docker and its ecosystem continue to evolve, offering new opportunities 
-and challenges for developers and organizations. By embracing these 
-trends, businesses can stay ahead of the curve and fully leverage the 
-power of cloud-native technologies to meet the demands of modern 
+Docker and its ecosystem continue to evolve, offering new opportunities
+and challenges for developers and organizations. By embracing these
+trends, businesses can stay ahead of the curve and fully leverage the
+power of cloud-native technologies to meet the demands of modern
 application development.

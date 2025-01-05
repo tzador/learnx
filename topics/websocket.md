@@ -23,26 +23,26 @@
 
 ## 01. Introduction to WebSockets
 
-WebSocket is a protocol that enables two-way interactive communication 
-sessions between a user's browser and a server. It was standardized by 
-the IETF as RFC 6455 in 2011, and it has since become an essential part 
+WebSocket is a protocol that enables two-way interactive communication
+sessions between a user's browser and a server. It was standardized by
+the IETF as RFC 6455 in 2011, and it has since become an essential part
 of the modern web ecosystem.
 
-Unlike HTTP, which follows a request-response model where communication 
+Unlike HTTP, which follows a request-response model where communication
 initiates from the client-side, WebSocket allows for real-time, full-
-duplex communication. This means that data can be sent and received at 
+duplex communication. This means that data can be sent and received at
 any time, providing a more dynamic user experience.
 
-WebSockets are commonly used in applications such as chat applications, 
-online games, real-time trading systems, and collaborative tools, where 
+WebSockets are commonly used in applications such as chat applications,
+online games, real-time trading systems, and collaborative tools, where
 continuous data exchange is critical.
 
-The WebSocket protocol begins with a handshake using the HTTP protocol 
-and then upgrades this connection to allow for communication without the 
+The WebSocket protocol begins with a handshake using the HTTP protocol
+and then upgrades this connection to allow for communication without the
 overhead of HTTP headers.
 
-This introductory article provides a foundation on what WebSockets are, 
-laying the groundwork for understanding their key features and uses in 
+This introductory article provides a foundation on what WebSockets are,
+laying the groundwork for understanding their key features and uses in
 later articles.
 
 ## 02. How WebSockets Work
@@ -81,22 +81,24 @@ asynchronous nature.
 
 1. **Install WebSocket Package**: Use a library like `ws` for WebSocket
    support.
+
    ```bash
    npm install ws
    ```
 
 2. **Create a WebSocket Server**:
+
    ```javascript
-   const WebSocket = require('ws');
+   const WebSocket = require("ws");
 
    const wss = new WebSocket.Server({ port: 8080 });
 
-   wss.on('connection', function connection(ws) {
-     ws.on('message', function incoming(message) {
-       console.log('received: %s', message);
+   wss.on("connection", function connection(ws) {
+     ws.on("message", function incoming(message) {
+       console.log("received: %s", message);
      });
 
-     ws.send('something');
+     ws.send("something");
    });
    ```
 
@@ -135,39 +137,40 @@ how you can create a basic WebSocket client.
 
 ```javascript
 // Create a new WebSocket connection to the server
-const socket = new WebSocket('ws://example.com/socket');
+const socket = new WebSocket("ws://example.com/socket");
 
 // Event handler for when the connection is open
-socket.onopen = function(event) {
-    console.log('WebSocket is open now.');
-    // Optionally, you can send data
-    socket.send('Hello Server!');
+socket.onopen = function (event) {
+  console.log("WebSocket is open now.");
+  // Optionally, you can send data
+  socket.send("Hello Server!");
 };
 
 // Event handler for receiving messages
-socket.onmessage = function(event) {
-    console.log('Message from server: ', event.data);
+socket.onmessage = function (event) {
+  console.log("Message from server: ", event.data);
 };
 
 // Event handler for errors
-socket.onerror = function(error) {
-    console.log('WebSocket Error: ', error);
+socket.onerror = function (error) {
+  console.log("WebSocket Error: ", error);
 };
 
 // Event handler for when the connection is closed
-socket.onclose = function(event) {
-    console.log('WebSocket is closed now.');
+socket.onclose = function (event) {
+  console.log("WebSocket is closed now.");
 };
 ```
 
 ### Explanation
 
 1. **Creating a WebSocket**: You start by creating a new `WebSocket`
-object and pass the WebSocket server URL as a parameter.
+   object and pass the WebSocket server URL as a parameter.
 
 2. **Handling Events**: The WebSocket object has several event
-handlers `onopen`, `onmessage`, `onerror`, and `onclose` to handle the
-connection and communication logic:
+   handlers `onopen`, `onmessage`, `onerror`, and `onclose` to handle the
+   connection and communication logic:
+
    - `onopen`: Triggered when connection is established.
    - `onmessage`: Receives messages sent by the server.
    - `onerror`: Catches any errors in the connection.
@@ -198,13 +201,13 @@ this technology.
 ### Establishing a Connection
 
 1. **Handshake**: The WebSocket connection begins with a handshake,
-inspired by HTTP. This consists of an HTTP request from the client to
-the server, specifically an HTTP `Upgrade` request, to switch from
-HTTP to WebSocket.
+   inspired by HTTP. This consists of an HTTP request from the client to
+   the server, specifically an HTTP `Upgrade` request, to switch from
+   HTTP to WebSocket.
 
 2. **Response**: The server responds with an `Upgrade` header if it can
-handle WebSocket connections, which establishes the connection. Both
-the client and server then switch to the WebSocket protocol.
+   handle WebSocket connections, which establishes the connection. Both
+   the client and server then switch to the WebSocket protocol.
 
 ### Data Transfer
 
@@ -284,14 +287,14 @@ user experience by minimizing the latency involved in communication.
 
 ## 07. WebSocket Security Considerations
 
-WebSockets, while efficient and real-time, come with their own set of 
+WebSockets, while efficient and real-time, come with their own set of
 security considerations that developers must address. Understanding these
 aspects is key to implementing a secure WebSocket communication system.
 
 ### Same-Origin Policy
 
 Unlike HTTP requests, WebSockets do not adhere strictly to the same-origin
-policy. This means they can connect to different origins, increasing the 
+policy. This means they can connect to different origins, increasing the
 risk of cross-site attacks if not handled properly.
 
 ### Cross-Site WebSocket Hijacking
@@ -307,17 +310,17 @@ with WebSockets (indicated by WSS: WebSocket Secure) is crucial.
 
 ### Validating Input Data
 
-Input data validation must be enforced to prevent injection attacks. 
+Input data validation must be enforced to prevent injection attacks.
 Ensuring that all data received over WebSockets is properly sanitized helps
 in maintaining the integrity of the communication.
 
 ### Authentication and Authorization
 
-WebSockets lack built-in authentication mechanisms. Developers should 
-impose custom authentication strategies like tokens or API keys at the 
+WebSockets lack built-in authentication mechanisms. Developers should
+impose custom authentication strategies like tokens or API keys at the
 handshake stage to ensure secure access.
 
-Proper authorization checks are necessary for every message to ascertain 
+Proper authorization checks are necessary for every message to ascertain
 whether the client has the correct permissions to perform each action.
 
 ### Rate Limiting and Throttling
@@ -330,14 +333,14 @@ communication attempts.
 
 Securing WebSockets involves a combination of strategies, from securing the
 initial handshake to encrypting the data flow. Awareness and mitigation of
-potential vulnerabilities are critical for a robust WebSocket implementation. 
-Following these security practices will greatly enhance the security of 
+potential vulnerabilities are critical for a robust WebSocket implementation.
+Following these security practices will greatly enhance the security of
 applications using WebSockets.
 
 ## 08. WebSocket Use Cases
 
 WebSockets have emerged as a prominent solution for real-time communication
-on the web, allowing data exchange without the overhead of HTTP requests. 
+on the web, allowing data exchange without the overhead of HTTP requests.
 Here are several key use cases where WebSockets are particularly beneficial:
 
 ### Real-Time Applications
@@ -377,7 +380,7 @@ rates or stock prices. WebSockets support the delivery of frequent updates
 efficiently.
 
 In each of these scenarios, WebSockets provide a powerful method for
-demanding real-time interactions, yielding a more engaging and responsive 
+demanding real-time interactions, yielding a more engaging and responsive
 user experience.
 
 ## 09. Handling WebSocket Errors
@@ -444,50 +447,50 @@ reliability and stability of your WebSocket implementation.
 
 ## 10. Real-time WebSocket Applications
 
-WebSockets have revolutionized the way real-time applications are built, 
-allowing instant data exchange between clients and servers. This article 
-explores various real-time applications that benefit from the WebSocket 
+WebSockets have revolutionized the way real-time applications are built,
+allowing instant data exchange between clients and servers. This article
+explores various real-time applications that benefit from the WebSocket
 protocol's capabilities.
 
 ### Chat Applications
 
-Real-time chat applications are a classic use case for WebSockets. As 
-users send and receive messages, WebSockets provide a seamless exchange 
+Real-time chat applications are a classic use case for WebSockets. As
+users send and receive messages, WebSockets provide a seamless exchange
 of data, ensuring messages are received instantly.
 
 ### Online Gaming
 
-WebSockets enable online multiplayer games by allowing real-time 
-communication between players. The low latency and persistent connection 
+WebSockets enable online multiplayer games by allowing real-time
+communication between players. The low latency and persistent connection
 provided by WebSockets are crucial for a smooth gaming experience.
 
 ### Live Sports and News Updates
 
-WebSockets are perfect for applications that deliver live sports scores 
-and news updates. As events unfold, applications can push data to users 
+WebSockets are perfect for applications that deliver live sports scores
+and news updates. As events unfold, applications can push data to users
 in real-time, keeping them informed instantly.
 
 ### Collabrative Document Editing
 
-Platforms like Google Docs use WebSockets to allow multiple users to 
-edit documents simultaneously. Real-time updates ensure that changes 
+Platforms like Google Docs use WebSockets to allow multiple users to
+edit documents simultaneously. Real-time updates ensure that changes
 made by one user are immediately visible to others.
 
 ### Financial Market Updates
 
-Trading platforms rely on real-time updates for stock prices and market 
-data. WebSockets provide traders with instantaneous data, allowing them 
+Trading platforms rely on real-time updates for stock prices and market
+data. WebSockets provide traders with instantaneous data, allowing them
 to make informed decisions quickly.
 
 ### IoT and Smart Devices
 
-In the world of IoT, devices often need to communicate with servers 
-instantaneously. WebSockets facilitate real-time data exchange between 
+In the world of IoT, devices often need to communicate with servers
+instantaneously. WebSockets facilitate real-time data exchange between
 smart devices, enabling efficient monitoring and control.
 
-Real-time capabilities offered by WebSockets are unparalleled, making 
-them an essential component of modern web applications. They bridge the 
-gap between traditional request-response models and the need for timely 
+Real-time capabilities offered by WebSockets are unparalleled, making
+them an essential component of modern web applications. They bridge the
+gap between traditional request-response models and the need for timely
 data, paving the way for interactive and dynamic user experiences.
 
 ## 11. Scaling WebSocket Connections
@@ -623,7 +626,7 @@ other data type into a string format before sending it over the WebSocket.
 Example:
 
 ```javascript
-const message = JSON.stringify({ type: 'greeting', content: 'Hello World' });
+const message = JSON.stringify({ type: "greeting", content: "Hello World" });
 webSocket.send(message);
 ```
 
@@ -635,9 +638,9 @@ like transforming a JSON string back into a JavaScript object.
 Example:
 
 ```javascript
-webSocket.onmessage = function(event) {
+webSocket.onmessage = function (event) {
   const data = JSON.parse(event.data);
-  console.log(data.type);  // Outputs: 'greeting'
+  console.log(data.type); // Outputs: 'greeting'
 };
 ```
 
@@ -659,10 +662,10 @@ Receiving binary data involves processing it to interpret the meaningful
 content.
 
 ```javascript
-webSocket.onmessage = function(event) {
+webSocket.onmessage = function (event) {
   const arrayBuffer = event.data;
   const view = new DataView(arrayBuffer);
-  console.log(view.getInt32(0));  // Outputs: 12345
+  console.log(view.getInt32(0)); // Outputs: 12345
 };
 ```
 
@@ -671,44 +674,44 @@ transmission and reception in your WebSocket applications.
 
 ## 14. WebSocket Authentication Strategies
 
-WebSocket authentication is crucial for securing communication between 
-clients and servers. Since WebSocket initiates over an HTTP connection, 
-you can employ various HTTP-based authentication methods. Here's an 
+WebSocket authentication is crucial for securing communication between
+clients and servers. Since WebSocket initiates over an HTTP connection,
+you can employ various HTTP-based authentication methods. Here's an
 overview of common strategies.
 
 ### Basic Authentication
 
-In Basic Authentication, credentials are encoded and sent in HTTP headers. 
+In Basic Authentication, credentials are encoded and sent in HTTP headers.
 This is simple but less secure since it transmits credentials in base64.
 Use it in secure environments or with additional encryption.
 
 ### Token-Based Authentication
 
 This popular method involves issuing a token after a successful login.
-Tokens are then passed in the HTTP headers for authentication in subsequent 
+Tokens are then passed in the HTTP headers for authentication in subsequent
 requests. JWT (JSON Web Tokens) is a commonly used token format.
 
 ### OAuth
 
-OAuth allows third-party services to authenticate the user. OAuth 2.0 is 
-the most widely used protocol. It involves tokens and scopes to provide 
+OAuth allows third-party services to authenticate the user. OAuth 2.0 is
+the most widely used protocol. It involves tokens and scopes to provide
 access control.
 
 ### Cookie-Based Authentication
 
-Cookies are set after an HTTP authentication and are sent automatically 
-with each WebSocket request from the client. Ensure cookies are sent 
+Cookies are set after an HTTP authentication and are sent automatically
+with each WebSocket request from the client. Ensure cookies are sent
 securely with secure flags.
 
 ### Custom Headers
 
-Custom authentication schemes can be implemented by passing authentication 
+Custom authentication schemes can be implemented by passing authentication
 data through custom headers during the handshake.
 
 ### Authorization Key
 
-An authorization key or token is included in the WebSocket URL query 
-parameters. While not the most secure by itself, it provides a quick 
+An authorization key or token is included in the WebSocket URL query
+parameters. While not the most secure by itself, it provides a quick
 way to authenticate.
 
 ### Conclusion
@@ -741,7 +744,6 @@ coding.
 
 1. **Negotiation**: During the WebSocket connection handshake, client
    and server negotiate the use of compression extensions.
-   
 2. **Compression**: Each message can be individually compressed before
    being sent across the network. The resulting compressed message is
    then transmitted.
@@ -763,96 +765,96 @@ compression in each specific use case.
 
 ## 16. WebSocket Ping Pong Mechanism
 
-In WebSockets, maintaining a connection's health and ensuring that both the 
-client and server are aware of the other's availability is essential. The 
-WebSocket protocol provides a systematic way to achieve this using what 
+In WebSockets, maintaining a connection's health and ensuring that both the
+client and server are aware of the other's availability is essential. The
+WebSocket protocol provides a systematic way to achieve this using what
 is known as the "ping-pong" mechanism.
 
 ### What is Ping Pong?
 
-Ping-pong is a system level feature in the WebSocket protocol that helps 
-in keeping the connection alive. The server or client can send a ping 
-message, and the recipient must respond with a pong message. This type of 
+Ping-pong is a system level feature in the WebSocket protocol that helps
+in keeping the connection alive. The server or client can send a ping
+message, and the recipient must respond with a pong message. This type of
 interaction confirms that the connection is still active.
 
 ### Ping Messages
 
-A ping message is a small packet of data sent by the client or server 
-across the WebSocket connection. This message can be used to request that 
-the recipient responds, indicating that it is still reachable and the 
+A ping message is a small packet of data sent by the client or server
+across the WebSocket connection. This message can be used to request that
+the recipient responds, indicating that it is still reachable and the
 connection is stable.
 
 ### Pong Messages
 
-In response to a ping message, a pong message is sent back from the 
-recipient to the sender. The pong message effectively acknowledges receipt 
+In response to a ping message, a pong message is sent back from the
+recipient to the sender. The pong message effectively acknowledges receipt
 of the ping and confirms that the receiver is alive and listening.
 
 ### Implementing Ping Pong
 
-The typical implementation involves configuring a periodic ping from the 
-client to the server or vice versa. This might be customizable based on 
-application needs, but it’s generally handled such that if a pong is not 
-received within a certain time, the connection may be closed or 
+The typical implementation involves configuring a periodic ping from the
+client to the server or vice versa. This might be customizable based on
+application needs, but it’s generally handled such that if a pong is not
+received within a certain time, the connection may be closed or
 re-attempted.
 
 ### Why Use Ping Pong?
 
 - **Maintain Connection**: Regular ping-pong can detect a broken connection,
-   ensuring devices are aware of connectivity issues.
-- **Connection Recovery**: It assists in promptly recovering and resetting 
-   failed connections.
+  ensuring devices are aware of connectivity issues.
+- **Connection Recovery**: It assists in promptly recovering and resetting
+  failed connections.
 - **Resource Management**: Allows for closing stale or inactive connections,
-   freeing up resources.
+  freeing up resources.
 
-In summary, the ping pong mechanism in WebSockets plays a crucial role in 
-network health monitoring and management, making it an essential tool in 
+In summary, the ping pong mechanism in WebSockets plays a crucial role in
+network health monitoring and management, making it an essential tool in
 the toolkit of anyone working with persistent WebSocket connections.
 
 ## 17. WebSocket Load Testing and Optimization
 
 Load testing is crucial for ensuring that your WebSocket application can handle
-high traffic efficiently without performance degradation. In this article, we 
+high traffic efficiently without performance degradation. In this article, we
 will explore load testing techniques and optimization strategies for WebSocket
 applications.
 
 ### Load Testing Techniques
 
-1. **Identify Key Performance Metrics:** Determine the key metrics such as 
-latency, throughput, and connection scalability that are crucial for your 
-application.
+1. **Identify Key Performance Metrics:** Determine the key metrics such as
+   latency, throughput, and connection scalability that are crucial for your
+   application.
 
 2. **Select Tools:** Utilize load testing tools like `locust.io`, `jmeter-ws`,
-and `Gatling` to simulate real-world traffic on your WebSocket server.
+   and `Gatling` to simulate real-world traffic on your WebSocket server.
 
-3. **Simulate Realistic Scenarios:** Create test scenarios that mimic the 
-expected usage patterns of your WebSocket application.
+3. **Simulate Realistic Scenarios:** Create test scenarios that mimic the
+   expected usage patterns of your WebSocket application.
 
 4. **Analyze Results:** Gather data on latency, error rates, and throughput,
-then analyze these metrics to identify performance bottlenecks.
+   then analyze these metrics to identify performance bottlenecks.
 
 ### Optimization Strategies
 
-1. **Increase Server Capacity:** Scale your server infrastructure to handle 
-increased load. This may include adding more servers or increasing resource 
-allocations.
+1. **Increase Server Capacity:** Scale your server infrastructure to handle
+   increased load. This may include adding more servers or increasing resource
+   allocations.
 
-2. **Optimize Code:** Review and optimize server-side code for efficiency and 
-performance. Look for synchronous code that can be refactored to run 
-asynchronously.
+2. **Optimize Code:** Review and optimize server-side code for efficiency and
+   performance. Look for synchronous code that can be refactored to run
+   asynchronously.
 
-3. **Use Load Balancers:** Deploy load balancing techniques to distribute 
-connections evenly across multiple server instances.
+3. **Use Load Balancers:** Deploy load balancing techniques to distribute
+   connections evenly across multiple server instances.
 
-4. **Implement Caching:** Use caching mechanisms to reduce server load by 
-storing frequently accessed data closer to the client.
+4. **Implement Caching:** Use caching mechanisms to reduce server load by
+   storing frequently accessed data closer to the client.
 
-5. **Optimize Network Traffic:** Minimize the size and frequency of message 
-transmissions. Use WebSocket message compression if appropriate.
+5. **Optimize Network Traffic:** Minimize the size and frequency of message
+   transmissions. Use WebSocket message compression if appropriate.
 
-By effectively load testing and optimizing your WebSocket application, you can 
+By effectively load testing and optimizing your WebSocket application, you can
 ensure seamless performance even under high traffic conditions. This results in
-improved user experience and resource utilization. In the next article, we will 
+improved user experience and resource utilization. In the next article, we will
 dive deeper into WebSocket monitoring and logging techniques, essential for
 maintaining healthy and performant WebSocket applications.
 

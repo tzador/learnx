@@ -24,8 +24,8 @@
 ## 01. Introduction to Python PyTorch
 
 Python PyTorch is a popular open-source deep learning library designed to be
-flexible and easy to use. Developed by Facebook's AI Research Lab, PyTorch has 
-gained immense popularity among data scientists and researchers due to its 
+flexible and easy to use. Developed by Facebook's AI Research Lab, PyTorch has
+gained immense popularity among data scientists and researchers due to its
 simplicity and dynamic computational graph.
 
 PyTorch is primarily used for applications such as natural language processing,
@@ -106,6 +106,7 @@ for machine learning models.
 PyTorch provides several ways to create tensors:
 
 - **From data**: You can create a tensor from a Python list or a NumPy array.
+
   ```python
   import torch
   data = [[1, 2], [3, 4]]
@@ -114,6 +115,7 @@ PyTorch provides several ways to create tensors:
 
 - **From NumPy arrays**: Conversion between NumPy arrays and PyTorch tensors
   can be done seamlessly.
+
   ```python
   import numpy as np
   np_array = np.array(data)
@@ -122,6 +124,7 @@ PyTorch provides several ways to create tensors:
 
 - **With constants**: PyTorch has built-in functions to create tensors filled
   with zeros and ones.
+
   ```python
   x_ones = torch.ones_like(x_data)  # Same shape as x_data but with ones
   x_zeros = torch.zeros_like(x_data)  # Same shape but with zeros
@@ -221,36 +224,36 @@ and algorithms in machine learning and data processing.
 
 ## 05. Autograd: Automatic Differentiation
 
-PyTorch provides an automatic differentiation library called `autograd`. This 
-tool allows for the computation of derivatives and enables backpropagation 
+PyTorch provides an automatic differentiation library called `autograd`. This
+tool allows for the computation of derivatives and enables backpropagation
 for neural networks.
 
 ### Key Features of Autograd
 
-- **Dynamic Computation Graphs**: PyTorch uses dynamic computation graphs, 
-  which means the graph is created on-the-fly as operations are performed. 
-  Therefore, you can alter the structure during runtime, allowing for more 
+- **Dynamic Computation Graphs**: PyTorch uses dynamic computation graphs,
+  which means the graph is created on-the-fly as operations are performed.
+  Therefore, you can alter the structure during runtime, allowing for more
   flexibility during model design.
 
-- **Gradient Calculation**: With autograd, you can compute gradients of 
-  tensors automatically. This is essential for optimization during training 
+- **Gradient Calculation**: With autograd, you can compute gradients of
+  tensors automatically. This is essential for optimization during training
   processes.
 
-- **Automatic Backpropagation**: Automatic differentiation allows the 
+- **Automatic Backpropagation**: Automatic differentiation allows the
   network to backpropagate errors and update weights seamlessly.
 
 ### How Does Autograd Work?
 
-- **Tensor**: Every tensor defines a few properties such as `grad` and 
-  `grad_fn`. The tensor’s `grad` attribute will hold the gradient computed 
+- **Tensor**: Every tensor defines a few properties such as `grad` and
+  `grad_fn`. The tensor’s `grad` attribute will hold the gradient computed
   in the backward phase.
 
-- **Requires Gradient**: Set a tensor’s `requires_grad` attribute to `True` 
-  to track all operations on it. You can stop tracking using 
+- **Requires Gradient**: Set a tensor’s `requires_grad` attribute to `True`
+  to track all operations on it. You can stop tracking using
   `no_grad()` context.
 
-- **Backward Propagation**: To compute the gradient, call `.backward()` on 
-  a tensor. It calculates and stores the gradients in the `grad` attributes 
+- **Backward Propagation**: To compute the gradient, call `.backward()` on
+  a tensor. It calculates and stores the gradients in the `grad` attributes
   of those tensors which have `requires_grad=True`.
 
 ### Example Code
@@ -271,27 +274,27 @@ print(f'Gradient of x: {grad_x}')
 print(f'Gradient of y: {grad_y}')
 ```
 
-This code snippet creates two tensors `x` and `y`, calculates a simple 
-function `z`, then performs backpropagation to compute gradients of `x` 
-and `y`. This fundamental operation is at the core of training neural 
+This code snippet creates two tensors `x` and `y`, calculates a simple
+function `z`, then performs backpropagation to compute gradients of `x`
+and `y`. This fundamental operation is at the core of training neural
 networks in PyTorch.
 
 ## 06. Building Neural Networks with PyTorch
 
-In this article, we will explore how to build neural networks 
-in PyTorch. PyTorch provides a module called `torch.nn` 
+In this article, we will explore how to build neural networks
+in PyTorch. PyTorch provides a module called `torch.nn`
 that simplifies the creation and training of neural networks.
 
 ### Neural Networks
 
-Neural networks are composed of layers, where each layer 
-consists of nodes (neurons). The `torch.nn` module enables us 
+Neural networks are composed of layers, where each layer
+consists of nodes (neurons). The `torch.nn` module enables us
 to define these layers and manage their connections.
 
 ### Layers
 
-Layers in PyTorch can be defined using classes found in `torch.nn`. 
-Some common layers include `nn.Linear`, `nn.Conv2d`, and `nn.ReLU`. 
+Layers in PyTorch can be defined using classes found in `torch.nn`.
+Some common layers include `nn.Linear`, `nn.Conv2d`, and `nn.ReLU`.
 
 #### Example: Linear Layer
 
@@ -304,12 +307,12 @@ import torch.nn as nn
 linear = nn.Linear(10, 1)
 ```
 
-This layer takes in an input tensor of size 10 and outputs a 
-tensor of size 1. 
+This layer takes in an input tensor of size 10 and outputs a
+tensor of size 1.
 
 ### Creating a Neural Network
 
-To create a neural network, we typically define a class 
+To create a neural network, we typically define a class
 inheriting from `nn.Module` and implement the `forward` method.
 
 #### Example: Simple Neural Network
@@ -329,17 +332,17 @@ class SimpleNN(nn.Module):
         return x
 ```
 
-In this example, we define a network with an input layer of size 10, 
+In this example, we define a network with an input layer of size 10,
 a hidden layer of size 5, and an output layer of size 1.
 
 ### Summary
 
-PyTorch provides the flexibility to build complex neural networks 
-intuitively using the `torch.nn` module. By defining layers and 
-imposing operations, we create models that can learn from data 
-and make predictions. 
+PyTorch provides the flexibility to build complex neural networks
+intuitively using the `torch.nn` module. By defining layers and
+imposing operations, we create models that can learn from data
+and make predictions.
 
-In the next article, we will delve into training neural networks 
+In the next article, we will delve into training neural networks
 using PyTorch.
 
 ## 07. Training a Simple Neural Network
@@ -546,12 +549,13 @@ on new data.
 
 Evaluating a model involves testing its performance on a dataset
 that was not used during training. Typically, this involves:
+
 1. **Metrics Calculation**: Common metrics for evaluation include
    accuracy for classification tasks, and mean squared error for
    regression tasks.
 2. **Loss Evaluation**: Compute the loss over the validation dataset.
 3. **Data Handling**: Usually, you will use a DataLoader to manage
-evaluation datasets.
+   evaluation datasets.
 
 #### Example: Evaluating a Classification Model
 
@@ -600,7 +604,7 @@ def make_inference(model, image):
 ```
 
 In this example, `make_inference` function takes an image, processes it
-through the model, and extracts the predicted class. 
+through the model, and extracts the predicted class.
 
 By regularly evaluating the model and performing inference, you can
 understand its strengths and areas for improvement. Being adept at this
@@ -624,16 +628,16 @@ specific task.
    pre-trained models in the `torchvision.models` module.
 
 2. **Freeze Layers**: Since these models are already trained,
-you may want to freeze most layers, only updating the final
-layer(s) for your specific task. This requires fewer
-computational resources.
+   you may want to freeze most layers, only updating the final
+   layer(s) for your specific task. This requires fewer
+   computational resources.
 
 3. **Modify the Classifier**: Replace the final layer of the
-model to match the number of classes in your specific task.
+   model to match the number of classes in your specific task.
 
 4. **Train the Model**: With the modified network, train on
-your dataset. Because only the final layer is being adjusted,
-training is faster.
+   your dataset. Because only the final layer is being adjusted,
+   training is faster.
 
 Below is an example of how to perform transfer learning using
 a pre-trained ResNet model in PyTorch.
@@ -661,17 +665,18 @@ layer to classify a different set of classes.
 
 ## 11. Optimizing Models with PyTorch
 
-Optimizing models is a crucial step in training neural networks. PyTorch 
-provides various tools and strategies to enhance model performance. This 
+Optimizing models is a crucial step in training neural networks. PyTorch
+provides various tools and strategies to enhance model performance. This
 article covers the basics of model optimization using PyTorch.
 
 ### Optimizers
 
-PyTorch offers several optimizers, such as Stochastic Gradient Descent 
-(SGD), Adam, RMSprop, and more. These optimizers adjust model parameters 
+PyTorch offers several optimizers, such as Stochastic Gradient Descent
+(SGD), Adam, RMSprop, and more. These optimizers adjust model parameters
 to minimize the loss function during training.
 
 Example:
+
 ```python
 import torch.optim as optim
 
@@ -680,10 +685,11 @@ optimizer = optim.SGD(model.parameters(), lr=0.01)
 
 ### Learning Rate Scheduling
 
-Adjusting the learning rate over time can improve convergence. PyTorch 
+Adjusting the learning rate over time can improve convergence. PyTorch
 offers learning rate schedulers that can be applied with optimizers.
 
 Example:
+
 ```python
 from torch.optim.lr_scheduler import StepLR
 
@@ -696,29 +702,31 @@ for epoch in range(num_epochs):
 
 ### Weight Decay
 
-Weight decay is a regularization technique to prevent overfitting by 
-applying a penalty on the size of the weights. It can be included in the 
+Weight decay is a regularization technique to prevent overfitting by
+applying a penalty on the size of the weights. It can be included in the
 optimizer setup:
 
 Example:
+
 ```python
 optimizer = optim.Adam(model.parameters(), lr=0.01, weight_decay=1e-5)
 ```
 
 ### Momentum
 
-Momentum accelerates SGD in relevant directions and dampens oscillations. 
+Momentum accelerates SGD in relevant directions and dampens oscillations.
 It is a crucial component of optimizers like SGD.
 
 Example:
+
 ```python
 optimizer = optim.SGD(model.parameters(), lr=0.01, momentum=0.9)
 ```
 
-Optimizing a model effectively requires choosing the right optimizer and 
+Optimizing a model effectively requires choosing the right optimizer and
 finely tuning its parameters.
 
-For more sophisticated control, PyTorch allows customizing optimizers and 
+For more sophisticated control, PyTorch allows customizing optimizers and
 schedulers to suit specific model architectures.
 
 ## 12. Custom Datasets and Data Loaders
@@ -793,6 +801,7 @@ scratch. PyTorch provides robust functionalities for saving and loading models.
 ### Saving a Model
 
 To save a model in PyTorch, it is common to save either:
+
 - The entire model state, which includes model architecture and parameters, or
 - Just the state dictionary, containing the model's parameters.
 
@@ -853,32 +862,33 @@ model.load_state_dict(torch.load(path))
 
 ## 14. Distributed Training with PyTorch
 
-Distributed training is essential when dealing with large datasets 
-and complex models that require parallel processing to efficiently 
-utilize resources and reduce training time. PyTorch provides robust 
-support for distributed training through its `torch.distributed` 
+Distributed training is essential when dealing with large datasets
+and complex models that require parallel processing to efficiently
+utilize resources and reduce training time. PyTorch provides robust
+support for distributed training through its `torch.distributed`
 package.
 
 ### Setting Up
 
-To begin, ensure that you have multiple devices available (e.g., 
-GPUs) or multiple nodes in a cluster. Install the necessary 
+To begin, ensure that you have multiple devices available (e.g.,
+GPUs) or multiple nodes in a cluster. Install the necessary
 components and configure them for distributed setting.
 
 ### Key Concepts
 
-- **Process Group**: A collection of processes that need to 
-  communicate with each other. The process groups can be used to 
+- **Process Group**: A collection of processes that need to
+  communicate with each other. The process groups can be used to
   perform collective operations like broadcast, reduce, gather, etc.
 
-- **Backend**: PyTorch Distributed supports various backends 
-e.g., `gloo`, `mpi`, and `nccl`. `nccl` is often preferred for 
-multi-GPU training.
+- **Backend**: PyTorch Distributed supports various backends
+  e.g., `gloo`, `mpi`, and `nccl`. `nccl` is often preferred for
+  multi-GPU training.
 
 ### Basic Usage
 
 #### Initializing the Process
-First, initialize the distributed process by setting the backend 
+
+First, initialize the distributed process by setting the backend
 and creating the process group:
 
 ```python
@@ -889,7 +899,8 @@ def init_process(rank, size, backend='gloo'):
 ```
 
 #### Launching the Training
-Use the `torch.multiprocessing.spawn` to launch the training 
+
+Use the `torch.multiprocessing.spawn` to launch the training
 processes across the available devices.
 
 ```python
@@ -900,8 +911,9 @@ spawn(train, args=(n_gpus,), nprocs=n_gpus)
 ```
 
 ### Synchronizing and Collecting Results
-Utilize collective communication to synchronize processes. An 
-example is `dist.all_reduce`, which aggregates data across all 
+
+Utilize collective communication to synchronize processes. An
+example is `dist.all_reduce`, which aggregates data across all
 processes.
 
 ```python
@@ -911,9 +923,9 @@ dist.all_reduce(output_tensor, op=dist.ReduceOp.SUM)
 
 ### Conclusion
 
-Distributed training with PyTorch allows scalable training across 
-multiple devices or nodes. By leveraging PyTorch's built-in tools, 
-you can effectively manage resources and time, enabling the training 
+Distributed training with PyTorch allows scalable training across
+multiple devices or nodes. By leveraging PyTorch's built-in tools,
+you can effectively manage resources and time, enabling the training
 of more sophisticated models on larger datasets.
 
 ## 15. Model Deployment with PyTorch
@@ -979,15 +991,15 @@ model deployment for real-world applications.
 
 ## 16. Monitoring and Visualizing with TensorBoard
 
-When working on deep learning projects, it's crucial to monitor and 
-visualize aspects of the training process. Tools like TensorBoard can 
-be a great ally. TensorBoard is a visualization toolkit for monitoring 
-the training of neural networks. It provides the ability to inspect 
+When working on deep learning projects, it's crucial to monitor and
+visualize aspects of the training process. Tools like TensorBoard can
+be a great ally. TensorBoard is a visualization toolkit for monitoring
+the training of neural networks. It provides the ability to inspect
 the model's behavior and performance live.
 
 ### Installing TensorBoard
 
-First, ensure that TensorBoard is installed. You can install it using 
+First, ensure that TensorBoard is installed. You can install it using
 pip:
 
 ```bash
@@ -997,7 +1009,7 @@ pip install tensorboard
 ### Integrating TensorBoard with PyTorch
 
 To use TensorBoard with PyTorch, you need to import the `SummaryWriter`
-from `torch.utils.tensorboard`. The `SummaryWriter` will help to log 
+from `torch.utils.tensorboard`. The `SummaryWriter` will help to log
 data that we want to visualize.
 
 ```python
@@ -1013,7 +1025,8 @@ writer = SummaryWriter('runs/experiment_1')
 ### Logging Data
 
 #### Scalars
-You can log scalar values which are most commonly used for loss and 
+
+You can log scalar values which are most commonly used for loss and
 accuracy metrics:
 
 ```python
@@ -1025,7 +1038,8 @@ for epoch in range(num_epochs):
 ```
 
 #### Histograms
-To visualize weights and biases, use add_histogram to log their 
+
+To visualize weights and biases, use add_histogram to log their
 distribution:
 
 ```python
@@ -1034,6 +1048,7 @@ for name, param in model.named_parameters():
 ```
 
 #### Custom Visualizations
+
 You can also log model graphs, images, and more:
 
 ```python
@@ -1052,16 +1067,16 @@ To start the TensorBoard server, run:
 tensorboard --logdir=runs
 ```
 
-Navigate to `http://localhost:6006/` in your browser to see your logs 
+Navigate to `http://localhost:6006/` in your browser to see your logs
 in action.
 
-Using TensorBoard effectively will improve understanding of model 
-behavior, improve experimentation, and streamline debugging of deep 
+Using TensorBoard effectively will improve understanding of model
+behavior, improve experimentation, and streamline debugging of deep
 learning models developed in PyTorch.
 
 ## 17. Advanced PyTorch Techniques
 
-In this article, we will explore advanced techniques in PyTorch for deep 
+In this article, we will explore advanced techniques in PyTorch for deep
 learning. As you progress in your journey with PyTorch, you will encounter
 situations that require more than the foundational capabilities of the
 library. Understanding these advanced techniques will empower you to create
@@ -1129,10 +1144,11 @@ function for this purpose. The general workflow includes calibrating the
 model, applying the quantization, and saving the quantized model.
 
 #### Steps:
+
 1. **Prepare the Model**: Convert the model to a quantized version with
-inserted observers.
+   inserted observers.
 2. **Calibration**: Run a few batches of data through the model for the
-observers to estimate the range of activations.
+   observers to estimate the range of activations.
 3. **Convert**: Swap out float operations to their quantized versions.
 
 ### Dynamic Quantization
@@ -1143,6 +1159,7 @@ Dynamic quantization quantizes the weights and dynamically quantizes the
 activations during inference.
 
 #### Advantages:
+
 - Minimal changes to the source code.
 - Effective with certain layers (like Linear and LSTM).
 
@@ -1154,17 +1171,18 @@ training, fake quantization is applied to weights and activations to
 simulate int8 values.
 
 #### Process:
+
 1. **Prepare Model**: Insert observers and prepare model for QAT.
 2. **Train Model**: Fine-tune the model with fake quantization.
 3. **Convert Model**: Post-training, convert the model to a fully
-quantized version.
+   quantized version.
 
 ### Considerations for Quantization
 
 - **Accuracy**: While quantization improves speed, it can impact accuracy.
-Proper selection of quantization techniques is important.
+  Proper selection of quantization techniques is important.
 - **Supported Backend**: Choose a quantization backend that fits the
-deployment hardware (e.g., FBGEMM or QNNPACK).
+  deployment hardware (e.g., FBGEMM or QNNPACK).
 
 Quantization in PyTorch provides significant benefits for deploying
 machine learning models in production environments, by allowing effective
@@ -1270,17 +1288,17 @@ the-art time series analyses becomes accessible and efficient.
 
 ## 20. Reinforcement Learning with PyTorch
 
-Reinforcement Learning (RL) is an area of machine learning where an agent 
-learns by interacting with an environment to achieve a goal. PyTorch, 
-being a flexible machine learning library, provides tools to develop 
+Reinforcement Learning (RL) is an area of machine learning where an agent
+learns by interacting with an environment to achieve a goal. PyTorch,
+being a flexible machine learning library, provides tools to develop
 and experiment with various RL algorithms.
 
 ### Introduction to Reinforcement Learning
 
-In RL, an agent interacts with the environment over a series of time steps. 
-At each time step, the agent receives a state and selects an action. The 
-environment then provides a reward and a new state based on the action. 
-The goal of the agent is to learn a policy that maximizes the cumulative 
+In RL, an agent interacts with the environment over a series of time steps.
+At each time step, the agent receives a state and selects an action. The
+environment then provides a reward and a new state based on the action.
+The goal of the agent is to learn a policy that maximizes the cumulative
 reward.
 
 ### Key Concepts
@@ -1294,13 +1312,13 @@ reward.
 
 ### Implementing RL with PyTorch
 
-PyTorch offers flexibility, which is crucial for implementing various 
-RL algorithms like Q-Learning, Deep Q-Networks (DQN), and Policy 
+PyTorch offers flexibility, which is crucial for implementing various
+RL algorithms like Q-Learning, Deep Q-Networks (DQN), and Policy
 Gradients. Here’s a brief guide to get started with RL in PyTorch:
 
 #### Setting Up the Environment
 
-Use environments from libraries like OpenAI’s Gym, which provides a wide 
+Use environments from libraries like OpenAI’s Gym, which provides a wide
 range of standard environments for experimenting with RL.
 
 ```python
@@ -1310,7 +1328,7 @@ env = gym.make("CartPole-v1")
 
 #### Defining the Neural Network
 
-Typically, a neural network in DQNs approximates the action-value 
+Typically, a neural network in DQNs approximates the action-value
 function. You can define a simple neural network using `nn.Module`.
 
 ```python
@@ -1333,7 +1351,7 @@ class DQN(nn.Module):
 
 #### Update the Policy
 
-Implementing the RL logic involves training the network using the 
+Implementing the RL logic involves training the network using the
 reward feedback and updating the policy.
 
 ```python
@@ -1346,7 +1364,7 @@ def optimize_model(memory, policy_net, target_net, optimizer):
 
 #### Training the Agent
 
-Combine the environment setup, model definition, and policy optimization 
+Combine the environment setup, model definition, and policy optimization
 to train the agent.
 
 ```python
@@ -1363,11 +1381,11 @@ for episode in range(episodes):
 
 ### Conclusion
 
-Reinforcement learning with PyTorch provides great flexibility for 
-experimenting with different algorithms and models. With libraries 
-such as OpenAI's Gym, you can easily set up environments to train and 
-validate your RL models. PyTorch’s dynamic computation graph makes it 
-easy to implement RL algorithms and iterate through diverse ideas 
-quickly. As you build your RL models, always keep an eye on 
-optimizing performance and ensuring stability through exploration 
+Reinforcement learning with PyTorch provides great flexibility for
+experimenting with different algorithms and models. With libraries
+such as OpenAI's Gym, you can easily set up environments to train and
+validate your RL models. PyTorch’s dynamic computation graph makes it
+easy to implement RL algorithms and iterate through diverse ideas
+quickly. As you build your RL models, always keep an eye on
+optimizing performance and ensuring stability through exploration
 and exploitation strategies.

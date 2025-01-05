@@ -23,25 +23,25 @@
 
 ## 01. Introduction to Python Pandas
 
-Python Pandas is a powerful and flexible data analysis and manipulation 
+Python Pandas is a powerful and flexible data analysis and manipulation
 package that has become a staple for data scientists and analysts around
 the world. It provides data structures and functions needed to efficiently
 manage and analyze data.
 
-Pandas is designed to work seamlessly with other Python libraries like Numpy 
-and Matplotlib, making it an indispensable tool in data preprocessing and 
+Pandas is designed to work seamlessly with other Python libraries like Numpy
+and Matplotlib, making it an indispensable tool in data preprocessing and
 cleaning, data visualization, and statistical analysis.
 
-Its core data structure is the DataFrame, a 2-dimensional labeled data 
+Its core data structure is the DataFrame, a 2-dimensional labeled data
 structure akin to a table in a relational database or a spreadsheet.
 This allows for the easy handling of structured data with an intuitive API.
 
-Pandas helps in importing data from various file formats, performing data 
-cleaning, transforming data into a desired format, and quickly extracting 
+Pandas helps in importing data from various file formats, performing data
+cleaning, transforming data into a desired format, and quickly extracting
 key insights from the data.
 
-In the upcoming series of articles, we will delve deep into the features, 
-functions, and capabilities of Pandas, starting with the basics and gradually 
+In the upcoming series of articles, we will delve deep into the features,
+functions, and capabilities of Pandas, starting with the basics and gradually
 moving to more advanced operations.
 
 ## 02. Installing Pandas
@@ -88,15 +88,15 @@ successfully!
 
 ## 03. Data Structures in Pandas
 
-Pandas primarily consists of two data structures: **Series** and **DataFrame**. 
+Pandas primarily consists of two data structures: **Series** and **DataFrame**.
 
-- **Series**: A one-dimensional labeled array capable of holding data of any 
-type. It is somewhat similar to a list or a column in a table. Each element 
-in a Series has an associated label, called an index.
+- **Series**: A one-dimensional labeled array capable of holding data of any
+  type. It is somewhat similar to a list or a column in a table. Each element
+  in a Series has an associated label, called an index.
 
-- **DataFrame**: A two-dimensional labeled data structure with columns that can 
-be of different types. It's similar to a table or a spreadsheet, making it 
-ideal for manipulation and analysis of data with multiple fields.
+- **DataFrame**: A two-dimensional labeled data structure with columns that can
+  be of different types. It's similar to a table or a spreadsheet, making it
+  ideal for manipulation and analysis of data with multiple fields.
 
 ### Series Example
 
@@ -122,7 +122,7 @@ df = pd.DataFrame(data)
 print(df)
 ```
 
-By understanding these basic structures, you can harness the full power of 
+By understanding these basic structures, you can harness the full power of
 Pandas to manipulate and analyze your data effectively.
 
 ## 04. Creating a DataFrame
@@ -135,6 +135,7 @@ To create a DataFrame in Pandas, you can use various methods:
 
 1. **From a dictionary:** If you have data stored in a dictionary, you
    can easily convert it into a DataFrame.
+
    ```python
    import pandas as pd
    data = {'Name': ['Alice', 'Bob', 'Charlie'], 'Age': [25, 30, 35]}
@@ -144,6 +145,7 @@ To create a DataFrame in Pandas, you can use various methods:
 
 2. **From a list of lists:** You can construct a DataFrame from a list of
    lists, defining the column names separately.
+
    ```python
    data = [['Alice', 25], ['Bob', 30], ['Charlie', 35]]
    df = pd.DataFrame(data, columns=['Name', 'Age'])
@@ -163,12 +165,12 @@ manipulation.
 
 ## 05. Reading Data with Pandas
 
-Pandas provides powerful tools to load data from various file formats 
+Pandas provides powerful tools to load data from various file formats
 into DataFrames, which allows easy data manipulation and analysis.
 
 ### Reading CSV Files
 
-The most common method to read data is by using `pd.read_csv()` which 
+The most common method to read data is by using `pd.read_csv()` which
 reads a comma-separated values (CSV) file into DataFrame.
 
 Example:
@@ -178,7 +180,7 @@ import pandas as pd
 df = pd.read_csv('data.csv')
 ```
 
-You can also specify additional parameters like delimiters, column 
+You can also specify additional parameters like delimiters, column
 headers, etc.
 
 ### Reading Excel Files
@@ -230,12 +232,14 @@ operations:
 ### Viewing Data
 
 1. **`head()` and `tail()`**: View the first or last n rows.
+
    ```python
    df.head()
    df.tail(3)
    ```
 
 2. **`info()`**: Get a summary of the DataFrame.
+
    ```python
    df.info()
    ```
@@ -248,6 +252,7 @@ operations:
 ### Selection and Indexing
 
 1. **Selecting Columns**: Use bracket notation to select columns.
+
    ```python
    df['column_name']
    ```
@@ -265,6 +270,7 @@ operations:
 ### Sorting
 
 1. **`sort_values()`**: Sort by values of a column.
+
    ```python
    df.sort_values(by='column_name')
    ```
@@ -280,6 +286,7 @@ You can perform element-wise and arithmetic operations
 with Pandas DataFrames:
 
 1. **Addition, Subtraction, etc.**
+
    ```python
    df1 + df2
    df1 * df2
@@ -296,15 +303,16 @@ help begin manipulating data efficiently in Pandas.
 
 ## 07. Data Selection
 
-In this article, we'll explore data selection, a core feature of 
-Pandas that allows you to access different parts of your DataFrame. 
-Whether you're selecting rows, columns, or specific values, Pandas 
+In this article, we'll explore data selection, a core feature of
+Pandas that allows you to access different parts of your DataFrame.
+Whether you're selecting rows, columns, or specific values, Pandas
 makes it easy.
 
 ### Selecting Columns
 
-You can select columns from a DataFrame by using the column name. 
+You can select columns from a DataFrame by using the column name.
 Here's a simple example:
+
 ```python
 import pandas as pd
 
@@ -313,9 +321,11 @@ df = pd.DataFrame(data)
 
 df['Name']
 ```
-This will give you a Series with the names in the `Name` column. 
-You can also select multiple columns by passing a list of column 
+
+This will give you a Series with the names in the `Name` column.
+You can also select multiple columns by passing a list of column
 names:
+
 ```python
 
 df[['Name', 'Age']]
@@ -324,54 +334,60 @@ df[['Name', 'Age']]
 ### Selecting Rows by Labels
 
 To select rows by labels, use the `.loc[]` indexer:
+
 ```python
 
 df.loc[0]
 ```
+
 This will return a Series representing the first row of the DataFrame.
 
 ### Selecting Rows by Index Position
 
 For selecting rows by index position, use the `.iloc[]` indexer:
+
 ```python
 
 df.iloc[0]
 ```
-Both `.loc[]` and `.iloc[]` offer ways to drill down into specific 
+
+Both `.loc[]` and `.iloc[]` offer ways to drill down into specific
 rows and columns efficiently.
 
 ### Boolean Indexing
 
 You can also use boolean expressions for filtering data:
+
 ```python
 
 df[df['Age'] > 30]
 ```
-Boolean indexing is a powerful feature that allows conditional 
+
+Boolean indexing is a powerful feature that allows conditional
 selection within your DataFrame.
 
-This comprehensive selection in Pandas gives you the flexibility to 
-work with datasets effectively, setting the foundation for more 
+This comprehensive selection in Pandas gives you the flexibility to
+work with datasets effectively, setting the foundation for more
 advanced data manipulation techniques.
 
 ## 08. Data Cleaning with Pandas
 
-Data cleaning refers to the process of preparing data for analysis by 
-removing or modifying data that is incorrect, incomplete, irrelevant, 
+Data cleaning refers to the process of preparing data for analysis by
+removing or modifying data that is incorrect, incomplete, irrelevant,
 or duplicated. Pandas offers several tools to facilitate data cleaning.
 
 ### Handling Missing Data
 
-Missing data in a DataFrame can be a common issue. Pandas provides the 
-methods `isnull()`, `notnull()`, `dropna()`, and `fillna()` to manage 
+Missing data in a DataFrame can be a common issue. Pandas provides the
+methods `isnull()`, `notnull()`, `dropna()`, and `fillna()` to manage
 missing data effectively.
 
-- **`isnull()`**: Returns a DataFrame of the same shape, indicating 
-  `True` or `False` for each element depending on whether it is 
+- **`isnull()`**: Returns a DataFrame of the same shape, indicating
+  `True` or `False` for each element depending on whether it is
   `NaN` or not.
 - **`notnull()`**: Opposite of `isnull()`, returns `True` for non-`NaN`
   values.
-- **`dropna()`**: Removes missing values from the DataFrame. You can 
+- **`dropna()`**: Removes missing values from the DataFrame. You can
   adjust the axis and specify how to drop these (`'any'` or `'all'`).
 - **`fillna()`**: Fills missing values with a specified value or forward/
   back fill methods.
@@ -392,13 +408,13 @@ df.dropna()
 
 ### Removing Duplicates
 
-Duplicated data can skew your analyses. Use the `duplicated()` and 
+Duplicated data can skew your analyses. Use the `duplicated()` and
 `drop_duplicates()` methods to manage them.
 
-- **`duplicated()`**: Returns a Boolean Series where `True` indicates 
+- **`duplicated()`**: Returns a Boolean Series where `True` indicates
   duplicates.
-- **`drop_duplicates()`**: Removes duplicated rows. You can specify 
-  `keep` parameter to manage which duplicate you want to prefer. 
+- **`drop_duplicates()`**: Removes duplicated rows. You can specify
+  `keep` parameter to manage which duplicate you want to prefer.
 
 ```python
 df = pd.DataFrame({'A': [1, 1, 2, 2, 3], 'B': [10, 10, 20, 20, 30]})
@@ -410,11 +426,11 @@ df.drop_duplicates()
 
 ### Changing Data Types
 
-Sometimes, you might need to change the data type of a column. This can be 
+Sometimes, you might need to change the data type of a column. This can be
 done using the `astype()` method.
 
-- **`astype()`**: Converts the datatype of the column(s) to the specified 
-type.
+- **`astype()`**: Converts the datatype of the column(s) to the specified
+  type.
 
 ```python
 df['A'].astype(float)
@@ -427,6 +443,7 @@ This article explores common transformations like adding, removing, and modifyin
 columns.
 
 #### Adding a Column
+
 Adding a new column to a DataFrame is straightforward. You can assign a list
 or Series to a column name:
 
@@ -441,6 +458,7 @@ print(df)
 ```
 
 #### Removing a Column
+
 Columns can be removed using the `drop` method:
 
 ```python
@@ -451,6 +469,7 @@ df = df.drop(['Age', 'Country'], axis=1)
 ```
 
 #### Modifying a Column
+
 To modify values, you can apply functions directly:
 
 ```python
@@ -458,6 +477,7 @@ df['Age'] = df['Age'].apply(lambda x: x + 1)
 ```
 
 #### Renaming Columns
+
 The `rename` method allows changing column names:
 
 ```python
@@ -465,6 +485,7 @@ df = df.rename(columns={'Name': 'Full Name', 'Age': 'Years'})
 ```
 
 #### Reordering Columns
+
 Reordering can be done by specifying a new list of column names:
 
 ```python
@@ -473,7 +494,7 @@ df = df[cols]
 ```
 
 In summary, Pandas provides a myriad of functions to transform data
-effectively. Mastering these will enhance your data analysis capabilities. 
+effectively. Mastering these will enhance your data analysis capabilities.
 In our next article, we will delve into merging and joining DataFrames in Pandas.
 
 ## 10. Data Aggregation with Pandas
@@ -610,6 +631,7 @@ print(result)
 ```
 
 #### Join Types
+
 - **Inner Join**: Default type; returns rows with matching keys in both DataFrames.
 - **Left Join**: All keys from the left DataFrame, plus matching from the right.
 - **Right Join**: All keys from the right DataFrame, plus matching from the left.
@@ -647,15 +669,15 @@ effectively combine datasets allows for more comprehensive analysis and insights
 
 ## 13. Handling Missing Data in Pandas
 
-In data analysis, it's common to encounter missing data. Python 
-Pandas provides powerful tools to handle missing values efficiently. 
-Understanding and managing missing data is crucial for maintaining the 
+In data analysis, it's common to encounter missing data. Python
+Pandas provides powerful tools to handle missing values efficiently.
+Understanding and managing missing data is crucial for maintaining the
 integrity of your dataset.
 
 ### Identifying Missing Data
 
-Pandas represents missing data using `NaN` (Not a Number) values. To 
-identify missing data in a DataFrame, you can utilize the `isna()` or 
+Pandas represents missing data using `NaN` (Not a Number) values. To
+identify missing data in a DataFrame, you can utilize the `isna()` or
 `isnull()` functions, which return a DataFrame of Boolean values.
 
 ```python
@@ -672,8 +694,8 @@ print(missing_data)
 
 #### 1. Dropping Missing Data
 
-To remove missing data, you can use the `dropna()` method. This will 
-delete any rows with missing values by default. You can customize the 
+To remove missing data, you can use the `dropna()` method. This will
+delete any rows with missing values by default. You can customize the
 behavior to drop columns instead by setting the axis parameter.
 
 ```python
@@ -685,8 +707,8 @@ df_dropped_columns = df.dropna(axis=1)
 
 #### 2. Filling Missing Data
 
-Another option is to fill in missing values using the `fillna()` method. 
-You can specify a scalar value, or use methods like forward fill 
+Another option is to fill in missing values using the `fillna()` method.
+You can specify a scalar value, or use methods like forward fill
 (`ffill`) or backward fill (`bfill`).
 
 ```python
@@ -700,7 +722,7 @@ bfill_df = df.fillna(method='bfill')
 
 #### 3. Interpolating Missing Data
 
-The `interpolate()` method fills missing values using various techniques 
+The `interpolate()` method fills missing values using various techniques
 such as linear interpolation.
 
 ```python
@@ -708,25 +730,25 @@ such as linear interpolation.
 interpolated_df = df.interpolate(method='linear')
 ```
 
-Handling missing data effectively ensures that your analyses remain 
-accurate and meaningful. Choose the method that best fits your dataset 
-and analytical goals. This completes a basic overview of handling 
+Handling missing data effectively ensures that your analyses remain
+accurate and meaningful. Choose the method that best fits your dataset
+and analytical goals. This completes a basic overview of handling
 missing data in Pandas.
 
 ## 14. GroupBy Operations in Pandas
 
-In this article, we'll explore the GroupBy functionality in 
+In this article, we'll explore the GroupBy functionality in
 Pandas, a powerful feature that allows us to perform split-apply-
-combine operations on our data. GroupBy is essentially a way to 
+combine operations on our data. GroupBy is essentially a way to
 split the data into groups based on some criteria, apply a function
-to each group, and then combine the results back into a smaller 
+to each group, and then combine the results back into a smaller
 structure.
 
 ### Basic GroupBy Usage
 
-The core idea of GroupBy can be illustrated with statistics. 
-Imagine you have a dataset of students' scores and you want to 
-find the average score for each class. With GroupBy, you can 
+The core idea of GroupBy can be illustrated with statistics.
+Imagine you have a dataset of students' scores and you want to
+find the average score for each class. With GroupBy, you can
 quickly compute these statistics based on the class group.
 
 Here is a simple example:
@@ -743,15 +765,15 @@ average_scores = grouped['Score'].mean()
 print(average_scores)
 ```
 
-This code will output the average score for each class, showing 
+This code will output the average score for each class, showing
 the power and simplicity of GroupBy.
 
 ### Advanced GroupBy Techniques
 
 #### Aggregating with Multiple Functions
 
-You can apply multiple aggregation functions at once using the 
-`agg()` method. For instance, getting both mean and max scores 
+You can apply multiple aggregation functions at once using the
+`agg()` method. For instance, getting both mean and max scores
 can be done as follows:
 
 ```python
@@ -761,7 +783,7 @@ print(aggregated)
 
 #### Applying Custom Functions
 
-Pandas also allows applying custom functions through `apply()`. 
+Pandas also allows applying custom functions through `apply()`.
 You can define your own logic to process grouped data:
 
 ```python
@@ -776,7 +798,7 @@ This calculates the range (max - min) of scores in each class.
 
 #### Grouping by Multiple Columns
 
-You can also group by multiple columns to perform more complex 
+You can also group by multiple columns to perform more complex
 analysis:
 
 ```python
@@ -791,21 +813,21 @@ Grouping by both Class and Section provides fine-grained insight.
 
 #### Conclusion
 
-The GroupBy functionality in Pandas is a robust tool for data 
-analysis, enabling operations that can significantly simplify 
+The GroupBy functionality in Pandas is a robust tool for data
+analysis, enabling operations that can significantly simplify
 complex data transformations and analyses. As you've seen, GroupBy
-can handle anything from simple averages to complex custom 
+can handle anything from simple averages to complex custom
 functions across multiple dimensions.
 
 ## 15. Pandas Visualization
 
-Pandas provides an easy way to visualize data through its built-in 
+Pandas provides an easy way to visualize data through its built-in
 plotting functionality, which is a wrapper around the powerful
 `matplotlib` library. This allows you to quickly create visualizations
 such as line plots, bar charts, scatter plots, histograms, and more.
 
-To start visualizing data with Pandas, you will need to ensure 
-that you have `matplotlib` installed, since it is used as the 
+To start visualizing data with Pandas, you will need to ensure
+that you have `matplotlib` installed, since it is used as the
 underlying plotting library. You can install it using pip:
 
 ```bash
@@ -814,7 +836,7 @@ pip install matplotlib
 
 ### Basic Plotting with Pandas
 
-Pandas plotting is very straightforward. You can call the 
+Pandas plotting is very straightforward. You can call the
 `.plot()` method on a `DataFrame` or `Series` object. By default,
 this will produce a line plot.
 
@@ -835,7 +857,7 @@ plt.show()
 
 ### Bar Plot
 
-To create a bar plot, you can specify the `kind` parameter in 
+To create a bar plot, you can specify the `kind` parameter in
 the `.plot()` method:
 
 ```python
@@ -856,8 +878,8 @@ plt.show()
 
 ### Customizing Plots
 
-Pandas allows customization of plots by passing additional 
-parameters to the `.plot()` function such as `color`, `figsize`, 
+Pandas allows customization of plots by passing additional
+parameters to the `.plot()` function such as `color`, `figsize`,
 `legend`, etc.
 
 ```python
@@ -867,22 +889,22 @@ ax = df.plot(title="Custom Line Plot", color=['red', 'green'],
 plt.show()
 ```
 
-These built-in visualizations enable quick exploratory data 
-analysis and help you understand the data better. For more 
+These built-in visualizations enable quick exploratory data
+analysis and help you understand the data better. For more
 complex plots, you might want to delve into `matplotlib` directly,
-which offers a comprehensive array of options for customization 
+which offers a comprehensive array of options for customization
 and styling.
 
 ## 16. Pandas and Excel Integration
 
-Python Pandas provides powerful tools for integrating with spreadsheets. 
-You can read and write Excel files, making data analysis simpler and 
+Python Pandas provides powerful tools for integrating with spreadsheets.
+You can read and write Excel files, making data analysis simpler and
 more effective.
 
 ### Reading Excel Files
 
-To read Excel files, you need to have the `openpyxl` or `xlrd` library 
-installed, depending on the Excel file format. Use the `read_excel` 
+To read Excel files, you need to have the `openpyxl` or `xlrd` library
+installed, depending on the Excel file format. Use the `read_excel`
 function to load data from an Excel sheet:
 
 ```python
@@ -899,7 +921,7 @@ df = pd.read_excel('path_to_file.xlsx', sheet_name='Sheet1')
 
 ### Writing to Excel Files
 
-To save data into an Excel file, use the `to_excel` method. Specify 
+To save data into an Excel file, use the `to_excel` method. Specify
 file name and optionally the sheet name:
 
 ```python
@@ -925,10 +947,10 @@ with pd.ExcelWriter('path_to_file.xlsx') as writer:
     df2.to_excel(writer, sheet_name='Sheet2')
 ```
 
-This feature allows you to save multiple DataFrames into different 
-sheets within the same file. 
+This feature allows you to save multiple DataFrames into different
+sheets within the same file.
 
-Integrating Pandas with Excel files makes it easy to manage, analyze, 
+Integrating Pandas with Excel files makes it easy to manage, analyze,
 and visualize large datasets within familiar spreadsheet interfaces.
 
 ## 17. Advanced Indexing Techniques in Pandas
@@ -990,9 +1012,9 @@ queried_data = df.query('age > 30 and first_name == "Jane"')
 ```
 
 Advanced indexing techniques can greatly enhance your data manipulation
-capabilities, paving the way for more sophisticated data analysis and operation. 
+capabilities, paving the way for more sophisticated data analysis and operation.
 Learning these skills will allow for handling complex datasets more
- efficiently.
+efficiently.
 
 ## 18. Optimizing Performance in Pandas
 
@@ -1048,7 +1070,7 @@ value = df.loc[row, column]
 
 ### 5. Use `eval()` and `query()`
 
-For computation and filtering of DataFrame objects, 
+For computation and filtering of DataFrame objects,
 consider using `pandas.eval()` and `DataFrame.query()` to boost performance.
 
 ```python
@@ -1118,56 +1140,56 @@ applications to maximize model performance and data insights.
 
 ## 20. Pandas Best Practices and Tips
 
-Using Pandas effectively can significantly improve your data analysis workflow. 
+Using Pandas effectively can significantly improve your data analysis workflow.
 Below are some best practices and tips for working efficiently with Pandas.
 
 ### Understand Data Before Processing
 
-Before performing any operation, it's crucial to understand the data you 
+Before performing any operation, it's crucial to understand the data you
 are working with. Check for any inconsistencies, missing values, or outliers.
 
 ### Use Vectorized Operations
 
-Pandas is built on top of NumPy and allows for vectorized operations, 
-which are significantly faster. Avoid iterating over rows and instead use 
+Pandas is built on top of NumPy and allows for vectorized operations,
+which are significantly faster. Avoid iterating over rows and instead use
 Pandas functions that leverage vectorization.
 
 ### Leverage Built-in Functions
 
-Pandas comes with a plethora of built-in functions to handle common data 
-operations. Utilize them instead of writing custom functions whenever 
+Pandas comes with a plethora of built-in functions to handle common data
+operations. Utilize them instead of writing custom functions whenever
 possible to ensure efficiency and reduce error.
 
 ### Handle Missing Data Early
 
-Identify and handle missing data early in your data processing pipeline. 
-Use methods like `fillna()` or `dropna()` depending on the situation 
+Identify and handle missing data early in your data processing pipeline.
+Use methods like `fillna()` or `dropna()` depending on the situation
 when dealing with missing data.
 
 ### Performance Profiling
 
-For large datasets, understanding where bottlenecks occur can optimize 
-performance. Use profiling tools like `%timeit` in Jupyter notebooks 
+For large datasets, understanding where bottlenecks occur can optimize
+performance. Use profiling tools like `%timeit` in Jupyter notebooks
 to measure the time spent on operations.
 
 ### Generate Reports
 
-When dealing with complex data processing, it's vital to keep reports 
+When dealing with complex data processing, it's vital to keep reports
 for documentation and reproducibility.
 
 ### Use Apply Sparingly
 
-The `apply()` method is powerful but can be slow because it often 
-involves row-wise operations. Ensure there are no vectorized 
+The `apply()` method is powerful but can be slow because it often
+involves row-wise operations. Ensure there are no vectorized
 alternatives before using `apply()`.
 
 ### Memory Management
 
-For large dataframes, check memory usage with `memory_usage()` and 
+For large dataframes, check memory usage with `memory_usage()` and
 consider using `dtype` optimizations to reduce memory footprint.
 
-In conclusion, adopting these best practices can improve the optimize 
+In conclusion, adopting these best practices can improve the optimize
 performance and achieve efficient results when working with Pandas.
 
-Continue to practice and stay updated with Pandas' extensive 
+Continue to practice and stay updated with Pandas' extensive
 documentation and community resources.

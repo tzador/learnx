@@ -23,28 +23,28 @@
 
 ## 01. Introduction to Terraform
 
-Terraform is an open-source infrastructure as code (IaC) tool created by 
-HashiCorp. It allows users to define and provide data center infrastructure 
-using a declarative configuration language known as HashiCorp Configuration 
+Terraform is an open-source infrastructure as code (IaC) tool created by
+HashiCorp. It allows users to define and provide data center infrastructure
+using a declarative configuration language known as HashiCorp Configuration
 Language (HCL), or optionally JSON.
 
-Terraform is used to manage both existing and popular service providers as 
-well as custom in-house solutions. The real strength of Terraform lies in its 
-ability to handle an extensive set of infrastructure resources, including 
+Terraform is used to manage both existing and popular service providers as
+well as custom in-house solutions. The real strength of Terraform lies in its
+ability to handle an extensive set of infrastructure resources, including
 compute instances, storage, and networking.
 
-A core feature of Terraform is its ability to define infrastructure as code. 
-This means that your infrastructure setup can be checked into version control, 
-reviewed before deployment, and shared among team members, all the while 
-maintaining consistency and reducing the potential for errors during manual 
+A core feature of Terraform is its ability to define infrastructure as code.
+This means that your infrastructure setup can be checked into version control,
+reviewed before deployment, and shared among team members, all the while
+maintaining consistency and reducing the potential for errors during manual
 configuration.
 
-Terraform works by reading configuration files, building a dependency graph of 
-all the resources, and then applying the necessary operations to reach the 
+Terraform works by reading configuration files, building a dependency graph of
+all the resources, and then applying the necessary operations to reach the
 desired state of the infrastructure.
 
-In this series of articles, we will explore various aspects of Terraform, from 
-basic concepts and usage to advanced features and best practices, ensuring a 
+In this series of articles, we will explore various aspects of Terraform, from
+basic concepts and usage to advanced features and best practices, ensuring a
 comprehensive understanding of this powerful tool.
 
 ## 02. Installing Terraform
@@ -61,10 +61,12 @@ Here's a simple step-by-step guide to get Terraform installed:
 ### Installation Steps
 
 1. **Download Terraform:**
+
    - Go to the [official Terraform website](https://www.terraform.io/downloads)
    - Download the appropriate package for your operating system.
 
 2. **Unzip the package:**
+
    - For Linux and macOS, you can use `unzip` command:
      ```bash
      unzip terraform_0.14.5_linux_amd64.zip
@@ -72,6 +74,7 @@ Here's a simple step-by-step guide to get Terraform installed:
    - For Windows, use any file extraction tool, e.g., WinRAR or 7-Zip.
 
 3. **Move the binary to a system path directory:**
+
    - On Linux/macOS:
      ```bash
      sudo mv terraform /usr/local/bin/
@@ -95,53 +98,62 @@ infrastructure as code projects!
 
 ## 03. Basic Concepts and Terminologies in Terraform
 
-Terraform is a tool for building, changing, and versions infrastructure 
+Terraform is a tool for building, changing, and versions infrastructure
 safely and efficiently. Understanding its basic concepts and terminologies
 is essential for effectively using it.
 
 ### Providers
+
 Providers are plugins that enable Terraform to interact with various
 cloud providers, SaaS providers, and other APIs. Providers define
 resources for Terraform to manage. Common providers include AWS,
 Azure, GCP, and many others.
 
 ### Resources
+
 Resources are the basic building block of a Terraform code. They
 represent components such as virtual machines, containers, networks,
 etc., that make up your infrastructure.
 
 ### Modules
+
 Modules are containers for reusable Terraform configurations. They
 allow you to organize your settings and facilitate reusability and
 maintenance.
 
 ### Variables
+
 Variables are used to make Terraform configurations flexible and
 dynamic. They allow you to customize configurations typically defined
 in your Terraform files.
 
 ### State
+
 State is how Terraform tracks the resources it manages. It’s stored
 in a JSON file, and it keeps track of the resource names and metadata
 as declared in your configuration. This state file is crucial for
 Terraform to make infastructure changes accurately.
 
 ### Output Values
+
 Output values are like function return values in Terraform. They are
 often used to extract information from your resources, such as IP
 addresses and deployment details, to use elsewhere.
 
 ### Plan
+
 The Terraform plan command is used to generate an execution plan,
 showing what actions Terraform will take when you apply your changes.
 This includes the resources it will create, update, or delete.
 
 ### Apply
+
 The Terraform apply command executes the actions proposed in a plan
 to create, update, or destroy resources. It changes real infrastructure
 resources.
 
 ### Destroy
+
 The Terraform destroy command is used to remove all infrastructure
 managed by a Terraform configuration.
 
@@ -151,8 +163,8 @@ we will dive deeper into how these concepts are applied in practice.
 
 ## 04. Creating Your First Terraform Configuration File
 
-In this article, we'll guide you through creating your first Terraform 
-configuration file. Terraform configuration files are plain text files 
+In this article, we'll guide you through creating your first Terraform
+configuration file. Terraform configuration files are plain text files
 with a `.tf` extension, where you define infrastructure resources
 using the HashiCorp Configuration Language (HCL).
 
@@ -160,8 +172,8 @@ using the HashiCorp Configuration Language (HCL).
 
 #### Step 1: Define Provider
 
-The provider block is used to specify which cloud provider you will be 
-working with. For instance, to use AWS as your provider, your 
+The provider block is used to specify which cloud provider you will be
+working with. For instance, to use AWS as your provider, your
 configuration should look like this:
 
 ```hcl
@@ -172,7 +184,7 @@ provider "aws" {
 
 #### Step 2: Specify Resources
 
-Resources are the components managed by Terraform. To create an AWS S3 
+Resources are the components managed by Terraform. To create an AWS S3
 bucket, you can define a resource block in your Terraform file:
 
 ```hcl
@@ -184,7 +196,7 @@ resource "aws_s3_bucket" "my_bucket" {
 
 #### Step 3: Variables
 
-Variables in Terraform provide a way to parameterize configurations. 
+Variables in Terraform provide a way to parameterize configurations.
 Here's an example of how to declare a variable:
 
 ```hcl
@@ -204,7 +216,7 @@ resource "aws_s3_bucket" "my_bucket" {
 
 #### Step 4: Outputs
 
-Outputs allow you to extract information from resources for post-provisioning 
+Outputs allow you to extract information from resources for post-provisioning
 operations. Here’s how you would define an output for the bucket name:
 
 ```hcl
@@ -215,12 +227,12 @@ output "bucket_id" {
 
 #### Conclusion
 
-Congratulations! You've created a basic Terraform configuration file defining 
-a provider, resources, variables, and outputs. Each block plays a crucial 
+Congratulations! You've created a basic Terraform configuration file defining
+a provider, resources, variables, and outputs. Each block plays a crucial
 role in shaping your infrastructure-as-code approach with Terraform.
 
-In the next article, we will delve into executing these configurations to 
-create actual infrastructure. Stay tuned! 
+In the next article, we will delve into executing these configurations to
+create actual infrastructure. Stay tuned!
 
 ## 05. Terraform Providers
 
@@ -281,42 +293,44 @@ framework or platform, from bare metal to serverless and everything in between.
 
 ## 06. Terraform State Files
 
-In Terraform, the state file is crucial for keeping track of the resources 
-that have been provisioned. The state file acts as a source of truth 
-for your infrastructure. Each time you apply the configuration, Terraform 
-will check this file to understand what the current state of your 
+In Terraform, the state file is crucial for keeping track of the resources
+that have been provisioned. The state file acts as a source of truth
+for your infrastructure. Each time you apply the configuration, Terraform
+will check this file to understand what the current state of your
 provisioned resources is and what needs to change.
 
 ### Purpose of State Files
 
-State files store mappings between your configuration files and provisioned 
-resources. They allow Terraform to determine the differences between your 
+State files store mappings between your configuration files and provisioned
+resources. They allow Terraform to determine the differences between your
 configured infrastructure and actual resources.
 
 Key benefits include:
-- **Mapping to Real Resources**: Terraform uses state to map resources 
+
+- **Mapping to Real Resources**: Terraform uses state to map resources
   to configurations.
-- **Dependency Resolution**: State helps Terraform find out what order 
+- **Dependency Resolution**: State helps Terraform find out what order
   resources need to be created or destroyed.
-- **Performance**: By storing necessary information, Terraform can respond 
+- **Performance**: By storing necessary information, Terraform can respond
   more quickly when refreshing the state.
 
 ### Location and Management
 
-By default, Terraform saves the state file locally as `terraform.tfstate`. 
-However, in team environments, it's recommended to use remote state 
-storage backends like AWS S3, Terraform Cloud, or others to share the 
-state file across team members, ensuring that everyone has the latest 
+By default, Terraform saves the state file locally as `terraform.tfstate`.
+However, in team environments, it's recommended to use remote state
+storage backends like AWS S3, Terraform Cloud, or others to share the
+state file across team members, ensuring that everyone has the latest
 state.
 
 ### Securing State Files
 
-State files can contain sensitive information, such as passwords or 
+State files can contain sensitive information, such as passwords or
 access tokens. Therefore, it's essential to:
+
 - **Restrict access** to state files by using access controls.
 - **Encrypt state files** when storing them remotely.
 
-Ensure you follow best practices for security to protect your 
+Ensure you follow best practices for security to protect your
 infrastructure and data.
 
 ### Common Commands
@@ -325,14 +339,14 @@ infrastructure and data.
 - `terraform state list`: List resources within the state.
 - `terraform state rm`: Remove items from the state file.
 
-Understanding and managing your state files effectively can help you 
-avoid errors when applying changes to your configurations. Proper state 
-file management ensures that your Terraform practices are consistent and 
+Understanding and managing your state files effectively can help you
+avoid errors when applying changes to your configurations. Proper state
+file management ensures that your Terraform practices are consistent and
 reliable across different environments.
 
 ## 07. Variables and Outputs in Terraform
 
-Variables and outputs are fundamental components of Terraform scripts that 
+Variables and outputs are fundamental components of Terraform scripts that
 enable modularity, flexibility, and reusability. This article will cover the
 basics of how to define and use variables and outputs in your Terraform
 configuration files.
@@ -359,10 +373,10 @@ variable "instance_type" {
 #### Assigning Values to Variables
 
 You can assign values to variables in several ways:
-  
+
 1. **Environment Variables:** Prefix variable names with `TF_VAR_`.
 2. **Terraform CLI:** Use the `-var` flag.
-3. **tfvars Files:** Create a file named `terraform.tfvars` or use 
+3. **tfvars Files:** Create a file named `terraform.tfvars` or use
    `-var-file`.
 
 Example of `terraform.tfvars`:
@@ -550,7 +564,7 @@ To list all available workspaces:
 terraform workspace list
 ```
 
-It will display an asterisk (*) next to the currently selected workspace.
+It will display an asterisk (\*) next to the currently selected workspace.
 
 ### Deleting Workspaces
 
@@ -583,16 +597,16 @@ and scalability across different lifecycle phases.
 
 ## 11. Terraform Provisioners
 
-Provisioners in Terraform are used to execute scripts or commands on a local or 
-a remote machine as part of the creation or destruction of a resource. They are 
-particularly useful for bootstrapping the underlying resources, such as 
+Provisioners in Terraform are used to execute scripts or commands on a local or
+a remote machine as part of the creation or destruction of a resource. They are
+particularly useful for bootstrapping the underlying resources, such as
 installing software, configuring applications, or other automation tasks.
 
 ### Types of Provisioners
 
 #### File Provisioner
 
-The **file** provisioner is used to copy files or directories from the local 
+The **file** provisioner is used to copy files or directories from the local
 machine to a newly created resource.
 
 ##### Example
@@ -606,7 +620,7 @@ provisioner "file" {
 
 #### Local-Exec Provisioner
 
-The **local-exec** provisioner runs a command on the machine executing 
+The **local-exec** provisioner runs a command on the machine executing
 Terraform, not on the resource.
 
 ##### Example
@@ -619,7 +633,7 @@ provisioner "local-exec" {
 
 #### Remote-Exec Provisioner
 
-The **remote-exec** provisioner runs commands on the resource created by 
+The **remote-exec** provisioner runs commands on the resource created by
 Terraform, using SSH or WinRM.
 
 ##### Example
@@ -635,14 +649,14 @@ provisioner "remote-exec" {
 
 ### When to Use Provisioners
 
-Provisioners should be used as a last resort in Terraform. They are not 
-guaranteed to work on every apply or destroy, especially with failure to 
-connect to remote hosts. It is recommended to use native configuration 
+Provisioners should be used as a last resort in Terraform. They are not
+guaranteed to work on every apply or destroy, especially with failure to
+connect to remote hosts. It is recommended to use native configuration
 features of cloud providers or configuration management tools when possible.
 
 ### Using a Connection Block
 
-For remote-exec and file provisioners, you'll need to specify how to connect 
+For remote-exec and file provisioners, you'll need to specify how to connect
 to the remote resource. This is done using a **connection** block.
 
 ##### Example
@@ -698,7 +712,7 @@ applied by terraform apply.
 
 #### terraform validate
 
-This command checks whether the configuration is syntactically valid. 
+This command checks whether the configuration is syntactically valid.
 It doesn't check backend or execution environments.
 
 #### terraform import
@@ -782,7 +796,7 @@ Once configured, Terraform will save and read the state from the remote
 backend for all operations:
 
 - **terraform init**: Initializes the backend and locks it if locking is
-enabled.
+  enabled.
 - **terraform apply**: Reads the latest state and updates it post-apply.
 - **terraform plan**: Provides current state to plan changes accordingly.
 
@@ -930,7 +944,7 @@ such as passwords or API keys. Here are ways to secure them:
 - **Keep state files secure**: Store state files in secure backends, such as
   Terraform Cloud or AWS S3 with encryption enabled.
 - **Restrict access to state files**: Use IAM roles and policies to ensure only
-authorized users can access state files.
+  authorized users can access state files.
 
 ### 2. Use Version Control
 
@@ -964,52 +978,52 @@ reliability of your Terraform-managed infrastructure.
 
 ## 17. Integrating Terraform with CI/CD Pipelines
 
-Integrating Terraform with CI/CD (Continuous Integration/Continuous Delivery) 
-pipelines can greatly enhance the automation and management of your 
-infrastructure as code. Using Terraform in CI/CD environments helps ensure 
-that infrastructure changes are tested, reviewed, and applied consistently 
-across various environments, reducing the risk of errors and manual 
+Integrating Terraform with CI/CD (Continuous Integration/Continuous Delivery)
+pipelines can greatly enhance the automation and management of your
+infrastructure as code. Using Terraform in CI/CD environments helps ensure
+that infrastructure changes are tested, reviewed, and applied consistently
+across various environments, reducing the risk of errors and manual
 interventions.
 
 ### Key Benefits of Using Terraform in CI/CD
 
-- **Consistency and Reliability**: Automation ensures that changes are 
-deplyed in a consistent manner, reducing human error.
-- **Rapid Deployments**: CI/CD pipelines can automatically deploy your 
-Terraform configurations, speeding up the deployment process.
-- **Collaboration and Visibility**: Pipeline tools provide a history of 
-change, enabling teams to collaborate and understand past and present 
-changes.
-- **Scalability**: Automating infrastructure deployment helps manage 
-scalability in cloud environments.
+- **Consistency and Reliability**: Automation ensures that changes are
+  deplyed in a consistent manner, reducing human error.
+- **Rapid Deployments**: CI/CD pipelines can automatically deploy your
+  Terraform configurations, speeding up the deployment process.
+- **Collaboration and Visibility**: Pipeline tools provide a history of
+  change, enabling teams to collaborate and understand past and present
+  changes.
+- **Scalability**: Automating infrastructure deployment helps manage
+  scalability in cloud environments.
 
 ### Steps to Integrate Terraform with CI/CD
 
-1. **Version Control**: Ensure your Terraform configuration files are 
-managed in a version control system like Git. This provides a central 
-location for managing changes.
+1. **Version Control**: Ensure your Terraform configuration files are
+   managed in a version control system like Git. This provides a central
+   location for managing changes.
 
-2. **Pipeline Setup**: Choose a CI/CD tool like Jenkins, GitLab CI, CircleCI, 
-or GitHub Actions to create pipelines for Terraform.
+2. **Pipeline Setup**: Choose a CI/CD tool like Jenkins, GitLab CI, CircleCI,
+   or GitHub Actions to create pipelines for Terraform.
 
-3. **Environment Configuration**: Set up environments for testing, staging, 
-and production. Use separate state files or workspaces for each environment.
+3. **Environment Configuration**: Set up environments for testing, staging,
+   and production. Use separate state files or workspaces for each environment.
 
-4. **Secrets Management**: Utilize tools like HashiCorp Vault or AWS Secrets 
-Manager for securely managing sensitive information.
+4. **Secrets Management**: Utilize tools like HashiCorp Vault or AWS Secrets
+   Manager for securely managing sensitive information.
 
 5. **Pipeline Jobs**:
-   - **Linting and Formatting**: Run linting and formatting tools to ensure 
-all configurations adhere to best practices.
+   - **Linting and Formatting**: Run linting and formatting tools to ensure
+     all configurations adhere to best practices.
    - **Plan**: Execute `terraform plan` to preview changes before applying.
-   - **Apply**: After review, if accepted, execute `terraform apply` to 
-provision infrastructure.
-   - **Post-Deployment Testing**: Use tools like Terratest or InSpec for 
-validation tests.
+   - **Apply**: After review, if accepted, execute `terraform apply` to
+     provision infrastructure.
+   - **Post-Deployment Testing**: Use tools like Terratest or InSpec for
+     validation tests.
 
 ### Example Pipeline for Terraform
 
-Here's a basic example of how a CI/CD pipeline using GitHub Actions might 
+Here's a basic example of how a CI/CD pipeline using GitHub Actions might
 look like for Terraform:
 
 ```yaml
@@ -1045,8 +1059,8 @@ jobs:
           TF_VAR_example: ${{ secrets.EXAMPLE }}
 ```
 
-Integrating Terraform into CI/CD pipelines not only streamlines your 
-infrastructure management processes but also enhances security, compliance, 
+Integrating Terraform into CI/CD pipelines not only streamlines your
+infrastructure management processes but also enhances security, compliance,
 and operational efficiency.
 
 ## 18. Advanced Terraform Module Development
@@ -1162,7 +1176,7 @@ human-readable configuration files.
 - **Provider Support**: Integrates with hundreds of cloud providers
   like AWS, Azure, and GCP.
 - **State Management**: Keeps track of real-world environment state
-to manage the resources consistently.
+  to manage the resources consistently.
 - **Dependency Management**: Automatically determines resource
   dependencies to ensure proper order of operations.
 - **Resource Graph**: Builds a dependency graph and applies

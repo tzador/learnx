@@ -31,7 +31,7 @@ performance operations on large datasets, NumPy is widely used in data
 science, machine learning, and scientific computing.
 
 NumPy is an open-source project and is part of the larger ecosystem of
-scientific Python, which includes libraries like SciPy, Matplotlib, and 
+scientific Python, which includes libraries like SciPy, Matplotlib, and
 pandas. These tools collectively build on NumPy's capabilities to enable
 robust data manipulation and visualization.
 
@@ -51,7 +51,7 @@ NumPy can be easily installed using popular package managers.
 
 ### Using pip
 
-Pip is the package installer for Python. To install NumPy using 
+Pip is the package installer for Python. To install NumPy using
 pip, open your terminal or command prompt and run:
 
 ```
@@ -62,19 +62,19 @@ This will download and install the latest version of NumPy.
 
 ### Using conda
 
-If you are using the Anaconda distribution of Python, you can 
+If you are using the Anaconda distribution of Python, you can
 install NumPy through the conda package manager. Run:
 
 ```
 conda install numpy
 ```
 
-Conda will handle the dependencies automatically and ensure that 
+Conda will handle the dependencies automatically and ensure that
 NumPy is installed properly.
 
 ### Verifying Installation
 
-After installation, you can verify that NumPy is installed by 
+After installation, you can verify that NumPy is installed by
 opening a Python shell and typing:
 
 ```python
@@ -82,23 +82,23 @@ import numpy
 print(numpy.__version__)
 ```
 
-This should display the version of NumPy installed, confirming 
+This should display the version of NumPy installed, confirming
 the installation was successful.
 
-In the next articles, we'll explore the basic functionalities 
+In the next articles, we'll explore the basic functionalities
 and operations of NumPy.
 
 ## 03. Creating and Understanding Arrays
 
-NumPy is widely used for handling arrays efficiently in Python. 
-Arrays are a core component, and understanding how to create, 
-manipulate, and utilize them is crucial. This article introduces 
+NumPy is widely used for handling arrays efficiently in Python.
+Arrays are a core component, and understanding how to create,
+manipulate, and utilize them is crucial. This article introduces
 creating arrays and the basic concepts surrounding them.
 
 ### Creating Arrays
 
-To create arrays in NumPy, you typically use the `numpy.array()` 
-function. This function can convert Python lists (or tuples) 
+To create arrays in NumPy, you typically use the `numpy.array()`
+function. This function can convert Python lists (or tuples)
 into arrays. Here's a straightforward example:
 
 ```python
@@ -109,7 +109,7 @@ one_dim = np.array([1, 2, 3, 4, 5])
 two_dim = np.array([[1, 2, 3], [4, 5, 6]])
 ```
 
-After creation, arrays can be saved into variables for further 
+After creation, arrays can be saved into variables for further
 manipulation.
 
 ### Array Attributes
@@ -132,9 +132,9 @@ print("Data type of elements:", one_dim.dtype)
 
 ### Conclusion
 
-Creating basic arrays is simple with NumPy, and understanding 
-their attributes is vital for effective usage in computations. 
-Upcoming articles will delve into more complex operations and 
+Creating basic arrays is simple with NumPy, and understanding
+their attributes is vital for effective usage in computations.
+Upcoming articles will delve into more complex operations and
 functionalities provided by NumPy.
 
 ## 04. Array Indexing and Slicing
@@ -147,6 +147,7 @@ indexing and slicing features, similar to those of Python lists.
 
 A 1-Dimensional NumPy array can be indexed similarly to a Python list. You can
 access any element using its index, starting from 0.
+
 ```python
 import numpy as np
 arr = np.array([10, 20, 30, 40, 50])
@@ -157,6 +158,7 @@ print(arr[2])  # Output: 30
 
 For 2-D arrays, or matrices, you need to specify row and column indices
 separated by commas.
+
 ```python
 matrix = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
 print(matrix[1, 2])  # Output: 6
@@ -167,6 +169,7 @@ print(matrix[1, 2])  # Output: 6
 Slicing in NumPy arrays allows you to extract a subset of elements. The syntax
 `start:stop:step` is used, where `start` is inclusive, `stop` is exclusive, and
 `step` is optional.
+
 ```python
 
 print(arr[1:4])  # Output: [20, 30, 40]
@@ -178,6 +181,7 @@ print(matrix[0:2, 1:3])
 ### Boolean Indexing
 
 Boolean indexing allows retrieval of data that meets certain conditions.
+
 ```python
 mask = arr > 20
 print(arr[mask])  # Output: [30 40 50]
@@ -188,16 +192,16 @@ tool for data manipulation and analysis in Python.
 
 ## 05. Array Operations
 
-NumPy offers a wide range of operations on arrays, including mathematical, 
-statistical, and linear algebraic tools. These operations are applied 
-element-wise on arrays, making them extremely fast and efficient. In this 
-article, we'll cover some basic operations that you can perform on NumPy 
+NumPy offers a wide range of operations on arrays, including mathematical,
+statistical, and linear algebraic tools. These operations are applied
+element-wise on arrays, making them extremely fast and efficient. In this
+article, we'll cover some basic operations that you can perform on NumPy
 arrays.
 
 ### Arithmetic Operations
 
-NumPy supports all basic arithmetic operations like addition, subtraction, 
-multiplication, and division. These operations are straightforward and can be 
+NumPy supports all basic arithmetic operations like addition, subtraction,
+multiplication, and division. These operations are straightforward and can be
 applied directly on NumPy arrays.
 
 ```python
@@ -221,8 +225,8 @@ print("Quotient:", div_array)
 
 ### Unary Operations
 
-NumPy allows performing unary operations such as sum, maximum, minimum, 
-and mean on arrays. These operations can be applied to the entire array 
+NumPy allows performing unary operations such as sum, maximum, minimum,
+and mean on arrays. These operations can be applied to the entire array
 or along a specific axis.
 
 ```python
@@ -243,8 +247,8 @@ print("Mean Value:", mean_value)
 
 ### Broadcasting
 
-Broadcasting is a powerful mechanism in NumPy that allows arithmetic 
-operations on arrays of different shapes and sizes. This enables the 
+Broadcasting is a powerful mechanism in NumPy that allows arithmetic
+operations on arrays of different shapes and sizes. This enables the
 application of operations without explicitly replicating data.
 
 For example, you can add a scalar to an array:
@@ -257,7 +261,7 @@ broadcasted_sum = array + scalar
 print("Broadcasted Sum:", broadcasted_sum)
 ```
 
-Understanding these operations is crucial for efficient data manipulation 
+Understanding these operations is crucial for efficient data manipulation
 and computational tasks with NumPy.
 
 ## 06. Broadcasting
@@ -266,7 +270,7 @@ In NumPy, broadcasting is a way of performing element-wise operations
 on arrays with different shapes. It enables arithmetic operations
 between arrays of different sizes, without requiring explicit looping.
 The smaller array is "broadcast" across the larger array, allowing
-element-wise operations to be performed. 
+element-wise operations to be performed.
 
 Broadcasting is essential for writing efficient and straightforward
 code, as it let us take advantage of NumPy's fast element-wise array
@@ -275,6 +279,7 @@ operations.
 ### How Broadcasting Works
 
 Consider two arrays `A` and `B` where you want to add them:
+
 ```python
 import numpy as np
 
@@ -283,7 +288,9 @@ B = np.array([[10], [20], [30]])
 C = A + B
 print(C)
 ```
+
 Output:
+
 ```
 [[11 12 13]
  [21 22 23]
@@ -293,6 +300,7 @@ Output:
 Before performing the addition, NumPy automatically "broadcasts"
 array `A` to match the shape of `B`. This means `A` is transformed as
 if it were:
+
 ```
 [[1, 2, 3]
  [1, 2, 3]
@@ -321,6 +329,7 @@ print(result)
 ```
 
 Output:
+
 ```
 [[ 1  2  3]
  [11 12 13]
@@ -359,6 +368,7 @@ print(new_arr)
 ```
 
 Output:
+
 ```
 [[1 2 3]
  [4 5 6]]
@@ -376,6 +386,7 @@ print(flat_arr)
 ```
 
 Output:
+
 ```
 [1 2 3 4 5 6]
 ```
@@ -392,6 +403,7 @@ print(rav_arr)
 ```
 
 Output:
+
 ```
 [1 2 3 4 5 6]
 ```
@@ -406,6 +418,7 @@ print(transposed)
 ```
 
 Output:
+
 ```
 [[1 4]
  [2 5]
@@ -491,9 +504,9 @@ trigonometric functions.
 ### Characteristics of ufuncs
 
 - **Vectorized Operation:** ufuncs simplify the code to look
-more like standard arithmetic.
+  more like standard arithmetic.
 - **Broadcasting:** Supported to apply operations on arrays
-of different shapes.
+  of different shapes.
 - **Performance:** Written in C and optimized for performance.
 
 ### Basic Usage
@@ -566,6 +579,7 @@ arr_filled = np.where(np.isnan(arr), 0, arr)
 ### Calculating with NaNs
 
 NumPy offers nan-aware versions of common operations, such as:
+
 - `np.nansum()`: Sum, ignoring NaNs.
 - `np.nanmean()`: Mean, ignoring NaNs.
 
@@ -634,7 +648,7 @@ statistics, and machine learning:
 U, S, V = np.linalg.svd(A)
 ```
 
-The above outputs U, S, V such that A = U * S * V^T.
+The above outputs U, S, V such that A = U _ S _ V^T.
 
 ### Solving Linear Systems
 
@@ -652,9 +666,9 @@ further complex computations using NumPy's linear algebra capabilities.
 
 ## 12. NumPy Random Module
 
-The NumPy library provides a module called `numpy.random` for generating 
+The NumPy library provides a module called `numpy.random` for generating
 random numbers and performing various random sampling operations.
-This module is crucial for tasks in simulations, testing, and machine 
+This module is crucial for tasks in simulations, testing, and machine
 learning.
 
 ### Generating Random Numbers
@@ -685,19 +699,19 @@ NumPy's random module supports a range of probability distributions:
 - **Binomial Distribution**: `numpy.random.binomial(n, p, size=None)`
 - **Poisson Distribution**: `numpy.random.poisson(lam=1.0, size=None)`
 
-Exploring and using these random functionalities is crucial for many 
+Exploring and using these random functionalities is crucial for many
 applications, especially in data analysis and scientific research.
 
 ## 13. NumPy Matplotlib Integration
 
-Matplotlib is a popular plotting library in Python that allows for a wide range 
-of static, animated, and interactive visualizations. When combined with NumPy, 
-it becomes even more powerful, as NumPy provides efficient numerical 
+Matplotlib is a popular plotting library in Python that allows for a wide range
+of static, animated, and interactive visualizations. When combined with NumPy,
+it becomes even more powerful, as NumPy provides efficient numerical
 operations that can be used to generate data for plots.
 
 ### Basic Plotting with NumPy and Matplotlib
 
-The following example showcases how we can plot a simple line graph using 
+The following example showcases how we can plot a simple line graph using
 NumPy arrays:
 
 ```python
@@ -715,8 +729,8 @@ plt.ylabel('y axis label')
 plt.show()
 ```
 
-In the above example, NumPy's `arange` function is used to create an array of 
-values, which are then used as the x-coordinate for plotting. The sine function 
+In the above example, NumPy's `arange` function is used to create an array of
+values, which are then used as the x-coordinate for plotting. The sine function
 applied over the NumPy array gives the y-coordinates.
 
 ### Scatter Plot
@@ -758,12 +772,12 @@ plt.ylabel('Frequency')
 plt.show()
 ```
 
-In this example, `np.random.randn()` is used to generate samples from a normal 
+In this example, `np.random.randn()` is used to generate samples from a normal
 distribution, and `plt.hist()` is used to create the histogram.
 
 By integrating NumPy with Matplotlib, we can easily create various types of plots
-which are essential in data analysis and scientific computing. This combination 
-allows users to efficiently manipulate data with NumPy and then visualize it 
+which are essential in data analysis and scientific computing. This combination
+allows users to efficiently manipulate data with NumPy and then visualize it
 using Matplotlib.
 
 ## 14. Performance Optimization with NumPy
@@ -904,7 +918,7 @@ their combined use in data science workflows.
 
 ## 16. NumPy Data Types and Endianness
 
-In this article, we'll delve into NumPy data types and endianness. NumPy 
+In this article, we'll delve into NumPy data types and endianness. NumPy
 provides a variety of data types, known as dtypes, to optimize array
 operations and ensure compatibility with various platforms. Understanding
 these types is essential for efficient memory usage and data manipulation.
@@ -917,7 +931,7 @@ NumPy supports several built-in data types for its arrays:
 - **float32, float64**: Floating-point types (32-bit, 64-bit).
 - **bool**: Boolean type for storing `True` or `False`.
 - **complex64, complex128**: Complex numbers (pair of float32,float64).
-- **str_**: Unicode string type.
+- **str\_**: Unicode string type.
 - **object**: Python objects (less efficient).
 
 Each dtype can be customized according to platform needs. All dtypes have
@@ -969,12 +983,12 @@ features that further enhance its functionality and performance.
 
 ## 17. Advanced Array Manipulation
 
-In this article, we'll explore advanced array manipulation techniques 
+In this article, we'll explore advanced array manipulation techniques
 in NumPy, which allow you to efficiently handle complex array operations.
 
 ### Reshaping Arrays
 
-Reshaping is essential for changing the shape of an array without 
+Reshaping is essential for changing the shape of an array without
 altering its data. The `reshape()` function is used for this purpose.
 
 ```python
@@ -994,7 +1008,7 @@ Output:
 
 ### Flattening Arrays
 
-Flattening arrays is the process of converting a multi-dimensional 
+Flattening arrays is the process of converting a multi-dimensional
 array into a 1D array with the `ravel()` or `flatten()` methods.
 
 ```python
@@ -1047,46 +1061,46 @@ sq_arr = arr_2d.squeeze()
 print(sq_arr.shape)  # Output: (8,)
 ```
 
-Understanding these techniques will greatly enhance your ability 
-to manipulate data with NumPy arrays efficiently. These capabilities 
+Understanding these techniques will greatly enhance your ability
+to manipulate data with NumPy arrays efficiently. These capabilities
 are fundamental in scientific computing and data analysis contexts.
 
 ## 18. NumPy Memory Management and Views
 
-In this article, we will dive into how NumPy handles memory 
+In this article, we will dive into how NumPy handles memory
 management and explore the concept of views.
 
 ### Memory Management
 
-NumPy arrays are efficient in terms of memory usage. They provide 
-continuous memory storage for an array's elements without the need 
-for costly allocations. This is because NumPy arrays are stored in 
-a contiguous block of memory, ensuring better performance for 
+NumPy arrays are efficient in terms of memory usage. They provide
+continuous memory storage for an array's elements without the need
+for costly allocations. This is because NumPy arrays are stored in
+a contiguous block of memory, ensuring better performance for
 operations that involve significant data manipulation.
 
 #### Understanding Memory Layout
 
 NumPy follows specific memory layouts to optimize performance:
 
-- **C-Order (Row-major):** Data is stored row by row. This is the 
-default layout in NumPy.
+- **C-Order (Row-major):** Data is stored row by row. This is the
+  default layout in NumPy.
 
-- **F-Order (Column-major):** Data is stored column by column, 
-which is similar to Fortran arrays.
+- **F-Order (Column-major):** Data is stored column by column,
+  which is similar to Fortran arrays.
 
 #### In-place Operations
 
-Perform operations in-place when possible. NumPy allows many 
-operations to alter the data in-place, reducing the need for 
+Perform operations in-place when possible. NumPy allows many
+operations to alter the data in-place, reducing the need for
 additional memory allocation.
 
 ### Views vs. Copies
 
 #### Views
 
-A view is a new way of looking at the data in an array without 
-making a copy. With views, changes to the data in the original 
-array reflect in the view and vice versa. This is useful for 
+A view is a new way of looking at the data in an array without
+making a copy. With views, changes to the data in the original
+array reflect in the view and vice versa. This is useful for
 memory-efficient manipulation of array slices.
 
 #### Creating Views
@@ -1107,7 +1121,7 @@ print(b)  # Output: [100  2  3]
 
 #### Copies
 
-Contrarily, copying creates a new array with its own data. Modifying 
+Contrarily, copying creates a new array with its own data. Modifying
 a copy does not affect the original array. To create a copy:
 
 ```python
@@ -1119,11 +1133,11 @@ print(a)  # Output: [100  2  3  4  5]
 print(c)  # Output: [200  2  3]
 ```
 
-Understanding when NumPy is using views or copies helps manage 
+Understanding when NumPy is using views or copies helps manage
 memory usage effectively, especially with large datasets.
 
 In essence, efficient memory management in NumPy involves leveraging
-views when possible to reduce memory overhead while ensuring 
+views when possible to reduce memory overhead while ensuring
 performance through various memory layouts and in-place operations.
 
 ## 19. NumPy and Machine Learning

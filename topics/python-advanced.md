@@ -23,19 +23,19 @@
 
 ## 01. Introduction to Python Advanced
 
-Welcome to the "Python Advanced" series! Here, we will delve deeper into 
-Python's more sophisticated features. Whether you're looking to sharpen 
-your coding skills, tackle complex problems, or understand the internals 
+Welcome to the "Python Advanced" series! Here, we will delve deeper into
+Python's more sophisticated features. Whether you're looking to sharpen
+your coding skills, tackle complex problems, or understand the internals
 of Python, this series is for you.
 
-We'll start with foundational advanced concepts like iterators, 
-generators, and decorators, moving towards more intricate topics like 
-context managers, metaclasses, and asynchronous programming. Each article 
+We'll start with foundational advanced concepts like iterators,
+generators, and decorators, moving towards more intricate topics like
+context managers, metaclasses, and asynchronous programming. Each article
 will build upon the last, ensuring a comprehensive understanding.
 
-Make sure to have a basic grasp of Python as we'll be moving quickly 
-through the material. Let's embark on this exciting journey into Python's 
-advanced capabilities! Stay tuned for the next article where we'll 
+Make sure to have a basic grasp of Python as we'll be moving quickly
+through the material. Let's embark on this exciting journey into Python's
+advanced capabilities! Stay tuned for the next article where we'll
 explore iterators and iterables.
 
 ## 02. Decorators
@@ -77,7 +77,9 @@ def sum(a, b):
 
 result = sum(2, 3)
 ```
+
 This will print:
+
 ```
 Function sum called with (2, 3), {}
 Result: 5
@@ -88,13 +90,13 @@ maintainability and flexibility of your code.
 
 ## 03. Context Managers
 
-Context managers are a powerful feature in Python for managing resources. 
-They allow a user to allocate and release resources precisely 
+Context managers are a powerful feature in Python for managing resources.
+They allow a user to allocate and release resources precisely
 when needed. The most common use case is opening and closing files.
 
 ### Basic Context Manager Using `with`
 
-The `with` statement ensures that resources are properly cleaned up 
+The `with` statement ensures that resources are properly cleaned up
 after use, reducing potential bugs and resource leaks.
 
 ```python
@@ -103,13 +105,13 @@ with open('file.txt', 'r') as file:
     # File is closed automatically
 ```
 
-In the above example, `file` is automatically closed after the block 
-of code within the `with` statement is executed, even if an error 
+In the above example, `file` is automatically closed after the block
+of code within the `with` statement is executed, even if an error
 occurs within the block.
 
 ### Creating Custom Context Managers
 
-To create a custom context manager, you can define a class with 
+To create a custom context manager, you can define a class with
 `__enter__` and `__exit__` methods.
 
 ```python
@@ -133,7 +135,7 @@ Inside context
 Exiting context
 ```
 
-The `__enter__` method is executed at the beginning of the 
+The `__enter__` method is executed at the beginning of the
 `with` block, while `__exit__` is executed at the end.
 
 ## 04. Generators
@@ -180,9 +182,9 @@ They are similar to list comprehensions but with parentheses:
 
 1. **Memory Efficiency**: Generators compute values lazily, which
    means they only produce items one at a time and don’t store
-the entire dataset in memory.
+   the entire dataset in memory.
 2. **Improved Performance**: Since data isn't stored in memory,
-they can increase performance by reducing memory usage.
+   they can increase performance by reducing memory usage.
 3. **Facilitate Iteration**: Simplify complex iteration patterns.
 
 ### Example Usage
@@ -215,6 +217,7 @@ automate class creation, enforce certain rules, or modify class
 behavior.
 
 ### Defining a Metaclass
+
 A metaclass is defined by inheriting from the `type` class. The
 most common method to override is `__new__`, which allows you
 to control how the class is instantiated.
@@ -227,6 +230,7 @@ class Meta(type):
 ```
 
 ### Using a Metaclass
+
 To use a metaclass, specify it with the `metaclass` keyword when
 defining a class:
 
@@ -236,9 +240,10 @@ class MyClass(metaclass=Meta):
 ```
 
 When `MyClass` is created, the `Meta` metaclass will be used,
-which will trigger any custom logic defined in `Meta.__new__.
+which will trigger any custom logic defined in `Meta.**new**.
 
 ### Practical Applications
+
 Metaclasses can enforce consistent coding practices or
 register classes automatically. For example, they are commonly
 used in frameworks to ensure that certain attributes or methods
@@ -454,6 +459,7 @@ This example is similar to threading, but it uses a separate process to run the
 ### Choosing Between Threads and Processes
 
 When deciding between threads and processes, consider the type of task:
+
 - Use **threads** for I/O-bound tasks, such as web scraping or reading files.
 - Use **processes** for CPU-bound tasks, such as computational calculations.
 
@@ -594,41 +600,41 @@ immense power to text processing tasks in Python.
 
 ## 11. Memory Management in Python
 
-Python has an efficient memory management system that supports 
-automatic garbage collection. Understanding how memory is managed 
+Python has an efficient memory management system that supports
+automatic garbage collection. Understanding how memory is managed
 can enhance your coding efficiency and help you avoid memory leaks.
 
 ### Memory Allocation
 
-Python has its own garbage collector, which handles memory allocation 
-and deallocation. When memory is no longer used, it will be 
+Python has its own garbage collector, which handles memory allocation
+and deallocation. When memory is no longer used, it will be
 automatically freed by the garbage collector.
 
-- **Reference Counting**: Python uses reference counting for memory 
-management. Each object keeps track of the number of references to it, 
-and once an object has no references, it is garbage collected.
+- **Reference Counting**: Python uses reference counting for memory
+  management. Each object keeps track of the number of references to it,
+  and once an object has no references, it is garbage collected.
 
-- **Garbage Collection**: Apart from reference counting, Python's 
-garbage collector can detect and clean up cyclic references, which 
-reference counting alone cannot detect.
+- **Garbage Collection**: Apart from reference counting, Python's
+  garbage collector can detect and clean up cyclic references, which
+  reference counting alone cannot detect.
 
 ### Memory Management Techniques
 
-- **Avoiding Circular References**: Avoid creating objects that reference 
-each other. Use weak references if necessary.
+- **Avoiding Circular References**: Avoid creating objects that reference
+  each other. Use weak references if necessary.
 
-- **Using Generators**: Generators consume less memory and are 
-preferable for large data sets.
+- **Using Generators**: Generators consume less memory and are
+  preferable for large data sets.
 
-- **The `gc` Module**: You can control the garbage collector with this 
-module. For example, you might need to manually collect garbage 
-if you suspect memory leaks.
+- **The `gc` Module**: You can control the garbage collector with this
+  module. For example, you might need to manually collect garbage
+  if you suspect memory leaks.
 
-- **Profiling memory usage**: Use tools like `memory_profiler` and 
-`objgraph` to track where memory is being used.
+- **Profiling memory usage**: Use tools like `memory_profiler` and
+  `objgraph` to track where memory is being used.
 
-Understanding and managing memory in Python can lead to optimized 
-and robust applications, especially in environments with limited 
+Understanding and managing memory in Python can lead to optimized
+and robust applications, especially in environments with limited
 resources.
 
 ## 12. Python C Extensions
@@ -646,7 +652,9 @@ A basic C extension consists of a C source code file and a setup script.
 Let's create a simple example:
 
 #### Step 1: Write the C Code
+
 Create a file named `example.c` with the following content:
+
 ```c
 ##include <Python.h>
 
@@ -673,7 +681,9 @@ PyMODINIT_FUNC PyInit_example(void) {
 ```
 
 #### Step 2: Create the Setup Script
+
 Create a file named `setup.py` with the contents:
+
 ```python
 from setuptools import setup, Extension
 
@@ -683,24 +693,30 @@ setup(name='example',
 ```
 
 #### Step 3: Build the Extension
+
 Run the following command in your terminal:
+
 ```shell
 python setup.py build
 ```
 
 #### Step 4: Use the Extension in Python
+
 Install the built extension and import it in Python as follows:
+
 ```shell
 python setup.py install
 ```
 
 Then, use it in a Python script:
+
 ```python
 import example
 print(example.sum(3, 4))  # Outputs: 7
 ```
 
 ### Benefits of C Extensions
+
 - **Performance**: Significantly faster execution for computational
   heavy tasks.
 - **Integration**: Seamless integration between Python and C.
@@ -723,6 +739,7 @@ provides access to the BSD socket interface. You can create both TCP and UDP
 clients and servers using this module.
 
 Example of a basic TCP server:
+
 ```python
 import socket
 
@@ -744,6 +761,7 @@ Python provides high-level modules such as `requests` for communicating over
 HTTP. The `requests` library simplifies the process of sending HTTP requests.
 
 Example:
+
 ```python
 import requests
 
@@ -757,6 +775,7 @@ With the `asyncio` module, Python can manage asynchronous operations easily,
 which is beneficial for IO-bound network applications.
 
 Example of an asynchronous network client:
+
 ```python
 import asyncio
 
@@ -953,15 +972,15 @@ analysis-friendly record of what happens inside their code.
 ## 16. Design Patterns in Python
 
 Design patterns are typical solutions to recurring problems in software
-architecture. This article focuses on how Python implements these patterns. 
-Python's dynamic nature allows for simplified implementations of design 
+architecture. This article focuses on how Python implements these patterns.
+Python's dynamic nature allows for simplified implementations of design
 patterns that are verbose in other languages.
 
 ### Singleton Pattern
 
-The Singleton Pattern ensures a class has only one instance and provides a 
-global point of access to it. In Python, a simple way to implement singleton 
-is using a module. Since modules are singletons by nature, this provides 
+The Singleton Pattern ensures a class has only one instance and provides a
+global point of access to it. In Python, a simple way to implement singleton
+is using a module. Since modules are singletons by nature, this provides
 a straightforward way:
 
 ```python
@@ -975,8 +994,8 @@ class Singleton:
 
 ### Factory Pattern
 
-The Factory Pattern is used to create objects without specifying the exact 
-class of object that will be created. Python's ability to handle functions 
+The Factory Pattern is used to create objects without specifying the exact
+class of object that will be created. Python's ability to handle functions
 as first-class objects makes implementing a factory pattern straightforward.
 
 ```python
@@ -1008,11 +1027,11 @@ print(animal.speak())  # Output: Woof!
 
 ### Observer Pattern
 
-The Observer Pattern defines a dependency between objects so that when one 
-object changes state, all its dependents are notified and updated 
+The Observer Pattern defines a dependency between objects so that when one
+object changes state, all its dependents are notified and updated
 automatically.
 
-In Python, you can employ decorators and built-in functions like `property` 
+In Python, you can employ decorators and built-in functions like `property`
 to implement this pattern.
 
 ```python
@@ -1189,11 +1208,11 @@ large-scale machine learning tasks.
 - **Data Analysis**: Python is used to analyze data from various sources
   and extract meaningful insights.
 - **Machine Learning**: Python's rich ecosystem of libraries facilitates
-the design, implementation, and deployment of machine learning models.
+  the design, implementation, and deployment of machine learning models.
 - **Data Visualization**: Tools like Matplotlib help in visualizing
-complex data sets with clarity and insight.
+  complex data sets with clarity and insight.
 - **Big Data Processing**: Python integrates with Hadoop and Spark for
-big data processing, tackling vast and complex datasets.
+  big data processing, tackling vast and complex datasets.
 
 Python's adaptability and the breadth of its libraries make it a premier
 language for data science, serving researchers, analysts, and companies

@@ -35,14 +35,14 @@ high-performance tool for both development and production purposes.
 ### What Makes Vite Stand Out?
 
 - **Instant server start:** Vite starts the development server extremely fast,
-often within 100ms.
+  often within 100ms.
 - **Hot Module Replacement (HMR):** This feature allows you to see changes in
-real-time as you edit your source files, significantly speeding up the
-feedback loop.
+  real-time as you edit your source files, significantly speeding up the
+  feedback loop.
 - **Optimized production build:** Vite offers robust out-of-the-box
-optimizations for minimizing the size of production builds.
+  optimizations for minimizing the size of production builds.
 - **Rich features:** Supports TypeScript, JSX, and CSS preprocessors like
-Sass and Less.
+  Sass and Less.
 
 In the upcoming articles, we will explore Vite's installation process,
 configurations, integrations with different frameworks, and delve deeper into
@@ -50,19 +50,19 @@ each feature.
 
 ## 02. Getting Started with Vite
 
-Vite is a modern frontend build tool that significantly improves the 
-development experience by providing fast builds and hot module 
-replacement (HMR). If you are new to Vite, here is a simple guide to get 
+Vite is a modern frontend build tool that significantly improves the
+development experience by providing fast builds and hot module
+replacement (HMR). If you are new to Vite, here is a simple guide to get
 you started quickly.
 
 #### Prerequisites
 
-Before you begin, make sure you have Node.js and npm installed on your 
+Before you begin, make sure you have Node.js and npm installed on your
 system. You can download them from the [official website](https://nodejs.org/).
 
 #### Installing Vite
 
-To create a new project with Vite, you need to have a package manager like 
+To create a new project with Vite, you need to have a package manager like
 npm or Yarn. To install Vite globally, run the following command:
 
 ```bash
@@ -71,15 +71,15 @@ npm install -g create-vite
 
 #### Creating a Vite Project
 
-Once Vite is installed, you can create a new project using the following 
+Once Vite is installed, you can create a new project using the following
 command. This will scaffold a basic Vite application:
 
 ```bash
 create-vite my-vite-project
 ```
 
-Replace `my-vite-project` with your desired project name. This command will 
-prompt you to select a framework. You can start with vanilla, Vue, React, 
+Replace `my-vite-project` with your desired project name. This command will
+prompt you to select a framework. You can start with vanilla, Vue, React,
 Svelte, or other supported frameworks.
 
 #### Running the Development Server
@@ -92,7 +92,7 @@ npm install
 npm run dev
 ```
 
-Vite will start a dev server at `http://localhost:5173` (by default). You 
+Vite will start a dev server at `http://localhost:5173` (by default). You
 can access it in your browser to see your project in action.
 
 #### Building for Production
@@ -103,10 +103,10 @@ To build your project for production, use the following command:
 npm run build
 ```
 
-This will create an optimized, minified version of your app in a `dist` 
+This will create an optimized, minified version of your app in a `dist`
 folder. You can then serve this folder using any static file server.
 
-Vite makes development faster and easier. With just a few commands, you 
+Vite makes development faster and easier. With just a few commands, you
 can start developing your modern web application.
 
 ## 03. Understanding Vite's Architecture
@@ -120,6 +120,7 @@ Vite serves your source code using native ES modules in the browser during devel
 ### Dev Server
 
 Vite comes with a built-in development server that provides:
+
 - **Instant server start**: The server boots up quickly even with large projects.
 - **Hot Module Replacement (HMR)**: Updates are applied in the browser immediately, without requiring a full page reload.
 
@@ -273,9 +274,9 @@ the Vite dev server to suit your specific needs.
 
 ## 07. Configuring Vite
 
-Vite provides a flexible configuration setup that allows developers to 
+Vite provides a flexible configuration setup that allows developers to
 adapt the build process to their specific needs. The primary configuration
-file for Vite is `vite.config.js`, where various options and plugins can be 
+file for Vite is `vite.config.js`, where various options and plugins can be
 customized and added.
 
 ### Basic Configuration
@@ -285,7 +286,7 @@ function from 'vite', which helps in type-checking and defining the
 configuration explicitly:
 
 ```javascript
-import { defineConfig } from 'vite';
+import { defineConfig } from "vite";
 
 export default defineConfig({
   // Your configuration options
@@ -309,7 +310,7 @@ export default defineConfig({
     port: 3000,
     open: true,
     proxy: {
-      '/api': 'http://localhost:5000',
+      "/api": "http://localhost:5000",
     },
   },
 });
@@ -328,8 +329,8 @@ Example:
 ```javascript
 export default defineConfig({
   build: {
-    outDir: 'dist',
-    assetsDir: 'assets',
+    outDir: "dist",
+    assetsDir: "assets",
     sourcemap: true,
   },
 });
@@ -341,7 +342,7 @@ Vite's plugin system is powerful, supporting Rollup-compatible plugins.
 They can be easily added to enhance functionality:
 
 ```javascript
-import vue from '@vitejs/plugin-vue';
+import vue from "@vitejs/plugin-vue";
 
 export default defineConfig({
   plugins: [vue()],
@@ -356,7 +357,7 @@ providing a robust environment for modern web development.
 Vite extends its functionality using plugins, which are
 close to Rollup's plugin format but also with some Vite-specific hooks. This
 extension is powerful for adding support for custom modules, transforming
-code, or handling a variety of other tasks. 
+code, or handling a variety of other tasks.
 
 ### Why Use Plugins
 
@@ -383,10 +384,10 @@ To use a community plugin, you generally install it via npm and add it to
 the `plugins` array in your `vite.config.js` file:
 
 ```javascript
-import vitePluginExample from 'vite-plugin-example';
-  
+import vitePluginExample from "vite-plugin-example";
+
 export default {
-  plugins: [vitePluginExample()]
+  plugins: [vitePluginExample()],
 };
 ```
 
@@ -442,7 +443,7 @@ separate chunks that are only loaded as needed. This reduces the
 initial loading time.
 
 ```javascript
-import('module').then(module => {
+import("module").then((module) => {
   // Use the dynamically loaded module
 });
 ```
@@ -451,7 +452,7 @@ import('module').then(module => {
 
 Vite employs tree shaking to eliminate unused code. This optimization
 mechanism helps you reduce the size of your final bundle by removing
-dead code. 
+dead code.
 
 #### Benefits
 
@@ -482,7 +483,7 @@ Small images can be inlined into your JavaScript files to reduce
 HTTP requests, leading to faster page loads.
 
 ```javascript
-import image from './image.png';
+import image from "./image.png";
 ```
 
 This approach minimizes the number of requests to the server, which
@@ -503,17 +504,17 @@ focus on further optimization opportunities.
 
 ## 10. Vite and Hot Module Replacement (HMR)
 
-Vite offers an exceptional development experience with its built-in support for 
-Hot Module Replacement (HMR). Hot Module Replacement is a feature that allows 
-you to replace or add modules while an application is running, without a full 
-reload. This means that developers can see changes instantly without losing 
+Vite offers an exceptional development experience with its built-in support for
+Hot Module Replacement (HMR). Hot Module Replacement is a feature that allows
+you to replace or add modules while an application is running, without a full
+reload. This means that developers can see changes instantly without losing
 the application state.
 
 ### How HMR Works in Vite
 
-Vite uses ES modules to handle Hot Module Replacement. When you update a file, 
-Vite only reloads the module that was updated and the modules that depend on 
-it. This efficient change detection mechanism ensures that only the necessary 
+Vite uses ES modules to handle Hot Module Replacement. When you update a file,
+Vite only reloads the module that was updated and the modules that depend on
+it. This efficient change detection mechanism ensures that only the necessary
 parts of the application are updated.
 
 #### Benefits of Using HMR
@@ -521,24 +522,24 @@ parts of the application are updated.
 1. **Faster Development**: Changes get reflected immediately upon saving,
    speeding up the development process significantly.
 
-2. **State Preservation**: Since HMR applies updates without the traditional 
+2. **State Preservation**: Since HMR applies updates without the traditional
    full-page reload, the application state is preserved across changes.
 
-3. **Reduced Disruptions**: Developers face fewer disruptions because the UI 
+3. **Reduced Disruptions**: Developers face fewer disruptions because the UI
    reloads quickly, leading to a smoother workflow.
 
 ### Implementing HMR in Vite
 
-In Vite, HMR is enabled by default during development. It requires no 
-special configuration as long as the JavaScript modules you're working with 
-support it. However, frameworks built on top of Vite might offer additional 
+In Vite, HMR is enabled by default during development. It requires no
+special configuration as long as the JavaScript modules you're working with
+support it. However, frameworks built on top of Vite might offer additional
 utilities to better integrate HMR.
 
 #### Customizing HMR
 
-You may customize HMR behavior in a Vite project by updating the configuration 
-file. For instance, you can apply custom logic to handle module updates in 
-a specific way, especially for larger applications where you might want more 
+You may customize HMR behavior in a Vite project by updating the configuration
+file. For instance, you can apply custom logic to handle module updates in
+a specific way, especially for larger applications where you might want more
 control over the module update process.
 
 Here is an example of configuring HMR options:
@@ -547,20 +548,20 @@ Here is an example of configuring HMR options:
 export default {
   server: {
     hmr: {
-      overlay: false // Disable error overlay
-    }
-  }
-}
+      overlay: false, // Disable error overlay
+    },
+  },
+};
 ```
 
-In the above configuration, the error overlay, which appears during runtime 
+In the above configuration, the error overlay, which appears during runtime
 errors, is disabled.
 
 #### Conclusion
 
-Hot Module Replacement in Vite is a core feature that improves development 
-efficiency and experience. With minimal or no configuration, Vite empowers 
-developers to build and iterate projects swiftly. Understanding how to leverage 
+Hot Module Replacement in Vite is a core feature that improves development
+efficiency and experience. With minimal or no configuration, Vite empowers
+developers to build and iterate projects swiftly. Understanding how to leverage
 HMR can greatly enhance your development workflow while working with Vite.
 
 ## 11. Vite and TypeScript
@@ -617,13 +618,13 @@ template.
 ### Benefits of Using TypeScript
 
 - **Type Safety:** Helps prevent runtime errors by catching type errors
-during development.
+  during development.
 
 - **Improved Developer Experience:** Provides auto-completion, inline
-type checking, and more in modern IDEs.
+  type checking, and more in modern IDEs.
 
 - **Code Maintainability:** Makes it easier to understand and refactor code
-with clear type definitions.
+  with clear type definitions.
 
 ### Troubleshooting
 
@@ -655,6 +656,7 @@ optimized for production use.
 ### Step 2: Choose a Hosting Provider
 
 Vite builds static assets, which gives you a wide range of hosting options:
+
 - **Netlify**: Drag and drop your `dist` folder into the Netlify dashboard.
 - **Vercel**: Link your repository and set the build command to `npm run build`.
 - **GitHub Pages**: Use a tool like `gh-pages` to push your `dist` folder to
@@ -751,21 +753,22 @@ boost productivity and maintain a better development experience.
 
 ## 14. Vite with Vue.js
 
-Vite is designed to work seamlessly with Vue.js, providing an efficient 
-development environment for Vue applications. In this article, we will 
-cover how to leverage Vite when developing with Vue.js, and look at some 
-key features and configurations provided by Vite for this popular 
+Vite is designed to work seamlessly with Vue.js, providing an efficient
+development environment for Vue applications. In this article, we will
+cover how to leverage Vite when developing with Vue.js, and look at some
+key features and configurations provided by Vite for this popular
 framework.
 
 ### Integrating Vue.js with Vite
 
-Vite offers first-class support for Vue.js. With Vite, setting up a Vue 
-project is straightforward and can be accomplished using minimal 
+Vite offers first-class support for Vue.js. With Vite, setting up a Vue
+project is straightforward and can be accomplished using minimal
 configuration. Here's a step-by-step guide to getting started:
 
 1. **Create a Vue.js application with Vite**:
-   Run the following command in your terminal to scaffold a new Vue.js 
+   Run the following command in your terminal to scaffold a new Vue.js
    project using Vite:
+
    ```bash
    npm init @vitejs/app my-vue-app --template vue
    cd my-vue-app
@@ -774,8 +777,8 @@ configuration. Here's a step-by-step guide to getting started:
    ```
 
 2. **Vite Configurations for Vue**:
-   Vite automatically configures itself for Vue.js when the Vue template 
-   is used. Make sure to check the `vite.config.js` file, which contains 
+   Vite automatically configures itself for Vue.js when the Vue template
+   is used. Make sure to check the `vite.config.js` file, which contains
    configuration details such as plugins for Vite to handle Vue files,
    including support for single-file components (SFC).
 
@@ -792,9 +795,9 @@ with Vue.js. It allows developers to instantly see changes without full
 reloads, improving efficiency significantly.
 
 By leveraging Vite's excellent support for Vue.js, developers can build
-modern, fast, and responsive applications with minimal fuss. Vite's 
+modern, fast, and responsive applications with minimal fuss. Vite's
 optimizations help ensure that not only development is fast, but the built
-application performs well in production. This allows developers to focus 
+application performs well in production. This allows developers to focus
 more on creating features and less on build setups or load times.
 
 ## 15. Vite with Svelte
@@ -839,11 +842,11 @@ The project structure generated by Vite is simple and intuitive:
 ### Benefits of Using Vite with Svelte
 
 - **Faster Start-Up Times**: Vite's instant module loading minimizes the
-time it takes to spin up a development server.
+  time it takes to spin up a development server.
 - **Hot Module Replacement**: Enjoy lightning-fast updates without a full
-page reload, keeping the application state intact.
+  page reload, keeping the application state intact.
 - **Built-In Optimizations**: Leverage Vite's automatic polyfill
-management and on-demand transpilation.
+  management and on-demand transpilation.
 
 ### Conclusion
 
@@ -877,35 +880,38 @@ create-app tool and specify Preact as the template. Follow these steps:
    ```
 
 2. **Navigate into the project:**
+
    ```bash
    cd my-preact-app
    ```
 
 3. **Install dependencies:**
+
    ```bash
    npm install
    ```
 
 4. **Start the development server:**
    Launch the Vite development server:
+
    ```bash
    npm run dev
    ```
 
    You can now view your Preact project by navigating to `http://localhost:5173`  
-in your web browser.
+   in your web browser.
 
 ### Features of Vite with Preact
 
 - **Fast Refresh:** Vite's efficient HMR ensures instant updates when you save  
-your Preact components, allowing for a highly responsive development  
-environment.
+  your Preact components, allowing for a highly responsive development  
+  environment.
 
 - **Out-of-the-box Support:** Vite and Preact have seamless compatibility,  
-providing preconfigured settings that streamline setup and usage.
+  providing preconfigured settings that streamline setup and usage.
 
 - **Optimized Performance:** Bundling with Vite ensures your Preact application  
-is optimized for production with minimal configuration.
+  is optimized for production with minimal configuration.
 
 ### Configuring Vite for Preact
 
@@ -913,10 +919,10 @@ With Vite, you have the flexibility to customize the setup according to your
 project's requirements. Here are some common configurations:
 
 - **Vite Config File:** Adjust the `vite.config.js` or `vite.config.ts` file to  
-tweak default settings, such as the base path, plugins, and server options.
+  tweak default settings, such as the base path, plugins, and server options.
 
 - **Aliases:** You can define aliases to simplify imports within your project,  
-a useful feature in larger codebases.
+  a useful feature in larger codebases.
 
 ### Conclusion
 
@@ -928,16 +934,16 @@ efficiency.
 
 ## 17. Vite with Lit
 
-Vite is a versatile build tool and development server that can be used 
-with various front-end libraries, including Lit. Lit is a simple library 
-for building fast, lightweight web components. Integrating Vite with Lit 
-can enhance the development workflow by leveraging Vite's fast builds 
+Vite is a versatile build tool and development server that can be used
+with various front-end libraries, including Lit. Lit is a simple library
+for building fast, lightweight web components. Integrating Vite with Lit
+can enhance the development workflow by leveraging Vite's fast builds
 and hot module replacement.
 
 ### Setting Up Vite with Lit
 
-To get started with Vite and Lit, we first need to set up a new Vite 
-project. Once you have Vite installed, you can create a new project by 
+To get started with Vite and Lit, we first need to set up a new Vite
+project. Once you have Vite installed, you can create a new project by
 using the following command:
 
 ```bash
@@ -958,11 +964,11 @@ npm install lit
 
 ### Creating a Lit Component
 
-Create a new file called `MyElement.js` in the `src` directory and add 
+Create a new file called `MyElement.js` in the `src` directory and add
 the following code:
 
 ```javascript
-import { LitElement, html, css } from 'lit';
+import { LitElement, html, css } from "lit";
 
 class MyElement extends LitElement {
   static styles = css`
@@ -978,44 +984,44 @@ class MyElement extends LitElement {
   }
 }
 
-customElements.define('my-element', MyElement);
+customElements.define("my-element", MyElement);
 ```
 
 ### Configuring Vite for Lit
 
-Vite doesn't require a specific configuration for Lit, since it's already 
-optimized for ES modules and modern JavaScript. However, you can add 
+Vite doesn't require a specific configuration for Lit, since it's already
+optimized for ES modules and modern JavaScript. However, you can add
 a `vite.config.js` if you need custom configurations:
 
 ```javascript
-import { defineConfig } from 'vite';
+import { defineConfig } from "vite";
 
 export default defineConfig({
-  root: 'src',
+  root: "src",
   build: {
-    outDir: '../dist'
-  }
+    outDir: "../dist",
+  },
 });
 ```
 
 ### Running the Development Server
 
-You can now run the Vite development server to see your Lit component in 
+You can now run the Vite development server to see your Lit component in
 action:
 
 ```bash
 npm run dev
 ```
 
-This will start a local development server and open your project in 
-a browser. You should see the message "Hello, Lit with Vite!" displayed 
+This will start a local development server and open your project in
+a browser. You should see the message "Hello, Lit with Vite!" displayed
 from your Lit component.
 
 ### Conclusion
 
-Using Vite with Lit provides a powerful combination for building web 
-components. With Vite's rapid development capabilities and Lit's simplified 
-approach to web components, developers can enjoy a streamlined workflow 
+Using Vite with Lit provides a powerful combination for building web
+components. With Vite's rapid development capabilities and Lit's simplified
+approach to web components, developers can enjoy a streamlined workflow
 without sacrificing performance.
 
 ## 18. Vite with Angular
@@ -1030,11 +1036,13 @@ Angular application.
 
 First, ensure you have the Angular CLI installed, as it will be used to generate
 and manage your Angular project:
+
 ```bash
 npm install -g @angular/cli
 ```
 
 Create a new Angular project:
+
 ```bash
 ng new my-angular-app
 cd my-angular-app
@@ -1048,6 +1056,7 @@ other frameworks due to Angular's specific build and serving processes.
 #### Step 1: Install Vite
 
 Add Vite to your Angular project:
+
 ```bash
 npm install vite
 ```
@@ -1058,12 +1067,12 @@ In your project root, create a `vite.config.ts` file to configure Vite. Here,
 you'll need to define the entry and build configurations:
 
 ```typescript
-import { defineConfig } from 'vite';
+import { defineConfig } from "vite";
 
 export default defineConfig({
-  root: 'src',
+  root: "src",
   build: {
-    outDir: '../dist',
+    outDir: "../dist",
   },
   server: {
     port: 4200,
@@ -1085,14 +1094,14 @@ Modify your `package.json` scripts to include Vite commands:
 #### Step 4: Compatibility Considerations
 
 Angular being a framework with its own CLI and custom build tool, may not
-integrate with Vite as smoothly as other libraries. Therefore, consider the 
+integrate with Vite as smoothly as other libraries. Therefore, consider the
 following:
 
 - Vite's dev server might not support all Angular features out of the box,
-essentially its dependency injection and structural directives.
+  essentially its dependency injection and structural directives.
 
 - Examine your application thoroughly, ensuring the HMR implementation
-adequately reflects component updates and state preservation.
+  adequately reflects component updates and state preservation.
 
 ### Conclusion
 
@@ -1130,9 +1139,9 @@ npm install vite-plugin-md
 Next, configure the plugin in your `vite.config.js`:
 
 ```javascript
-import { defineConfig } from 'vite';
-import vue from '@vitejs/plugin-vue';
-import Markdown from 'vite-plugin-md';
+import { defineConfig } from "vite";
+import vue from "@vitejs/plugin-vue";
+import Markdown from "vite-plugin-md";
 
 export default defineConfig({
   plugins: [
@@ -1158,11 +1167,11 @@ npm install vite-plugin-markdown
 Configure it in `vite.config.js`:
 
 ```javascript
-import { defineConfig } from 'vite';
-import markdown from 'vite-plugin-markdown';
+import { defineConfig } from "vite";
+import markdown from "vite-plugin-markdown";
 
 export default defineConfig({
-  plugins: [markdown()]
+  plugins: [markdown()],
 });
 ```
 
@@ -1172,7 +1181,7 @@ Once you've configured your markdown plugin, you can import `.md`
 files directly in your components:
 
 ```javascript
-import MyMarkdownContent from './content.md';
+import MyMarkdownContent from "./content.md";
 ```
 
 For `vite-plugin-md`, this will render as a Vue component:
@@ -1194,43 +1203,43 @@ focuses on Vue or supports a broader scope with other frameworks.
 
 ## 20. Vite and CSS Handling
 
-Vite provides efficient CSS handling capabilities that allow developers 
-to seamlessly integrate CSS into their Vite-powered applications. CSS is 
-a fundamental part of any web project, and handling it effectively can 
-enhance performance and maintainability. Let's explore how Vite manages 
+Vite provides efficient CSS handling capabilities that allow developers
+to seamlessly integrate CSS into their Vite-powered applications. CSS is
+a fundamental part of any web project, and handling it effectively can
+enhance performance and maintainability. Let's explore how Vite manages
 CSS.
 
 ### CSS Features in Vite
 
-1. **@import Inlining**: Vite automatically inlines 
-`@import` statements, reducing the number of HTTP requests, which leads to 
-faster load times.
+1. **@import Inlining**: Vite automatically inlines
+   `@import` statements, reducing the number of HTTP requests, which leads to
+   faster load times.
 
-2. **CSS Code Splitting**: Vite supports automatic code splitting for 
-CSS during production builds. This means CSS used in different parts 
-of the application is separated, optimizing the loading process.
+2. **CSS Code Splitting**: Vite supports automatic code splitting for
+   CSS during production builds. This means CSS used in different parts
+   of the application is separated, optimizing the loading process.
 
-3. **Auto-Prefixed CSS**: With Vite, CSS is auto-prefixed using 
-PostCSS, ensuring compatibility with various browsers without needing 
-manual intervention.
+3. **Auto-Prefixed CSS**: With Vite, CSS is auto-prefixed using
+   PostCSS, ensuring compatibility with various browsers without needing
+   manual intervention.
 
 ### Adding CSS to a Vite Project
 
-To include CSS in your Vite project, you can simply install PostCSS 
+To include CSS in your Vite project, you can simply install PostCSS
 if it's not already included in your setup:
 
 ```bash
 npm install postcss
 ```
 
-You can then create a `postcss.config.js` file for additional 
-configuration if needed. Otherwise, Vite has reasonable defaults that will 
+You can then create a `postcss.config.js` file for additional
+configuration if needed. Otherwise, Vite has reasonable defaults that will
 cover most use cases.
 
-### Using CSS Pre-processors  
+### Using CSS Pre-processors
 
-Vite supports popular CSS pre-processors like SASS, LESS, and Stylus. 
-You only need to install the corresponding packages, and Vite will 
+Vite supports popular CSS pre-processors like SASS, LESS, and Stylus.
+You only need to install the corresponding packages, and Vite will
 automatically handle them:
 
 ```bash
@@ -1241,8 +1250,8 @@ Now, you can write `.scss` or `.sass` files.
 
 ### CSS Modules
 
-Vite supports CSS Modules. CSS Modules locally scope CSS by default, 
-which helps prevent style conflicts and maintain large codebases. Simply 
+Vite supports CSS Modules. CSS Modules locally scope CSS by default,
+which helps prevent style conflicts and maintain large codebases. Simply
 name your file with `.module.css` to activate CSS Modules:
 
 ```css
@@ -1254,7 +1263,7 @@ name your file with `.module.css` to activate CSS Modules:
 
 ### Conclusion
 
-Vite's approach to handling CSS is both flexible and powerful, providing 
-developers with tools for better performance optimizations and development 
-efficiency. Whether using vanilla CSS, pre-processors, or CSS Modules, Vite 
+Vite's approach to handling CSS is both flexible and powerful, providing
+developers with tools for better performance optimizations and development
+efficiency. Whether using vanilla CSS, pre-processors, or CSS Modules, Vite
 caters to a range of needs in modern web development.

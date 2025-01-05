@@ -23,36 +23,36 @@
 
 ## 01. Introduction to Tailwind CSS
 
-Tailwind CSS is a utility-first CSS framework that provides low-level 
-utility classes to build entirely custom designs without ever leaving 
-your HTML. Unlike traditional CSS frameworks that come with predefined 
-components, Tailwind gives you the flexibility to design from scratch 
-using its utility classes, allowing for rapid prototyping and 
+Tailwind CSS is a utility-first CSS framework that provides low-level
+utility classes to build entirely custom designs without ever leaving
+your HTML. Unlike traditional CSS frameworks that come with predefined
+components, Tailwind gives you the flexibility to design from scratch
+using its utility classes, allowing for rapid prototyping and
 consistent styling.
 
 ### Why Use Tailwind CSS?
 
-- **Customizability**: Tailwind doesn't impose design decisions, unlike 
-  other frameworks. You can custom tailor every aspect of your UI as 
+- **Customizability**: Tailwind doesn't impose design decisions, unlike
+  other frameworks. You can custom tailor every aspect of your UI as
   per the needs of your project.
 
-- **Efficiency**: By using utility classes, Tailwind helps eliminate 
-  context switching between CSS and HTML, speeding up the design 
+- **Efficiency**: By using utility classes, Tailwind helps eliminate
+  context switching between CSS and HTML, speeding up the design
   process.
 
-- **Responsive Design**: With its built-in responsive modifiers, 
-  Tailwind makes it easy to design responsive interfaces directly in 
+- **Responsive Design**: With its built-in responsive modifiers,
+  Tailwind makes it easy to design responsive interfaces directly in
   your markup.
 
-- **Consistency**: Tailwind helps maintain consistency across your 
-  design by using a single source of truth for all design tokens. 
+- **Consistency**: Tailwind helps maintain consistency across your
+  design by using a single source of truth for all design tokens.
 
-- **Community and Ecosystem**: A large community and rich ecosystem of 
-  plugins and tools make working with Tailwind CSS easier and more 
+- **Community and Ecosystem**: A large community and rich ecosystem of
+  plugins and tools make working with Tailwind CSS easier and more
   powerful.
 
-Throughout this series, you'll learn how to effectively use Tailwind 
-CSS to enhance your web designs with practical examples and advanced 
+Throughout this series, you'll learn how to effectively use Tailwind
+CSS to enhance your web designs with practical examples and advanced
 tips.
 
 ## 02. Setting Up Tailwind CSS
@@ -130,9 +130,9 @@ using it.
 
 ## 03. Basic Utility Classes
 
-Tailwind CSS is known for its rich set of utility classes that allow you to 
-style your website without ever having to write a single line of custom CSS. 
-In this article, we'll explore some of the basic utility classes offered by 
+Tailwind CSS is known for its rich set of utility classes that allow you to
+style your website without ever having to write a single line of custom CSS.
+In this article, we'll explore some of the basic utility classes offered by
 Tailwind CSS to help you get started quickly.
 
 ### Text and Font Styles
@@ -174,10 +174,10 @@ Customize borders and corners effortlessly:
 - **Flexbox**: Utilize flexbox classes such as `flex`, `flex-row`,  
   `justify-between`, `items-center` for flexible layouts.
 
-With these classes, you can quickly and efficiently create responsive and 
-modern designs. Tailwind CSS's utility-first approach encourages rapid 
-prototyping and makes maintaining large-scale applications easier due to its 
-predictable, standardized class system. In the next article, we'll dive into 
+With these classes, you can quickly and efficiently create responsive and
+modern designs. Tailwind CSS's utility-first approach encourages rapid
+prototyping and makes maintaining large-scale applications easier due to its
+predictable, standardized class system. In the next article, we'll dive into
 responsive design with Tailwind CSS.
 
 ## 04. Responsive Design with Tailwind CSS
@@ -189,6 +189,7 @@ without writing custom media queries.
 ### Breakpoints
 
 Tailwind provides several breakpoints that you can use:
+
 - **sm:** `640px` and up
 - **md:** `768px` and up
 - **lg:** `1024px` and up
@@ -202,6 +203,7 @@ offer a solid starting point.
 
 To apply styles responsively, prefix a utility class with one of the
 responsive keyword. For instance:
+
 - `text-center`: centers text by default.
 - `md:text-left`: aligns text left on medium screens and larger.
 
@@ -222,12 +224,12 @@ To customize breakpoints, you can modify the `tailwind.config.js` file like so:
 module.exports = {
   theme: {
     screens: {
-      'tablet': '640px',
-      'laptop': '1024px',
-      'desktop': '1280px',
+      tablet: "640px",
+      laptop: "1024px",
+      desktop: "1280px",
     },
   },
-}
+};
 ```
 
 This setup replaces the default breakpoints with custom ones like 'tablet',
@@ -279,9 +281,7 @@ npm install @tailwindcss/forms
 Then, include it in your configuration file:
 
 ```javascript
-plugins: [
-  require('@tailwindcss/forms'),
-]
+plugins: [require("@tailwindcss/forms")];
 ```
 
 ### Creating Custom Utilities
@@ -291,10 +291,10 @@ For example, to create a utility for 3D rotation:
 
 ```javascript
 addUtilities({
-  '.rotate-y-180': {
-     transform: 'rotateY(180deg)',
+  ".rotate-y-180": {
+    transform: "rotateY(180deg)",
   },
-})
+});
 ```
 
 ### Custom Fonts
@@ -384,8 +384,8 @@ your designs.
 
 ## 07. Tailwind CSS Layouts
 
-In this article, we'll explore how Tailwind CSS makes it simple to create 
-responsive and flexible layouts. We'll cover essential layout utilities that 
+In this article, we'll explore how Tailwind CSS makes it simple to create
+responsive and flexible layouts. We'll cover essential layout utilities that
 Tailwind provides, helping you to design modern web pages effortlessly.
 
 ### Flexbox Utilities
@@ -397,7 +397,7 @@ complex layouts with ease. For example:
 - `flex-row`: Sets flex direction to row.
 - `flex-col`: Sets flex direction to column.
 
-You can also control alignment with classes such as `items-center` or 
+You can also control alignment with classes such as `items-center` or
 `justify-between`.
 
 ### Grid Utilities
@@ -408,12 +408,12 @@ The grid system in Tailwind is equally powerful. Some useful classes include:
 - `grid-cols-3`: Creates a grid with three columns.
 - `gap-4`: Adds a gap between grid items.
 
-These utilities allow you to create sophisticated grid layouts with minimal 
+These utilities allow you to create sophisticated grid layouts with minimal
 CSS.
 
 ### Spacing and Sizing
 
-Tailwind provides margin, padding, and sizing utilities to control element 
+Tailwind provides margin, padding, and sizing utilities to control element
 spacing. Examples include:
 
 - `m-4`: Applies a margin of 4 units.
@@ -421,7 +421,7 @@ spacing. Examples include:
 - `w-full`: Sets width to 100%.
 - `h-64`: Sets height to 16rem.
 
-With these utilities, you can precisely control the dimensions and spacing of 
+With these utilities, you can precisely control the dimensions and spacing of
 elements across your layout.
 
 ### Example: Creating a Simple Layout
@@ -438,7 +438,7 @@ Consider creating a responsive card layout using Tailwind classes:
 </div>
 ```
 
-This layout uses flexbox utilities for responsive wrapping and alignment, 
+This layout uses flexbox utilities for responsive wrapping and alignment,
 making it an excellent starting point for more complex designs.
 
 ## 08. Using Tailwind CSS with JavaScript Frameworks
@@ -456,7 +456,7 @@ include it in your project's CSS. Here's a basic setup:
 1. **Install Tailwind CSS**: Run the command `npm install tailwindcss`.
 2. **Configure Tailwind CSS**: Create a `tailwind.config.js` file using `npx 
 tailwindcss init`. This will generate a configuration file you can
-customize as needed.
+   customize as needed.
 3. **Import Tailwind in Your CSS**: In your main CSS file, include:
    ```css
    @tailwind base;
@@ -464,12 +464,10 @@ customize as needed.
    @tailwind utilities;
    ```
 4. **Use Tailwind Classes**: Utilize Tailwind's utility classes directly
-in your JSX components:
+   in your JSX components:
    ```jsx
    function App() {
-     return (
-       <div className="bg-blue-500 text-white p-4">Hello, Tailwind!</div>
-     );
+     return <div className="bg-blue-500 text-white p-4">Hello, Tailwind!</div>;
    }
    ```
 
@@ -493,7 +491,7 @@ steps:
    @tailwind utilities;
    ```
 4. **Tailwind with Vue Components**: Use utility classes in your Vue single
-file components:
+   file components:
    ```vue
    <template>
      <div class="bg-green-500 p-6 text-center">
@@ -535,46 +533,47 @@ JavaScript frameworks.
 
 ## 09. Optimizing Tailwind CSS for Production
 
-In this article, we will explore how to optimize Tailwind CSS for production 
-environments. Tailwind, with its utility-first approach, can result in large 
-CSS files during development. To make these files production-ready, it's 
+In this article, we will explore how to optimize Tailwind CSS for production
+environments. Tailwind, with its utility-first approach, can result in large
+CSS files during development. To make these files production-ready, it's
 important to reduce their size and improve performance.
 
 ### Purging Unused CSS
 
-One of the most effective ways to optimize Tailwind CSS is by purging unused 
-styles. Tailwind comes with a built-in purge option that removes unused 
-CSS from the final build. This can significantly reduce file size from 
+One of the most effective ways to optimize Tailwind CSS is by purging unused
+styles. Tailwind comes with a built-in purge option that removes unused
+CSS from the final build. This can significantly reduce file size from
 megabytes to kilobytes.
 
 #### Configuration Steps:
 
 1. **Ensure PostCSS or Tailwind CLI is set up**:
-   Ensure your project uses either PostCSS or the Tailwind CLI to 
+   Ensure your project uses either PostCSS or the Tailwind CLI to
    process your CSS. This is necessary for the purge process to work.
 
 2. **Configure Purge Option in `tailwind.config.js`**:
-   
+
    ```javascript
    module.exports = {
-     purge: ['./src/**/*.html', './src/**/*.js'],
+     purge: ["./src/**/*.html", "./src/**/*.js"],
      // other configurations...
    };
    ```
-   Specify the paths to your templates and JavaScript files where 
+
+   Specify the paths to your templates and JavaScript files where
    Tailwind classes might be used.
 
 3. **Build for Production**:
-   When you build your project for production, Tailwind will automatically 
+   When you build your project for production, Tailwind will automatically
    remove all unused styles, leaving only the necessary ones.
 
 ### Minifying CSS
 
-After purging unused styles, it's important to minify the CSS file. 
-Minification involves removing whitespace and comments, condensing 
+After purging unused styles, it's important to minify the CSS file.
+Minification involves removing whitespace and comments, condensing
 the CSS for faster download times.
 
-- Use `cssnano`, a popular CSS minifier, by adding it to your PostCSS 
+- Use `cssnano`, a popular CSS minifier, by adding it to your PostCSS
   configuration.
 
 #### Example PostCSS Configuration:
@@ -582,24 +581,24 @@ the CSS for faster download times.
 ```javascript
 module.exports = {
   plugins: [
-    require('tailwindcss'),
-    require('autoprefixer'),
-    require('cssnano')({
-      preset: 'default',
+    require("tailwindcss"),
+    require("autoprefixer"),
+    require("cssnano")({
+      preset: "default",
     }),
   ],
 };
 ```
 
-By using this setup, you ensure your Tailwind CSS file is as small 
+By using this setup, you ensure your Tailwind CSS file is as small
 and efficient as possible for production.
 
 ### Conclusion
 
-Optimizing Tailwind CSS for production by purging unused CSS and 
-minifying the final output is crucial for performance. These steps 
-lead to faster loading times and a better user experience. 
-Implement these strategies to get the most out of Tailwind CSS in 
+Optimizing Tailwind CSS for production by purging unused CSS and
+minifying the final output is crucial for performance. These steps
+lead to faster loading times and a better user experience.
+Implement these strategies to get the most out of Tailwind CSS in
 your production builds.
 
 ## 10. Advanced Customization Techniques
@@ -620,11 +619,11 @@ module.exports = {
   theme: {
     extend: {
       spacing: {
-        '128': '32rem',
+        128: "32rem",
       },
     },
   },
-}
+};
 ```
 
 Here, we've extended the spacing scale to include a new size.
@@ -645,7 +644,7 @@ module.exports = {
       },
     },
   },
-}
+};
 ```
 
 Once set, you can use these color utilities like any other
@@ -660,9 +659,9 @@ can do so easily.
 ```javascript
 module.exports = {
   variants: {
-    display: ['responsive', 'hover', 'focus']
+    display: ["responsive", "hover", "focus"],
   },
-}
+};
 ```
 
 This flexibility allows you to manage the behavior of utilities
@@ -693,18 +692,18 @@ pages to adapt to both light and dark themes seamlessly.
 
 To start using dark mode functionality in Tailwind CSS, you need to
 configure your `tailwind.config.js` file. There's a setting inside this
-file called `darkMode`. You can either set it to `'media'` or `'class'`. 
+file called `darkMode`. You can either set it to `'media'` or `'class'`.
 
-- `media`: Uses the system's light or dark mode preference. 
+- `media`: Uses the system's light or dark mode preference.
 - `class`: Allows manually toggling classes on an element.
 
 ```javascript
-tailwind.config.js
+tailwind.config.js;
 
 module.exports = {
-  darkMode: 'media', // or 'class'
+  darkMode: "media", // or 'class'
   // ...rest of your Tailwind config
-}
+};
 ```
 
 ### Using Dark Mode Classes
@@ -714,7 +713,7 @@ HTML to apply styles specific to dark mode. For example:
 
 ```html
 <div class="bg-white dark:bg-black text-black dark:text-white">
-    <p>Hello, World!</p>
+  <p>Hello, World!</p>
 </div>
 ```
 
@@ -738,9 +737,9 @@ toggling the styles between light and dark mode.
 ### Best Practices
 
 - **Consistent Styles**: Ensure that critical elements have tailored
-dark-mode styles to retain accessibility and readability.
+  dark-mode styles to retain accessibility and readability.
 - **Testing**: Check your site's pages under various themes for any
-overlooked styling issues.
+  overlooked styling issues.
 
 Tailwind CSS's dark mode feature allows quick adaptation of modern
 styling trends with ease, providing a flexible approach whether using
@@ -748,10 +747,10 @@ preference-based or user-toggled dark themes.
 
 ## 12. Creating Reusable Components
 
-In modern web development, component-driven architecture is a popular 
-approach to building user interfaces. Tailwind CSS excels in this area by 
-providing utility classes that promote the creation of small, reusable 
-components. This article will guide you through the process of creating 
+In modern web development, component-driven architecture is a popular
+approach to building user interfaces. Tailwind CSS excels in this area by
+providing utility classes that promote the creation of small, reusable
+components. This article will guide you through the process of creating
 these components using Tailwind CSS.
 
 ### Why Reusable Components?
@@ -761,11 +760,11 @@ Reusable components offer several advantages, including:
 - **Consistency**: They ensure a consistent design system across an application.
 - **Efficiency**: Enables faster development and easier maintenance.
 - **Scalability**: Simplifies scaling the application by composing from well-
-defined building blocks.
+  defined building blocks.
 
 ### Building Blocks of Reusable Components
 
-Tailwind CSS supplies a set of utility classes that act as the 
+Tailwind CSS supplies a set of utility classes that act as the
 building blocks for components. For instance:
 
 - **Containers**: `.container`, `.mx-auto`
@@ -778,8 +777,10 @@ building blocks for components. For instance:
 Let's create a reusable button component:
 
 ```html
-<button class="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-
-blue-700">
+<button
+  class="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-
+blue-700"
+>
   Click Me
 </button>
 ```
@@ -789,15 +790,17 @@ blue-700">
 Easily add variants by extending the classes:
 
 ```html
-<button class="bg-red-500 text-white font-bold py-2 px-4 rounded hover:bg-
-red-700">
+<button
+  class="bg-red-500 text-white font-bold py-2 px-4 rounded hover:bg-
+red-700"
+>
   Danger
 </button>
 ```
 
 ### Extracting and Reusing
 
-Tailwind encourages extracting these reusable patterns into component files. 
+Tailwind encourages extracting these reusable patterns into component files.
 You can create a dedicated CSS file to define these utilities using `@apply`.
 
 ```css
@@ -817,20 +820,20 @@ These classes can then be reused across your project:
 
 ### Conclusion
 
-Creating reusable components with Tailwind CSS streamlines the process of 
-building consistent and scalable web applications. Using utility classes and 
-`@apply` directives ensures that your code remains clean and easy to maintain. 
-By following these practices, you can create a robust design system that 
+Creating reusable components with Tailwind CSS streamlines the process of
+building consistent and scalable web applications. Using utility classes and
+`@apply` directives ensures that your code remains clean and easy to maintain.
+By following these practices, you can create a robust design system that
 benefits from the power and flexibility of Tailwind CSS.
 
 ## 13. Handling Forms with Tailwind CSS
 
-Forms are a critical component in web development, and Tailwind CSS provides a 
+Forms are a critical component in web development, and Tailwind CSS provides a
 robust way to style forms consistently and efficiently.
 
 ### Basic Form Styling
 
-Using Tailwind's utility-first approach, you can easily apply classes to 
+Using Tailwind's utility-first approach, you can easily apply classes to
 forms and form elements to give them the desired appearance and functionality.
 
 #### Example
@@ -841,22 +844,30 @@ Here's a simple example of a registration form using Tailwind CSS:
 <form class="space-y-4 max-w-lg mx-auto">
   <div>
     <label class="block text-sm font-medium text-gray-700">Username</label>
-    <input type="text" class="mt-1 block w-full border border-gray-300 
+    <input
+      type="text"
+      class="mt-1 block w-full border border-gray-300 
     rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 
-    sm:text-sm"/>
+    sm:text-sm"
+    />
   </div>
   <div>
     <label class="block text-sm font-medium text-gray-700">Password</label>
-    <input type="password" class="mt-1 block w-full border border-gray-300 
+    <input
+      type="password"
+      class="mt-1 block w-full border border-gray-300 
     rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 
-    sm:text-sm"/>
+    sm:text-sm"
+    />
   </div>
   <div>
-    <button type="submit"
+    <button
+      type="submit"
       class="mt-3 w-full inline-flex justify-center py-2 px-4 border 
       border-transparent shadow-sm text-sm font-medium rounded-md 
       text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none 
-      focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+      focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+    >
       Register
     </button>
   </div>
@@ -864,49 +875,50 @@ Here's a simple example of a registration form using Tailwind CSS:
 ```
 
 In this example:
+
 - Inputs are styled with a border, shadow, and rounded corners.
 - Buttons include hover and focus effects to enhance interactivity.
 
 ### Form Validation
 
-While Tailwind CSS does not include validation logic, it can easily style 
+While Tailwind CSS does not include validation logic, it can easily style
 elements based on validation state. For example:
 
 ```html
-<input class="border-red-500 focus:border-red-700"/>
+<input class="border-red-500 focus:border-red-700" />
 <p class="text-red-500 text-sm">Error message</p>
 ```
 
-This applies a red border to indicate an error state, and an accompanying 
+This applies a red border to indicate an error state, and an accompanying
 error message is styled conncetively.
 
 ### Customizing Forms
 
-You can extend Tailwind to fit specific form design needs by adjusting the 
+You can extend Tailwind to fit specific form design needs by adjusting the
 theme configuration, allowing for changes in:
 
 - Colors
 - Fonts
 - Sizing
 
-Utilize the configuration file to tweak settings for forms and maintain 
+Utilize the configuration file to tweak settings for forms and maintain
 consistency with your design framework.
 
-By leveraging Tailwind CSS's utilities, you can create flexible, responsive, 
-and aesthetically pleasing forms with ease. Tailwind's flexibility allows for 
+By leveraging Tailwind CSS's utilities, you can create flexible, responsive,
+and aesthetically pleasing forms with ease. Tailwind's flexibility allows for
 customization and scalability in form design to suit any project requirements.
 
 ## 14. Integrating Tailwind CSS with CSS Grid
 
-Tailwind CSS is a utility-first CSS framework that allows you to style your 
-website using utility classes. One of its powerful features is the ability 
+Tailwind CSS is a utility-first CSS framework that allows you to style your
+website using utility classes. One of its powerful features is the ability
 to integrate seamlessly with CSS Grid, enabling developers to create complex,
-responsive layouts with ease. In this article, we'll explore how to use 
+responsive layouts with ease. In this article, we'll explore how to use
 Tailwind CSS to leverage CSS Grid features.
 
 ### Setting Up CSS Grid with Tailwind
 
-To get started with CSS Grid in Tailwind, you first need to define the 
+To get started with CSS Grid in Tailwind, you first need to define the
 `display` property to be `grid` using Tailwind's utility class.
 
 ```html
@@ -915,13 +927,13 @@ To get started with CSS Grid in Tailwind, you first need to define the
 </div>
 ```
 
-The `.grid` class sets the element to use the CSS Grid layout. Next, you can 
+The `.grid` class sets the element to use the CSS Grid layout. Next, you can
 define grid columns and rows.
 
 ### Defining Grid Columns and Rows
 
-Tailwind provides utility classes to define grid columns and rows. Use the 
-`grid-cols-{number}` and `grid-rows-{number}` utilities to specify the number 
+Tailwind provides utility classes to define grid columns and rows. Use the
+`grid-cols-{number}` and `grid-rows-{number}` utilities to specify the number
 of columns and rows.
 
 ```html
@@ -939,7 +951,7 @@ This example creates a grid with three columns and two rows.
 
 ### Spanning Items
 
-To make items span across multiple rows or columns, use `col-span-{n}` and 
+To make items span across multiple rows or columns, use `col-span-{n}` and
 `row-span-{n}` utilities.
 
 ```html
@@ -956,7 +968,7 @@ The first item spans over two columns.
 
 Tailwind CSS provides utilities to control alignment:
 
-- `justify-start`, `justify-end`, `justify-center`, `justify-between`, 
+- `justify-start`, `justify-end`, `justify-center`, `justify-between`,
   `justify-around` for horizontal alignment.
 - `items-start`, `items-end`, `items-center`, `items-baseline`, `items-stretch`
   for vertical alignment.
@@ -973,35 +985,44 @@ Here's an example:
 
 ### Conclusion
 
-Integrating Tailwind CSS with CSS Grid enhances your ability to create 
-flexible, responsive grids without leaving your HTML. With utility classes 
-specifically tailored for grid functionality, you can quickly prototype and 
+Integrating Tailwind CSS with CSS Grid enhances your ability to create
+flexible, responsive grids without leaving your HTML. With utility classes
+specifically tailored for grid functionality, you can quickly prototype and
 refine complex layouts.
 
 ## 15. Tailwind CSS and SVG Integration
 
-SVGs (Scalable Vector Graphics) offer versatility and scalability as a graphic 
-format that perfectly complements Tailwind CSS's utility classes. In this 
-article, we'll explore how to effectively integrate SVGs with Tailwind CSS to 
+SVGs (Scalable Vector Graphics) offer versatility and scalability as a graphic
+format that perfectly complements Tailwind CSS's utility classes. In this
+article, we'll explore how to effectively integrate SVGs with Tailwind CSS to
 enhance your web design.
 
 ### Using SVGs with Tailwind CSS
 
-To begin using SVGs, you just need to include the SVG markup in your HTML. 
-Tailwind CSS will allow you to style SVG elements directly within your `<svg>` 
+To begin using SVGs, you just need to include the SVG markup in your HTML.
+Tailwind CSS will allow you to style SVG elements directly within your `<svg>`
 or child elements using utility classes.
 
 ```html
-<svg class="h-6 w-6 text-blue-500" fill="none" stroke="currentColor" 
-     viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-        d="M5 13l4 4L19 7"/>
+<svg
+  class="h-6 w-6 text-blue-500"
+  fill="none"
+  stroke="currentColor"
+  viewBox="0 0 24 24"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="2"
+    d="M5 13l4 4L19 7"
+  />
 </svg>
 ```
 
 ### Customizing SVG Colors
 
-Tailwind CSS provides utility classes like `text-color` to adjust the color 
+Tailwind CSS provides utility classes like `text-color` to adjust the color
 of your SVGs. For further customization, override fill and stroke colors.
 
 ```html
@@ -1012,16 +1033,16 @@ of your SVGs. For further customization, override fill and stroke colors.
 
 ### SVG Icons and Tailwind CSS
 
-SVGs are commonly used for icons. Libraries like Heroicons provide many SVG 
+SVGs are commonly used for icons. Libraries like Heroicons provide many SVG
 icons that can be styled with Tailwind.
 
 1. **Import an SVG Icon:** Copy the SVG code into your project.
-2. **Style with Tailwind CSS:** Add Tailwind's utility classes to the SVG 
+2. **Style with Tailwind CSS:** Add Tailwind's utility classes to the SVG
    element for size, margin, color, etc.
 
 ### Responsive SVGs
 
-SVGs can respond to screen size using Tailwind CSS's responsive design 
+SVGs can respond to screen size using Tailwind CSS's responsive design
 classes. Apply these classes to make SVGs adapt to different screen sizes:
 
 ```html
@@ -1032,37 +1053,39 @@ classes. Apply these classes to make SVGs adapt to different screen sizes:
 
 ### Conclusion
 
-Tailwind CSS together with SVG allows for creating elegantly styled graphics 
-that are both versatile and responsive. Utilize Tailwind utility classes 
+Tailwind CSS together with SVG allows for creating elegantly styled graphics
+that are both versatile and responsive. Utilize Tailwind utility classes
 for SVG styling to ensure cohesive design across your website.
 
 ## 16. Tailwind CSS and Animation
 
-Animations can bring a website to life, making it interactive and 
-engaging. Tailwind CSS offers utility classes that make it easy to 
+Animations can bring a website to life, making it interactive and
+engaging. Tailwind CSS offers utility classes that make it easy to
 create animations without having to write complex CSS.
 
 ### Transition Classes
 
-Transition classes in Tailwind help to add smooth animations between 
-state changes. These classes include `transition`, `duration-100`, 
+Transition classes in Tailwind help to add smooth animations between
+state changes. These classes include `transition`, `duration-100`,
 `ease-in`, and more.
 
 Example:
 
 ```html
-<button class="bg-blue-500 hover:bg-blue-700 transition duration-300 
-ease-in-out">
+<button
+  class="bg-blue-500 hover:bg-blue-700 transition duration-300 
+ease-in-out"
+>
   Hover me
 </button>
 ```
 
-This example applies a transition to the background color when you hover 
+This example applies a transition to the background color when you hover
 over the button.
 
 ### Animation Classes
 
-Tailwind comes with basic built-in animations using the `animate-` 
+Tailwind comes with basic built-in animations using the `animate-`
 prefix. Common animations include `animate-spin` and `animate-ping`.
 
 Example:
@@ -1077,7 +1100,7 @@ This element will rotate indefinitely, giving a spin effect.
 
 ### Customizing Animations
 
-You can extend the default animations in your `tailwind.config.js` file 
+You can extend the default animations in your `tailwind.config.js` file
 by modifying the `theme.extend.animation` object.
 
 ```javascript
@@ -1086,20 +1109,20 @@ module.exports = {
   theme: {
     extend: {
       animation: {
-        'bounce-slow': 'bounce 3s infinite',
-      }
-    }
-  }
-}
+        "bounce-slow": "bounce 3s infinite",
+      },
+    },
+  },
+};
 ```
 
-This configuration adds a slower bouncing effect to the available 
+This configuration adds a slower bouncing effect to the available
 animation classes.
 
 ### Conclusion
 
-Tailwind CSS simplifies the application of animations with utility 
-classes. Whether using predefined animations or customizing your own, 
+Tailwind CSS simplifies the application of animations with utility
+classes. Whether using predefined animations or customizing your own,
 Tailwind makes animation in web projects accessible and straightforward.
 
 ## 17. Tailwind CSS and Accessibility
@@ -1124,7 +1147,10 @@ Tailwind's focus on utility classes ensures that you can style elements without
 disturbing these crucial attributes.
 
 ```html
-<button aria-label="Close" class="text-white bg-red-500 hover:bg-red-700..."></button>
+<button
+  aria-label="Close"
+  class="text-white bg-red-500 hover:bg-red-700..."
+></button>
 ```
 
 ### Focus States
@@ -1175,6 +1201,7 @@ combining grid and flex utilities, you can define parent-child
 relationships effectively.
 
 Example:
+
 ```html
 <div class="grid grid-cols-3 gap-4">
   <div class="col-span-2 flex flex-col">
@@ -1184,6 +1211,7 @@ Example:
   <div class="bg-blue-400">Sidebar</div>
 </div>
 ```
+
 In the example above, a grid layout is used to wrap a flexbox layout,
 illustrating how versatile Tailwind can be.
 
@@ -1193,6 +1221,7 @@ Combining flexbox and grid can help overcome challenges where one alone may
 fall short. Tailwind allows mixing them seamlessly.
 
 Example:
+
 ```html
 <div class="flex">
   <div class="flex-none bg-purple-200 w-14">Sidebar</div>
@@ -1211,12 +1240,14 @@ provides responsive variants for every utility class, enabling complex
 responsive designs.
 
 Example:
+
 ```html
 <div class="md:grid md:grid-cols-4 lg:grid-cols-6">
   <div class="col-span-2 lg:col-span-4">Main Content</div>
   <div class="col-span-2 lg:col-span-2">Sidebar</div>
 </div>
 ```
+
 Tailwind makes it straightforward to modify layouts based on screen sizes,
 helping create designs that are both flexible and robust.
 
@@ -1229,24 +1260,24 @@ and precision.
 
 ## 19. Building Responsive Dashboards with Tailwind CSS
 
-Dashboards are vital in presenting data in an 
-organized and visually appealing way. In this article, 
-we will explore how to build responsive dashboards 
+Dashboards are vital in presenting data in an
+organized and visually appealing way. In this article,
+we will explore how to build responsive dashboards
 using Tailwind CSS.
 
 ### Understanding Dashboard Layouts
 
-Dashboards often include multiple components 
-such as charts, tables, and sidebar navigation. 
-With Tailwind CSS, you can create flexible 
-layouts using utility-first classes that adapt 
+Dashboards often include multiple components
+such as charts, tables, and sidebar navigation.
+With Tailwind CSS, you can create flexible
+layouts using utility-first classes that adapt
 seamlessly to different screen sizes.
 
 ### Setting Up the Dashboard
 
-First, ensure you have Tailwind CSS included 
-in your project. Create a basic HTML structure 
-for the dashboard with sections for 
+First, ensure you have Tailwind CSS included
+in your project. Create a basic HTML structure
+for the dashboard with sections for
 header, sidebar, and main content area.
 
 ```html
@@ -1267,10 +1298,10 @@ header, sidebar, and main content area.
 
 ### Responsive Layouts with Flexbox
 
-Use Tailwind's Flexbox utilities for creating 
-responsive layouts. For example, use `flex`, 
-`flex-col`, or `flex-row` to determine your layout 
-direction. Utilize `justify-*` and `items-*` classes 
+Use Tailwind's Flexbox utilities for creating
+responsive layouts. For example, use `flex`,
+`flex-col`, or `flex-row` to determine your layout
+direction. Utilize `justify-*` and `items-*` classes
 to align flex items as per requirements.
 
 ```html
@@ -1286,8 +1317,8 @@ to align flex items as per requirements.
 
 ### Responsive Grid System
 
-For layouts requiring more comprehensive 
-organizational structure, Tailwind’s grid system 
+For layouts requiring more comprehensive
+organizational structure, Tailwind’s grid system
 can be employed.
 
 ```html
@@ -1309,11 +1340,11 @@ can be employed.
 
 ### Conclusion
 
-Tailwind CSS makes building responsive 
-dashboards efficient and straightforward. 
-With its utility classes, you can easily 
-create dashboards that look great 
-on any device. Practice these concepts 
+Tailwind CSS makes building responsive
+dashboards efficient and straightforward.
+With its utility classes, you can easily
+create dashboards that look great
+on any device. Practice these concepts
 to develop insightful and interactive dashboards.
 
 ## 20. The Future of Tailwind CSS

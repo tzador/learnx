@@ -51,18 +51,22 @@ ensure everything is configured correctly. To start building
 Flutter apps, you need to:
 
 1. **Install Flutter SDK**
+
    - Download the Flutter SDK from the [official website](https://flutter.dev/).
    - Extract the ZIP file to a location of your choice.
 
 2. **Set Up Environment Variables**
+
    - Add the Flutter bin directory to your system PATH.
    - This allows you to use the `flutter` command globally.
 
 3. **Install an Editor**
+
    - Use editors like Android Studio, Visual Studio Code, or IntelliJ.
    - Install the Flutter and Dart plugins for the chosen editor.
 
 4. **Configure Android Studio**
+
    - Install Android SDK and set up an Android Emulator.
 
 5. **Verify Installation**
@@ -75,41 +79,41 @@ and better productivity.
 
 ## 03. Creating Your First Flutter App
 
-In this article, we will guide you through the process of creating your 
-first Flutter app from scratch. We'll build a simple "Hello, World!" 
+In this article, we will guide you through the process of creating your
+first Flutter app from scratch. We'll build a simple "Hello, World!"
 application to understand the basic structure of a Flutter project.
 
 ### Steps to Create a Flutter App
 
 1. **Create a New Flutter Project**: Open your terminal or command prompt
-   and navigate to the directory where you want to create the project. 
+   and navigate to the directory where you want to create the project.
    Run the following command:
-   
+
    ```
    flutter create hello_world
    ```
-   
-   This command creates a new directory named `hello_world` containing 
+
+   This command creates a new directory named `hello_world` containing
    your Flutter project.
 
 2. **Open the Project**: Navigate into your project directory:
-   
+
    ```
    cd hello_world
    ```
 
-3. **Open in an Editor**: Use your preferred code editor to open the 
-   project. If you're using VS Code, you can open the folder using the 
+3. **Open in an Editor**: Use your preferred code editor to open the
+   project. If you're using VS Code, you can open the folder using the
    command:
-   
+
    ```
    code .
    ```
 
-4. **Examine the Main File**: Locate the `lib` folder in your project 
+4. **Examine the Main File**: Locate the `lib` folder in your project
    and click on `main.dart`. This is the entry point of your Flutter app.
 
-5. **Update the Main File**: Replace the contents of `main.dart` with 
+5. **Update the Main File**: Replace the contents of `main.dart` with
    the following code:
 
    ```dart
@@ -137,16 +141,16 @@ application to understand the basic structure of a Flutter project.
    ```
 
 6. **Run the App**: Finally, run your app by executing:
-   
+
    ```
    flutter run
    ```
-   
+
    Make sure your device or emulator is connected and set up correctly.
 
 Congratulations! You've created your first Flutter "Hello, World!" app.
-You should see "Hello, World!" displayed in the center of your screen. 
-This simple app demonstrates Flutter's widget-based architecture and 
+You should see "Hello, World!" displayed in the center of your screen.
+This simple app demonstrates Flutter's widget-based architecture and
 Material Design. We'll build on these concepts in upcoming articles.
 
 ## 04. Understanding Flutter Widgets
@@ -224,6 +228,7 @@ change—once built, they are final. They are perfect for displaying static
 content.
 
 #### Example of a Stateless Widget:
+
 ```dart
 class MyStatelessWidget extends StatelessWidget {
   final String title;
@@ -236,6 +241,7 @@ class MyStatelessWidget extends StatelessWidget {
   }
 }
 ```
+
 Here, `MyStatelessWidget` takes a `title` in the constructor and
 renders it as a `Text` widget.
 
@@ -246,6 +252,7 @@ They are ideal for scenarios where the UI needs to update, such as user
 interactions or real-time data changes.
 
 #### Example of a Stateful Widget:
+
 ```dart
 class MyStatefulWidget extends StatefulWidget {
   @override
@@ -275,9 +282,10 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   }
 }
 ```
+
 In the above example, `MyStatefulWidget` controls a counter. The
 `setState()` method is used to inform Flutter to rebuild the UI with the
-updated counter value. 
+updated counter value.
 
 Understanding the distinction between these widget types is crucial for
 creating efficient and functional apps. Use Stateful Widgets to handle dynamic
@@ -402,14 +410,14 @@ handling user inputs.
 
 ## 08. Flutter Navigation and Routing
 
-In Flutter, navigation and routing are pivotal components that allow your app 
-to transition between different screens or pages. Understanding how to 
+In Flutter, navigation and routing are pivotal components that allow your app
+to transition between different screens or pages. Understanding how to
 effectively implement navigation can provide a seamless user experience.
 
 ### Basic Navigation
 
-Flutter employs a widget called `Navigator` to manage routes and provide 
-screen transition capabilities. Here's a simple example of using the 
+Flutter employs a widget called `Navigator` to manage routes and provide
+screen transition capabilities. Here's a simple example of using the
 `Navigator` to move from one page to another.
 
 ```dart
@@ -419,13 +427,13 @@ Navigator.push(
 );
 ```
 
-In the above code, `Navigator.push` adds a new route to the stack and displays 
+In the above code, `Navigator.push` adds a new route to the stack and displays
 the corresponding page.
 
 ### Named Routes
 
-Named routes allow for a cleaner and more organized approach, especially when 
-dealing with multiple screens. You define these routes in your `MaterialApp` 
+Named routes allow for a cleaner and more organized approach, especially when
+dealing with multiple screens. You define these routes in your `MaterialApp`
 widget.
 
 ```dart
@@ -445,7 +453,7 @@ Navigator.pushNamed(context, '/second');
 
 ### Passing Data
 
-Passing data between routes can be done by including arguments in the 
+Passing data between routes can be done by including arguments in the
 navigation call. Here's how you can pass and receive data:
 
 #### Sending Data
@@ -483,53 +491,53 @@ class SecondScreen extends StatelessWidget {
 
 ### Conclusion
 
-Understanding navigation and routing in Flutter enhances the interaction 
-flow within your app, making screen transitions intuitive and efficient. 
-By mastering both basic and named routes, along with data handling between 
+Understanding navigation and routing in Flutter enhances the interaction
+flow within your app, making screen transitions intuitive and efficient.
+By mastering both basic and named routes, along with data handling between
 screens, you can create a robust and user-friendly application.
 
 ## 09. Flutter State Management
 
-In Flutter, managing state effectively is crucial for building responsive 
+In Flutter, managing state effectively is crucial for building responsive
 and interactive applications. State refers to any data that can change
-over the lifetime of an app. In general, Flutter approaches state 
+over the lifetime of an app. In general, Flutter approaches state
 management based on two fundamental types: ephemeral state and app state.
 
-Ephemeral state is local to a single widget and can be managed using 
-`StatefulWidget` and `setState()`. It is convenient for small, simple 
-scenarios where the state doesn't need to persist beyond the lifetime 
+Ephemeral state is local to a single widget and can be managed using
+`StatefulWidget` and `setState()`. It is convenient for small, simple
+scenarios where the state doesn't need to persist beyond the lifetime
 of the current widget.
 
-App state, on the other hand, affects multiple parts of the app and has 
-a longer lifetime. For managing app state, Flutter provides several 
+App state, on the other hand, affects multiple parts of the app and has
+a longer lifetime. For managing app state, Flutter provides several
 state management solutions, which includes:
 
-1. **Provider**: A wrapper around InheritedWidget, making it easy to 
-provide and access objects throughout the app.
+1. **Provider**: A wrapper around InheritedWidget, making it easy to
+   provide and access objects throughout the app.
 
-2. **Riverpod**: A more modern version of Provider that is compile-time 
-safe and uses less boilerplate code.
+2. **Riverpod**: A more modern version of Provider that is compile-time
+   safe and uses less boilerplate code.
 
-3. **Bloc (Business Logic Component)**: Concepts of streams and events 
-to separate business logic from UI code.
+3. **Bloc (Business Logic Component)**: Concepts of streams and events
+   to separate business logic from UI code.
 
-4. **Redux**: Follows the same patterns as Redux for JavaScript, 
-providing predictable state management.
+4. **Redux**: Follows the same patterns as Redux for JavaScript,
+   providing predictable state management.
 
-5. **GetX**: Easy to use, provides high productivity with less code 
-boilerplate, and focuses on high-performance state management, intelligent 
-dependency injection.
+5. **GetX**: Easy to use, provides high productivity with less code
+   boilerplate, and focuses on high-performance state management, intelligent
+   dependency injection.
 
 #### Choosing the Right Solution
 
-The choice of state management solution depends on the complexity of the 
-app and developer preference. Frameworks like Provider and Riverpod are 
-recommended for most applications due to their ease of use, while Bloc 
+The choice of state management solution depends on the complexity of the
+app and developer preference. Frameworks like Provider and Riverpod are
+recommended for most applications due to their ease of use, while Bloc
 and Redux might be chosen for very complex state management needs.
 
 #### Example with Provider
 
-Here's a simple example of using `Provider` to manage state across two 
+Here's a simple example of using `Provider` to manage state across two
 widgets:
 
 ```dart
@@ -589,17 +597,17 @@ class MyApp extends StatelessWidget {
 }
 ```
 
-In this example, `Counter` is a `ChangeNotifier` that encapsulates 
+In this example, `Counter` is a `ChangeNotifier` that encapsulates
 the app state, while the app UI, defined in `MyApp`, listens to changes
 and updates automatically.
 
-This approach ensures that state changes propagate efficiently and 
-effectively throughout the app. Learning to manage state effectively 
+This approach ensures that state changes propagate efficiently and
+effectively throughout the app. Learning to manage state effectively
 opens up possibilities for creating dynamic Flutter applications easily.
 
 ## 10. Working with Flutter Animations
 
-Animations are a powerful way to enhance the user experience in 
+Animations are a powerful way to enhance the user experience in
 mobile applications. In Flutter, creating animations is made easy
 with the variety of animation widgets and tools available.
 
@@ -607,18 +615,19 @@ with the variety of animation widgets and tools available.
 
 1. **Implicit Animations**: These are simple to use and useful for
    straightforward animations.
+
    - Examples include `AnimatedContainer`, `AnimatedOpacity`, etc.
 
 2. **Explicit Animations**: More complex and customizable. You have
-   full control over the animation; for example, animations using 
+   full control over the animation; for example, animations using
    `AnimationController`.
 
 ### Using Implicit Animations
 
-Flutter provides several widgets that implicitly animate changes in 
+Flutter provides several widgets that implicitly animate changes in
 their properties:
 
-- **AnimatedContainer**: Automatically animates changes when you 
+- **AnimatedContainer**: Automatically animates changes when you
   modify its properties like width, height, color, etc.
 
   ```dart
@@ -632,7 +641,7 @@ their properties:
 
 ### Implementing Explicit Animations
 
-With explicit animations, you have control over every aspect of the 
+With explicit animations, you have control over every aspect of the
 animation.
 
 #### Steps to Creating an Explicit Animation:
@@ -647,8 +656,8 @@ animation.
    );
    ```
 
-2. **Create an Animation**: Defines how the animation progresses over 
-time.
+2. **Create an Animation**: Defines how the animation progresses over
+   time.
 
    ```dart
    Animation<double> _animation = CurvedAnimation(
@@ -657,11 +666,11 @@ time.
    );
    ```
 
-3. **Use a `StatefulWidget`**: Initiate and manage the animation 
-state changes.
+3. **Use a `StatefulWidget`**: Initiate and manage the animation
+   state changes.
 
-4. **Implement Animation Logic**: Start and control the animation 
-using the controller.
+4. **Implement Animation Logic**: Start and control the animation
+   using the controller.
 
    ```dart
    _controller.forward();
@@ -673,19 +682,19 @@ Flutter offers many built-in animation widgets like `FadeTransition`,
 `ScaleTransition`, and more, which simplify the integration of
 animations into your UI.
 
-Animations not only beautify your application but also contribute to 
+Animations not only beautify your application but also contribute to
 better user interaction by making transitions smooth and engaging.
 
 ## 11. Networking in Flutter
 
-In modern mobile applications, networking is a crucial feature that 
-enables your app to communicate with servers or access remote data. 
-Flutter provides robust support for networking with various packages 
+In modern mobile applications, networking is a crucial feature that
+enables your app to communicate with servers or access remote data.
+Flutter provides robust support for networking with various packages
 like `http` and `dio` to perform HTTP requests with ease.
 
 #### HTTP Package
 
-The `http` package is the most commonly used package in Flutter for 
+The `http` package is the most commonly used package in Flutter for
 making HTTP requests.
 
 ##### Adding `http` Package
@@ -701,7 +710,7 @@ Run `flutter pub get` to install the package.
 
 ##### Performing a GET Request
 
-Here's a simple example of performing a GET request using the `http` 
+Here's a simple example of performing a GET request using the `http`
 package:
 
 ```dart
@@ -720,7 +729,7 @@ void fetchData() async {
 
 #### Parsing JSON Data
 
-Most APIs return data in JSON format. You can parse JSON in Dart 
+Most APIs return data in JSON format. You can parse JSON in Dart
 using `dart:convert` library.
 
 ```dart
@@ -734,19 +743,19 @@ void parseData(String responseBody) {
 
 #### Best Practices
 
-- **Error Handling:** Always handle errors when making HTTP requests 
-to gracefully manage situations like no internet connection.
+- **Error Handling:** Always handle errors when making HTTP requests
+  to gracefully manage situations like no internet connection.
 
-- **Avoid Blocking UI Thread:** Use `async` and `await` for non-blocking 
-http calls to ensure smooth UI experience.
+- **Avoid Blocking UI Thread:** Use `async` and `await` for non-blocking
+  http calls to ensure smooth UI experience.
 
 - **Security:** Use `https` wherever possible to ensure data security.
 
-With Flutter's networking capabilities, you can build sophisticated 
-applications that communicate effectively with other services or 
+With Flutter's networking capabilities, you can build sophisticated
+applications that communicate effectively with other services or
 servers, opening the door to a wide array of features and functionality.
 
-In the next articles, we'll explore more advanced networking techniques 
+In the next articles, we'll explore more advanced networking techniques
 and how to manage data effectively in your Flutter apps.
 
 ## 12. Flutter and Firebase Integration
@@ -771,11 +780,11 @@ into your Flutter application.
    `cloud_firestore`, etc.
 
 ```yaml
- dependencies:
-   flutter:
-     sdk: flutter
-   firebase_core: ^1.10.0
-   cloud_firestore: ^3.1.3
+dependencies:
+  flutter:
+    sdk: flutter
+  firebase_core: ^1.10.0
+  cloud_firestore: ^3.1.3
 ```
 
 4. **Initialize Firebase** - Ensure Firebase is initialized in your
@@ -794,6 +803,7 @@ into your Flutter application.
 To utilize Firebase's Firestore database:
 
 - **Read Data**
+
   ```dart
   FirebaseFirestore.instance.collection('users').get().then(
     (QuerySnapshot querySnapshot) => {
@@ -804,6 +814,7 @@ To utilize Firebase's Firestore database:
   ```
 
 - **Write Data**
+
   ```dart
   CollectionReference users =
       FirebaseFirestore.instance.collection('users');
@@ -822,9 +833,9 @@ power of Firebase in your Flutter applications.
 
 ## 13. Flutter Testing and Debugging
 
-Flutter provides rich support for testing and debugging to help ensure the 
+Flutter provides rich support for testing and debugging to help ensure the
 quality and reliability of your applications. Proper testing can prevent
-bugs and improve maintainability, while effective debugging tools can 
+bugs and improve maintainability, while effective debugging tools can
 help diagnose issues promptly.
 
 ### Testing in Flutter
@@ -833,8 +844,8 @@ There are three primary levels of testing in Flutter:
 
 #### 1. Unit Tests
 
-Unit tests focus on verifying the behavior of individual functions, 
-methods, or classes. Flutter uses the `test` package to help create 
+Unit tests focus on verifying the behavior of individual functions,
+methods, or classes. Flutter uses the `test` package to help create
 unit tests.
 
 Example of a unit test:
@@ -852,8 +863,8 @@ void main() {
 
 #### 2. Widget Tests
 
-Widget tests (or component tests) ensure that a widget's UI looks and 
-behaves as expected. Flutter provides a `flutter_test` package to 
+Widget tests (or component tests) ensure that a widget's UI looks and
+behaves as expected. Flutter provides a `flutter_test` package to
 simplify widget testing.
 
 Example of a widget test:
@@ -873,7 +884,7 @@ void main() {
 
 #### 3. Integration Tests
 
-Integration tests verify the app's overall performance by testing how 
+Integration tests verify the app's overall performance by testing how
 widgets integrate and work in tandem. This type of test simulates real-
 user interaction.
 
@@ -884,55 +895,52 @@ Several tools are available to debug Flutter applications:
 - **Flutter DevTools**: A suite of debugging and profiling tools.
 - **Error Messages**: The detailed error messages provide valuable hints
   and call stack traces.
-- **Breakpoints and Debugger**: Set breakpoints in code to inspect 
+- **Breakpoints and Debugger**: Set breakpoints in code to inspect
   variables and runtime behavior.
 - **Logging**: Use `print()` or the `logging` library for logs.
 
 Leverage these resources to ensure your Flutter applications are bug-
 free and efficient.
 
-Exploring both testing and debugging techniques effectively can 
+Exploring both testing and debugging techniques effectively can
 streamline the development process and significantly improve app quality.
 
 ## 14. Publishing Flutter Apps
 
-Publishing your Flutter application involves preparing your app for 
-distribution, whether in the Google Play Store or Apple App Store. This 
+Publishing your Flutter application involves preparing your app for
+distribution, whether in the Google Play Store or Apple App Store. This
 guide will walk you through the key steps necessary to deploy your app.
 
 ### Preparing for Publishing
 
 1. **App Icon and Launch Screen**
-   Ensure that you have the required app icons for both iOS and Android 
-   platforms. Configure a splash screen to provide users with a visual 
+   Ensure that you have the required app icons for both iOS and Android
+   platforms. Configure a splash screen to provide users with a visual
    experience while the app is loading.
-   
 2. **Build Configuration**
-   Flutter provides configuration files for building the app. Verify that 
-   `pubspec.yaml` contains the correct information, including name, 
+   Flutter provides configuration files for building the app. Verify that
+   `pubspec.yaml` contains the correct information, including name,
    description, version, and permissions.
-   
+
 ### Building the App
 
 #### Android:
 
 1. **Run a Release Build**
-   Execute `flutter build apk` for a release version of your Android 
-   application. You can generate different flavors using different 
+   Execute `flutter build apk` for a release version of your Android
+   application. You can generate different flavors using different
    build configurations.
-   
 2. **Signing the App**
-   Generate a keystore if you don't have one using `keytool`. Configure 
+   Generate a keystore if you don't have one using `keytool`. Configure
    the signing in `build.gradle` with the keystore information.
 
 #### iOS:
 
 1. **Run a Release Build**
-   Use the command `flutter build ios` to build a release version of 
+   Use the command `flutter build ios` to build a release version of
    your iOS app.
-   
 2. **Code Signing and Provisioning Profiles**
-   Ensure you have a valid Apple developer account, and configure your 
+   Ensure you have a valid Apple developer account, and configure your
    code signing and provisioning profiles in Xcode.
 
 ### Distributing the App
@@ -940,40 +948,38 @@ guide will walk you through the key steps necessary to deploy your app.
 #### Google Play Store:
 
 1. **Google Play Console**
-   Register for a developer account and set up your app's listing, 
+   Register for a developer account and set up your app's listing,
    including screenshots and descriptions.
-   
 2. **Upload to Store**
-   Upload the app bundle generated from Flutter to the Play Store, and 
+   Upload the app bundle generated from Flutter to the Play Store, and
    follow the console's guidance for releasing your app.
 
 #### Apple App Store:
 
 1. **App Store Connect**
-   Create your app record on App Store Connect, and fill in required 
+   Create your app record on App Store Connect, and fill in required
    metadata like app name, category, and version.
-   
 2. **Upload via Xcode**
-   Use Xcode's organizer to upload your app to the App Store. Monitor 
+   Use Xcode's organizer to upload your app to the App Store. Monitor
    the processing status and address any issues.
 
 ### Conclusion
 
-Successfully publishing your app in the stores requires attention to 
-detail in preparing, building, and submitting your application. Following 
-these steps ensures that your Flutter app is ready for users to download 
+Successfully publishing your app in the stores requires attention to
+detail in preparing, building, and submitting your application. Following
+these steps ensures that your Flutter app is ready for users to download
 and enjoy.
 
 ## 15. Flutter and Platform Channels
 
-In Flutter, platform channels enable integration with platform-specific 
-functionalities. Flutter apps run in a single codebase and communicate 
+In Flutter, platform channels enable integration with platform-specific
+functionalities. Flutter apps run in a single codebase and communicate
 with native components through platform channels.
 
 ### How Platform Channels Work
 
-Platform channels use message passing to communicate between Flutter 
-and the host platform. Messages are sent asynchronously and handled 
+Platform channels use message passing to communicate between Flutter
+and the host platform. Messages are sent asynchronously and handled
 through a single channel interface.
 
 - **MessageCodec**: Encodes and decodes messages on the channel.
@@ -983,11 +989,13 @@ through a single channel interface.
 ### Implementing a Platform Channel
 
 1. **Declare MethodChannel**: Create a `MethodChannel` in Flutter.
+
    ```dart
    const platform = MethodChannel('com.example.app/channel');
    ```
 
 2. **Send Messages**: Use the channel to invoke methods.
+
    ```dart
    Future<void> _getBatteryLevel() async {
      try {
@@ -998,7 +1006,7 @@ through a single channel interface.
    }
    ```
 
-3. **Handle on Native Side**: Implement the corresponding method in native 
+3. **Handle on Native Side**: Implement the corresponding method in native
    code (e.g., Java for Android, Swift for iOS).
 
    - **Android**: Implement `MethodCallHandler` in MainActivity.
@@ -1006,13 +1014,13 @@ through a single channel interface.
 
 ### Practical Use Cases
 
-- **Accessing Sensors**: Interact with device sensors not directly 
+- **Accessing Sensors**: Interact with device sensors not directly
   available in Flutter.
-- **Platform-Specific Libraries**: Use OS-specific libraries for 
+- **Platform-Specific Libraries**: Use OS-specific libraries for
   extended functionality.
 
-Platform channels provide an essential way for Flutter apps to go 
-beyond the built-in widgets and interact deeply with the device 
+Platform channels provide an essential way for Flutter apps to go
+beyond the built-in widgets and interact deeply with the device
 environment.
 
 ## 16. Flutter for Web
@@ -1113,11 +1121,12 @@ to set up a custom font:
 
 ```yaml
 flutter:
- fonts:
-  - family: CustomFont
-    fonts:
-      - asset: assets/fonts/CustomFont-Regular.ttf
+  fonts:
+    - family: CustomFont
+      fonts:
+        - asset: assets/fonts/CustomFont-Regular.ttf
 ```
+
 3. Use the font in your `Text` widget:
 
 ```dart
@@ -1202,16 +1211,16 @@ flutter run
 ```
 
 This command will build and launch the app on the available platform
-(Windows, macOS, or Linux). 
+(Windows, macOS, or Linux).
 
 ### Benefits of Flutter for Desktop
 
 - **Unified Codebase**: Share the same code for iOS, Android, web, and
-desktop applications.
+  desktop applications.
 - **Hot Reload**: Make changes and see them on all supported devices
-instantly.
+  instantly.
 - **Widgets**: Rich set of UI widgets with adaptive components for
-different screen sizes and platforms.
+  different screen sizes and platforms.
 
 ### Conclusion
 
@@ -1223,44 +1232,44 @@ different platforms.
 
 ## 19. Flutter Accessibility and Localization
 
-Flutter makes it easy to build accessible and localizable apps. 
-Accessibility ensures that your app can be used by everyone, 
-including those with disabilities, while localization tailors your 
+Flutter makes it easy to build accessible and localizable apps.
+Accessibility ensures that your app can be used by everyone,
+including those with disabilities, while localization tailors your
 app to different languages and cultures.
 
 ### Accessibility in Flutter
 
-1. **Semantics**: Use the `Semantics` widget to describe the 
+1. **Semantics**: Use the `Semantics` widget to describe the
    meaning of visual elements to screen readers.
-2. **Testing for Accessibility**: Utilize Flutter's accessibility 
-   testing tools to ensure your app is usable for everyone. 
-3. **Color and Contrast**: Pay attention to color contrast; 
+2. **Testing for Accessibility**: Utilize Flutter's accessibility
+   testing tools to ensure your app is usable for everyone.
+3. **Color and Contrast**: Pay attention to color contrast;
    Flutter's color contrast guidelines help maintain readability.
 
 ### Localization in Flutter
 
-1. **Internationalization (i18n)**: This involves preparing your 
+1. **Internationalization (i18n)**: This involves preparing your
    app to support multiple languages.
-2. **Adding Localizations**: Use the `flutter_localizations` 
+2. **Adding Localizations**: Use the `flutter_localizations`
    package to add language options to your app.
-3. **Translation Files**: Create ARB (Application Resource 
+3. **Translation Files**: Create ARB (Application Resource
    Bundle) files for each language.
 
 ### Implementing Localization
 
-1. **Dependencies**: Add the `intl` and `flutter_localizations` 
+1. **Dependencies**: Add the `intl` and `flutter_localizations`
    packages in your `pubspec.yaml` file.
-2. **Localization Files**: Define the supported locales in 
+2. **Localization Files**: Define the supported locales in
    `MaterialApp` and create localization delegate classes.
-3. **Testing Localization**: Change device language settings 
+3. **Testing Localization**: Change device language settings
    to test different translations.
 
-Combining accessibility and localization improves the reach and 
-user experience of your Flutter app, catering to a diverse audience 
-with varied needs and preferences. 
+Combining accessibility and localization improves the reach and
+user experience of your Flutter app, catering to a diverse audience
+with varied needs and preferences.
 
-Flutter's tools and packages make it efficient to implement 
-internationalization and accessibility, aligning your application 
+Flutter's tools and packages make it efficient to implement
+internationalization and accessibility, aligning your application
 with global standards.
 
 ## 20. Future of Flutter and Dart

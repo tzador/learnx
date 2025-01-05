@@ -50,43 +50,47 @@ is part of what makes React distinct and powerful for developers.
 
 ## 02. Setting Up a React Environment
 
-Setting up a React environment is an essential first step to start 
-working with React applications. This guide will walk you through 
-the basic setup, using Create React App, a popular tool for bootstrap 
+Setting up a React environment is an essential first step to start
+working with React applications. This guide will walk you through
+the basic setup, using Create React App, a popular tool for bootstrap
 React applications.
 
 #### Prerequisites
 
-Before setting up a React environment, make sure you have the 
+Before setting up a React environment, make sure you have the
 following installed on your computer:
 
-- **Node.js**: React relies on Node for managing dependencies and 
-  building the project. You can download it from the 
+- **Node.js**: React relies on Node for managing dependencies and
+  building the project. You can download it from the
   [official website](https://nodejs.org/).
 
-- **NPM or Yarn**: These are package managers used to manage the 
-dependencies of your project. NPM comes with Node.js. Alternatively, 
-you can install Yarn from its [official website](https://yarnpkg.com/).
+- **NPM or Yarn**: These are package managers used to manage the
+  dependencies of your project. NPM comes with Node.js. Alternatively,
+  you can install Yarn from its [official website](https://yarnpkg.com/).
 
 #### Using Create React App
 
-Create React App is the easiest way to start a React project. It 
-handles the configuration and setup of the development environment, 
+Create React App is the easiest way to start a React project. It
+handles the configuration and setup of the development environment,
 allowing you to focus on writing React code.
 
 To create a new React application, follow these steps:
 
 1. **Open your terminal**
+
    - On Windows, you can use Command Prompt or PowerShell.
    - On macOS/Linux, open the terminal application.
 
 2. **Run the following command**
+
    ```bash
    npx create-react-app my-app
    ```
+
    Replace `my-app` with the name you want for your application.
 
 3. **Navigate to your project directory**
+
    ```bash
    cd my-app
    ```
@@ -95,38 +99,38 @@ To create a new React application, follow these steps:
    ```bash
    npm start
    ```
-   This will launch your React application and open it in the default 
+   This will launch your React application and open it in the default
    web browser.
 
-By using Create React App, you have set up a modern JavaScript 
-development environment with React, React Router, and modern 
+By using Create React App, you have set up a modern JavaScript
+development environment with React, React Router, and modern
 JavaScript features like ES6.
 
 #### Next Steps
 
-Now that you have a React environment set up, you can start building 
-your React components. In the next article, we will discuss the 
-structure of a React application and how you can create your first 
+Now that you have a React environment set up, you can start building
+your React components. In the next article, we will discuss the
+structure of a React application and how you can create your first
 React component.
 
 ## 03. Understanding React Components
 
-React is built around the concept of components. Components are reusable 
-UI building blocks in a React application. They let you divide the UI 
-into independent, reusable pieces, and think about each piece in 
+React is built around the concept of components. Components are reusable
+UI building blocks in a React application. They let you divide the UI
+into independent, reusable pieces, and think about each piece in
 isolation.
 
 ### Types of Components
 
 There are two main types of components in React:
 
-1. **Class Components**: An older component structure where the component 
-is defined using a JavaScript class. They can manage their own state and 
-use lifecycle methods.
+1. **Class Components**: An older component structure where the component
+   is defined using a JavaScript class. They can manage their own state and
+   use lifecycle methods.
 
-2. **Function Components**: A newer and more popular way to write 
-components. They are typically written as JavaScript functions and can 
-use state and other React features with Hooks.
+2. **Function Components**: A newer and more popular way to write
+   components. They are typically written as JavaScript functions and can
+   use state and other React features with Hooks.
 
 ### Creating a Simple Function Component
 
@@ -138,12 +142,12 @@ function Welcome(props) {
 }
 ```
 
-This `Welcome` component is a simple JavaScript function that accepts `props` 
+This `Welcome` component is a simple JavaScript function that accepts `props`
 (a `name` in this case) and returns a React element.
 
 ### Composition of Components
 
-React components can be composed into larger components, making building 
+React components can be composed into larger components, making building
 and managing complex UIs more tangible. For example:
 
 ```jsx
@@ -158,25 +162,25 @@ function App() {
 }
 ```
 
-In the above `App` component, the `Welcome` component is used multiple times, 
+In the above `App` component, the `Welcome` component is used multiple times,
 each time with different properties.
 
-Understanding components is fundamental to harnessing the power of React, 
+Understanding components is fundamental to harnessing the power of React,
 as they form the backbone of any React application.
 
 ## 04. JSX in React
 
-JSX stands for JavaScript XML. It is a syntax extension for JavaScript that looks 
-like XML or HTML. JSX makes React code easier to read and write by allowing you 
+JSX stands for JavaScript XML. It is a syntax extension for JavaScript that looks
+like XML or HTML. JSX makes React code easier to read and write by allowing you
 to use HTML-style template syntax.
 
 ### Why JSX?
 
-- **Readability**: JSX allows you to write HTML-like structures directly 
+- **Readability**: JSX allows you to write HTML-like structures directly
   within JavaScript.
-- **JavaScript Powered**: You can seamlessly integrate JavaScript into your JSX 
+- **JavaScript Powered**: You can seamlessly integrate JavaScript into your JSX
   code, making it very powerful.
-- **Component Structure**: It aligns well with how React components are 
+- **Component Structure**: It aligns well with how React components are
   structured.
 
 ### Using JSX
@@ -184,7 +188,7 @@ to use HTML-style template syntax.
 Here's how you can use JSX in a React component:
 
 ```jsx
-import React from 'react';
+import React from "react";
 
 const Greeting = () => {
   return (
@@ -198,7 +202,7 @@ const Greeting = () => {
 export default Greeting;
 ```
 
-In the above example, the function `Greeting` returns a JSX element, which is 
+In the above example, the function `Greeting` returns a JSX element, which is
 a combination of HTML tags and JavaScript.
 
 ### Embedding Expressions in JSX
@@ -209,7 +213,7 @@ You can embed any JavaScript expression in JSX by wrapping it in curly braces:
 const element = <h1>Hello, {user.name}!</h1>;
 ```
 
-In this example, JavaScript's string interpolation is used to embed `user.name` 
+In this example, JavaScript's string interpolation is used to embed `user.name`
 within an `<h1>` tag.
 
 ### JSX and Components
@@ -220,32 +224,32 @@ JSX can also include React components:
 <MyComponent />
 ```
 
-Components, whether custom or built-in, can be directly used within JSX, 
+Components, whether custom or built-in, can be directly used within JSX,
 making it highly integrative.
 
 #### Conclusion
 
-JSX is integral to writing React applications, because it makes it easier to 
-create and visualize component hierarchies. Although JSX is not a requirement 
+JSX is integral to writing React applications, because it makes it easier to
+create and visualize component hierarchies. Although JSX is not a requirement
 for working with React, it simplifies the process significantly.
 
 ## 05. State and Props in React
 
-In React, "state" and "props" are two core concepts that govern data 
-in a component. Understanding them is crucial for managing and passing 
+In React, "state" and "props" are two core concepts that govern data
+in a component. Understanding them is crucial for managing and passing
 data throughout a React application.
 
 ### State
 
-State is an object that represents the parts of the component that can 
-change. Each component can maintain its own state, and a change in the 
+State is an object that represents the parts of the component that can
+change. Each component can maintain its own state, and a change in the
 state will trigger a re-render of the component.
 
 To use state in a functional component, you can use the `useState` hook.
 Here's a basic example:
 
 ```jsx
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 function Counter() {
   const [count, setCount] = useState(0);
@@ -253,21 +257,19 @@ function Counter() {
   return (
     <div>
       <p>You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>
-        Click me
-      </button>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
     </div>
   );
 }
 ```
 
-In this example, `count` is part of the component's state, and 
+In this example, `count` is part of the component's state, and
 `setCount` is the function used to update it.
 
 ### Props
 
-Props (short for "properties") are read-only components that are 
-passed from a parent component. They allow data to be passed down the 
+Props (short for "properties") are read-only components that are
+passed from a parent component. They allow data to be passed down the
 component tree.
 
 Here is an example of using props:
@@ -287,20 +289,20 @@ which it can use to render dynamic data.
 
 ### Key Differences
 
-- **State is managed within the component**: While props are passed 
-  into a component and handled externally, state is fully internal to 
+- **State is managed within the component**: While props are passed
+  into a component and handled externally, state is fully internal to
   the component.
-- **Props are immutable**: Props cannot be modified by the component 
+- **Props are immutable**: Props cannot be modified by the component
   receiving them, ensuring consistent rendering.
-- **State is mutable**: State can be updated to reflect user actions 
+- **State is mutable**: State can be updated to reflect user actions
   or other events, making it dynamic and responsive.
 
-Understanding state and props is fundamental to mastering component 
+Understanding state and props is fundamental to mastering component
 interaction in React.
 
 ## 06. Handling Events in React
 
-Handling events in React is quite similar to handling events on DOM 
+Handling events in React is quite similar to handling events on DOM
 elements. However, there are some syntactic differences to be aware of.
 
 ### Event Handling Syntax
@@ -308,31 +310,27 @@ elements. However, there are some syntactic differences to be aware of.
 #### Differences from DOM
 
 - React events are named using camelCase, rather than lowercase.
-- With JSX, you pass a function as the event handler rather than a 
-string.
+- With JSX, you pass a function as the event handler rather than a
+  string.
 
 #### Example
 
 ```jsx
 function ActionButton() {
   function handleClick() {
-    alert('Button clicked!');
+    alert("Button clicked!");
   }
 
-  return (
-    <button onClick={handleClick}>
-      Click me
-    </button>
-  );
+  return <button onClick={handleClick}>Click me</button>;
 }
 ```
 
-In this example, the `onClick` attribute is used instead of `onclick`. 
+In this example, the `onClick` attribute is used instead of `onclick`.
 The `handleClick` function is passed directly.
 
 ### Preventing Default Behavior
 
-To prevent the default behavior in React, you must call 
+To prevent the default behavior in React, you must call
 `preventDefault()` explicitly.
 
 #### Example
@@ -341,9 +339,9 @@ To prevent the default behavior in React, you must call
 function Form() {
   function handleSubmit(event) {
     event.preventDefault();
-    console.log('Form submitted');
+    console.log("Form submitted");
   }
-  
+
   return (
     <form onSubmit={handleSubmit}>
       <button type="submit">Submit</button>
@@ -365,24 +363,22 @@ the behavior of components throughout their lifecycle.
 1. **Mounting**: This is when the component is being inserted into the DOM.
    - **constructor()**: Invoked when the component is created.
    - **componentDidMount()**: Called after the component is rendered and updated
-to the DOM.
-   
+     to the DOM.
 2. **Updating**: Occurs when a component is being re-rendered
    due to changes in state or props.
    - **shouldComponentUpdate()**: Determines whether a component should be
-re-rendered.
+     re-rendered.
    - **componentDidUpdate()**: Called after the component's updates are flushed
-to the DOM.
-   
+     to the DOM.
 3. **Unmounting**: A component is being removed from the DOM.
    - **componentWillUnmount()**: Perform any cleanup necessary,
-such as nullifying timers, cancelling network requests, etc.
+     such as nullifying timers, cancelling network requests, etc.
 
 ### Common Usage Patterns
 
 - **Data Fetching**: Often done in `componentDidMount()`.
 - **Performance Optimization**: Use `shouldComponentUpdate()` for optimizing
-unnecessary renders.
+  unnecessary renders.
 
 React's lifecycle methods are powerful tools for managing side effects,
 data fetching, and performance optimizations. Understanding these hooks
@@ -405,8 +401,8 @@ use state and other React features without writing a class.
   ```
 
 - **useEffect**: Performs side effects in function components. It's similar
-to lifecycle methods like componentDidMount, componentDidUpdate, and
-componentWillUnmount.
+  to lifecycle methods like componentDidMount, componentDidUpdate, and
+  componentWillUnmount.
 
   ```javascript
   useEffect(() => {
@@ -435,24 +431,24 @@ Custom hooks let you extract component logic into reusable functions.
 A custom hook is a JavaScript function whose name starts with "use" and
 that may call other hooks.
 
-  ```javascript
-  function useCustomHook() {
-    const [value, setValue] = useState(0);
-    useEffect(() => {
-      console.log(value);
-    }, [value]);
-    return [value, setValue];
-  }
-  ```
+```javascript
+function useCustomHook() {
+  const [value, setValue] = useState(0);
+  useEffect(() => {
+    console.log(value);
+  }, [value]);
+  return [value, setValue];
+}
+```
 
 Hooks offer a more direct API to the React concepts you already know
 and are widely adopted for cleaner and more manageable code.
 
 ## 09. React Router
 
-React Router is a powerful library for building dynamic and complex routing 
-solutions in React applications. It allows developers to create multiple 
-views or pages within a single-page application (SPA), enabling navigation 
+React Router is a powerful library for building dynamic and complex routing
+solutions in React applications. It allows developers to create multiple
+views or pages within a single-page application (SPA), enabling navigation
 among them using URL routes.
 
 ### Installation
@@ -471,11 +467,11 @@ yarn add react-router-dom
 
 ### Basic Setup
 
-To use React Router, you need to wrap your application with a `BrowserRouter` 
+To use React Router, you need to wrap your application with a `BrowserRouter`
 component. This component provides access to the routing functionality:
 
 ```javascript
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
   return (
@@ -498,27 +494,27 @@ function App() {
 
 ### Key Components
 
-- **BrowserRouter:** The main router component that uses the HTML5 history 
-API to keep UI in sync with the URL.
+- **BrowserRouter:** The main router component that uses the HTML5 history
+  API to keep UI in sync with the URL.
 - **Route:** Responsible for rendering UI based on the matching path.
 - **Switch:** Renders the first child `<Route>` that matches the location.
-- **Link:** Provides navigation functionality in place of the anchor `<a>` 
-tag to prevent page reloads.
+- **Link:** Provides navigation functionality in place of the anchor `<a>`
+  tag to prevent page reloads.
 
 ### Handling Parameters
 
-Routes can also handle parameters in the URL. For instance, you can define a 
+Routes can also handle parameters in the URL. For instance, you can define a
 route that accepts a parameter like this:
 
 ```javascript
 <Route path="/user/:id" component={UserDetail} />
 ```
 
-In the `UserDetail` component, you can access this parameter using `useParams` 
+In the `UserDetail` component, you can access this parameter using `useParams`
 hook:
 
 ```javascript
-import { useParams } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 
 function UserDetail() {
   const { id } = useParams();
@@ -526,8 +522,8 @@ function UserDetail() {
 }
 ```
 
-React Router makes it seamless to manage navigation and URL changes without 
-reloading the page, enhancing the SPA experience by giving users a full 
+React Router makes it seamless to manage navigation and URL changes without
+reloading the page, enhancing the SPA experience by giving users a full
 control over the URL history.
 
 ## 10. Using Context API for State Management
@@ -546,13 +542,13 @@ Consumer component. The Provider component allows consuming components
 to subscribe to context changes.
 
 ```javascript
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState } from "react";
 
 // Create a Context
 export const ThemeContext = createContext();
 
 const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState("light");
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
@@ -572,16 +568,22 @@ components or the Context Consumer in class components.
 #### Using `useContext`
 
 ```javascript
-import React, { useContext } from 'react';
-import { ThemeContext } from './ThemeProvider';
+import React, { useContext } from "react";
+import { ThemeContext } from "./ThemeProvider";
 
 const ThemedComponent = () => {
   const { theme, setTheme } = useContext(ThemeContext);
 
   return (
-    <div style={{ background: theme === 'light' ? '#fff' : '#333',
-                  color: theme === 'light' ? '#000' : '#fff' }}>
-      <button onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>Toggle Theme</button>
+    <div
+      style={{
+        background: theme === "light" ? "#fff" : "#333",
+        color: theme === "light" ? "#000" : "#fff",
+      }}
+    >
+      <button onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
+        Toggle Theme
+      </button>
     </div>
   );
 };
@@ -590,18 +592,25 @@ const ThemedComponent = () => {
 #### Using Context Consumer
 
 ```javascript
-import React from 'react';
-import { ThemeContext } from './ThemeProvider';
+import React from "react";
+import { ThemeContext } from "./ThemeProvider";
 
 class ThemedComponent extends React.Component {
   render() {
     return (
       <ThemeContext.Consumer>
         {({ theme, setTheme }) => (
-          <div style={{ background: theme === 'light' ? '#fff' : '#333',
-                        color: theme === 'light' ? '#000' : '#fff' }}>
-            <button onClick={() => setTheme(theme === 'light' ? 'dark'
-                                    : 'light')}>Toggle Theme</button>
+          <div
+            style={{
+              background: theme === "light" ? "#fff" : "#333",
+              color: theme === "light" ? "#000" : "#fff",
+            }}
+          >
+            <button
+              onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+            >
+              Toggle Theme
+            </button>
           </div>
         )}
       </ThemeContext.Consumer>
@@ -620,8 +629,8 @@ need the state.
 
 ## 11. Optimizing Performance in React
 
-React is engineered to offer optimal performance out of the box, but there are 
-ways to further enhance efficiency, especially for complex and data-heavy 
+React is engineered to offer optimal performance out of the box, but there are
+ways to further enhance efficiency, especially for complex and data-heavy
 applications. This article will explore various strategies and best  
 practices for optimizing performance in React.
 
@@ -642,7 +651,7 @@ npm run build
 
 ### Use React.memo
 
-React.memo is a HOC (Higher Order Component) that prevents unnecessary renders 
+React.memo is a HOC (Higher Order Component) that prevents unnecessary renders
 by memoizing component output. Use it to wrap functional components:
 
 ```jsx
@@ -661,12 +670,12 @@ Use React.lazy and Suspense to load components on demand, dividing your
 application into smaller chunks only loaded when needed:
 
 ```jsx
-const OtherComponent = React.lazy(() => import('./OtherComponent'));
+const OtherComponent = React.lazy(() => import("./OtherComponent"));
 ```
 
 ### Code-Splitting
 
-Implement code-splitting using dynamic import() and libraries like webpack or 
+Implement code-splitting using dynamic import() and libraries like webpack or
 Parcel to decrease initial load time by separating code into manageable  
 portions.
 
@@ -680,7 +689,7 @@ Ensure these are enabled in your build process to remove unused code.
 Structure components to reduce the need for reconciliation. Utilize keys  
 properly in lists, and avoid creating new objects or arrays unnecessarily.
 
-By adhering to these practices and tools, developers can significantly improve 
+By adhering to these practices and tools, developers can significantly improve
 React application performance. Stay aware of new performance improvements as  
 React continues to evolve.
 
@@ -719,7 +728,7 @@ function sum(a, b) {
   return a + b;
 }
 
-test('adds 1 + 2 to equal 3', () => {
+test("adds 1 + 2 to equal 3", () => {
   expect(sum(1, 2)).toBe(3);
 });
 ```
@@ -749,12 +758,12 @@ npm install --save enzyme enzyme-adapter-react-16
 Here's how you can write a simple Enzyme test:
 
 ```javascript
-import { shallow } from 'enzyme';
-import React from 'react';
-import MyComponent from './MyComponent';
+import { shallow } from "enzyme";
+import React from "react";
+import MyComponent from "./MyComponent";
 
-describe('<MyComponent />', () => {
-  it('renders without crashing', () => {
+describe("<MyComponent />", () => {
+  it("renders without crashing", () => {
     shallow(<MyComponent />);
   });
 });
@@ -769,21 +778,22 @@ functions as expected.
 
 ## 13. Advanced Component Patterns
 
-In this article, we delve into some advanced component patterns 
-commonly used in React applications. These patterns help manage 
+In this article, we delve into some advanced component patterns
+commonly used in React applications. These patterns help manage
 complexity and improve reusability.
 
 ### 1. Higher-Order Components (HOCs)
 
-An HOC is a function that takes a component and returns a new component. 
-It's a pattern derived from React's compositional nature, allowing for 
+An HOC is a function that takes a component and returns a new component.
+It's a pattern derived from React's compositional nature, allowing for
 code reuse.
 
 Example:
+
 ```javascript
 const withLogging = (Component) => {
   return function WrappedComponent(props) {
-    console.log('Rendering', Component.name);
+    console.log("Rendering", Component.name);
     return <Component {...props} />;
   };
 };
@@ -791,10 +801,11 @@ const withLogging = (Component) => {
 
 ### 2. Render Props
 
-With render props, the child component shares a function that returns 
+With render props, the child component shares a function that returns
 React elements. This provides more flexibility than traditional HOCs.
 
 Example:
+
 ```javascript
 class MouseTracker extends React.Component {
   state = { x: 0, y: 0 };
@@ -805,7 +816,7 @@ class MouseTracker extends React.Component {
 
   render() {
     return (
-      <div style={{ height: '100vh' }} onMouseMove={this.handleMouseMove}>
+      <div style={{ height: "100vh" }} onMouseMove={this.handleMouseMove}>
         {this.props.render(this.state)}
       </div>
     );
@@ -815,13 +826,14 @@ class MouseTracker extends React.Component {
 
 ### 3. Controlled and Uncontrolled Components
 
-Controlled components rely on React state to manage form inputs. 
+Controlled components rely on React state to manage form inputs.
 Uncontrolled components access DOM elements directly.
 
 #### Controlled Example:
+
 ```javascript
 const App = () => {
-  const [value, setValue] = React.useState('');
+  const [value, setValue] = React.useState("");
 
   return (
     <input
@@ -834,6 +846,7 @@ const App = () => {
 ```
 
 #### Uncontrolled Example:
+
 ```javascript
 const App = () => {
   const inputRef = React.useRef(null);
@@ -853,11 +866,12 @@ const App = () => {
 
 ### 4. Compound Components
 
-This pattern involves creating components that work together. Using 
-the context API, parts of the compound components can change behavior 
+This pattern involves creating components that work together. Using
+the context API, parts of the compound components can change behavior
 based on a shared part.
 
 Example:
+
 ```javascript
 const ToggleContext = React.createContext();
 
@@ -880,11 +894,11 @@ const ToggleButton = () => {
 
 const ToggleMessage = () => {
   const { on } = React.useContext(ToggleContext);
-  return <div>{on ? 'The button is ON' : 'The button is OFF'}</div>;
+  return <div>{on ? "The button is ON" : "The button is OFF"}</div>;
 };
 ```
 
-This article covered several advanced patterns in React, each of which 
+This article covered several advanced patterns in React, each of which
 can help you write more maintainable and efficient code.
 
 ## 14. Server-Side Rendering with React
@@ -913,11 +927,13 @@ or manually set up SSR using Node.js and Express.
 Next.js is a popular React framework for SSR that simplifies setup:
 
 1. **Installation**
+
    ```bash
    npx create-next-app my-next-app
    ```
 
 2. **Developing**
+
    - Create pages in the `/pages` directory. Each file represents a
      route.
 
@@ -931,19 +947,21 @@ Next.js handles SSR automatically with zero configuration.
 #### Manual Setup with Node and Express
 
 1. **Install Required Packages**
+
    ```bash
    npm install express react-dom-server
    ```
 
 2. **Server Setup**
+
    ```javascript
-   const express = require('express');
-   const ReactDOMServer = require('react-dom/server');
-   const App = require('./App');
+   const express = require("express");
+   const ReactDOMServer = require("react-dom/server");
+   const App = require("./App");
 
    const server = express();
 
-   server.get('*', (req, res) => {
+   server.get("*", (req, res) => {
      const jsx = <App />;
      const reactDom = ReactDOMServer.renderToString(jsx);
      res.send(`<!DOCTYPE html><html><head><title>SSR with React</title></head>
@@ -951,7 +969,7 @@ Next.js handles SSR automatically with zero configuration.
    });
 
    server.listen(3000, () => {
-     console.log('Server is running on port 3000');
+     console.log("Server is running on port 3000");
    });
    ```
 
@@ -973,11 +991,12 @@ both performance and accessibility of React applications."}ליין 14, עמ' 17
 
 ## 15. Deploying React Applications
 
-Deploying a React application is an integral part of the development 
+Deploying a React application is an integral part of the development
 process. This article will guide you through some popular methods and
 best practices for deploying your React apps.
 
 ### 1. Deployment to Vercel
+
 Vercel provides a convenient platform for deploying static sites and
 serverless functions with built-in support for React applications.
 
@@ -987,9 +1006,10 @@ serverless functions with built-in support for React applications.
 - **Step 3:** Click on deploy, and Vercel will automatically detect
   and build your React application.
 - **Step 4:** Once the build is complete, your app will be live with
-a     unique Vercel URL.
+  a unique Vercel URL.
 
 ### 2. Deployment to Netlify
+
 Netlify is another popular platform for deploying modern web
 applications, including React.
 
@@ -997,59 +1017,61 @@ applications, including React.
   account.
 - **Step 2:** Select your React repository to deploy.
 - **Step 3:** Customize your build settings if necessary (Netlify does
-     this automatically).
+  this automatically).
 - **Step 4:** Deploy your app, and Netlify will provide you with a
   live URL.
 
 ### 3. GitHub Pages for React
-GitHub Pages is a free service providing hosting directly from 
+
+GitHub Pages is a free service providing hosting directly from
 your GitHub repository.
 
 - **Step 1:** Install the `gh-pages` package in your project using
-      `npm install gh-pages`.
+  `npm install gh-pages`.
 - **Step 2:** Add the `homepage` field to your `package.json`.
 - **Step 3:** Configure scripts in your `package.json` for predeploy
   and deploy.
 - **Step 4:** Run `npm run deploy` to publish your React app.
 
 ### Best Practices for Deployment
+
 1. **Environment Variables:** Use environment variables for sensitive
    information.
 2. **HTTPS and SSL:** Ensure your website uses HTTPS for secure
    connections.
 3. **SEO and Social Sharing:** Verify that metadata and social sharing
    features are correctly configured.
-4. **Performance Monitoring:** Use monitoring tools to optimize your 
+4. **Performance Monitoring:** Use monitoring tools to optimize your
    site's performance post-deployment.
 
 Deploying a React application requires attention to detail in choosing
-the right platform and following best practices to ensure a seamless 
+the right platform and following best practices to ensure a seamless
 experience for your users.
 
 ## 16. Integrating TypeScript with React
 
-TypeScript has become an essential tool when working with modern web 
-development technologies like React. Combining TypeScript with React allows 
-you to write more maintainable and robust code by adding static typing. Let's 
+TypeScript has become an essential tool when working with modern web
+development technologies like React. Combining TypeScript with React allows
+you to write more maintainable and robust code by adding static typing. Let's
 explore how to integrate TypeScript into a React project.
 
 ### Setting Up a React Project with TypeScript
 
-To create a new React application with TypeScript, you can use Create React 
+To create a new React application with TypeScript, you can use Create React
 App with the TypeScript template. Run the following command:
 
 ```bash
 npx create-react-app my-app --template typescript
 ```
 
-This command sets up a new React project with TypeScript pre-configured. 
-The file extensions will be `.tsx` for components and `.ts` for other TypeScript 
+This command sets up a new React project with TypeScript pre-configured.
+The file extensions will be `.tsx` for components and `.ts` for other TypeScript
 files.
 
 ### Basic TypeScript in React
 
-With TypeScript, you can define types for props, state, and other variables in 
-your React components. Here's a simple example of a functional component 
+With TypeScript, you can define types for props, state, and other variables in
+your React components. Here's a simple example of a functional component
 using TypeScript:
 
 ```typescript
@@ -1062,12 +1084,12 @@ const Greeting: React.FC<GreetingProps> = ({ name }) => {
 };
 ```
 
-In this example, `GreetingProps` defines the type for the prop `name`, ensuring 
+In this example, `GreetingProps` defines the type for the prop `name`, ensuring
 it is always a string.
 
 ### Typing State in Class Components
 
-For class components, you can use TypeScript to define the types for both props 
+For class components, you can use TypeScript to define the types for both props
 and state. Below is an example:
 
 ```typescript
@@ -1091,68 +1113,67 @@ class Counter extends React.Component<CounterProps, CounterState> {
 }
 ```
 
-In this case, `CounterState` is a type that specifies the structure of the state 
+In this case, `CounterState` is a type that specifies the structure of the state
 object within the `Counter` component.
 
 ### Benefits of Using TypeScript with React
 
-1. **Error Reduction**: TypeScript reduces the chance of common errors 
+1. **Error Reduction**: TypeScript reduces the chance of common errors
    related to incorrect types.
-2. **Better Code Understanding and Refactoring**: With types, the code is 
+2. **Better Code Understanding and Refactoring**: With types, the code is
    more self-documenting and easier to refactor.
-3. **Improved IntelliSense**: TypeScript provides better auto-completion and 
+3. **Improved IntelliSense**: TypeScript provides better auto-completion and
    intellisense in the code editors.
 
 ### Conclusion
 
-Integrating TypeScript with React allows you to write safer and more maintainable 
-code. It is a powerful enhancement for React applications, especially in large-scale 
-projects. Consider adopting TypeScript to leverage its benefits and improve the 
+Integrating TypeScript with React allows you to write safer and more maintainable
+code. It is a powerful enhancement for React applications, especially in large-scale
+projects. Consider adopting TypeScript to leverage its benefits and improve the
 overall development experience.
 
 ## 17. React and Redux Integration
 
-Redux is a predictable state container for JavaScript apps, often used 
-with React for managing the application state comprehensively. React 
-and Redux work seamlessly together to help developers manage shared and 
+Redux is a predictable state container for JavaScript apps, often used
+with React for managing the application state comprehensively. React
+and Redux work seamlessly together to help developers manage shared and
 component-specific states in larger applications.
 
 ### What is Redux?
 
-Redux is a library that helps manage the state of your application over 
-time. It's especially useful in complex and large applications where 
-state management can become unwieldy. Redux allows the centralization of 
-state in a single store, making it easier to track changes, debug, and 
+Redux is a library that helps manage the state of your application over
+time. It's especially useful in complex and large applications where
+state management can become unwieldy. Redux allows the centralization of
+state in a single store, making it easier to track changes, debug, and
 test.
 
 ### Core Concepts of Redux
 
 - **Store**: The object that brings the state together and manages it.
-- **Actions**: Payloads of information that send data from your 
-application to the Redux store.
-- **Reducers**: Functions that determine how the state changes in 
-response to actions sent to the store.
+- **Actions**: Payloads of information that send data from your
+  application to the Redux store.
+- **Reducers**: Functions that determine how the state changes in
+  response to actions sent to the store.
 
 ### Integrating Redux with React
 
 1. **Install Redux**: Install Redux and the React bindings with `npm 
 install redux react-redux`.
-   
-2. **Create a Store**: Import `createStore` from Redux and create a 
-store by passing your root reducer.
+2. **Create a Store**: Import `createStore` from Redux and create a
+   store by passing your root reducer.
 
    ```javascript
-   import { createStore } from 'redux';
-   import rootReducer from './reducers';
+   import { createStore } from "redux";
+   import rootReducer from "./reducers";
    const store = createStore(rootReducer);
    ```
 
-3. **Provide the Store**: Use the `Provider` component from `'react-redux'` 
-to pass the store down to your component tree.
-   
+3. **Provide the Store**: Use the `Provider` component from `'react-redux'`
+   to pass the store down to your component tree.
+
    ```javascript
-   import { Provider } from 'react-redux';
-   import store from './store';
+   import { Provider } from "react-redux";
+   import store from "./store";
 
    const App = () => (
      <Provider store={store}>
@@ -1161,17 +1182,17 @@ to pass the store down to your component tree.
    );
    ```
 
-4. **Connect Components**: Use the `connect` function from `'react-redux'` to 
-connect the Redux state to React components.
-   
-   ```javascript
-   import { connect } from 'react-redux';
+4. **Connect Components**: Use the `connect` function from `'react-redux'` to
+   connect the Redux state to React components.
 
-   const mapStateToProps = state => ({
+   ```javascript
+   import { connect } from "react-redux";
+
+   const mapStateToProps = (state) => ({
      // state mappings
    });
 
-   const mapDispatchToProps = dispatch => ({
+   const mapDispatchToProps = (dispatch) => ({
      // action dispatchers
    });
 
@@ -1182,39 +1203,39 @@ connect the Redux state to React components.
 
 - Keep React components pure and focus on UI rendering.
 - Use Redux dev tools for easier debugging.
-- Structure Redux files for scalability, such as separating actions, 
-reducers, and types into different directories.
+- Structure Redux files for scalability, such as separating actions,
+  reducers, and types into different directories.
 
-Combining React with Redux enhances the development of larger 
-applications with complex state management, providing scalability and 
+Combining React with Redux enhances the development of larger
+applications with complex state management, providing scalability and
 maintainability.
 
 ## 18. React Native for Mobile Development
 
-React Native is a popular framework for building mobile applications using 
-JavaScript and React. Developed by Facebook, it allows developers to use the 
-same design as React, making it easier to transfer knowledge from web 
+React Native is a popular framework for building mobile applications using
+JavaScript and React. Developed by Facebook, it allows developers to use the
+same design as React, making it easier to transfer knowledge from web
 development to mobile development.
 
 ### Key Features
 
-- **Cross-Platform Development:** Write one codebase for both iOS and Android 
+- **Cross-Platform Development:** Write one codebase for both iOS and Android
   platforms, reducing development effort and improving consistency.
 
-- **Native Components:** React Native bridges the gap between high-performance 
-native apps and simplified development through JavaScript, using native 
-components for rendering.
+- **Native Components:** React Native bridges the gap between high-performance
+  native apps and simplified development through JavaScript, using native
+  components for rendering.
 
-- **Hot Reloading:** Makes it possible to see changes instantly without 
-recompiling the entire app, facilitating a faster development process.
+- **Hot Reloading:** Makes it possible to see changes instantly without
+  recompiling the entire app, facilitating a faster development process.
 
-- **Rich Ecosystem:** Extensive libraries and plugins are available, as the 
-open-source community actively contributes to its development.
+- **Rich Ecosystem:** Extensive libraries and plugins are available, as the
+  open-source community actively contributes to its development.
 
 ### Getting Started with React Native
 
-1. **Environment Setup:** To start with React Native, you need Node.js, npm, 
-and Expo CLI for rapid prototyping.
+1. **Environment Setup:** To start with React Native, you need Node.js, npm,
+   and Expo CLI for rapid prototyping.
 
 2. **Creating a New Project:** Use the official command `npx react-native 
 init ProjectName` to create a new React Native application.
@@ -1224,8 +1245,8 @@ ios` to run the app on the respective platform simulators.
 
 ### Developing with React Native
 
-React Native components like View and Text are similar to web-based div and 
-span. However, the styling approach differs slightly, using a simplified 
+React Native components like View and Text are similar to web-based div and
+span. However, the styling approach differs slightly, using a simplified
 version of CSS called Flexbox for layout.
 
 ```
@@ -1253,27 +1274,27 @@ export default App;
 
 ### Conclusion
 
-React Native provides an efficient way to handle mobile app development, 
-leveraging the strengths of JavaScript and React. It's a powerful tool for 
+React Native provides an efficient way to handle mobile app development,
+leveraging the strengths of JavaScript and React. It's a powerful tool for
 developers seeking to expand their web knowledge into mobile app creation.
 
 ## 19. React Suspense and Concurrent Mode
 
-React Suspense and Concurrent Mode are powerful tools for improving the 
-performance and user experience of React applications. These features 
-allow you to control how and when components are rendered, enabling 
+React Suspense and Concurrent Mode are powerful tools for improving the
+performance and user experience of React applications. These features
+allow you to control how and when components are rendered, enabling
 smoother and more responsive UIs.
 
 ### React Suspense
 
-React Suspense is a feature that lets you "wait" for some code to load 
-or data to be fetched before rendering the component. It delays the 
+React Suspense is a feature that lets you "wait" for some code to load
+or data to be fetched before rendering the component. It delays the
 rendering of a component until its dependencies are ready.
 
 ```jsx
-import React, { Suspense } from 'react';
+import React, { Suspense } from "react";
 
-const LazyComponent = React.lazy(() => import('./LazyComponent'));
+const LazyComponent = React.lazy(() => import("./LazyComponent"));
 
 function App() {
   return (
@@ -1286,48 +1307,48 @@ function App() {
 }
 ```
 
-In this example, `Suspense` takes a fallback UI that is displayed while 
+In this example, `Suspense` takes a fallback UI that is displayed while
 the `LazyComponent` is being loaded.
 
 ### Concurrent Mode
 
-Concurrent Mode allows React apps to be more responsive by making 
-rendering interruptible. It prioritizes different tasks, improving the 
+Concurrent Mode allows React apps to be more responsive by making
+rendering interruptible. It prioritizes different tasks, improving the
 overall application performance.
 
 #### Enabling Concurrent Mode
 
-To enable Concurrent Mode, you need to replace `ReactDOM.render` with 
+To enable Concurrent Mode, you need to replace `ReactDOM.render` with
 `ReactDOM.createRoot`.
 
 ```jsx
-import React from 'react';
-import { createRoot } from 'react-dom/client';
-import App from './App';
+import React from "react";
+import { createRoot } from "react-dom/client";
+import App from "./App";
 
-createRoot(document.getElementById('root')).render(<App />);
+createRoot(document.getElementById("root")).render(<App />);
 ```
 
 #### Features of Concurrent Mode
 
-- **Automatic Batching:** Automatically batches multiple state 
+- **Automatic Batching:** Automatically batches multiple state
   updates into a single render.
-- **Interruptible Rendering:** Can pause work and continue later 
+- **Interruptible Rendering:** Can pause work and continue later
   without losing progress.
-- **Concurrent Rendering:** Allows multiple versions of the UI to 
+- **Concurrent Rendering:** Allows multiple versions of the UI to
   exist at the same time.
 
 #### Benefits
 
 - **Improved Loading Sequences:** Smooth loading of app components.
-- **Better User Experience:** Less lag by prioritizing important 
+- **Better User Experience:** Less lag by prioritizing important
   updates.
-- **Automatic Suspense:** Mixed with Suspense to automatically 
+- **Automatic Suspense:** Mixed with Suspense to automatically
   handle loading states.
 
-React Suspense and Concurrent Mode take React applications to the next 
-level through improved performance and enhanced user interactivity. 
-Experimenting with these features can lead to more efficient and 
+React Suspense and Concurrent Mode take React applications to the next
+level through improved performance and enhanced user interactivity.
+Experimenting with these features can lead to more efficient and
 pleasurable user experiences.
 
 ## 20. Future of React and Emerging Trends

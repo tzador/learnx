@@ -23,15 +23,15 @@
 
 ## 01. Introduction to Python Cheat Sheet
 
-Welcome to the Python Cheat Sheet series! This series is designed to provide 
-you with quick, easy-access references to essential Python programming 
+Welcome to the Python Cheat Sheet series! This series is designed to provide
+you with quick, easy-access references to essential Python programming
 concepts. Whether you're new to Python or looking to polish your skills, this
 collection of articles aims to cover fundamental and advanced topics, enabling
 you to become a proficient Python programmer.
 
-In this series, we will start with the basics, such as variables, data types, 
-and basic operations, and gradually move towards more advanced concepts like 
-object-oriented programming, error handling, and working with external 
+In this series, we will start with the basics, such as variables, data types,
+and basic operations, and gradually move towards more advanced concepts like
+object-oriented programming, error handling, and working with external
 modules.
 
 Stay tuned for the next article where we dive into variables and data types!
@@ -100,13 +100,16 @@ you can work with different kinds of data effectively in Python.
 ## 03. Data Types and Type Conversion
 
 Python supports several standard data types:
+
 - **int**: Integer values, e.g., `1`, `42`
 - **float**: Floating point values, e.g., `3.14`, `0.001`
 - **str**: Strings, e.g., `'hello'`, `"world"`
 - **bool**: Boolean values, `True` or `False`
 
 ### Type Conversion
+
 You can convert between types:
+
 ```python
 
 int('42')   # Outputs: 42
@@ -117,6 +120,7 @@ str(100)   # Outputs: '100'
 
 bool(1)    # Outputs: True
 ```
+
 Note that conversion can fail if the value isn't compatible
 with the target type.
 
@@ -131,15 +135,15 @@ arithmetic, comparison, logical, and more.
 
 ### Arithmetic Operators
 
-| Operator | Description                 |
-|----------|-----------------------------|
-| `+`      | Addition                    |
-| `-`      | Subtraction                 |
-| `*`      | Multiplication              |
-| `/`      | Division                    |
-| `%`      | Modulus                     |
-| `**`     | Exponentiation              |
-| `//`     | Floor division              |
+| Operator | Description    |
+| -------- | -------------- |
+| `+`      | Addition       |
+| `-`      | Subtraction    |
+| `*`      | Multiplication |
+| `/`      | Division       |
+| `%`      | Modulus        |
+| `**`     | Exponentiation |
+| `//`     | Floor division |
 
 #### Example
 
@@ -154,14 +158,14 @@ exponentiation = x ** y  # 1000
 
 ### Comparison Operators
 
-| Operator | Description                 |
-|----------|-----------------------------|
-| `==`     | Equal to                    |
-| `!=`     | Not equal to                |
-| `>`      | Greater than                |
-| `<`      | Less than                   |
-| `>=`     | Greater than or equal to    |
-| `<=`     | Less than or equal to       |
+| Operator | Description              |
+| -------- | ------------------------ |
+| `==`     | Equal to                 |
+| `!=`     | Not equal to             |
+| `>`      | Greater than             |
+| `<`      | Less than                |
+| `>=`     | Greater than or equal to |
+| `<=`     | Less than or equal to    |
 
 #### Example
 
@@ -176,7 +180,7 @@ is_equal = x == y     # False
 ### Logical Operators
 
 | Operator | Description |
-|----------|-------------|
+| -------- | ----------- |
 | `and`    | Logical and |
 | `or`     | Logical or  |
 | `not`    | Logical not |
@@ -248,7 +252,7 @@ Positive number
 Even number
 ```
 
- because `number` is greater than 0 and is even.
+because `number` is greater than 0 and is even.
 
 ## 06. Loops and Iteration
 
@@ -457,6 +461,7 @@ student.pop("age")
 ```
 
 #### Dictionary Functions
+
 - `dict.keys()`: returns a view object that displays a list of all the keys.
 - `dict.values()`: returns a view object of all the values in the dictionary.
 - `dict.items()`: returns a view object of all key-value pairs.
@@ -478,11 +483,12 @@ print("Math" in courses)  # Output: True
 ```
 
 #### Set Functions
+
 - `set.add()`: adds an element to the set.
 - `set.remove()`: removes a specified element.
 - `set.union(set2)`: returns a new set with elements from both sets.
 - `set.intersection(set2)`: returns a set of elements common to all sets.
-- `set.difference(set2)`: returns a set with elements in the set that are 
+- `set.difference(set2)`: returns a set with elements in the set that are
   not in 'set2'.
 
 Understanding how to effectively use dictionaries and sets enhances  
@@ -497,6 +503,7 @@ creation.
 ### Basic Operations
 
 - **Concatenation:** Combine strings using `+`
+
   ```python
   str1 = "Hello"
   str2 = "World"
@@ -504,11 +511,13 @@ creation.
   ```
 
 - **Repetition:** Repeat strings using `*`
+
   ```python
   repeated = "ha" * 3  # hahaha
   ```
 
 - **Indexing:** Access characters using indices
+
   ```python
   text = "Python"
   char = text[0]  # P
@@ -522,18 +531,21 @@ creation.
 ### Common Methods
 
 - **Lower and Upper:** Convert case
+
   ```python
   lower = text.lower()  # python
   upper = text.upper()  # PYTHON
   ```
 
 - **Split and Join:** Divide and combine strings
+
   ```python
   parts = "a,b,c".split(",")  # ['a', 'b', 'c']
   joined = "-".join(parts)     # a-b-c
   ```
 
 - **Strip:** Remove whitespace
+
   ```python
   stripped = "  spaces ".strip()  # "spaces"
   ```
@@ -834,16 +846,16 @@ print(sub)  # Output: 'hello Python'
 
 ### Special Characters
 
-* `.` - Matches any character except newline
-* `^` - Matches the start of a string
-* `$` - Matches the end of a string
-* `*` - Matches 0 or more repetitions
-* `+` - Matches 1 or more repetitions
-* `?` - Matches 0 or 1 repetition
-* `{}` - Matches an exact number of repetitions
-* `[]` - Denotes a set of characters
-* `|` - Acts as an OR operator
-* `()` - Captures and groups
+- `.` - Matches any character except newline
+- `^` - Matches the start of a string
+- `$` - Matches the end of a string
+- `*` - Matches 0 or more repetitions
+- `+` - Matches 1 or more repetitions
+- `?` - Matches 0 or 1 repetition
+- `{}` - Matches an exact number of repetitions
+- `[]` - Denotes a set of characters
+- `|` - Acts as an OR operator
+- `()` - Captures and groups
 
 ### Flags
 
@@ -873,7 +885,7 @@ class Dog:
     def __init__(self, name, age):
         self.name = name
         self.age = age
-    
+
     def bark(self):
         print("Woof!")
 ```
@@ -912,14 +924,14 @@ class Puppy(Dog):
 
 ## 17. Decorators in Python
 
-Decorators in Python are a design pattern that allows you to modify the 
-behavior of a function or class method. They are a powerful tool for 
+Decorators in Python are a design pattern that allows you to modify the
+behavior of a function or class method. They are a powerful tool for
 extending the capabilities of existing code without modifying its structure.
 
 ### How Decorators Work
 
-Decorators wrap a function, modifying its behavior while keeping the core 
-functionality intact. They are implemented using the `@decorator_name` 
+Decorators wrap a function, modifying its behavior while keeping the core
+functionality intact. They are implemented using the `@decorator_name`
 syntax above the function definition.
 
 ```python
@@ -940,14 +952,14 @@ say_hello()
 
 #### Explanation
 
-1. **Decorating the Function**: The `@my_decorator` is applied to 
+1. **Decorating the Function**: The `@my_decorator` is applied to
    `say_hello`. It passes `say_hello` to the `my_decorator` function.
 
-2. **Wrapper Function**: Inside the `my_decorator`, a `wrapper` function 
-   is defined that adds behavior before and after the call to the 
+2. **Wrapper Function**: Inside the `my_decorator`, a `wrapper` function
+   is defined that adds behavior before and after the call to the
    decorated function.
 
-3. **Executing the Decorated Function**: When `say_hello()` is called, 
+3. **Executing the Decorated Function**: When `say_hello()` is called,
    the output demonstrates the added functionality:
    - Before the function call
    - Hello, World!
@@ -955,7 +967,7 @@ say_hello()
 
 #### Chaining Decorators
 
-Multiple decorators can be applied to a single function by stacking them 
+Multiple decorators can be applied to a single function by stacking them
 above the function definition.
 
 ```python
@@ -970,11 +982,11 @@ In this example, `decorator_two` is applied first, followed by `decorator_one`.
 ### Practical Uses of Decorators
 
 1. **Logging**: Adding logging information to function calls.
-2. **Access Control and Authentication**: Enforcing access controls by 
-checking permissions.
+2. **Access Control and Authentication**: Enforcing access controls by
+   checking permissions.
 3. **Caching**: Memoizing functions to store results of expensive calls.
 
-Decorators provide a clean and readable way to apply these cross-cutting 
+Decorators provide a clean and readable way to apply these cross-cutting
 concerns to your functions throughout your codebase.
 
 ## 18. Context Managers and the 'with' Statement
@@ -1017,7 +1029,7 @@ class MyContextManager:
     def __enter__(self):
         print("Entering context")
         return self
-    
+
     def __exit__(self, exc_type, exc_val, exc_tb):
         print("Exiting context")
 
@@ -1101,12 +1113,12 @@ key to maximizing the efficiency of your code.
 
 ## 20. Advanced Python Tips and Tricks
 
-Python is a versatile language with many hidden gems. Here are a few 
+Python is a versatile language with many hidden gems. Here are a few
 advanced tips and tricks to enhance your Python skills:
 
 ### Use of Lambda Functions
 
-Lambda functions are quick, anonymous functions declared with the 
+Lambda functions are quick, anonymous functions declared with the
 `lambda` keyword, often used where function objects are required.
 
 ```python
@@ -1116,7 +1128,7 @@ print(multiply(2, 3))  # Output: 6
 
 ### Using `enumerate`
 
-`enumerate` is useful for loops as it provides both index and value 
+`enumerate` is useful for loops as it provides both index and value
 of iterables.
 
 ```python
@@ -1127,7 +1139,7 @@ for idx, color in enumerate(colors):
 
 ### The Power of `zip`
 
-`zip` is used to combine multiple iterables, great for parallel 
+`zip` is used to combine multiple iterables, great for parallel
 iterations.
 
 ```python
@@ -1139,7 +1151,7 @@ for name, score in zip(names, scores):
 
 ### `*args` and `**kwargs`
 
-`*args` and `**kwargs` allow passing variable numbers of arguments 
+`*args` and `**kwargs` allow passing variable numbers of arguments
 to functions.
 
 ```python
@@ -1190,5 +1202,5 @@ for i in count(10, 2):
     print(i)
 ```
 
-These advanced techniques will help improve performance and readability 
+These advanced techniques will help improve performance and readability
 of your Python code. Happy coding!

@@ -52,11 +52,13 @@ with different types. This concept allows you to define functions, classes,
 or interfaces with a placeholder for the type.
 
 ### Why Use Generics?
-Generics provide the ability to create components that can operate on a 
+
+Generics provide the ability to create components that can operate on a
 variety of types rather than a single one. This conserves code reusability
 and type safety across your application.
 
 ### Basic Example
+
 A simple example of a generic function entails using the `T` placeholder:
 
 ```typescript
@@ -64,15 +66,16 @@ function identity<T>(arg: T): T {
   return arg;
 }
 
-let output1 = identity<string>('Hello World');
+let output1 = identity<string>("Hello World");
 let output2 = identity<number>(42);
 ```
 
-Here, `identity` is a generic function with a type parameter `T`, which 
+Here, `identity` is a generic function with a type parameter `T`, which
 represents the type of `arg`. The `identity` function can work with
 multiple types, depicted in `output1` and `output2`.
 
 ### Generic Classes
+
 Generics in classes allow for dynamic types as well:
 
 ```typescript
@@ -83,7 +86,7 @@ class GenericNumber<T> {
 
 let myGenericNumber = new GenericNumber<number>();
 myGenericNumber.zeroValue = 0;
-myGenericNumber.add = function(x, y) {
+myGenericNumber.add = function (x, y) {
   return x + y;
 };
 ```
@@ -104,14 +107,14 @@ Enums come in two flavors in TypeScript:
 1. **Numeric Enums**: These enums store numeric values,
    starting from zero by default. They can be initialized
    to any specific number, and TypeScript will auto-increment
-the rest.
-   
+   the rest.
+
    ```typescript
    enum Direction {
-       Up = 1,
-       Down,
-       Left,
-       Right
+     Up = 1,
+     Down,
+     Left,
+     Right,
    }
    ```
 
@@ -120,12 +123,12 @@ the rest.
 
 2. **String Enums**: In these enums, each member has
    to be explicitly initialized with a string value.
-   
+
    ```typescript
    enum Status {
-       SUCCESS = "SUCCESS",
-       FAILURE = "FAILURE",
-       PENDING = "PENDING"
+     SUCCESS = "SUCCESS",
+     FAILURE = "FAILURE",
+     PENDING = "PENDING",
    }
    ```
 
@@ -183,7 +186,7 @@ interface User {
 
 const user: Readonly<User> = {
   name: "Bob",
-  age: 30
+  age: 30,
 };
 
 // user.age = 31; // Error: Cannot assign to 'age' because it is a
@@ -202,7 +205,7 @@ type PageScores = Record<string, number>;
 const scores: PageScores = {
   home: 10,
   about: 8,
-  contact: 9
+  contact: 9,
 };
 ```
 
@@ -222,7 +225,7 @@ interface User {
 type UserContactInfo = Pick<User, "email">;
 
 const contactInfo: UserContactInfo = {
-  email: "alice@example.com"
+  email: "alice@example.com",
 };
 ```
 
@@ -236,7 +239,7 @@ type UserWithoutEmail = Omit<User, "email">;
 
 const userWithoutEmail: UserWithoutEmail = {
   name: "Alice",
-  age: 25
+  age: 25,
 };
 ```
 
@@ -246,8 +249,8 @@ improve type safety and code maintainability in TypeScript projects.
 ## 05. TypeScript Decorators
 
 Decorators in TypeScript provide a way to add both annotations and a meta-
-programming syntax for class declarations and members. Decorators are special 
-type of declarations that can be attached to a class, method, accessor, 
+programming syntax for class declarations and members. Decorators are special
+type of declarations that can be attached to a class, method, accessor,
 property, or parameter. They are function expressions that are immediately invoked.
 
 ### Enabling Decorators
@@ -266,12 +269,12 @@ compiler option in your `tsconfig.json`:
 ### Applying Decorators
 
 Decorators can be applied using `@expression` where `expression` must evaluate
- to a function that takes certain arguments depending on what is being decorated.
+to a function that takes certain arguments depending on what is being decorated.
 
 #### Class Decorators
 
 A class decorator is applied to the class constructor. It can be used to observe,
-modify, or replace a class definition. It is declared just before the class 
+modify, or replace a class definition. It is declared just before the class
 declaration:
 
 ```typescript
@@ -285,7 +288,7 @@ class MyClass {}
 
 #### Method Decorators
 
-Method decorators are applied to the method of a class. They can be used to 
+Method decorators are applied to the method of a class. They can be used to
 observe, modify, or replace a method definition:
 
 ```typescript
@@ -301,12 +304,12 @@ class MyClass {
 
 #### Accessor Decorators
 
-An accessor decorator is applied to a property accessor in a class. It can 
+An accessor decorator is applied to a property accessor in a class. It can
 observe, modify, or replace an accessor's definitions:
 
 ```typescript
 function configurable(isConfigurable: boolean) {
-  return function(target: any, key: string, descriptor: PropertyDescriptor) {
+  return function (target: any, key: string, descriptor: PropertyDescriptor) {
     descriptor.configurable = isConfigurable;
   };
 }
@@ -326,7 +329,7 @@ class MyClass {
 These decorators can also be applied similarly to modify properties and parameters;
 however, they are more advanced and involve specifics of the TypeScript compiler.
 
-Decorators are a foundational tool in TypeScript allowing for powerful 
+Decorators are a foundational tool in TypeScript allowing for powerful
 meta-programming patterns, essential for those building advanced applications.
 
 ## 06. Mapped Types in TypeScript
@@ -466,12 +469,12 @@ type Vehicle = (Car | Bike) & {
 const myVehicle: Vehicle = {
   make: "Tesla",
   model: "Model S",
-  wheels: 4
+  wheels: 4,
 };
 
 const myBike: Vehicle = {
   isMotorized: false,
-  wheels: 2
+  wheels: 2,
 };
 ```
 
@@ -485,51 +488,51 @@ precision in type definitions.
 
 ## 08. TypeScript Namespaces
 
-Namespaces in TypeScript are a way to organize and group logical code 
-blocks together. They help in preventing name clashes by providing 
+Namespaces in TypeScript are a way to organize and group logical code
+blocks together. They help in preventing name clashes by providing
 scoped access to variables, functions, classes, and interfaces.
 
 ### Declaring a Namespace
 
-To declare a namespace, use the `namespace` keyword followed by the 
+To declare a namespace, use the `namespace` keyword followed by the
 namespace name. Enclose the related code inside curly braces:
 
 ```typescript
 namespace Utilities {
-    export function logMessage(message: string): void {
-        console.log(message);
-    }
+  export function logMessage(message: string): void {
+    console.log(message);
+  }
 }
 ```
 
-In the example above, a namespace `Utilities` contains a single 
-function `logMessage`. The `export` keyword makes the function 
+In the example above, a namespace `Utilities` contains a single
+function `logMessage`. The `export` keyword makes the function
 available outside the namespace.
 
 ### Consuming a Namespace
 
-When you want to use a member of a namespace, you need to prefix it 
+When you want to use a member of a namespace, you need to prefix it
 with the namespace name:
 
 ```typescript
 Utilities.logMessage("Hello, World!");
 ```
 
-This ensures that there is no ambiguity even if multiple functions 
+This ensures that there is no ambiguity even if multiple functions
 with the same name exist in different namespaces.
 
 ### Nested Namespaces
 
-TypeScript allows nesting of namespaces, which can be useful for 
+TypeScript allows nesting of namespaces, which can be useful for
 deeper logical separation:
 
 ```typescript
 namespace Application {
-    export namespace Settings {
-        export function load(): void {
-            console.log("Loading settings...");
-        }
+  export namespace Settings {
+    export function load(): void {
+      console.log("Loading settings...");
     }
+  }
 }
 
 Application.Settings.load(); // Invoking nested namespace function
@@ -537,25 +540,25 @@ Application.Settings.load(); // Invoking nested namespace function
 
 ### Compiling Namespaces
 
-When compiled, namespaces can result in complex code structures. 
+When compiled, namespaces can result in complex code structures.
 Ensure that all `export` and `import` statements are handled correctly.
 
-Namespaces can be a powerful tool in TypeScript, especially for 
-developers coming from other languages where large code bases are 
+Namespaces can be a powerful tool in TypeScript, especially for
+developers coming from other languages where large code bases are
 organized similarly.
 
 ## 09. Advanced TypeScript Types
 
-TypeScript is a powerful language that adds static types to JavaScript, 
-enabling the development of large-scale applications while reducing bugs. 
-In advanced usage, it features several complex types that can refine 
-and constrain the data structures you use, elevating your code reliability 
+TypeScript is a powerful language that adds static types to JavaScript,
+enabling the development of large-scale applications while reducing bugs.
+In advanced usage, it features several complex types that can refine
+and constrain the data structures you use, elevating your code reliability
 to another level.
 
 ### Literal Types
 
-A literal type is a type that can only have one value. This is opposed 
-to other types that can have multiple possible values. Literal types allow 
+A literal type is a type that can only have one value. This is opposed
+to other types that can have multiple possible values. Literal types allow
 you to single out specific strings or numbers:
 
 ```typescript
@@ -566,9 +569,9 @@ direction = "up"; // Error
 
 ### Discriminated Unions
 
-Discriminated unions, or tagged unions, are a powerful pattern for 
-modeling complex data structures. They use a common property as the 
-"discriminant" property, which is something all object types in the 
+Discriminated unions, or tagged unions, are a powerful pattern for
+modeling complex data structures. They use a common property as the
+"discriminant" property, which is something all object types in the
 union have in common.
 
 ```typescript
@@ -588,8 +591,8 @@ function area(shape: Shape): number {
 
 ### Index Types
 
-Index types allow you to iterate through the keys of an object type, 
-providing a way to check types dynamically. They are particularly useful 
+Index types allow you to iterate through the keys of an object type,
+providing a way to check types dynamically. They are particularly useful
 when you want to map types:
 
 ```typescript
@@ -605,18 +608,18 @@ function getValue(key: string): string {
 
 ### Conditional Types
 
-Conditional types enable developers to express non-uniform type mappings 
-which rely on the condition expressed in a 
+Conditional types enable developers to express non-uniform type mappings
+which rely on the condition expressed in a
 `T extends U ? X : Y` form:
 
 ```typescript
-type IsString<T> = T extends string ? 'yes' : 'no';
+type IsString<T> = T extends string ? "yes" : "no";
 type A = IsString<string>; // 'yes'
 type B = IsString<number>; // 'no'
 ```
 
-These advanced types provide a robust mechanism for tailoring your 
-type definitions even further, allowing more refined control over what 
+These advanced types provide a robust mechanism for tailoring your
+type definitions even further, allowing more refined control over what
 is possible within your TypeScript applications.
 
 ## 10. TypeScript Module Augmentation
@@ -629,11 +632,11 @@ your code stays organized and manageable.
 ### When to Use Module Augmentation
 
 1. **Extending Existing Modules:** Add additional features or properties
-to methods within third-party libraries without altering the original
-source code.
+   to methods within third-party libraries without altering the original
+   source code.
 
 2. **Improving Library Typings:** Enhance or overwrite the typings of
-a module to better align with your specific use cases.
+   a module to better align with your specific use cases.
 
 ### How to Perform Module Augmentation
 
@@ -665,15 +668,15 @@ declare module "my-module" {
   export function farewell(name: string): string;
 }
 
-greet('John');
-farewell('John'); // After augmentation, can be added.
+greet("John");
+farewell("John"); // After augmentation, can be added.
 ```
 
 #### Important Notes
 
 - Ensure you have proper module paths when declaring a module to augment.
 - Be careful to avoid potential conflicts with the existing module
-declarations in your project.
+  declarations in your project.
 
 ### Conclusion
 
@@ -745,7 +748,7 @@ basic syntax for function overloading is:
 function add(a: number, b: number): number;
 function add(a: string, b: string): string;
 function add(a: any, b: any): any {
-    return a + b;
+  return a + b;
 }
 ```
 
@@ -760,13 +763,13 @@ values for parameters in functions. An optional parameter is specified
 with a `?`, and default parameters are assigned with an equal sign `=`.
 
 ```typescript
-function greet(name?: string, greeting: string = 'Hello') {
-    console.log(`${greeting}, ${name || 'Guest'}`);
+function greet(name?: string, greeting: string = "Hello") {
+  console.log(`${greeting}, ${name || "Guest"}`);
 }
 
-greet();           // Outputs: "Hello, Guest"
-greet('John');     // Outputs: "Hello, John"
-greet('Jane', 'Hi'); // Outputs: "Hi, Jane"
+greet(); // Outputs: "Hello, Guest"
+greet("John"); // Outputs: "Hello, John"
+greet("Jane", "Hi"); // Outputs: "Hi, Jane"
 ```
 
 Here, `name` is an optional parameter, and `greeting` has a default
@@ -780,10 +783,10 @@ that can work with multiple inputs.
 
 ```typescript
 function sum(...numbers: number[]): number {
-    return numbers.reduce((total, num) => total + num, 0);
+  return numbers.reduce((total, num) => total + num, 0);
 }
 
-console.log(sum(1, 2, 3));    // Outputs: 6
+console.log(sum(1, 2, 3)); // Outputs: 6
 console.log(sum(10, 20, 30, 40)); // Outputs: 100
 ```
 
@@ -835,7 +838,7 @@ interface Person {
 }
 
 // `PersonAge` is of type `number`
-type PersonAge = Person['age'];
+type PersonAge = Person["age"];
 ```
 
 #### Combining `keyof` with Lookup Types
@@ -851,7 +854,7 @@ function getProperty<T, K extends keyof T>(obj: T, key: K): T[K] {
 }
 
 const user = { id: 1, name: "Alice", email: "alice@example.com" };
-const userId = getProperty(user, 'id');  // Type `number`
+const userId = getProperty(user, "id"); // Type `number`
 ```
 
 ### Practical Use Case
@@ -877,22 +880,24 @@ expressions and helps in defining complex APIs.
 // Basic usage of template literal types
 
 // Define string literal types
- type World = "world";
+type World = "world";
 
 // Combine using template literals
- type Greeting = `Hello, ${World}`;
+type Greeting = `Hello, ${World}`;
 
 // A variable of type Greeting
- const greet: Greeting = "Hello, world";
+const greet: Greeting = "Hello, world";
 ```
 
 ### Features of Template Literal Types
 
 1. **Combination of Literal Types**:
+
    - You can combine existing string literal types to create new
      ones using template literals.
 
 2. **Dynamic String Construction**:
+
    - This allows more flexible and parameterized type creation.
 
 3. **Inference on Template Literals**:
@@ -912,13 +917,13 @@ expressions and helps in defining complex APIs.
 // Define a pattern-based type
 
 // Possible sizes of T-shirt
- type ShirtSize = "small" | "medium" | "large";
+type ShirtSize = "small" | "medium" | "large";
 
 // Construct a type for available shirts
- type AvailableShirt = `T-shirt-${ShirtSize}`;
+type AvailableShirt = `T-shirt-${ShirtSize}`;
 
 // Example usage
- const myShirt: AvailableShirt = "T-shirt-medium";
+const myShirt: AvailableShirt = "T-shirt-medium";
 ```
 
 In summary, template literal types extend TypeScript's capability
@@ -927,84 +932,85 @@ aiding in the creation of robust, type-safe code bases.
 
 ## 15. TypeScript Symbols
 
-In TypeScript, symbols are a unique and immutable data type that can be 
-used to create private-like properties within objects. They were 
-introduced in ECMAScript 6 (ES6) and act as unique identifiers for 
-object properties, ensuring no name collisions occur, even when used 
+In TypeScript, symbols are a unique and immutable data type that can be
+used to create private-like properties within objects. They were
+introduced in ECMAScript 6 (ES6) and act as unique identifiers for
+object properties, ensuring no name collisions occur, even when used
 across libraries and programs.
 
 Symbols are created using the `Symbol` function:
 
 ```typescript
-const mySymbol = Symbol('optional description');
+const mySymbol = Symbol("optional description");
 ```
 
 The description is optional and is only used for debugging purposes.
 
 ### Properties and Uses of Symbols
 
-1. **Uniqueness**: Each symbol is unique and different from any other 
-symbol, even if they have the same description.
+1.  **Uniqueness**: Each symbol is unique and different from any other
+    symbol, even if they have the same description.
 
-    ```typescript
-    Symbol('key') === Symbol('key'); // false
-    ```
+        ```typescript
+        Symbol('key') === Symbol('key'); // false
+        ```
 
-2. **Immutability**: Once a symbol is created, it's immutable. 
+2.  **Immutability**: Once a symbol is created, it's immutable.
 
-3. **As Object Keys**: Symbols can be used as keys for object 
-properties, which allows for non-string keys.
+3.  **As Object Keys**: Symbols can be used as keys for object
+    properties, which allows for non-string keys.
 
-    ```typescript
-    const obj = {
-      [mySymbol]: 'value',
-    };
-    console.log(obj[mySymbol]); // 'value'
-    ```
+        ```typescript
+        const obj = {
+          [mySymbol]: 'value',
+        };
+        console.log(obj[mySymbol]); // 'value'
+        ```
 
-Symbols are not enumerated in for-in or for-of loops, nor in 
-`Object.keys()`, `Object.getOwnPropertyNames()`, and similar methods. 
+Symbols are not enumerated in for-in or for-of loops, nor in
+`Object.keys()`, `Object.getOwnPropertyNames()`, and similar methods.
 However, they can be accessed using `Object.getOwnPropertySymbols()`
- or `Reflect.ownKeys()`.
+or `Reflect.ownKeys()`.
 
 ### Symbol.for() and Symbol.keyFor()
 
-TypeScript provides a way to create global symbols that are shared 
+TypeScript provides a way to create global symbols that are shared
 between files. This is achieved using `Symbol.for()` and `Symbol.keyFor()`.
 
-- **`Symbol.for(key: string)`**: Checks for the existence of a symbol with 
-a given key in the global symbol registry. If found, returns it; 
-otherwise, creates a new symbol.
+- **`Symbol.for(key: string)`**: Checks for the existence of a symbol with
+  a given key in the global symbol registry. If found, returns it;
+  otherwise, creates a new symbol.
 
-    ```typescript
-    const globalSymbol = Symbol.for('sharedKey');
-    const sameGlobalSymbol = Symbol.for('sharedKey');
-    console.log(globalSymbol === sameGlobalSymbol); // true
-    ```
+      ```typescript
+      const globalSymbol = Symbol.for('sharedKey');
+      const sameGlobalSymbol = Symbol.for('sharedKey');
+      console.log(globalSymbol === sameGlobalSymbol); // true
+      ```
 
-- **`Symbol.keyFor(symbol: symbol)`**: Returns the key associated with a 
-global symbol, provided it exists in the global symbol registry.
+- **`Symbol.keyFor(symbol: symbol)`**: Returns the key associated with a
+  global symbol, provided it exists in the global symbol registry.
 
-    ```typescript
-    const key = Symbol.keyFor(globalSymbol); // 'sharedKey'
-    ```
+      ```typescript
+      const key = Symbol.keyFor(globalSymbol); // 'sharedKey'
+      ```
 
 Symbols add a layer of assurance for property uniqueness and provide a
- mechansim to define non-enumerable properties on objects.
+mechansim to define non-enumerable properties on objects.
 
 ## 16. TypeScript Iterators and Generators
 
-Iterators and generators are important aspects of JavaScript that are 
-supported in TypeScript and allow you to iterate over data structures 
-like arrays, maps, and sets. They provide more control over the 
-iteration process, and understanding them is essential for more 
+Iterators and generators are important aspects of JavaScript that are
+supported in TypeScript and allow you to iterate over data structures
+like arrays, maps, and sets. They provide more control over the
+iteration process, and understanding them is essential for more
 advanced TypeScript development.
 
 ### Iterators
-An iterator is an object which defines a sequence and potentially a 
-return value upon its termination. An iterator implements a `next` 
-method which returns an object with properties: `value` and `done`. 
-The `value` property is the value yielded by the iterator and `done` 
+
+An iterator is an object which defines a sequence and potentially a
+return value upon its termination. An iterator implements a `next`
+method which returns an object with properties: `value` and `done`.
+The `value` property is the value yielded by the iterator and `done`
 is a boolean flag indicating whether the iteration is done.
 
 ```typescript
@@ -1013,11 +1019,11 @@ type IterableType = number[];
 function makeIterator(array: IterableType) {
   let nextIndex = 0;
   return {
-    next: function() {
-      return nextIndex < array.length ?
-        { value: array[nextIndex++], done: false } :
-        { value: undefined, done: true };
-    }
+    next: function () {
+      return nextIndex < array.length
+        ? { value: array[nextIndex++], done: false }
+        : { value: undefined, done: true };
+    },
   };
 }
 
@@ -1029,9 +1035,10 @@ console.log(it.next().value); // 3
 ```
 
 ### Generators
-Generators simplify the creation of iterables. A generator is a 
-special type of function that can pause execution and resume at a 
-later point. Generators are defined using the function* syntax.
+
+Generators simplify the creation of iterables. A generator is a
+special type of function that can pause execution and resume at a
+later point. Generators are defined using the function\* syntax.
 
 ```typescript
 function* generatorFunction(): IterableIterator<number> {
@@ -1047,13 +1054,14 @@ console.log(generator.next().value); // 3
 ```
 
 #### Key Points
-- Use generators for cleaner and more expressive code when creating 
-iterables.
+
+- Use generators for cleaner and more expressive code when creating
+  iterables.
 - Generators can maintain state between subsequent calls.
 
-Understanding and using iterators and generators allows for creating 
-more efficient and readable code. Combined with TypeScript's type 
-system, you can have type-safe iterators and generators for a more 
+Understanding and using iterators and generators allows for creating
+more efficient and readable code. Combined with TypeScript's type
+system, you can have type-safe iterators and generators for a more
 robust application design.
 
 ## 17. TypeScript JSX and React
@@ -1198,16 +1206,18 @@ class SmartObject implements Disposable, Activatable {
   deactivate: () => void;
 
   constructor() {
-    setInterval(() => console.log(this.isActive + ' : ' + this.isDisposed),
-      500);
+    setInterval(
+      () => console.log(this.isActive + " : " + this.isDisposed),
+      500,
+    );
   }
 }
 
 applyMixins(SmartObject, [Disposable, Activatable]);
 
 function applyMixins(derivedCtor: any, baseCtors: any[]) {
-  baseCtors.forEach(baseCtor => {
-    Object.getOwnPropertyNames(baseCtor.prototype).forEach(name => {
+  baseCtors.forEach((baseCtor) => {
+    Object.getOwnPropertyNames(baseCtor.prototype).forEach((name) => {
       derivedCtor.prototype[name] = baseCtor.prototype[name];
     });
   });
@@ -1221,10 +1231,10 @@ the behaviors of both `Disposable` and `Activatable` using the
 ### Limitations
 
 1. **Name Collisions**: Methods or properties with the same names can
-lead to conflicts.
+   lead to conflicts.
 2. **Design Complexity**: Using mixins can sometimes make the codebase
-harder to follow, as the relationships between classes might not be
-self-evident.
+   harder to follow, as the relationships between classes might not be
+   self-evident.
 
 ### Conclusion
 
@@ -1260,7 +1270,7 @@ While it's part of ECMAScript, it offers a reflection-oriented approach:
 ```typescript
 class Example {
   greet() {
-    console.log('Hello World');
+    console.log("Hello World");
   }
 }
 
@@ -1274,16 +1284,18 @@ TypeScript's `reflect-metadata` library allows capturing metadata about
 entities such as classes and methods.
 
 1. **Install the library:**
+
    ```bash
    npm install reflect-metadata --save
    ```
 
 2. **Usage:**
+
    ```typescript
-   import 'reflect-metadata';
+   import "reflect-metadata";
 
    function logType(target: any, key: string) {
-     const type = Reflect.getMetadata('design:type', target, key);
+     const type = Reflect.getMetadata("design:type", target, key);
      console.log(`Type of ${key} is ${type.name}`);
    }
 
@@ -1292,6 +1304,7 @@ entities such as classes and methods.
      someValue: string;
    }
    ```
+
    This captures and logs the type metadata of class properties.
 
 #### Limitations and Considerations
@@ -1324,7 +1337,7 @@ TypeScript installed. You can access the APIs via the `typescript` module
 by importing `typescript` in your JavaScript/TypeScript file:
 
 ```typescript
-import * as ts from 'typescript';
+import * as ts from "typescript";
 ```
 
 With the `typescript` module imported, you're ready to use its various
@@ -1361,14 +1374,14 @@ you encounter them.
 
 ```typescript
 function visit(node: ts.Node) {
- if (ts.isFunctionDeclaration(node)) {
- console.log(`Function name: ${node.name?.text}`);
- }
- ts.forEachChild(node, visit);
+  if (ts.isFunctionDeclaration(node)) {
+    console.log(`Function name: ${node.name?.text}`);
+  }
+  ts.forEachChild(node, visit);
 }
 
 if (sourceFile) {
- visit(sourceFile);
+  visit(sourceFile);
 }
 ```
 
@@ -1383,15 +1396,15 @@ example of a transformation that renames all identifiers with the name
 
 ```typescript
 function transformer<T extends ts.Node>() {
- return (context: ts.TransformationContext) => {
- const visit: ts.Visitor = (node) => {
- if (ts.isIdentifier(node) && node.text === "oldName") {
- return ts.createIdentifier("newName");
- }
- return ts.visitEachChild(node, visit, context);
- };
- return (node: T) => ts.visitNode(node, visit);
- };
+  return (context: ts.TransformationContext) => {
+    const visit: ts.Visitor = (node) => {
+      if (ts.isIdentifier(node) && node.text === "oldName") {
+        return ts.createIdentifier("newName");
+      }
+      return ts.visitEachChild(node, visit, context);
+    };
+    return (node: T) => ts.visitNode(node, visit);
+  };
 }
 
 const result = ts.transform(sourceFile, [transformer()]);

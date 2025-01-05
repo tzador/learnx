@@ -67,7 +67,7 @@ Functional updates are helpful in such cases:
 
 ```jsx
 const [count, setCount] = useState(0);
-setCount(prevCount => prevCount + 1);
+setCount((prevCount) => prevCount + 1);
 ```
 
 ### useEffect with Cleanup
@@ -78,7 +78,7 @@ It can also handle cleanup by returning a function:
 ```jsx
 useEffect(() => {
   const handle = setInterval(() => {
-    console.log('Tick');
+    console.log("Tick");
   }, 1000);
   return () => clearInterval(handle);
 }, []); // Cleanup on component unmount
@@ -94,7 +94,7 @@ function useFetch(url) {
   const [data, setData] = useState(null);
   useEffect(() => {
     fetch(url)
-      .then(response => response.json())
+      .then((response) => response.json())
       .then(setData);
   }, [url]);
   return data;
@@ -134,19 +134,19 @@ and reusable code.
 
 ## 03. State Management with Context API
 
-In modern React applications, state management becomes more complex as the 
-application grows. While React's built-in state is excellent for managing 
-local component state, it can be cumbersome for application-wide state 
+In modern React applications, state management becomes more complex as the
+application grows. While React's built-in state is excellent for managing
+local component state, it can be cumbersome for application-wide state
 management. This is where the Context API comes in handy.
 
-The Context API is a feature that provides a way to pass data through the 
-component tree without having to pass props down manually at every level. It 
+The Context API is a feature that provides a way to pass data through the
+component tree without having to pass props down manually at every level. It
 ellows you to manage global state in a more manageable and scalable way.
 
 ### Creating Context
 
-To create a context, you begin by calling `React.createContext()`, which 
-returns a context object. This object has a `Provider` and `Consumer` 
+To create a context, you begin by calling `React.createContext()`, which
+returns a context object. This object has a `Provider` and `Consumer`
 component directly linked to it.
 
 ```javascript
@@ -156,8 +156,8 @@ const MyContext = React.createContext();
 
 ### Providing Context
 
-The `Provider` component allows consuming components to subscribe to context 
-changes. To set up a context provider, wrap the parent component's JSX where 
+The `Provider` component allows consuming components to subscribe to context
+changes. To set up a context provider, wrap the parent component's JSX where
 the context needs to be available.
 
 ```javascript
@@ -172,16 +172,16 @@ function App() {
 
 ### Consuming Context
 
-Components at any level can subscribe to context updates using the `Consumer` 
+Components at any level can subscribe to context updates using the `Consumer`
 component or the `useContext` hook.
 
 #### Using `useContext`
 
-`useContext` is the more modern and preferred way to consume context in 
+`useContext` is the more modern and preferred way to consume context in
 function components.
 
 ```javascript
-import { useContext } from 'react';
+import { useContext } from "react";
 
 function ChildComponent() {
   const value = useContext(MyContext);
@@ -189,8 +189,8 @@ function ChildComponent() {
 }
 ```
 
-This tool is particularly useful in avoiding prop drilling and simplifying 
-the state management process by providing a single point of truth for a 
+This tool is particularly useful in avoiding prop drilling and simplifying
+the state management process by providing a single point of truth for a
 particular part of the state shared across various components.
 
 ## 04. Performance Optimization in React
@@ -225,7 +225,7 @@ resolve bottlenecks.
 
 React Developer Tools offer a Profiler tab that helps in identifying
 performance issues. Use it to:
-  
+
 - Measure the time taken by components to render.
 - Identify components that render more often than necessary.
 - Track component rendering and commit phases.
@@ -235,22 +235,22 @@ significant improvements in performance for React applications.
 
 ## 05. Code Splitting and Lazy Loading
 
-Code splitting is a powerful technique to optimize React applications. 
-By breaking up the code into smaller chunks, we can load them 
-only when they are needed, reducing the initial load time of an 
+Code splitting is a powerful technique to optimize React applications.
+By breaking up the code into smaller chunks, we can load them
+only when they are needed, reducing the initial load time of an
 application.
 
-React provides a simple API to achieve code splitting with the 
-`React.lazy` function. By wrapping a component with `React.lazy`, 
-it becomes a promise that resolves only when the component 
+React provides a simple API to achieve code splitting with the
+`React.lazy` function. By wrapping a component with `React.lazy`,
+it becomes a promise that resolves only when the component
 is required.
 
-A typical use case of lazy loading is with components that are 
-not visible at the start, like modal dialogs or routes which are 
+A typical use case of lazy loading is with components that are
+not visible at the start, like modal dialogs or routes which are
 not initially rendered.
 
 ```jsx
-const MyComponent = React.lazy(() => import('./MyComponent'));
+const MyComponent = React.lazy(() => import("./MyComponent"));
 
 function App() {
   return (
@@ -261,23 +261,23 @@ function App() {
 }
 ```
 
-In this example, `MyComponent` is loaded only when it is rendered, 
+In this example, `MyComponent` is loaded only when it is rendered,
 improving load time and performance for the user.
 
-Code splitting is typically managed alongside module bundlers 
-like Webpack, Rollup, or Parcel. Ensure your bundler is set up 
+Code splitting is typically managed alongside module bundlers
+like Webpack, Rollup, or Parcel. Ensure your bundler is set up
 correctly to understand dynamic imports.
 
 ### Benefits of Code Splitting
 
-- **Reduced load time**: Only load what's necessary for the initial 
-render.
+- **Reduced load time**: Only load what's necessary for the initial
+  render.
 - **Better user experience**: Less waiting, more interaction.
-- **Optimized performance**: Load chunks as they're needed, not 
-all at once.
+- **Optimized performance**: Load chunks as they're needed, not
+  all at once.
 
-For large applications, implementing code splitting and lazy 
-loading is essential in creating responsive, high-performance web 
+For large applications, implementing code splitting and lazy
+loading is essential in creating responsive, high-performance web
 applications.
 
 ## 06. Advanced Component Patterns
@@ -298,7 +298,7 @@ class DataProvider extends React.Component {
   state = { data: null };
 
   componentDidMount() {
-    fetchSomeData().then(data => this.setState({ data }));
+    fetchSomeData().then((data) => this.setState({ data }));
   }
 
   render() {
@@ -322,7 +322,7 @@ function withUserData(WrappedComponent) {
     state = { user: null };
 
     componentDidMount() {
-      fetchUserData().then(user => this.setState({ user }));
+      fetchUserData().then((user) => this.setState({ user }));
     }
 
     render() {
@@ -343,11 +343,9 @@ child components that reside within it.
 
 ```jsx
 class Toggle extends React.Component {
-  static On = ({children}) => this.props.on ? children : null;
-  static Off = ({children}) => this.props.off ? children : null;
-  static Button = ({toggle}) => (
-    <button onClick={toggle}>Toggle</button>
-  );
+  static On = ({ children }) => (this.props.on ? children : null);
+  static Off = ({ children }) => (this.props.off ? children : null);
+  static Button = ({ toggle }) => <button onClick={toggle}>Toggle</button>;
 }
 
 // Usage
@@ -355,7 +353,7 @@ class Toggle extends React.Component {
   <Toggle.On>Button is ON</Toggle.On>
   <Toggle.Off>Button is OFF</Toggle.Off>
   <Toggle.Button />
-</Toggle>
+</Toggle>;
 ```
 
 The `Toggle` component defines its children (`On`, `Off`, `Button`) to provide a
@@ -389,7 +387,7 @@ npm install prop-types
 Example usage:
 
 ```javascript
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 function MyComponent({ name, age }) {
   return (
@@ -467,45 +465,48 @@ smaller or existing codebases without any initial setup.
 
 ## 08. Server-Side Rendering with React
 
-Server-side rendering (SSR) is a powerful technique in React that allows 
-you to render components on the server, sending fully rendered HTML to 
-the client. This can improve the performance of your application by 
-allowing users to see quickly rendered pages while JS loads in the 
+Server-side rendering (SSR) is a powerful technique in React that allows
+you to render components on the server, sending fully rendered HTML to
+the client. This can improve the performance of your application by
+allowing users to see quickly rendered pages while JS loads in the
 background.
 
 ### Benefits of SSR
-- **Improved Performance**: Reduces the time to interactive (TTI) for 
-better user experience.
-- **Search Engine Optimization**: Pre-rendered HTML can be parsed by 
-search engines more easily.
-- **Social Sharing**: Better support for social media bots that extract 
-content for previews.
+
+- **Improved Performance**: Reduces the time to interactive (TTI) for
+  better user experience.
+- **Search Engine Optimization**: Pre-rendered HTML can be parsed by
+  search engines more easily.
+- **Social Sharing**: Better support for social media bots that extract
+  content for previews.
 
 ### Implementing SSR in React
-Implementing SSR involves: 
 
-1. **Setting Up the Server**: Use Node.js to create a server process 
-that will handle HTTP requests and render the React components.
+Implementing SSR involves:
 
-2. **Rendering to String**: Use `ReactDOMServer.renderToString()` for 
-rendering components to an HTML string on the server.
+1. **Setting Up the Server**: Use Node.js to create a server process
+   that will handle HTTP requests and render the React components.
 
-3. **Sending the HTML**: Serve the generated HTML along with the JavaScript 
-bundle.
+2. **Rendering to String**: Use `ReactDOMServer.renderToString()` for
+   rendering components to an HTML string on the server.
 
-4. **Hydration**: On the client, "hydrate" the HTML content into a fully 
-interactive React app using `ReactDOM.hydrate()`.
+3. **Sending the HTML**: Serve the generated HTML along with the JavaScript
+   bundle.
+
+4. **Hydration**: On the client, "hydrate" the HTML content into a fully
+   interactive React app using `ReactDOM.hydrate()`.
 
 ### Example
+
 ```javascript
-import express from 'express';
-import React from 'react';
-import ReactDOMServer from 'react-dom/server';
-import App from './App';
+import express from "express";
+import React from "react";
+import ReactDOMServer from "react-dom/server";
+import App from "./App";
 
 const server = express();
 
-server.get('*', (req, res) => {
+server.get("*", (req, res) => {
   const content = ReactDOMServer.renderToString(<App />);
   res.send(`
     <html>
@@ -521,24 +522,24 @@ server.get('*', (req, res) => {
 });
 
 server.listen(3000, () => {
-  console.log('Server is running on port 3000');
+  console.log("Server is running on port 3000");
 });
 ```
 
 ### Challenges
 
-- **Complexity**: SSR adds complexity to your setup and requires server 
-configuration.
+- **Complexity**: SSR adds complexity to your setup and requires server
+  configuration.
 
-- **Handling State**: Passing initial state from the server to the client 
-efficiently can be challenging.
+- **Handling State**: Passing initial state from the server to the client
+  efficiently can be challenging.
 
-- **Third-party Libraries**: Not all libraries are SSR-friendly, requiring 
-careful selection and testing.
+- **Third-party Libraries**: Not all libraries are SSR-friendly, requiring
+  careful selection and testing.
 
-In summary, employing server-side rendering in your React applications 
-can greatly enhance performance and SEO. It does bring additional 
-challenges, but the benefits often outweigh them, especially for 
+In summary, employing server-side rendering in your React applications
+can greatly enhance performance and SEO. It does bring additional
+challenges, but the benefits often outweigh them, especially for
 content-heavy applications.
 
 ## 09. Error Boundaries in React
@@ -547,13 +548,13 @@ Error boundaries are a crucial feature in React that allow you to handle
 errors in components gracefully. Unlike try/catch blocks, error boundaries
 work with React component tree rendering, making them perfectly suited for
 dealing with errors that occur during rendering, in lifecycle methods, and
-in constructors of the whole tree below them. 
+in constructors of the whole tree below them.
 
 ### What are Error Boundaries?
 
 An error boundary is a React component that catches JavaScript errors in
 its child component tree, logs those errors, and displays a fallback UI
-instead of crashing the entire component tree. 
+instead of crashing the entire component tree.
 
 ### Implementing Error Boundaries
 
@@ -562,7 +563,7 @@ or both of the lifecycle methods: `componentDidCatch` and
 `static getDerivedStateFromError`. Here's a simple example:
 
 ```javascript
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class ErrorBoundary extends Component {
   constructor(props) {
@@ -586,7 +587,7 @@ class ErrorBoundary extends Component {
       return <h1>Something went wrong.</h1>;
     }
 
-    return this.props.children; 
+    return this.props.children;
   }
 }
 ```
@@ -609,18 +610,18 @@ You must use a try/catch block in such cases.
 
 ## 10. Advanced Routing Techniques
 
-In advanced React applications, routing becomes a crucial part of managing 
-navigation and user experience. With libraries like React Router, you can 
+In advanced React applications, routing becomes a crucial part of managing
+navigation and user experience. With libraries like React Router, you can
 implement complex routing logic.
 
 #### Nested Routes
 
-Nested routes allow you to create layouts where your parent route serves as 
-an outline, and nested routes render more specific components. This creates a 
+Nested routes allow you to create layouts where your parent route serves as
+an outline, and nested routes render more specific components. This creates a
 SPA experience with shared component functionality.
 
 ```jsx
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 const App = () => {
   return (
@@ -639,12 +640,12 @@ const App = () => {
 
 #### Dynamic Routing
 
-Dynamic routes use parameters to render components based on the current 
-path like `/user/:userId`. React Router provides `useParams` hook to 
+Dynamic routes use parameters to render components based on the current
+path like `/user/:userId`. React Router provides `useParams` hook to
 retrieve parameters.
 
 ```jsx
-import { useParams } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 
 const UserProfile = () => {
   const { userId } = useParams();
@@ -654,26 +655,22 @@ const UserProfile = () => {
 
 #### Route Guards and Redirects
 
-You may need to protect routes or redirect users based on authentication. 
-This can be achieved with custom route components that check for auth 
+You may need to protect routes or redirect users based on authentication.
+This can be achieved with custom route components that check for auth
 before rendering.
 
 ```jsx
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
-    render={props =>
-      isAuthenticated ? (
-        <Component {...props} />
-      ) : (
-        <Redirect to="/login" />
-      )
+    render={(props) =>
+      isAuthenticated ? <Component {...props} /> : <Redirect to="/login" />
     }
   />
 );
 ```
 
-These techniques enhance the user experience and security of advanced React 
+These techniques enhance the user experience and security of advanced React
 applications effectively.
 
 ## 11. React Refs and the DOM
@@ -689,7 +686,7 @@ React provides a `createRef()` method to create a ref. A ref can
 then be attached to React elements via the `ref` attribute.
 
 ```jsx
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class MyComponent extends Component {
   constructor(props) {
@@ -755,19 +752,19 @@ fall short.
 
 ## 12. Custom Hooks
 
-React hooks have enabled functional components to manage state and side 
-effects efficiently. However, with growing applications, we often find 
-ourselves repeating code. This is where custom hooks shine, allowing us 
-to extract logic into reusable JavaScript functions. 
+React hooks have enabled functional components to manage state and side
+effects efficiently. However, with growing applications, we often find
+ourselves repeating code. This is where custom hooks shine, allowing us
+to extract logic into reusable JavaScript functions.
 
 ### Understanding Custom Hooks
 
-Custom hooks are JavaScript functions that call other hooks, e.g., 
-`useState`, `useEffect`, or even other custom hooks. They adhere to 
-the same rules as React's built-in hooks, such as not calling hooks 
+Custom hooks are JavaScript functions that call other hooks, e.g.,
+`useState`, `useEffect`, or even other custom hooks. They adhere to
+the same rules as React's built-in hooks, such as not calling hooks
 conditionally.
 
-A custom hook's name should always start with "use" to indicate it 
+A custom hook's name should always start with "use" to indicate it
 utilizes React hooks.
 
 ### Creating a Custom Hook
@@ -775,26 +772,26 @@ utilizes React hooks.
 Here's a simple example to fetch data:
 
 ```javascript
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 function useFetch(url) {
- const [data, setData] = useState(null);
- const [loading, setLoading] = useState(true);
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
 
- useEffect(() => {
-   fetch(url)
-     .then(response => response.json())
-     .then(json => {
-       setData(json);
-       setLoading(false);
-     });
- }, [url]);
+  useEffect(() => {
+    fetch(url)
+      .then((response) => response.json())
+      .then((json) => {
+        setData(json);
+        setLoading(false);
+      });
+  }, [url]);
 
- return { data, loading };
+  return { data, loading };
 }
 ```
 
-This `useFetch` hook can be used in any component to fetch data 
+This `useFetch` hook can be used in any component to fetch data
 and manage loading state.
 
 ### Advantages of Custom Hooks
@@ -803,20 +800,20 @@ and manage loading state.
 2. **Simplification:** Separate complex logic out of components.
 3. **Testing:** Provide an easy way to test isolated logic.
 
-Custom hooks enhance code maintainability and readability, allowing for 
-better-organized projects. By leveraging custom hooks, teams can develop 
-consistently and efficiently with less code duplication and more 
-focused components. 
+Custom hooks enhance code maintainability and readability, allowing for
+better-organized projects. By leveraging custom hooks, teams can develop
+consistently and efficiently with less code duplication and more
+focused components.
 
-Custom hooks are a pivotal part of building scalable and maintainable 
+Custom hooks are a pivotal part of building scalable and maintainable
 React applications, enabling developers to abstract away complexities
-and focus on UI concerns. 
+and focus on UI concerns.
 
 ## 13. Testing in React Applications
 
-Testing is a crucial aspect of modern web development, ensuring that 
-applications behave as expected and continue to work over time. React 
-applications benefit from a wide array of tools and libraries specifically 
+Testing is a crucial aspect of modern web development, ensuring that
+applications behave as expected and continue to work over time. React
+applications benefit from a wide array of tools and libraries specifically
 designed to make the testing process easier and more effective.
 
 ### Types of Tests
@@ -829,15 +826,15 @@ There are several types of tests typically used in React applications:
 
 ### Tools for Testing React
 
-- **Jest**: A powerful testing framework that works with any JavaScript 
-project. It includes a test runner, assertion library, and built-in mocking 
-capabilities.
+- **Jest**: A powerful testing framework that works with any JavaScript
+  project. It includes a test runner, assertion library, and built-in mocking
+  capabilities.
 
 - **React Testing Library**: A popular library for testing React components
-that encourages testing from the user's perspective.
+  that encourages testing from the user's perspective.
 
 - **Enzyme**: A testing utility for React that makes it easier to assert,
-manipulate, and traverse React components.
+  manipulate, and traverse React components.
 
 ### Writing Your First Test with React Testing Library
 
@@ -850,65 +847,65 @@ npm install --save-dev @testing-library/react
 Here's a basic example of a test for a React component:
 
 ```javascript
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render, screen } from "@testing-library/react";
+import App from "./App";
 
-test('renders the correct heading', () => {
+test("renders the correct heading", () => {
   render(<App />);
   const heading = screen.getByText(/hello, world!/i);
   expect(heading).toBeInTheDocument();
 });
 ```
 
-In this test, we render the `App` component and check whether the text 
-"Hello, World!" is present in the document. The use of `getByText` allows us 
+In this test, we render the `App` component and check whether the text
+"Hello, World!" is present in the document. The use of `getByText` allows us
 to find the element by its text content.
 
 ### Conclusion
 
 Testing your React applications helps ensure they are robust and maintainable.
 Using tools like Jest and React Testing Library, you can write tests that catch
-bugs early, improve code quality, and provide a more confident development 
+bugs early, improve code quality, and provide a more confident development
 experience.
 
 ## 14. React and Immutable Data Structures
 
-When developing React applications, having a clear understanding of data 
-immutability becomes crucial. Immutable data structures are those that, 
-once created, cannot be changed. If you need to alter the data, a new 
+When developing React applications, having a clear understanding of data
+immutability becomes crucial. Immutable data structures are those that,
+once created, cannot be changed. If you need to alter the data, a new
 data structure is created with the changes applied.
 
 ### Why Immutability?
 
-1. **Predictability:** With immutable data, your application can be more 
-predictable because the data does not change unexpectedly.
+1. **Predictability:** With immutable data, your application can be more
+   predictable because the data does not change unexpectedly.
 
-2. **Reusability:** It enhances the reusability of components by ensuring 
-that props and state stay consistent.
+2. **Reusability:** It enhances the reusability of components by ensuring
+   that props and state stay consistent.
 
-3. **Performance:** Immutability helps in optimizing React's rendering 
-performance as it simplifies the process of detecting changes.
+3. **Performance:** Immutability helps in optimizing React's rendering
+   performance as it simplifies the process of detecting changes.
 
-4. **Debugging:** Immutable data simplifies the debugging process, making 
-it easier to trace where changes occurred.
+4. **Debugging:** Immutable data simplifies the debugging process, making
+   it easier to trace where changes occurred.
 
 ### Implementing Immutability
 
 #### Using Libraries
 
-- **Immutable.js:** A popular library providing persistent immutable data 
-collections.
+- **Immutable.js:** A popular library providing persistent immutable data
+  collections.
 
-- **Immer:** A library that makes immutability easier with minimal syntax 
-and allows you to work with 'draft' states.
+- **Immer:** A library that makes immutability easier with minimal syntax
+  and allows you to work with 'draft' states.
 
 #### Native JavaScript Methods
 
-- **Object.assign():** It's a method used to create shallow copies of 
-objects.
+- **Object.assign():** It's a method used to create shallow copies of
+  objects.
 
-- **Spread Operator:** Use `...` to clone arrays and objects, but 
-remember it performs only a shallow copy.
+- **Spread Operator:** Use `...` to clone arrays and objects, but
+  remember it performs only a shallow copy.
 
 #### Example
 
@@ -918,47 +915,47 @@ const originalArray = [1, 2, 3];
 const newArray = [...originalArray, 4];
 
 // Using Object.assign
-const originalObject = { key: 'value' };
-const newObject = Object.assign({}, originalObject, { anotherKey: 'newValue' });
+const originalObject = { key: "value" };
+const newObject = Object.assign({}, originalObject, { anotherKey: "newValue" });
 ```
 
-Adopting immutability can significantly enhance your ability to build 
-robust and efficient React applications by preventing unexpected side 
-effects and improving rendering performance. Understanding how to work 
-with immutable data structures is a key element in advanced React 
-development. 
+Adopting immutability can significantly enhance your ability to build
+robust and efficient React applications by preventing unexpected side
+effects and improving rendering performance. Understanding how to work
+with immutable data structures is a key element in advanced React
+development.
 
 ## 15. React Concurrent Mode
 
-Concurrent Mode is an advanced feature in React that helps in improving 
-the user experience by allowing React to work on multiple tasks 
-simultaneously. It makes React applications more responsive by 
-breaking tasks into smaller units and prioritizing them based on their 
-necessity, which keeps the user interface smooth even when the app is 
+Concurrent Mode is an advanced feature in React that helps in improving
+the user experience by allowing React to work on multiple tasks
+simultaneously. It makes React applications more responsive by
+breaking tasks into smaller units and prioritizing them based on their
+necessity, which keeps the user interface smooth even when the app is
 handling complex tasks.
 
 ### Features of Concurrent Mode
 
-- **Time Slicing**: Instead of executing large tasks all at once, React 
-breaks them into small chunks to work on them concurrently with user 
-interactions. This prevents the UI from freezing during heavy 
-operations.
+- **Time Slicing**: Instead of executing large tasks all at once, React
+  breaks them into small chunks to work on them concurrently with user
+  interactions. This prevents the UI from freezing during heavy
+  operations.
 
-- **Suspense for Data Fetching**: Suspense is a powerful asynchronous 
-UI pattern that lets components wait for something before rendering. 
-It is particularly useful in Concurrent Mode for addressing complex 
-data-fetching scenarios.
+- **Suspense for Data Fetching**: Suspense is a powerful asynchronous
+  UI pattern that lets components wait for something before rendering.
+  It is particularly useful in Concurrent Mode for addressing complex
+  data-fetching scenarios.
 
 ### Enabling Concurrent Mode
 
-Concurrent Mode is still experimental, and enabling it requires changes 
+Concurrent Mode is still experimental, and enabling it requires changes
 in your `index.js` or equivalent file:
 
 ```javascript
-import ReactDOM from 'react-dom';
+import ReactDOM from "react-dom";
 
 // Enable concurrent features
-ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
 ```
 
 Notice that `ReactDOM.createRoot` is used instead of `ReactDOM.render`.
@@ -971,13 +968,13 @@ Concurrent Mode is especially beneficial in:
 - Applications that need to remain responsive during large computations.
 - Scenarios involving heavy data fetching and related transitions.
 
-While Concurrent Mode is still experimental, it lays the groundwork for 
-future improvements in React's ability to build highly performant and 
+While Concurrent Mode is still experimental, it lays the groundwork for
+future improvements in React's ability to build highly performant and
 responsive user interfaces.
 
-Concurrent Mode might not be production-ready yet as of October 2023, 
-but it's a powerful tool for exploring new paradigms in React 
-development. It requires cautious experimentation especially in apps 
+Concurrent Mode might not be production-ready yet as of October 2023,
+but it's a powerful tool for exploring new paradigms in React
+development. It requires cautious experimentation especially in apps
 already running in production.
 
 ## 16. Advanced Animations in React
@@ -1001,11 +998,7 @@ By defining styles for these classes in your CSS, you can achieve
 animations in a declarative way.
 
 ```jsx
-<CSSTransition
-  in={showElement}
-  timeout={300}
-  classNames="fade"
->
+<CSSTransition in={showElement} timeout={300} classNames="fade">
   <div className="fade">Animated Element</div>
 </CSSTransition>
 ```
@@ -1031,7 +1024,7 @@ them.
 ```jsx
 const props = useSpring({ opacity: 1, from: { opacity: 0 } });
 
-return <animated.div style={props}>I will fade in</animated.div>
+return <animated.div style={props}>I will fade in</animated.div>;
 ```
 
 ### Keyframe Animations
@@ -1041,7 +1034,7 @@ animation sequence. `styled-components` and `Emotion` are libraries
 that work well with keyframes in React.
 
 ```jsx
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes } from "styled-components";
 
 const fadeIn = keyframes`
   from { opacity: 0; }
@@ -1067,7 +1060,7 @@ architecture for building scalable and performant web applications.
 - **Efficient Data Fetching**: Only fetch the specific data requested,
   reducing over-fetching resources.
 - **Flexibility**: Query syntax allows high customization without changing
-the server code.
+  the server code.
 - **Dynamic Queries**: Modify queries client-side as requirements change.
 
 ### Setting up GraphQL with React
@@ -1088,11 +1081,11 @@ npm install @apollo/client graphql
 Set up Apollo Client to connect to your GraphQL endpoint.
 
 ```javascript
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 
 const client = new ApolloClient({
-  uri: 'https://your-graphql-endpoint.com/graphql',
-  cache: new InMemoryCache()
+  uri: "https://your-graphql-endpoint.com/graphql",
+  cache: new InMemoryCache(),
 });
 ```
 
@@ -1101,14 +1094,14 @@ const client = new ApolloClient({
 Wrap your React application with ApolloProvider at the root level.
 
 ```javascript
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
 
 ReactDOM.render(
   <ApolloProvider client={client}>
     <App />
   </ApolloProvider>,
-  document.getElementById('root')
+  document.getElementById("root"),
 );
 ```
 
@@ -1118,8 +1111,8 @@ Use the `useQuery` hook from Apollo Client to execute queries in your
 components.
 
 ```javascript
-import React from 'react';
-import { useQuery, gql } from '@apollo/client';
+import React from "react";
+import { useQuery, gql } from "@apollo/client";
 
 const GET_DATA = gql`
   query getData {
@@ -1267,6 +1260,7 @@ state changes. This approach enhances code predictability and reduces
 bugs related to unpredictable state changes.
 
 #### Benefits of using State Machines:
+
 - Predictable and controlled state transitions
 - Enhanced debugability and testing
 - Model state flows visually
@@ -1277,32 +1271,32 @@ Using XState in React requires understanding its core concepts: states,
 events, and transitions. Here's a basic example of integrating XState:
 
 1. **Define Machine Configuration:** Create a schema of states and
-events.
+   events.
 
    ```javascript
-   import { Machine } from 'xstate';
+   import { Machine } from "xstate";
 
    const toggleMachine = Machine({
-     id: 'toggle',
-     initial: 'inactive',
+     id: "toggle",
+     initial: "inactive",
      states: {
-       inactive: { on: { TOGGLE: 'active' } },
-       active: { on: { TOGGLE: 'inactive' } }
-     }
+       inactive: { on: { TOGGLE: "active" } },
+       active: { on: { TOGGLE: "inactive" } },
+     },
    });
    ```
 
 2. **Use the Machine in React:** Hook the machine into a React component
-using useMachine from the @xstate/react library.
+   using useMachine from the @xstate/react library.
 
    ```javascript
-   import { useMachine } from '@xstate/react';
+   import { useMachine } from "@xstate/react";
 
    function Toggle() {
      const [state, send] = useMachine(toggleMachine);
      return (
-       <button onClick={() => send('TOGGLE')}>
-         {state.matches('inactive') ? 'Turn on' : 'Turn off'}
+       <button onClick={() => send("TOGGLE")}>
+         {state.matches("inactive") ? "Turn on" : "Turn off"}
        </button>
      );
    }

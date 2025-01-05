@@ -51,45 +51,45 @@ can enhance your API development process!
 
 ## 02. Understanding the Basics of GraphQL
 
-GraphQL is a query language for APIs and a runtime for executing those queries 
-by using a type system you define for your data. It was developed by Facebook 
+GraphQL is a query language for APIs and a runtime for executing those queries
+by using a type system you define for your data. It was developed by Facebook
 in 2012 and released as an open-source project in 2015.
 
-GraphQL allows clients to request the exact structure of data they need, which 
-reduces the amount of data transferred over the network. This is particularly 
+GraphQL allows clients to request the exact structure of data they need, which
+reduces the amount of data transferred over the network. This is particularly
 useful for mobile applications where bandwidth might be limited.
 
 ### Key Concepts
 
 #### 1. Schema
 
-A GraphQL schema is at the heart of any GraphQL server implementation. It 
-defines the types and structure of the data that you can query. The schema is 
+A GraphQL schema is at the heart of any GraphQL server implementation. It
+defines the types and structure of the data that you can query. The schema is
 written in a special language called the Schema Definition Language (SDL).
 
 #### 2. Types
 
-Types in GraphQL define which kind of object you can query. Common types include 
-`Int`, `Float`, `String`, `Boolean`, `ID`, and custom object types. You can also 
+Types in GraphQL define which kind of object you can query. Common types include
+`Int`, `Float`, `String`, `Boolean`, `ID`, and custom object types. You can also
 create lists and use non-nullable types.
 
 #### 3. Queries
 
-A query is a read-only operation that allows the client to request specific 
-data from the server. The structure of the query mirrors the shape of the 
+A query is a read-only operation that allows the client to request specific
+data from the server. The structure of the query mirrors the shape of the
 response JSON.
 
 #### 4. Mutations
 
-A mutation is used to write or modify data. GraphQL mutations allow you to 
+A mutation is used to write or modify data. GraphQL mutations allow you to
 create, update, or delete objects.
 
 #### 5. Resolvers
 
-Resolvers are functions that handle the queries or mutations. They return data 
+Resolvers are functions that handle the queries or mutations. They return data
 in the shape defined by the schema.
 
-Understanding these basics will set the foundation for building effective 
+Understanding these basics will set the foundation for building effective
 GraphQL APIs.
 
 ## 03. Setting Up a GraphQL Server
@@ -141,9 +141,9 @@ npm install express express-graphql graphql
 Create a new file called `server.js` and add the following code:
 
 ```javascript
-const express = require('express');
-const { graphqlHTTP } = require('express-graphql');
-const { buildSchema } = require('graphql');
+const express = require("express");
+const { graphqlHTTP } = require("express-graphql");
+const { buildSchema } = require("graphql");
 
 // Construct a schema, using GraphQL schema language
 const schema = buildSchema(`
@@ -154,17 +154,22 @@ const schema = buildSchema(`
 
 // The root provides a resolver function
 const root = {
-  hello: () => 'Hello world!',
+  hello: () => "Hello world!",
 };
 
 const app = express();
-app.use('/graphql', graphqlHTTP({
-  schema: schema,
-  rootValue: root,
-  graphiql: true,
-}));
+app.use(
+  "/graphql",
+  graphqlHTTP({
+    schema: schema,
+    rootValue: root,
+    graphiql: true,
+  }),
+);
 
-app.listen(4000, () => console.log('Running a GraphQL API server at http://localhost:4000/graphql'));
+app.listen(4000, () =>
+  console.log("Running a GraphQL API server at http://localhost:4000/graphql"),
+);
 ```
 
 This script sets up an Express server with a single
@@ -208,7 +213,6 @@ the GraphQL Schema Definition Language (SDL).
 Here's a basic example of a GraphQL schema that includes a `User` type:
 
 ```graphql
-
 type User {
   id: ID!
   name: String!
@@ -456,7 +460,7 @@ connection to push the `newComment` data to the subscriber.
 Subscriptions require:
 
 1. **Server Support**: Make sure your GraphQL server supports
-   subscriptions. Libraries like Apollo Server provide GraphQL	subscription support.
+   subscriptions. Libraries like Apollo Server provide GraphQL subscription support.
 2. **WebSocket Protocol**: Subscriptions often use WebSockets.
 3. **Client Implementation**: Your client must be ready to handle
    live updates. For instance, Apollo Client can handle subscriptions
@@ -468,27 +472,26 @@ and mobile applications.
 
 ## 08. GraphQL Resolvers
 
-In GraphQL, resolvers are functions responsible for fetching the data for 
-a single field. They form the core execution layer in a GraphQL server and 
-allow the fields defined in your schema to be connected to an actual 
+In GraphQL, resolvers are functions responsible for fetching the data for
+a single field. They form the core execution layer in a GraphQL server and
+allow the fields defined in your schema to be connected to an actual
 data source.
 
 ### How Resolvers Work
 
-When a query is executed, each field's resolver is called. The GraphQL 
-server waits for data to be returned from the resolver before moving on. 
-Resolvers can return a value, promise, or an array, depending on the 
+When a query is executed, each field's resolver is called. The GraphQL
+server waits for data to be returned from the resolver before moving on.
+Resolvers can return a value, promise, or an array, depending on the
 field type.
 
 A resolver function receives four arguments:
 
-1. **parent**: An object that contains the result returned from the 
-resolver on the parent type. Useful for nested resolvers.
-   
+1. **parent**: An object that contains the result returned from the
+   resolver on the parent type. Useful for nested resolvers.
 2. **args**: An object containing all GraphQL arguments for this field.
 
-3. **context**: This object is shared across resolvers and 
-contains information such as authentication details, data loaders, etc.
+3. **context**: This object is shared across resolvers and
+   contains information such as authentication details, data loaders, etc.
 
 4. **info**: Metadata about the execution state of the query.
 
@@ -497,7 +500,6 @@ contains information such as authentication details, data loaders, etc.
 Given a simple schema with a `Query` type:
 
 ```graphql
-
 type Query {
   books: [Book]
 }
@@ -506,48 +508,44 @@ type Book {
   title: String
   author: String
 }
-
 ```
+
 Here's how you implement a resolver for the `Query` type:
 
 ```javascript
-
 const resolvers = {
   Query: {
     books: (parent, args, context, info) => {
       return context.db.getBooks();
-    }
-  }
+    },
+  },
 };
-
 ```
 
-In this example, when `books` is queried, the server uses the `books` 
+In this example, when `books` is queried, the server uses the `books`
 resolver to fetch book data from a database.
 
 ### Resolvers for Nested Fields
 
-Resolvers are also used for nested fields. The data returned by parent 
+Resolvers are also used for nested fields. The data returned by parent
 resolvers can be used in child resolvers to build the data hierarchy.
 
 Example:
 
 ```javascript
-
 const resolvers = {
   Book: {
     author: async (parent, args, context, info) => {
       return await context.db.getAuthorById(parent.authorId);
-    }
-  }
+    },
+  },
 };
-
 ```
 
 In this example, when querying `author` for a `Book`, the `author` resolver
- leverages data from the `parent` object to resolve the author's details.
+leverages data from the `parent` object to resolve the author's details.
 
-GraphQL resolvers are flexible and can be used to handle everything from 
+GraphQL resolvers are flexible and can be used to handle everything from
 simple field resolutions to complex data fetching and transformations.
 
 ## 09. GraphQL Fragments
@@ -634,20 +632,20 @@ graph structures.
 ## 10. GraphQL Directives
 
 GraphQL directives provide a way to dynamically alter the structure and execution
-of queries. They are powerful tools that can tailor query execution to suit 
+of queries. They are powerful tools that can tailor query execution to suit
 specific requirements.
 
-Directives can be applied to fields, fragments, and even the entire query. 
-They can give instructions to the execution engine on how to handle fields 
+Directives can be applied to fields, fragments, and even the entire query.
+They can give instructions to the execution engine on how to handle fields
 based on runtime conditions or static query parameters.
 
 ### Built-in Directives
 
 GraphQL has a few built-in directives:
 
-1. **@include**: Conditionally includes a field or fragment if a given 
+1. **@include**: Conditionally includes a field or fragment if a given
    argument is true.
-   
+
    ```graphql
    query UserQuery($withAddress: Boolean!) {
      user {
@@ -657,9 +655,9 @@ GraphQL has a few built-in directives:
    }
    ```
 
-2. **@skip**: Opposite of @include, it skips a field or fragment if the given 
+2. **@skip**: Opposite of @include, it skips a field or fragment if the given
    argument is true.
-   
+
    ```graphql
    query UserQuery($withoutEmail: Boolean!) {
      user {
@@ -689,7 +687,7 @@ schema {
 
 #### Using Custom Directives
 
-Once defined, custom directives can be used in queries, just like built-in 
+Once defined, custom directives can be used in queries, just like built-in
 directives:
 
 ```graphql
@@ -718,6 +716,7 @@ specific data, and servers to fulfill those requests.
 ### Flexibility of Data Retrieval
 
 - **REST:**
+
   - Typically involves multiple endpoints.
   - Responses often contain more data than needed, leading to
     over-fetching.
@@ -730,6 +729,7 @@ specific data, and servers to fulfill those requests.
 ### Versioning
 
 - **REST:**
+
   - Usually requires new versioned endpoints when significant changes
     are made.
 
@@ -740,6 +740,7 @@ specific data, and servers to fulfill those requests.
 ### Performance
 
 - **REST:**
+
   - Can be more performant in certain situations where caching is
     effective.
 
@@ -750,6 +751,7 @@ specific data, and servers to fulfill those requests.
 ### Use Cases
 
 - **REST:**
+
   - Suitable for simple APIs with predictable request patterns and
     server-controlled data structures.
 
@@ -836,67 +838,73 @@ Explore these options to fully harness the versatility of GraphQL!
 
 ## 13. GraphQL Server-side Caching
 
-Caching is a critical performance optimization technique in web 
-development, and it can be effectively used in GraphQL servers to 
-significantly improve query performance. This article will introduce you 
+Caching is a critical performance optimization technique in web
+development, and it can be effectively used in GraphQL servers to
+significantly improve query performance. This article will introduce you
 to server-side caching strategies within the GraphQL context.
 
 ### Why Cache?
 
-When multiple clients request the same data frequently, caching helps 
-reduce the load on the server by storing copies of responses and 
-reusing them for similar queries. This leads to faster response times 
+When multiple clients request the same data frequently, caching helps
+reduce the load on the server by storing copies of responses and
+reusing them for similar queries. This leads to faster response times
 and reduced server workload.
 
 ### Types of Caching
 
 #### 1. Query Caching
+
 Query caching involves storing entire results of specific GraphQL queries.
-When the same query is requested again, the cached result can be 
+When the same query is requested again, the cached result can be
 returned immediately without processing the request again.
 
 #### 2. Object Caching
-Object caching instead focuses on the individual objects returned by a 
-query. By reusing cached objects across different queries, we achieve a 
+
+Object caching instead focuses on the individual objects returned by a
+query. By reusing cached objects across different queries, we achieve a
 fine-grained and efficient caching mechanism.
 
 #### 3. Field Caching
-Field caching targets specific fields in GraphQL queries. This ensures 
-that expensive-to-compute fields can be served from the cache without 
+
+Field caching targets specific fields in GraphQL queries. This ensures
+that expensive-to-compute fields can be served from the cache without
 needing to be recalculated on every request.
 
 ### Implementing Server-side Caching
 
-To implement caching on a GraphQL server, developers often use caching 
-libraries or tools compatible with their server framework or database, 
-like Redis for memory caching, Apollo Server's built-in caching 
+To implement caching on a GraphQL server, developers often use caching
+libraries or tools compatible with their server framework or database,
+like Redis for memory caching, Apollo Server's built-in caching
 mechanisms, or other third-party solutions.
 
 #### Using Apollo Server Caching
-Apollo Server offers support for query caching through its integration 
-with popular caching backends like Redis or Memcached. By leveraging 
-these integrations, GraphQL queries can determine whether to serve 
+
+Apollo Server offers support for query caching through its integration
+with popular caching backends like Redis or Memcached. By leveraging
+these integrations, GraphQL queries can determine whether to serve
 results from cache or to re-fetch data.
 
 #### Steps in Apollo Server
-1. **Install a suitable cache backend:** Choose and install a backend 
+
+1. **Install a suitable cache backend:** Choose and install a backend
    like Redis.
-2. **Configure Apollo to use caching:** Set up your Apollo Client and 
+2. **Configure Apollo to use caching:** Set up your Apollo Client and
    Server to utilize caching strategies.
-3. **Define cache policies:** Configure the TTL (Time-To-Live) and 
+3. **Define cache policies:** Configure the TTL (Time-To-Live) and
    specifics of which parts of the data to cache.
 
 #### Example Code Snippet
+
 ```javascript
-const { ApolloServer } = require('apollo-server');
-const Redis = require('ioredis');
-const { RedisCache } = require('apollo-server-cache-redis');
+const { ApolloServer } = require("apollo-server");
+const Redis = require("ioredis");
+const { RedisCache } = require("apollo-server-cache-redis");
 
 const redis = new Redis();
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  cache: new RedisCache({ host: 'localhost' })
+  cache: new RedisCache({ host: "localhost" }),
 });
 
 server.listen().then(({ url }) => {
@@ -904,9 +912,9 @@ server.listen().then(({ url }) => {
 });
 ```
 
-Caching in GraphQL not only boosts server performance but can vastly 
-improve user experience by providing faster, more responsive data 
-retrieval. It's an essential aspect of deploying and maintaining a 
+Caching in GraphQL not only boosts server performance but can vastly
+improve user experience by providing faster, more responsive data
+retrieval. It's an essential aspect of deploying and maintaining a
 robust GraphQL server.
 
 ## 14. GraphQL Client-side Caching
@@ -921,13 +929,10 @@ optimizing data usage in the client applications.
 
 1. **Reduced Network Load**: By storing recently fetched data, the client
    application decreases the frequency of redundant requests.
-   
 2. **Enhanced Performance**: Directly serving saved data accelerates
    response times for the user interface.
-   
 3. **Offline Availability**: Cached data can be used when the application
    is offline, improving user experiences in limited network conditions.
-   
 4. **Consistency**: Ensures a consistent data state by managing local
    updates more efficiently before sending mutations to the server.
 
@@ -941,21 +946,17 @@ mechanisms:
 - **Normative Cache**: It uses a normalized cache, storing data in a
   flat structure, making updates and reads simpler. This cache helps
   manage both queries and mutations, enhancing reactivity.
-  
 - **Cache Policies**: Define how clients handle server responses:
-  
+
   - "cache-first": Uses cached data unless no data exists.
-  
   - "cache-and-network": Loads cached data and queries network
     simultaneously.
-  
   - "network-only": Always fetches from the server.
 
 #### Relay
 
 - **Normalized Store**: Like Apollo, Relay adopts a normalized store,
   focusing on query nodes, allowing efficient fetching and updating.
-  
 - **Static Queries**: Encourages using predefined queries for predictable
   cache optimization.
 
@@ -963,7 +964,6 @@ mechanisms:
 
 1. **Data Expiry**: Use time-based invalidation strategies to ensure
    cached data doesn't become stale.
-   
 2. **Optimistic UI Updates**: Implement optimistic updates to reflect
    changes instantly while awaiting server confirmation.
 
@@ -974,61 +974,61 @@ interactions.
 
 ## 15. GraphQL Security Practices
 
-GraphQL, while flexible and efficient, introduces unique security 
-challenges. To effectively manage these, several strategies can be 
+GraphQL, while flexible and efficient, introduces unique security
+challenges. To effectively manage these, several strategies can be
 implemented to ensure a secure GraphQL environment.
 
 ### Authentication & Authorization
 
-Authentication ensures only authenticated users access the GraphQL API. 
-Authorization checks user privileges on specific operations and 
-datasets. Implement authentication using tokens, for example, JWT, and 
+Authentication ensures only authenticated users access the GraphQL API.
+Authorization checks user privileges on specific operations and
+datasets. Implement authentication using tokens, for example, JWT, and
 authorization at resolver level.
 
 ### Throttling and Rate Limiting
 
-To prevent abuse, implement throttling and rate limiting strategies. 
-Limit the size and depth of queries, or establish client-specific 
-quotas. Libraries like `graphql-depth-limit` and `graphql-query-complexity` 
+To prevent abuse, implement throttling and rate limiting strategies.
+Limit the size and depth of queries, or establish client-specific
+quotas. Libraries like `graphql-depth-limit` and `graphql-query-complexity`
 can help.
 
 ### Field-level Restrictions
 
-Not all data fields should be exposed to every user. Use field-level 
+Not all data fields should be exposed to every user. Use field-level
 restrictions and role-based access controls to control visibility.
 
 ### Input Validation
 
-Always validate inputs to avoid malicious data being processed. Ensure 
-input types are correct and enforce constraints such as string length 
+Always validate inputs to avoid malicious data being processed. Ensure
+input types are correct and enforce constraints such as string length
 limits.
 
 ### Proper Error Handling
 
-Avoid disclosing sensitive information through error messages. Log 
-detailed errors on the server, but send generic user-friendly error 
+Avoid disclosing sensitive information through error messages. Log
+detailed errors on the server, but send generic user-friendly error
 messages to the client.
 
 ### Introspection Control
 
-Control introspection in production to avoid leaking details of your 
+Control introspection in production to avoid leaking details of your
 schema. Disable introspection or limit it for specific users.
 
-By following these security practices, you can protect your GraphQL 
-services from common vulnerabilities while maintaining robust 
+By following these security practices, you can protect your GraphQL
+services from common vulnerabilities while maintaining robust
 functionality.
 
 ## 16. GraphQL Pagination Techniques
 
-When dealing with large sets of data in your application, it is important to 
-support pagination instead of loading everything at once. GraphQL enables 
+When dealing with large sets of data in your application, it is important to
+support pagination instead of loading everything at once. GraphQL enables
 efficient pagination techniques to fetch data incrementally.
 
 ### Cursor-based Pagination
 
-Cursor-based pagination involves the use of a cursor to keep track of the 
-position within the dataset. This method is preferred when you need to fetch 
-data that may change or be sorted differently. A cursor could be any unique 
+Cursor-based pagination involves the use of a cursor to keep track of the
+position within the dataset. This method is preferred when you need to fetch
+data that may change or be sorted differently. A cursor could be any unique
 identifier of a record that helps to navigate through data.
 
 #### Example
@@ -1077,19 +1077,19 @@ query {
 
 ### Considerations
 
-- **Offset-based**: Easy to implement but might lead to performance issues with 
+- **Offset-based**: Easy to implement but might lead to performance issues with
   large datasets or rapidly changing data.
-- **Cursor-based**: More efficient for large datasets and dynamic data but has 
-overhead with managing cursors and managing complex querying logic.
+- **Cursor-based**: More efficient for large datasets and dynamic data but has
+  overhead with managing cursors and managing complex querying logic.
 
-GraphQL pagination techniques allow developers to optimize data fetching by 
-retrieving only the required amount of data, thus improving application speed 
+GraphQL pagination techniques allow developers to optimize data fetching by
+retrieving only the required amount of data, thus improving application speed
 and performance.
 
 ## 17. Testing GraphQL APIs
 
-Testing is a crucial component in the development of GraphQL APIs. 
-Ensuring your queries, mutations, and the overall server-side behavior 
+Testing is a crucial component in the development of GraphQL APIs.
+Ensuring your queries, mutations, and the overall server-side behavior
 work as expected can prevent costly bugs and improve reliability.
 
 ### Importance of Testing in GraphQL
@@ -1121,7 +1121,7 @@ work as expected can prevent costly bugs and improve reliability.
 ### Tools for Testing GraphQL APIs
 
 - **GraphQL-Tester:** Lightweight tool to test any GraphQL endpoint.
-- **Jest:** Incorporates utilities specifically for GraphQL, e.g., 
+- **Jest:** Incorporates utilities specifically for GraphQL, e.g.,
   mocking and assertions.
 - **Mocha & Chai:** Traditional frameworks enhanced for GraphQL testing.
 
@@ -1131,94 +1131,100 @@ work as expected can prevent costly bugs and improve reliability.
 - **Automate:** Scheduled test runs to maintain continuous integration.
 - **Performance Testing:** Use tools like `Apache JMeter` or `Artillery`.
 
-With proper testing strategies and tools, your GraphQL APIs can become 
-more robust, secure, and reliable. This ensures a high level of trust 
-among users, while facilitating easier maintenance and deployment. 
-Understanding and implementing these testing strategies will greatly 
+With proper testing strategies and tools, your GraphQL APIs can become
+more robust, secure, and reliable. This ensures a high level of trust
+among users, while facilitating easier maintenance and deployment.
+Understanding and implementing these testing strategies will greatly
 enhance your development workflow.
 
 ## 18. GraphQL Performance Optimization
 
-Optimizing performance in GraphQL involves various strategies to 
-ensure efficient data fetching and server responsiveness. Here, we 
+Optimizing performance in GraphQL involves various strategies to
+ensure efficient data fetching and server responsiveness. Here, we
 cover some methods to achieve these goals.
 
 ### Caching Strategies
 
 #### Server-side Caching
-Utilize caching at the server level to store responses and reduce 
-redundant operations. Techniques like in-memory caches or using 
+
+Utilize caching at the server level to store responses and reduce
+redundant operations. Techniques like in-memory caches or using
 services like Redis can significantly boost performance.
 
 #### Client-side Caching
-Use frameworks like Apollo Client or Relay that offer built-in 
-caching mechanisms, enabling efficient client-side data management 
+
+Use frameworks like Apollo Client or Relay that offer built-in
+caching mechanisms, enabling efficient client-side data management
 and reducing unnecessary network requests.
 
 ### Batching and Deduplication
-Implement query batching to aggregate multiple queries into a single 
-request. This reduces the number of round-trips to the server, 
+
+Implement query batching to aggregate multiple queries into a single
+request. This reduces the number of round-trips to the server,
 improving response times.
 
-Leverage tools like DataLoader to deduplicate and batch database 
+Leverage tools like DataLoader to deduplicate and batch database
 requests for similar data fetches, enhancing efficiency.
 
 ### Schema Optimization
-Design schemas thoughtfully to minimize complexity and avoid 
-excessively deep or nested queries, which can degrade performance. 
+
+Design schemas thoughtfully to minimize complexity and avoid
+excessively deep or nested queries, which can degrade performance.
 Utilize fields and types that are truly necessary for the application.
 
 ### Efficient Resolvers
-Optimize resolvers by limiting database calls and ensuring queries 
-retrieve only required data. Using indices, proper pagination, and 
+
+Optimize resolvers by limiting database calls and ensuring queries
+retrieve only required data. Using indices, proper pagination, and
 restrictive query fields helps mitigate server load.
 
 ### Monitoring and Analysis
-Implement monitoring tools to analyze query performance and identify 
-bottlenecks. Tools like Apollo Studio offer insights into query 
+
+Implement monitoring tools to analyze query performance and identify
+bottlenecks. Tools like Apollo Studio offer insights into query
 execution times and error rates.
 
-By applying these strategies, you can significantly enhance the 
-performance of your GraphQL services, catering to a seamless user 
+By applying these strategies, you can significantly enhance the
+performance of your GraphQL services, catering to a seamless user
 experience while maintaining backend efficiency.
 
 ## 19. GraphQL Federation and Microservices
 
-In this article, we'll explore how GraphQL can be leveraged with 
-microservices, particularly through the concept of GraphQL Federation. 
-Microservices architecture breaks down applications into smaller, 
+In this article, we'll explore how GraphQL can be leveraged with
+microservices, particularly through the concept of GraphQL Federation.
+Microservices architecture breaks down applications into smaller,
 independent services, allowing for better scalability and maintainability.
 Combining this with GraphQL allows for efficient API management.
 
 ### What is GraphQL Federation?
 
-GraphQL Federation is a design pattern that allows multiple GraphQL 
-services to be integrated into a single API gateway. It’s pioneered by 
-Apollo and enables decentralized teams to manage their GraphQL services 
-independently. This approach is critical for organizations implementing 
+GraphQL Federation is a design pattern that allows multiple GraphQL
+services to be integrated into a single API gateway. It’s pioneered by
+Apollo and enables decentralized teams to manage their GraphQL services
+independently. This approach is critical for organizations implementing
 microservices.
 
 #### Key Concepts
 
-- **Gateway**: The single entry point for client communication, 
+- **Gateway**: The single entry point for client communication,
   aggregating results.
-- **Subgraph**: Each individual GraphQL service, representing a 
-microservice.
+- **Subgraph**: Each individual GraphQL service, representing a
+  microservice.
 - **Composition**: Combining subgraphs into a single graph schema.
 
 ### How Federation Works
 
 Federation works by extending GraphQL schemas across services:
 
-- Services define their types and fields. 
+- Services define their types and fields.
 - Entities can be extended across services using the `@key` directive.
-- The Federation Gateway compiles these services into a unified schema 
-at runtime.
+- The Federation Gateway compiles these services into a unified schema
+  at runtime.
 
 ### Benefits of GraphQL Federation
 
 - **Decentralized Development**: Teams can build features independently.
-- **Schema Separation**: Services maintain their own schemas, leading to 
+- **Schema Separation**: Services maintain their own schemas, leading to
   clearer boundaries.
 - **Scalable Architecture**: Efficient scaling of both teams and systems.
 
@@ -1233,77 +1239,77 @@ To implement GraphQL Federation, follow these steps:
 
 ### Conclusion
 
-GraphQL Federation is a powerful way to manage microservices 
-efficiently. By leveraging it, organizations can maintain scalability 
-while enhancing their GraphQL APIs. Understanding these concepts is 
+GraphQL Federation is a powerful way to manage microservices
+efficiently. By leveraging it, organizations can maintain scalability
+while enhancing their GraphQL APIs. Understanding these concepts is
 crucial for embracing modern application architectures.
 
 ## 20. GraphQL Best Practices
 
-GraphQL has gained popularity for its ability to streamline data 
-communication between clients and servers. However, to make the most 
-of its capabilities, developers should adhere to best practices. In 
-this article, we'll discuss some key best practices to consider when 
+GraphQL has gained popularity for its ability to streamline data
+communication between clients and servers. However, to make the most
+of its capabilities, developers should adhere to best practices. In
+this article, we'll discuss some key best practices to consider when
 working with GraphQL.
 
 ### 1. Use a Consistent Naming Convention
 
-Adopt a consistent naming convention for types, fields, queries, 
-mutations, and subscriptions. This improves code readability and 
+Adopt a consistent naming convention for types, fields, queries,
+mutations, and subscriptions. This improves code readability and
 maintainability for collaborative teams.
 
 ### 2. Limit the Depth of Queries
 
-Avoid deeply nested queries to prevent performance issues and 
-overfetching of data. Implement query depth limits to safeguard 
+Avoid deeply nested queries to prevent performance issues and
+overfetching of data. Implement query depth limits to safeguard
 against inefficient query structures.
 
 ### 3. Use Query Complexity Analysis
 
-Assess the complexity of queries to detect potentially expensive 
-requests. This approach helps optimize server performance and avoid 
+Assess the complexity of queries to detect potentially expensive
+requests. This approach helps optimize server performance and avoid
 overloading resources.
 
 ### 4. Optimize for Server Performance
 
-Implement batching and caching where applicable. Utilize GraphQL 
-fragments to reuse shared query logic, reducing redundancy in 
+Implement batching and caching where applicable. Utilize GraphQL
+fragments to reuse shared query logic, reducing redundancy in
 requests.
 
 ### 5. Enforce Authorization Rules
 
-Implement strict authorization checks to ensure that users only have 
-access to data they're permitted to view, thereby protecting 
+Implement strict authorization checks to ensure that users only have
+access to data they're permitted to view, thereby protecting
 sensitive information.
 
 ### 6. Validate Input Early
 
-Perform validation of input values at the earliest stage possible 
-(e.g., in resolvers) to catch errors sooner and provide meaningful 
+Perform validation of input values at the earliest stage possible
+(e.g., in resolvers) to catch errors sooner and provide meaningful
 feedback to clients.
 
 ### 7. Employ Proper Error Handling
 
-Ensure that error messages are informative yet concise. Avoid revealing 
+Ensure that error messages are informative yet concise. Avoid revealing
 information about the server internals in error messages.
 
 ### 8. Leverage GraphQL SDL for Documentation
 
-Use the Schema Definition Language (SDL) to describe GraphQL schemas 
-clearly. Annotate schemas with comments to enrich the documentation, 
+Use the Schema Definition Language (SDL) to describe GraphQL schemas
+clearly. Annotate schemas with comments to enrich the documentation,
 which can be utilized by tools like GraphiQL.
 
 ### 9. Monitor and Log GraphQL Operations
 
-Implement monitoring and logging for GraphQL operations to gain 
-insights into API usage and performance. This enables quicker 
+Implement monitoring and logging for GraphQL operations to gain
+insights into API usage and performance. This enables quicker
 diagnosis of problems and improved user experience.
 
 ### 10. Keep Up with the Ecosystem
 
-Stay current with new developments in the GraphQL ecosystem. Regularly 
-review updates in libraries, tools, and standards to advantageously 
+Stay current with new developments in the GraphQL ecosystem. Regularly
+review updates in libraries, tools, and standards to advantageously
 incorporate enhancements into your projects.
 
-By following these best practices, you can optimize your GraphQL APIs 
+By following these best practices, you can optimize your GraphQL APIs
 for better performance, security, and developer experience.
