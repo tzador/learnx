@@ -5,6 +5,7 @@ written by ChatGPT.
 
 <!-- TOPICS START -->
 
+- [Automerge](./topics/automerge.md)
 - [Bun](./topics/bun.md)
 - [C](./topics/c.md)
 - [C Modern](./topics/c-modern.md)
@@ -48,6 +49,9 @@ written by ChatGPT.
 - [Zig](./topics/zig.md)
 
 <!-- TOPICS END -->
+
+
+
 
 
 
